@@ -144,6 +144,24 @@ end up on the street like everyone else (the canon Corpo path, where V gets cut 
 - **Hiring the street.** Corpos can't walk into the Afterlife, but they can pay a fixer to put a
   contract out. Mercs take corporate money through a fixer, never face to face in a merc bar.
 
+**Corpo looks like easy mode. It isn't.** The money is good because corporate work is a target:
+- **Their jobs are the street's jobs.** When a corpo takes a valuable job (couriering a prototype,
+  escorting an exec, moving company money), a fixer can put a contract out on it: intercept the
+  package, hit the convoy, snatch the exec. Mercs get the district and a time window, never a live
+  location, so it's a hunt, not a free kill.
+- **Robbery, kidnapping, ransom.** Mercs can mug a corpo, tie them up, take them somewhere quiet and
+  ransom them back to the company. Ransoms are paid through a fixer and held in escrow until the
+  hostage is released alive, like the bar's pay-now (the same machinery, so nobody gets paid for a
+  hostage who doesn't come home).
+- **It still has to be roleplay.** A fixer's contract, a demand, a ransom call: that's the story the
+  conduct rule asks for. Gunning down a corpo for no reason is still violence without roleplay.
+- **And it's still permadeath.** A corpo who gets zeroed is gone like anyone else, company perks and all.
+- **How corpos protect themselves:** hire Solos as bodyguards (through a fixer), corporate security
+  run by other corpo players, armoured company cars, Trauma Team Platinum. What they can't do is hide
+  in a merc bar.
+- **Failure costs.** A lost package or a ransomed exec docks the corpo's pay or gets them demoted,
+  so they can't just shrug it off.
+
 **Leaving the company** is possible and **one way**: the corporation takes back its housing, cars and
 gear, and the character starts on the street with what's in their pockets and no cred. Some fixers
 will want to know why before they trust an ex-corpo. There is no going back to the company.
