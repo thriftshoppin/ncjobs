@@ -125,7 +125,8 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   <div class="preview-bar" id="previewBar" hidden>
     <span>PREVIEW</span>
     <button class="chip-btn" id="pvKiosk" aria-pressed="true">Customer kiosk</button>
-    <button class="chip-btn" id="pvPour" aria-pressed="false">Pour station</button>
+    <button class="chip-btn" id="pvPour" aria-pressed="false">Pour: Silverhand</button>
+    <button class="chip-btn" id="pvBeer" aria-pressed="false">Pour: Beer</button>
   </div>
 
   <!-- ===================== CUSTOMER: KIOSK ===================== -->
@@ -286,7 +287,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     Object.assign(pour, { order, idx: 0, results: [], started: performance.now(), holding: false, vol: 0, layers: [], done: false });
     $("pTicket").textContent = `Ticket #${order.ticketId} // Stool ${order.stool}`;
     $("pTitle").textContent = order.label;
-    $("pMeta").innerHTML = `${escapeHtml(order.customer)}<br>Drink ${order.item + 1} of ${order.of}`;
+    $("pMeta").innerHTML = `${escapeHtml(order.customer)} · ${escapeHtml(order.glass?.label || "")}<br>Drink ${order.item + 1} of ${order.of}`;
     renderSteps(); renderControl(); show("pour"); tick();
   }
   const cur = () => pour.order.steps[pour.idx];
@@ -302,7 +303,9 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
       li.append(dot, txt, g); return li;
     }));
   }
-  const stepText = s => s.type === "pour" ? `Pour ${s.ml} ml ${s.label}` : s.type === "ice" ? `Add ${s.count} ice` : `Shake: ${s.beats} beats`;
+  const stepText = s => s.type === "pour" ? `Pour ${s.ml} ml ${s.label}` : s.type === "count" ? `${s.label} × ${s.count}` : `${s.label}: ${s.beats} beats`;
+  // Beat difficulty comes from the bartender's title (server-sent). Fallback: employee.
+  const diff = () => pour.order.beat || { speed: 1.2, perfect: 4, good: 12, title: "Employee" };
 
   function renderControl() {
     const c = $("pControl"); c.replaceChildren();
@@ -322,17 +325,19 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
       const h = $("pHold");
       h.onpointerdown = e => { h.setPointerCapture(e.pointerId); startPour(); };
       h.onpointerup = h.onpointercancel = () => stopPour();
-    } else if (s.type === "ice") {
+    } else if (s.type === "count") {
       s.added = s.added || 0;
-      c.innerHTML = `<div class="readout"><span>Ice</span><span><span class="num" id="pIce">${s.added}</span> / ${s.count}</span></div>
-        <button class="hold" id="pIceBtn" type="button">Drop a cube <span class="key">SPACE</span></button>`;
-      $("pIceBtn").onclick = addIce;
+      c.innerHTML = `<div class="readout"><span>${escapeHtml(s.label)}</span><span><span class="num">${s.added}</span> / ${s.count}</span></div>
+        <button class="hold" id="pCountBtn" type="button">${escapeHtml(s.verb || "Add")} <span class="key">SPACE</span></button>`;
+      $("pCountBtn").onclick = addCount;
     } else {
-      s.hits = s.hits || []; s.phase = s.phase ?? 0;
-      c.innerHTML = `<div class="readout"><span>Shake</span><span class="num">${s.hits.length} / ${s.beats}</span></div>
-        <div class="meter" id="pMeter"><div class="zone" style="left:38%;width:24%"></div><div class="core" style="left:46%;width:8%"></div><div class="needle" id="pNeedle"></div></div>
+      s.hits = s.hits || [];
+      const d = diff();
+      c.innerHTML = `<div class="readout"><span>${escapeHtml(s.label)}</span><span class="num">${s.hits.length} / ${s.beats}</span></div>
+        <div class="meter" id="pMeter"><div class="zone" style="left:${50 - d.good}%;width:${d.good * 2}%"></div><div class="core" style="left:${50 - d.perfect}%;width:${d.perfect * 2}%"></div><div class="needle" id="pNeedle"></div></div>
         <div class="hits" id="pHits"></div>
-        <button class="hold" id="pShake" type="button">Shake <span class="key">SPACE</span></button>`;
+        <button class="hold" id="pShake" type="button">${escapeHtml(s.verb || s.label)} <span class="key">SPACE</span></button>
+        <div class="hint">${escapeHtml(d.title)} pace. Higher titles get a slower beat and a wider zone.</div>`;
       $("pShake").onclick = shakeHit;
       $("pHits").textContent = s.hits.map(h => h === "perfect" ? "◆ perfect" : h === "good" ? "◇ good" : "× off").join("   ");
     }
@@ -348,14 +353,15 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     const grade = d <= PERFECT_ML ? "perfect" : d <= GOOD_ML ? "good" : "off";
     return { grade, text: `${got.toFixed(0)} ml`, score: Math.max(0, 100 - d * 4) };
   }
-  function addIce() {
-    const s = cur(); s.added++; pour.layers.push({ ice: true });
+  function addCount() {
+    const s = cur(); s.added++; pour.layers.push({ mark: s.id });
     if (s.added >= s.count) finishStep({ grade: "perfect", text: `${s.added}`, score: 100 }, { id: s.id, count: s.added });
     else renderControl();
   }
   function shakeHit() {
     const s = cur(); const x = needlePos(s);
-    const g = Math.abs(x - 50) <= 4 ? "perfect" : Math.abs(x - 50) <= 12 ? "good" : "off";
+    const d = diff(), off = Math.abs(x - 50);
+    const g = off <= d.perfect ? "perfect" : off <= d.good ? "good" : "off";
     s.hits.push(g);
     if (s.hits.length >= s.beats) {
       const score = s.hits.reduce((a, h) => a + (h === "perfect" ? 100 : h === "good" ? 70 : 20), 0) / s.beats;
@@ -363,7 +369,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
         { id: s.id, hits: s.hits.slice() });
     } else renderControl();
   }
-  const needlePos = s => 50 + 50 * Math.sin((performance.now() - pour.started) / 1000 * Math.PI * (s.speed || 1.1));
+  const needlePos = s => 50 + 50 * Math.sin((performance.now() - pour.started) / 1000 * Math.PI * diff().speed * (s.speed || 1));
 
   function finishStep(result, payload) {
     pour.results[pour.idx] = { ...result, payload };
@@ -385,7 +391,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
       const el = $("pMl"); if (el) el.textContent = s.poured.toFixed(0);
     }
     const s = !pour.done && cur();
-    if (s && s.type === "shake") { const n = $("pNeedle"); if (n) n.style.left = `calc(${needlePos(s)}% - 1px)`; }
+    if (s && s.type === "beat") { const n = $("pNeedle"); if (n) n.style.left = `calc(${needlePos(s)}% - 1px)`; }
     drawGlass();
     $("pTimer").textContent = `${((now - pour.started) / 1000).toFixed(1)} s`;
     pour.raf = requestAnimationFrame(tick);
@@ -393,22 +399,30 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
 
   function drawGlass() {
     const cv = $("glass"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
-    const cap = pour.order.capacity || 200;
-    const top = 40, bot = H - 30, l0 = 70, r0 = W - 70, l1 = 100, r1 = W - 100;   // tumbler: wider at the top
+    // The glass shape comes with the order: rim and base width, height, capacity.
+    const gl = pour.order.glass || { capacityMl: 300, top: 0.78, bottom: 0.72, height: 0.48 };
+    const cap = gl.capacityMl, bot = H - 30, top = bot - (H - 70) * gl.height;
+    const l0 = W / 2 - W * gl.top / 2, r0 = W / 2 + W * gl.top / 2, l1 = W / 2 - W * gl.bottom / 2, r1 = W / 2 + W * gl.bottom / 2;
     const yAt = ml => bot - (bot - top) * Math.min(ml, cap) / cap;
     const xL = y => l1 + (l0 - l1) * (bot - y) / (bot - top), xR = y => r1 + (r0 - r1) * (bot - y) / (bot - top);
     g.clearRect(0, 0, W, H);
     // liquid layers
     let acc = 0;
     for (const L of pour.layers) {
-      if (L.ice) continue;
+      if (L.mark) continue;
       const y0 = yAt(acc), y1 = yAt(acc + L.ml); acc += L.ml;
       g.fillStyle = L.color || "#c98a2b";
       g.beginPath(); g.moveTo(xL(y0), y0); g.lineTo(xR(y0), y0); g.lineTo(xR(y1), y1); g.lineTo(xL(y1), y1); g.closePath(); g.fill();
     }
     // ice cubes
     let i = 0;
-    for (const L of pour.layers) if (L.ice) {
+    for (const L of pour.layers) if (L.mark === "chili") {
+      // the garnish: a red chili hooked over the rim
+      g.save(); g.translate(r0 - 26, top - 4); g.rotate(-0.5);
+      g.fillStyle = "#e0312b"; g.beginPath(); g.ellipse(0, 0, 30, 9, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = "#3a8f2f"; g.fillRect(26, -4, 12, 8); g.restore();
+    }
+    for (const L of pour.layers) if (L.mark === "ice") {
       const y = Math.max(top + 20, yAt(acc) - 10 + (i % 2) * 18), x = W / 2 - 34 + (i % 3) * 30;
       g.fillStyle = "rgba(220,245,255,.55)"; g.strokeStyle = "rgba(255,255,255,.8)"; g.lineWidth = 2;
       g.save(); g.translate(x, y); g.rotate((i * 37 % 20 - 10) * Math.PI / 180); g.fillRect(-15, -15, 30, 30); g.strokeRect(-15, -15, 30, 30); g.restore(); i++;
@@ -441,7 +455,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     if (e.key === "Escape") { visible() === "pour" ? $("pCancel").click() : visible() === "kiosk" && $("kCancel").click(); return; }
     if (visible() !== "pour" || pour.done || e.code !== "Space") return;
     e.preventDefault(); if (e.repeat) return;
-    const t = cur().type; t === "pour" ? startPour() : t === "ice" ? addIce() : shakeHit();
+    const t = cur().type; t === "pour" ? startPour() : t === "count" ? addCount() : shakeHit();
   });
   document.addEventListener("keyup", e => { if (e.code === "Space") stopPour(); });
 
@@ -460,19 +474,34 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     id: 1042, bar: "Afterlife", stool: 3, bartender: "Claire R.", defaultTip: 15,
     balances: { cash: 340, bank: 12850 },
     items: [
-      { label: "Johnny Silverhand", qty: 1, price: 120, flavour: "Tequila, lager, lime. Wake up, samurai." },
+      { label: "Johnny Silverhand", qty: 1, price: 120, flavour: "Tequila old fashioned, a splash of cerveza, lime, chili." },
       { label: "Broseph Lager", qty: 2, price: 30, flavour: "From the tap. Cold, cheap, honest." },
     ],
   };
-  const SAMPLE_ORDER = {
-    ticketId: 1042, stool: 3, customer: "V", item: 0, of: 3, label: "Johnny Silverhand", capacity: 200,
-    steps: [
-      { id: "tequila", type: "pour", label: "Tequila", ml: 45, color: "#e8c56a" },
-      { id: "lime", type: "pour", label: "Lime juice", ml: 15, color: "#b8e05a" },
-      { id: "ice", type: "ice", count: 3 },
-      { id: "shake", type: "shake", beats: 3, speed: 1.1 },
-      { id: "lager", type: "pour", label: "Lager", ml: 90, color: "#d9a03a" },
-    ],
+  // Mirrors shared/config.lua (glasses, drinks, shakeByGrade[1]).
+  const GLASSES = {
+    pint: { label: "Pint glass", capacityMl: 470, top: 0.66, bottom: 0.48, height: 0.92 },
+    rocks: { label: "Rocks glass", capacityMl: 300, top: 0.78, bottom: 0.72, height: 0.48 },
+  };
+  const BEAT_EMPLOYEE = { title: "Employee", speed: 1.2, perfect: 4, good: 12 };
+  const SAMPLE_ORDERS = {
+    silverhand: {
+      ticketId: 1042, stool: 3, customer: "V", item: 0, of: 3, label: "Johnny Silverhand", glass: GLASSES.rocks, beat: BEAT_EMPLOYEE,
+      steps: [
+        { id: "tequila", type: "pour", label: "Centzon tequila", ml: 60, color: "#e8c56a" },
+        { id: "agave", type: "pour", label: "Agave syrup", ml: 10, color: "#c98a2b" },
+        { id: "bitters", type: "count", label: "Bitters", verb: "Add a dash", count: 2 },
+        { id: "ice", type: "count", label: "Ice", verb: "Drop a cube", count: 2 },
+        { id: "stir", type: "beat", label: "Stir", verb: "Stir", beats: 3, speed: 0.9 },
+        { id: "lime", type: "pour", label: "Lime juice", ml: 15, color: "#b8e05a" },
+        { id: "cerveza", type: "pour", label: "Splash of cerveza", ml: 30, color: "#d9a03a" },
+        { id: "chili", type: "count", label: "Chili garnish", verb: "Garnish", count: 1 },
+      ],
+    },
+    beer: {
+      ticketId: 1042, stool: 3, customer: "V", item: 1, of: 3, label: "Broseph Lager", glass: GLASSES.pint, beat: BEAT_EMPLOYEE,
+      steps: [{ id: "lager", type: "pour", label: "Broseph lager", ml: 160, color: "#d9a03a" }],
+    },
   };
   function mockServer(name, p) {
     if (name === "o77bar:kiosk:pay") setTimeout(() => handlers["o77bar:kiosk:result"]?.({ ok: true }), 900);
@@ -481,9 +510,10 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     lastPreview = which;
     $("pvKiosk").setAttribute("aria-pressed", String(which === "kiosk"));
     $("pvPour").setAttribute("aria-pressed", String(which === "pour"));
-    which === "kiosk" ? openKiosk(structuredClone(SAMPLE_TICKET)) : openPour(structuredClone(SAMPLE_ORDER));
+    $("pvBeer").setAttribute("aria-pressed", String(which === "beer"));
+    which === "kiosk" ? openKiosk(structuredClone(SAMPLE_TICKET)) : openPour(structuredClone(which === "beer" ? SAMPLE_ORDERS.beer : SAMPLE_ORDERS.silverhand));
   }
   if (inGame) bridge.emit("o77bar:ready");
-  else { $("previewBar").hidden = false; $("pvKiosk").onclick = () => preview("kiosk"); $("pvPour").onclick = () => preview("pour"); preview("kiosk"); }
+  else { $("previewBar").hidden = false; $("pvKiosk").onclick = () => preview("kiosk"); $("pvPour").onclick = () => preview("pour"); $("pvBeer").onclick = () => preview("beer"); preview("kiosk"); }
 })();
 </script>
