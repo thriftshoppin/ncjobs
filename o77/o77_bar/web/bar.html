@@ -399,12 +399,14 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
 
   function drawGlass() {
     const cv = $("glass"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
-    // The glass shape comes with the order: rim and base width, height, capacity.
-    const gl = pour.order.glass || { capacityMl: 300, top: 0.78, bottom: 0.72, height: 0.48 };
-    const cap = gl.capacityMl, bot = H - 30, top = bot - (H - 70) * gl.height;
-    const l0 = W / 2 - W * gl.top / 2, r0 = W / 2 + W * gl.top / 2, l1 = W / 2 - W * gl.bottom / 2, r1 = W / 2 + W * gl.bottom / 2;
+    // The glass shape comes with the order: rim and foot width, height, solid base, capacity.
+    const gl = pour.order.glass || { capacityMl: 300, top: 0.58, bottom: 0.54, height: 0.58, base: 0.16 };
+    const cap = gl.capacityMl, foot = H - 30, top = foot - (H - 70) * gl.height;
+    const bot = foot - (foot - top) * (gl.base || 0);                 // the liquid floor: top of the solid base
+    const wAt = y => W * (gl.bottom + (gl.top - gl.bottom) * (foot - y) / (foot - top));   // outer width at height y
+    const xL = y => W / 2 - wAt(y) / 2 + 6, xR = y => W / 2 + wAt(y) / 2 - 6;            // inner wall, 6 px glass
+    const l0 = W / 2 - wAt(top) / 2, r0 = W / 2 + wAt(top) / 2, l1 = W / 2 - wAt(foot) / 2, r1 = W / 2 + wAt(foot) / 2;
     const yAt = ml => bot - (bot - top) * Math.min(ml, cap) / cap;
-    const xL = y => l1 + (l0 - l1) * (bot - y) / (bot - top), xR = y => r1 + (r0 - r1) * (bot - y) / (bot - top);
     g.clearRect(0, 0, W, H);
     // liquid layers
     let acc = 0;
@@ -418,12 +420,12 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     let i = 0;
     for (const L of pour.layers) if (L.mark === "chili") {
       // the garnish: a red chili hooked over the rim
-      g.save(); g.translate(r0 - 26, top - 4); g.rotate(-0.5);
+      g.save(); g.translate(r0 - 6, top + 6); g.rotate(-0.95);
       g.fillStyle = "#e0312b"; g.beginPath(); g.ellipse(0, 0, 30, 9, 0, 0, Math.PI * 2); g.fill();
       g.fillStyle = "#3a8f2f"; g.fillRect(26, -4, 12, 8); g.restore();
     }
     for (const L of pour.layers) if (L.mark === "ice") {
-      const y = Math.max(top + 20, yAt(acc) - 10 + (i % 2) * 18), x = W / 2 - 34 + (i % 3) * 30;
+      const y = Math.max(top + 20, Math.min(bot - 18, yAt(acc) - 10 + (i % 2) * 18)), x = W / 2 - 30 + (i % 3) * 30;
       g.fillStyle = "rgba(220,245,255,.55)"; g.strokeStyle = "rgba(255,255,255,.8)"; g.lineWidth = 2;
       g.save(); g.translate(x, y); g.rotate((i * 37 % 20 - 10) * Math.PI / 180); g.fillRect(-15, -15, 30, 30); g.strokeRect(-15, -15, 30, 30); g.restore(); i++;
     }
@@ -436,10 +438,14 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
       const band = (bot - top) * GOOD_ML / cap;
       g.fillStyle = "rgba(94,246,255,.10)"; g.fillRect(xL(y) - 18, y - band, xR(y) - xL(y) + 36, band * 2);
     }
-    // glass outline
-    g.strokeStyle = "#e6edf3"; g.lineWidth = 4;
-    g.beginPath(); g.moveTo(l0, top); g.lineTo(l1, bot); g.lineTo(r1, bot); g.lineTo(r0, top); g.stroke();
-    g.lineWidth = 10; g.beginPath(); g.moveTo(l1, bot + 5); g.lineTo(r1, bot + 5); g.stroke();
+    // glass: walls, the solid base and the rim
+    g.fillStyle = "rgba(230,237,243,.10)";
+    g.beginPath(); g.moveTo(l1, foot); g.lineTo(r1, foot); g.lineTo(W / 2 + wAt(bot) / 2, bot); g.lineTo(W / 2 - wAt(bot) / 2, bot); g.closePath(); g.fill();
+    g.strokeStyle = "rgba(230,237,243,.35)"; g.lineWidth = 2;
+    g.beginPath(); g.moveTo(xL(bot), bot); g.lineTo(xR(bot), bot); g.stroke();
+    g.strokeStyle = "#e6edf3"; g.lineWidth = 4; g.lineJoin = "round";
+    g.beginPath(); g.moveTo(l0, top); g.lineTo(l1, foot); g.lineTo(r1, foot); g.lineTo(r0, top); g.stroke();
+    g.lineWidth = 2; g.beginPath(); g.moveTo(xL(top), top); g.lineTo(xL(bot), bot); g.moveTo(xR(top), top); g.lineTo(xR(bot), bot); g.stroke();
   }
 
   $("pServe").onclick = () => {
@@ -480,8 +486,8 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   };
   // Mirrors shared/config.lua (glasses, drinks, shakeByGrade[1]).
   const GLASSES = {
-    pint: { label: "Pint glass", capacityMl: 470, top: 0.66, bottom: 0.48, height: 0.92 },
-    rocks: { label: "Rocks glass", capacityMl: 300, top: 0.78, bottom: 0.72, height: 0.48 },
+    pint: { label: "Pint glass", capacityMl: 470, top: 0.62, bottom: 0.46, height: 0.92, base: 0.05 },
+    rocks: { label: "Rocks glass", capacityMl: 300, top: 0.58, bottom: 0.54, height: 0.58, base: 0.16 },
   };
   const BEAT_EMPLOYEE = { title: "Employee", speed: 1.2, perfect: 4, good: 12 };
   const SAMPLE_ORDERS = {

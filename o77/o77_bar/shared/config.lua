@@ -47,11 +47,13 @@ C.pour = {
 }
 
 -- Glasses. The page draws the shape; capacity sets how a pour fills it.
---   top / bottom   rim and base width as a fraction of the drawing; height likewise
+--   top / bottom   rim and foot width, as a fraction of the drawing's width
+--   height         glass height, as a fraction of the drawing's height
+--   base           solid glass at the bottom, as a fraction of the glass height
 C.glasses = {
-    pint     = { label = "Pint glass",     capacityMl = 470, top = 0.66, bottom = 0.48, height = 0.92 },
-    rocks    = { label = "Rocks glass",    capacityMl = 300, top = 0.78, bottom = 0.72, height = 0.48 },
-    highball = { label = "Highball glass", capacityMl = 350, top = 0.50, bottom = 0.46, height = 0.86 },
+    pint     = { label = "Pint glass",     capacityMl = 470, top = 0.62, bottom = 0.46, height = 0.92, base = 0.05 },
+    rocks    = { label = "Rocks glass",    capacityMl = 300, top = 0.58, bottom = 0.54, height = 0.58, base = 0.16 },
+    highball = { label = "Highball glass", capacityMl = 350, top = 0.46, bottom = 0.44, height = 0.86, base = 0.08 },
 }
 
 -- Shake/stir difficulty by rp_jobs grade: the better your title, the easier the beat.
