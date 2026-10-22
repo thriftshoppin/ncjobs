@@ -107,9 +107,10 @@ dying and not just by surviving a long time:
 
 **What a legend leaves the player**
 - **Legacy experience.** Finishing a character's story earns experience that carries to the player's
-  next character and **unlocks more of the skill tree** for them: deeper perks become available.
-  Unlocking a perk is not owning it: the new character still spends the points they earn by
-  playing, so a legend's successor starts with more options, not more power.
+  next character as **more starting skill**: they begin with skill and perk progress the way a
+  fresh character can't.
+- **Legend status is the only source of starting skill.** Nothing else ever grants it: not money,
+  not donations, not events, not staff. Every other character starts from the same line.
 - **A player badge** on the account: one per legend, with the character's name, shown in the
   player's profile and on the Afterlife wall.
 - Characters who die before finishing their story leave nothing: no experience, no badge.
@@ -246,7 +247,7 @@ Permadeath only works if death is earned, so:
   expensive in reputation even when it's free in eddies.
 - **No reward for dying.** A new character never starts with more than the last one would have:
   no fresh-start bonus, no inheritance. The only exception is legacy experience from a finished
-  story (section 4), which widens the skill tree but never hands over points, money or gear.
+  story (section 4): starting skill, never money, gear, standing or property.
 - **Safe spots** where a player can't be attacked (character creation, the first few minutes in the
   city) are short and few.
 
@@ -257,8 +258,8 @@ That makes it the hardest licence in the city to hold, which is right.
 
 ## Open questions
 1. **Timer numbers:** 90 / 60 / 30 s by wound, and how much each chrome tier adds.
-2. **Legacy experience:** how much of the skill tree a legend unlocks, and does it stack across
-   several legends (a player on their third legend sees the most)?
+2. **Legacy experience:** how much starting skill one legend is worth, and does it stack across
+   several legends (with a cap, so a veteran's new character is strong but not untouchable)?
 3. **Restores:** admin-only, or a player appeal flow with logs attached?
 4. **Starting money and gear:** RED gives each role a starting kit. Do we?
 5. **Crews:** 2-4 players? How long should someone wait for a crew before an NPC partner joins?
