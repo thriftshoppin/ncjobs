@@ -1,0 +1,710 @@
+[
+ {
+  "Tags": "Weapon, Universal, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.GenericMod1_Common\")",
+  "Title": "Pax (Tier 1)",
+  "record": "Items.GenericMod1_Common"
+ },
+ {
+  "Tags": "Weapon, Universal, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.GenericMod1_Uncommon\")",
+  "Title": "Pax (Tier 2)",
+  "record": "Items.GenericMod1_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Universal, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.GenericMod1_Rare\")",
+  "Title": "Pax (Tier 3)",
+  "record": "Items.GenericMod1_Rare"
+ },
+ {
+  "Tags": "Weapon, Universal, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.GenericMod1_Epic\")",
+  "Title": "Pax (Tier 4)",
+  "record": "Items.GenericMod1_Epic"
+ },
+ {
+  "Tags": "Weapon, Universal, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.GenericMod1_Legendary\")",
+  "Title": "Pax (Tier 5)",
+  "record": "Items.GenericMod1_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.RangedMod1_Epic\")",
+  "Title": "Better Half (Tier 4)",
+  "record": "Items.RangedMod1_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.RangedMod1_Legendary\")",
+  "Title": "Better Half (Tier 5)",
+  "record": "Items.RangedMod1_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.RangedMod2_Common\")",
+  "Title": "Shuffler (Tier 1)",
+  "record": "Items.RangedMod2_Common"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.RangedMod2_Uncommon\")",
+  "Title": "Shuffler (Tier 2)",
+  "record": "Items.RangedMod2_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.RangedMod2_Rare\")",
+  "Title": "Shuffler (Tier 3)",
+  "record": "Items.RangedMod2_Rare"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.RangedMod2_Epic\")",
+  "Title": "Shuffler (Tier 4)",
+  "record": "Items.RangedMod2_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.RangedMod2_Legendary\")",
+  "Title": "Shuffler (Tier 5)",
+  "record": "Items.RangedMod2_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.RangedMod3_Common\")",
+  "Title": "Equalizer (Tier 1)",
+  "record": "Items.RangedMod3_Common"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.RangedMod3_Uncommon\")",
+  "Title": "Equalizer (Tier 2)",
+  "record": "Items.RangedMod3_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.RangedMod3_Rare\")",
+  "Title": "Equalizer (Tier 3)",
+  "record": "Items.RangedMod3_Rare"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.RangedMod3_Epic\")",
+  "Title": "Equalizer (Tier 4)",
+  "record": "Items.RangedMod3_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.RangedMod3_Legendary\")",
+  "Title": "Equalizer (Tier 5)",
+  "record": "Items.RangedMod3_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.PowerMod1_Common\")",
+  "Title": "Pyro (Tier 1)",
+  "record": "Items.PowerMod1_Common"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.PowerMod1_Uncommon\")",
+  "Title": "Pyro (Tier 2)",
+  "record": "Items.PowerMod1_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.PowerMod1_Rare\")",
+  "Title": "Pyro (Tier 3)",
+  "record": "Items.PowerMod1_Rare"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.PowerMod1_Epic\")",
+  "Title": "Pyro (Tier 4)",
+  "record": "Items.PowerMod1_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.PowerMod1_Legendary\")",
+  "Title": "Pyro (Tier 5)",
+  "record": "Items.PowerMod1_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.PowerMod2_Uncommon\")",
+  "Title": "Swiss Cheese (Tier 2)",
+  "record": "Items.PowerMod2_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.PowerMod2_Rare\")",
+  "Title": "Swiss Cheese (Tier 3)",
+  "record": "Items.PowerMod2_Rare"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.PowerMod2_Epic\")",
+  "Title": "Swiss Cheese (Tier 4)",
+  "record": "Items.PowerMod2_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.PowerMod2_Legendary\")",
+  "Title": "Swiss Cheese (Tier 5)",
+  "record": "Items.PowerMod2_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.PowerMod3_Common\")",
+  "Title": "Critochet (Tier 1)",
+  "record": "Items.PowerMod3_Common"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.PowerMod3_Uncommon\")",
+  "Title": "Critochet (Tier 2)",
+  "record": "Items.PowerMod3_Uncommon"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.PowerMod3_Rare\")",
+  "Title": "Critochet (Tier 3)",
+  "record": "Items.PowerMod3_Rare"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.PowerMod3_Epic\")",
+  "Title": "Critochet (Tier 4)",
+  "record": "Items.PowerMod3_Epic"
+ },
+ {
+  "Tags": "Weapon, Ranged, Power, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.PowerMod3_Legendary\")",
+  "Title": "Critochet (Tier 5)",
+  "record": "Items.PowerMod3_Legendary"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tech",
+  "Command": "Game.AddToInventory(\"Items.TechMod1_X\")",
+  "Title": "Spinetickler",
+  "Description": "Common - Legendary",
+  "record": "Items.TechMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tech",
+  "Command": "Game.AddToInventory(\"Items.TechMod2_X\")",
+  "Title": "C-Thru",
+  "Description": "Common - Legendary",
+  "record": "Items.TechMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Tech",
+  "Command": "Game.AddToInventory(\"Items.TechMod3_X\")",
+  "Title": "Supercharger",
+  "Description": "Common - Legendary",
+  "record": "Items.TechMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Smart",
+  "Command": "Game.AddToInventory(\"Items.SmartMod1_X\")",
+  "Title": "Headhopper",
+  "Description": "Epic - Legendary",
+  "record": "Items.SmartMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Smart",
+  "Command": "Game.AddToInventory(\"Items.SmartMod2_X\")",
+  "Title": "Gambiteer",
+  "Description": "Common - Legendary",
+  "record": "Items.SmartMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Smart",
+  "Command": "Game.AddToInventory(\"Items.SmartMod3_X\")",
+  "Title": "Panorama",
+  "Description": "Common - Legendary",
+  "record": "Items.SmartMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, ARSMGLMG",
+  "Command": "Game.AddToInventory(\"Items.ARSMGLMGMod1_X\")",
+  "Title": "Big Mag",
+  "Description": "Common - Legendary",
+  "record": "Items.ARSMGLMGMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, ARSMGLMG",
+  "Command": "Game.AddToInventory(\"Items.ARSMGLMGMod2_X\")",
+  "Title": "Ready Steady",
+  "Description": "Common - Legendary",
+  "record": "Items.ARSMGLMGMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, ARSMGLMG",
+  "Command": "Game.AddToInventory(\"Items.ARSMGLMGMod3_X\")",
+  "Title": "Focus Fire",
+  "Description": "Common - Legendary",
+  "record": "Items.ARSMGLMGMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Handguns",
+  "Command": "Game.AddToInventory(\"Items.HGMod1_X\")",
+  "Title": "Pinpoint",
+  "Description": "Common - Legendary",
+  "record": "Items.HGMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Handguns",
+  "Command": "Game.AddToInventory(\"Items.HGMod2_X\")",
+  "Title": "Zenith",
+  "Description": "Common - Legendary",
+  "record": "Items.HGMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Handguns",
+  "Command": "Game.AddToInventory(\"Items.HGMod3_X\")",
+  "Title": "Parallax",
+  "Description": "Common - Legendary",
+  "record": "Items.HGMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, PRSR",
+  "Command": "Game.AddToInventory(\"Items.PRSRMod1_X\")",
+  "Title": "Stabilizer",
+  "Description": "Common - Legendary",
+  "record": "Items.PRSRMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, PRSR",
+  "Command": "Game.AddToInventory(\"Items.PRSRMod2_X\")",
+  "Title": "Headtoll",
+  "Description": "Common - Legendary",
+  "record": "Items.PRSRMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, PRSR",
+  "Command": "Game.AddToInventory(\"Items.PRSRMod3_X\")",
+  "Title": "Fleetshot",
+  "Description": "Common - Legendary",
+  "record": "Items.PRSRMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.ShotgunMod1_X\")",
+  "Title": "Vivisector",
+  "Description": "Common - Legendary",
+  "record": "Items.ShotgunMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.ShotgunMod2_X\")",
+  "Title": "Kneel!",
+  "Description": "Legendary",
+  "record": "Items.ShotgunMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.ShotgunMod3_X\")",
+  "Title": "Condenser",
+  "Description": "Common - Legendary",
+  "record": "Items.ShotgunMod3_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Generic",
+  "Command": "Game.AddToInventory(\"Items.MeleeMod1_X\")",
+  "Title": "Airstrike",
+  "Description": "Common - Legendary",
+  "record": "Items.MeleeMod1_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Generic",
+  "Command": "Game.AddToInventory(\"Items.MeleeMod2_X\")",
+  "Title": "Cyclone",
+  "Description": "Common - Legendary",
+  "record": "Items.MeleeMod2_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Generic",
+  "Command": "Game.AddToInventory(\"Items.MeleeMod3_X\")",
+  "Title": "Silencio",
+  "Description": "Common - Legendary",
+  "record": "Items.MeleeMod3_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blade",
+  "Command": "Game.AddToInventory(\"Items.BladeMod1_X\")",
+  "Title": "Bleedout",
+  "Description": "Common - Legendary",
+  "record": "Items.BladeMod1_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blade",
+  "Command": "Game.AddToInventory(\"Items.BladeMod2_X\")",
+  "Title": "Slice 'Em Up",
+  "Description": "Legendary",
+  "record": "Items.BladeMod2_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blade",
+  "Command": "Game.AddToInventory(\"Items.BladeMod3_X\")",
+  "Title": "Haemocide",
+  "Description": "Common - Legendary",
+  "record": "Items.BladeMod3_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blunt",
+  "Command": "Game.AddToInventory(\"Items.BluntMod1_X\")",
+  "Title": "K.O.",
+  "Description": "Common - Legendary",
+  "record": "Items.BluntMod1_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blunt",
+  "Command": "Game.AddToInventory(\"Items.BluntMod2_X\")",
+  "Title": "Bloodbruiser",
+  "Description": "Common - Legendary",
+  "record": "Items.BluntMod2_X"
+ },
+ {
+  "Tags": "Weapon, Melee, Blunt",
+  "Command": "Game.AddToInventory(\"Items.BluntMod3_X\")",
+  "Title": "Barbarian",
+  "Description": "Epic - Legendary",
+  "record": "Items.BluntMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Throwable",
+  "Command": "Game.AddToInventory(\"Items.ThrowMod1_X\")",
+  "Title": "Boomerang",
+  "Description": "Common - Legendary",
+  "record": "Items.ThrowMod1_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Throwable",
+  "Command": "Game.AddToInventory(\"Items.ThrowMod2_X\")",
+  "Title": "Zero-G",
+  "Description": "Rare - Legendary",
+  "record": "Items.ThrowMod2_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Throwable",
+  "Command": "Game.AddToInventory(\"Items.ThrowMod3_X\")",
+  "Title": "Javelin",
+  "Description": "Common - Legendary",
+  "record": "Items.ThrowMod3_X"
+ },
+ {
+  "Tags": "Weapon, Ranged, Iconic",
+  "Command": "Game.AddToInventory(\"Items.ChimeraPowerMod\")",
+  "Title": "Firecracker",
+  "record": "Items.ChimeraPowerMod"
+ },
+ {
+  "Tags": "Weapon, Ranged, Iconic",
+  "Command": "Game.AddToInventory(\"Items.ChimeraTechMod\")",
+  "Title": "Wallpuncher",
+  "record": "Items.ChimeraTechMod"
+ },
+ {
+  "Tags": "Weapon, Ranged, Iconic",
+  "Command": "Game.AddToInventory(\"Items.ChimeraSmartMod\")",
+  "Title": "Hackatomy",
+  "record": "Items.ChimeraSmartMod"
+ },
+ {
+  "Tags": "Weapon, Melee, Iconic",
+  "Command": "Game.AddToInventory(\"Items.ChimeraMeleeMod\")",
+  "Title": "Severance",
+  "record": "Items.ChimeraMeleeMod"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_01\")",
+  "Title": "OS-1 GimletEye",
+  "record": "Items.w_att_scope_short_01"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_02\")",
+  "Title": "Hyakume",
+  "record": "Items.w_att_scope_short_02"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_03\")",
+  "Title": "Add-Vantage",
+  "record": "Items.w_att_scope_short_03"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_04\")",
+  "Title": "CQO Kanone MINI Mk.72",
+  "record": "Items.w_att_scope_short_04"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_05\")",
+  "Title": "Type 2067",
+  "record": "Items.w_att_scope_short_05"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_06\")",
+  "Title": "Handyman",
+  "record": "Items.w_att_scope_short_06"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_06_legendary\")",
+  "Title": "Handyman",
+  "record": "Items.w_att_scope_short_06_legendary"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_07\")",
+  "Title": "Kanetsugu",
+  "record": "Items.w_att_scope_short_07"
+ },
+ {
+  "Tags": "Scope, Short",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_short_07_legendary\")",
+  "Title": "Kanetsugu",
+  "record": "Items.w_att_scope_short_07_legendary"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_01\")",
+  "Title": "Grandstand Mk.2x",
+  "record": "Items.w_att_scope_long_01"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_02\")",
+  "Title": "E255 Percipient",
+  "record": "Items.w_att_scope_long_02"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_03\")",
+  "Title": "ClearVue Mk.8",
+  "record": "Items.w_att_scope_long_03"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_04\")",
+  "Title": "SO-21 Saika",
+  "record": "Items.w_att_scope_long_04"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_04_legendary\")",
+  "Title": "SO-21 Saika",
+  "record": "Items.w_att_scope_long_04_legendary"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_05\")",
+  "Title": "Jue",
+  "record": "Items.w_att_scope_long_05"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_05_legendary\")",
+  "Title": "Jue",
+  "record": "Items.w_att_scope_long_05_legendary"
+ },
+ {
+  "Tags": "Scope, Long",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_long_06\")",
+  "Title": "Kairo SA-1",
+  "record": "Items.w_att_scope_long_06"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 1, Power",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_01_Common\")",
+  "Title": "HPO Kanone MAX Mk.77",
+  "record": "Items.w_att_scope_sniper_01_Common"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 2, Power",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_01_Uncommon\")",
+  "Title": "HPO Kanone MAX Mk.77",
+  "record": "Items.w_att_scope_sniper_01_Uncommon"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 3, Power",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_01_Rare\")",
+  "Title": "HPO Kanone MAX Mk.77",
+  "record": "Items.w_att_scope_sniper_01_Rare"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 4, Power",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_01_Epic\")",
+  "Title": "HPO Kanone MAX Mk.77",
+  "record": "Items.w_att_scope_sniper_01_Epic"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 5, Power",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_01_Legendary\")",
+  "Title": "HPO Kanone MAX Mk.77",
+  "record": "Items.w_att_scope_sniper_01_Legendary"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 1",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_02_Common\")",
+  "Title": "E305 Prospecta (Tier 1)",
+  "record": "Items.w_att_scope_sniper_02_Common"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 2",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_02_Uncommon\")",
+  "Title": "E305 Prospecta (Tier 2)",
+  "record": "Items.w_att_scope_sniper_02_Uncommon"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 3",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_02_Rare\")",
+  "Title": "E305 Prospecta (Tier 3)",
+  "record": "Items.w_att_scope_sniper_02_Rare"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 4",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_02_Epic\")",
+  "Title": "E305 Prospecta (Tier 4)",
+  "record": "Items.w_att_scope_sniper_02_Epic"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_02_Legendary\")",
+  "Title": "E305 Prospecta (Tier 5)",
+  "record": "Items.w_att_scope_sniper_02_Legendary"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 4, Tech",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_03\")",
+  "Title": "Gaki (Tier 4)",
+  "record": "Items.w_att_scope_sniper_03"
+ },
+ {
+  "Tags": "Scope, Sniper, Tier 5, Tech",
+  "Command": "Game.AddToInventory(\"Items.w_att_scope_sniper_03_legendary\")",
+  "Title": "Gaki (Tier 5)",
+  "record": "Items.w_att_scope_sniper_03_legendary"
+ },
+ {
+  "Tags": "Muzzle, Silencer",
+  "Command": "Game.AddToInventory(\"Items.w_silencer_01\")",
+  "Title": "CS-1 Taipan",
+  "record": "Items.w_silencer_01"
+ },
+ {
+  "Tags": "Muzzle, Silencer",
+  "Command": "Game.AddToInventory(\"Items.w_silencer_02\")",
+  "Title": "XC-10 Strix",
+  "record": "Items.w_silencer_02"
+ },
+ {
+  "Tags": "Muzzle, Silencer",
+  "Command": "Game.AddToInventory(\"Items.w_silencer_03\")",
+  "Title": "XC-10 Cetus",
+  "record": "Items.w_silencer_03"
+ },
+ {
+  "Tags": "Muzzle, Silencer, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_silencer_03_legendary\")",
+  "Title": "XC-10 Cetus",
+  "record": "Items.w_silencer_03_legendary"
+ },
+ {
+  "Tags": "Muzzle, Silencer",
+  "Command": "Game.AddToInventory(\"Items.w_silencer_04\")",
+  "Title": "TSX Tocororo",
+  "record": "Items.w_silencer_04"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_01\")",
+  "Title": "RC-7 Strigoi",
+  "record": "Items.w_muzzle_brake_01"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_01_legendary\")",
+  "Title": "RC-7 Strigoi",
+  "record": "Items.w_muzzle_brake_01_legendary"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_02\")",
+  "Title": "RC-7 Zaar",
+  "record": "Items.w_muzzle_brake_02"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_03\")",
+  "Title": "RC-7 Varkolak",
+  "record": "Items.w_muzzle_brake_03"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_03_legendary\")",
+  "Title": "RC-7 Varkolak",
+  "record": "Items.w_muzzle_brake_03_legendary"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_05\")",
+  "Title": "RC-7 Aswang",
+  "record": "Items.w_muzzle_brake_05"
+ },
+ {
+  "Tags": "Muzzle, Assault Rifle / SMG Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_06\")",
+  "Title": "RC-7 Ifrit",
+  "record": "Items.w_muzzle_brake_06"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_07\")",
+  "Title": "RC-7 Yokai",
+  "record": "Items.w_muzzle_brake_07"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_08\")",
+  "Title": "RC-7 Kutrub",
+  "record": "Items.w_muzzle_brake_08"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_09\")",
+  "Title": "RC-7 Dybbuk",
+  "record": "Items.w_muzzle_brake_09"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_09_legendary\")",
+  "Title": "RC-7 Dybbuk",
+  "record": "Items.w_muzzle_brake_09_legendary"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_10\")",
+  "Title": "RC-7 Barbaroga",
+  "record": "Items.w_muzzle_brake_10"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle, Tier 5",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_10_legendary\")",
+  "Title": "RC-7 Barbaroga",
+  "record": "Items.w_muzzle_brake_10_legendary"
+ },
+ {
+  "Tags": "Muzzle, Handgun Muzzle",
+  "Command": "Game.AddToInventory(\"Items.w_muzzle_brake_11\")",
+  "Title": "RC-7 Liger",
+  "record": "Items.w_muzzle_brake_11"
+ }
+]

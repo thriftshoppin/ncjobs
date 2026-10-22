@@ -1,0 +1,126 @@
+[
+ {
+  "Weapons": "Assault Rifle",
+  "Fashion": "Head",
+  "Cyberware": "Arms",
+  "Rarity": "Common",
+  "Shard Categories": "Articles"
+ },
+ {
+  "Weapons": "Axe",
+  "Fashion": "Face",
+  "Cyberware": "Berserk",
+  "Rarity": "Uncommon",
+  "Shard Categories": "Encrypted"
+ },
+ {
+  "Weapons": "Blade",
+  "Fashion": "Outer Torso",
+  "Cyberware": "Circulatory System",
+  "Rarity": "Rare",
+  "Shard Categories": "Leaflets"
+ },
+ {
+  "Weapons": "Blunt",
+  "Fashion": "Inner Torso",
+  "Cyberware": "Cyberdeck",
+  "Rarity": "Epic",
+  "Shard Categories": "Literature"
+ },
+ {
+  "Weapons": "Crafted",
+  "Fashion": "Legs",
+  "Cyberware": "Face",
+  "Rarity": "Legendary",
+  "Shard Categories": "Notes"
+ },
+ {
+  "Weapons": "Double-barrel Shotgun",
+  "Fashion": "Feet",
+  "Cyberware": "Hands",
+  "Shard Categories": "Others"
+ },
+ {
+  "Weapons": "Hammer",
+  "Fashion": "Phantom Liberty",
+  "Cyberware": "Iconic",
+  "Shard Categories": "People of Night City"
+ },
+ {
+  "Weapons": "HMG",
+  "Cyberware": "Integumentary System",
+  "Shard Categories": "Poetry"
+ },
+ {
+  "Weapons": "Iconic",
+  "Cyberware": "Legs",
+  "Shard Categories": "Religion"
+ },
+ {
+  "Weapons": "Katana",
+  "Cyberware": "Nervous System",
+  "Shard Categories": "Technology"
+ },
+ {
+  "Weapons": "Knife",
+  "Cyberware": "Ocular System",
+  "Shard Categories": "World"
+ },
+ {
+  "Weapons": "LMG",
+  "Cyberware": "Operating System",
+  "Shard Categories": "Phantom Liberty"
+ },
+ {
+  "Weapons": "Machete",
+  "Cyberware": "Phantom Liberty",
+  "Shard Categories": "Cut Content"
+ },
+ {
+  "Weapons": "One-handed Club",
+  "Cyberware": "Sandevistan"
+ },
+ {
+  "Weapons": "Pistol",
+  "Cyberware": "Skeleton"
+ },
+ {
+  "Weapons": "Power"
+ },
+ {
+  "Weapons": "Precision Rifle"
+ },
+ {
+  "Weapons": "Revolver"
+ },
+ {
+  "Weapons": "Shotgun"
+ },
+ {
+  "Weapons": "Smart"
+ },
+ {
+  "Weapons": "SMG"
+ },
+ {
+  "Weapons": "Sniper Rifle"
+ },
+ {
+  "Weapons": "Special"
+ },
+ {
+  "Weapons": "Sword"
+ },
+ {
+  "Weapons": "Tech"
+ },
+ {
+  "Weapons": "Throwable"
+ },
+ {
+  "Weapons": "Two-handed Club"
+ },
+ {
+  "Weapons": "Phantom Liberty"
+ }
+]

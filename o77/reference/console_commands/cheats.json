@@ -1,0 +1,503 @@
+[
+ {
+  "Type": "WE ARE AWARE THAT SOME COMMANDS ARE BROKEN ON 2.0/PHANTOM LIBERTY. COMMANDS THAT ARE GREEN WORK."
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"Health\", \"100\")",
+  "Notes": "+100 Max Health [cumulative]",
+  "record": "Health"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"Armor\", \"100\")",
+  "Notes": "+100 Max Armor [cumulative]",
+  "record": "Armor"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"Stamina\", \"100\")",
+  "Notes": "+100 Max Stamina [cumulative]",
+  "record": "Stamina"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"Oxygen\", \"100\")",
+  "Notes": "+100 Max Oxygen [cumulative]",
+  "record": "Oxygen"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"CritDamage\", \"100\")",
+  "Notes": "+100 Max Crit Damage [cumulative]",
+  "record": "CritDamage"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"CarryCapacity\", \"100\")",
+  "Notes": "+100 Max Carry Capacity [cumulative]",
+  "record": "CarryCapacity"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"Memory\", \"5\")",
+  "Notes": "+5 Max Memory Slots [cumulative]",
+  "record": "Memory"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"MaxSpeed\", \"5\")",
+  "Notes": "+5 Movement Speed [cumulative]",
+  "record": "MaxSpeed"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"CanBreatheUnderwater\", \"1\")",
+  "Notes": "Infinte Oxigen [unremovable until save&reload]",
+  "record": "CanBreatheUnderwater"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.InfiniteStamina(true)",
+  "Notes": "ON - Infinite Stamina"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.InfiniteStamina(false)",
+  "Notes": "OFF - Infinite Stamina"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"CritChance\", \"100\")",
+  "Notes": "100% Crit Chance",
+  "record": "CritChance"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"HealthInCombatRegenRateMult\", 30) Game.ModStatPlayer(\"HealthOutOfCombatRegenRateMult\", 30)",
+  "Notes": "Healt Regeneration Multiplier",
+  "record": "HealthInCombatRegenRateMult"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"StaminaRegenRateMult\", 20) Game.ModStatPlayer(\"StaminaRegenStartDelay\", -10)",
+  "Notes": "Stamina Regeneration Multiplier",
+  "record": "StaminaRegenRateMult"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"MemoryInCombatRegenRateMult\", 30)  Game.ModStatPlayer(\"MemoryOutOfCombatRegenRateMult\", 30)",
+  "Notes": "Memory Regeneration Multiplier",
+  "record": "MemoryInCombatRegenRateMult"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.ModStatPlayer(\"BleedingImmunity\", 1) Game.ModStatPlayer(\"ElectrocuteImmunity\", 1) Game.ModStatPlayer(\"BurningImmunity\", 1) Game.ModStatPlayer(\"StunImmunity\", 1) Game.ModStatPlayer(\"PoisonImmunity\", 1) Game.ModStatPlayer(\"BlindImmunity\", 1) Game.ModStatPlayer(\"KnockdownImmunity\", 1) Game.ModStatPlayer(\"FallDamageReduction\", 1)",
+  "Notes": "Negative Effects Immunity",
+  "record": "BleedingImmunity"
+ },
+ {
+  "Type": "Time",
+  "Command": "Game.GetTimeSystem():SetGameTimeByHMS(6, 0, 0)",
+  "Notes": "Set Time 6 A.M."
+ },
+ {
+  "Type": "Time",
+  "Command": "Game.GetTimeSystem():SetGameTimeByHMS(22, 0, 0)",
+  "Notes": "Set Time 10 P.M."
+ },
+ {
+  "Type": "Time",
+  "Command": "Game.GetTimeSystem():SetPausedState(true, CName.new())",
+  "Notes": "ON - Freeze Clock"
+ },
+ {
+  "Type": "Time",
+  "Command": "Game.GetTimeSystem():SetPausedState(false, CName.new())",
+  "Notes": "OFF - Freeze Clock"
+ },
+ {
+  "Type": "General",
+  "Command": "Game.GetTransactionSystem():RemoveAllItems(Game.GetPlayer())",
+  "Notes": "Remove ALL Items"
+ },
+ {
+  "Type": "General",
+  "Command": "Game.GetJournalManager():DebugShowAllPoiMappins()",
+  "Notes": "Show ALL POI [reveal completed ones also]"
+ },
+ {
+  "Type": "General",
+  "Command": "Game.GetMappinSystem():DebugDiscoverAllPoiMappins()",
+  "Notes": "Discover ALL POI [reveals all the current \"?\" icons]"
+ },
+ {
+  "Type": "General",
+  "Command": "acs = Game.AchievementSystem() Game.UnlockAllAchievements()",
+  "Notes": "Unlock ALL Achievements"
+ },
+ {
+  "Type": "General",
+  "Command": "vs = Game.GetVehicleSystem() vs:ToggleSummonMode()",
+  "Notes": "TOGGLE Vehicle Summon Mode"
+ },
+ {
+  "Type": "Special",
+  "Command": "Game.untrack()",
+  "Notes": "Force Untrack Quest [save&reload]"
+ },
+ {
+  "Type": "Special",
+  "Command": "journalManager = Game.GetJournalManager() trackedEntry = journalManager:GetTrackedEntry() questEntry = journalManager:GetParentEntry(journalManager:GetParentEntry(trackedEntry)) questEntryHash = journalManager:GetEntryHash(questEntry) journalManager:ChangeEntryStateByHash(questEntryHash, \"Succeeded\", \"Notify\")",
+  "Notes": "End Current Quest [for stuck quests]",
+  "record": "Succeeded"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() es = ssc:Get(CName.new('EquipmentSystem')) espd = es:GetPlayerData(player) espd['GetItemInEquipSlot2'] = espd['GetItemInEquipSlot;gamedataEquipmentAreaInt32'] local slots = { Face = 1, Feet = 1, Head = 1, InnerChest = 1, Legs = 1, OuterChest = 1, Weapon = 3 } for k,v in pairs(slots) do for i=1,v do print('Removing quest tags ' .. k .. ' slot ' .. (i - 1)) itemid = espd:GetItemInEquipSlot2(k, i - 1) if itemid.tdbid.hash ~= 0 then itemdata = ts:GetItemData(player, itemid) if itemdata:HasTag(\"Quest\") then itemdata:RemoveDynamicTag(\"Quest\") end end end end",
+  "Notes": "Remove Quest Tags [only equiped items in slots]",
+  "record": "Quest"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() ss = Game.GetStatsSystem() es = ssc:Get(CName.new('EquipmentSystem')) espd = es:GetPlayerData(player) espd['GetItemInEquipSlot2'] = espd['GetItemInEquipSlot;gamedataEquipmentAreaInt32'] playerPLValue = ss:GetStatValue(player:GetEntityID(), 'PowerLevel') local slots = { Head = 1, Face = 1, InnerChest = 1, OuterChest = 1, Feet = 1, Legs = 1, Outfit = 1 } for k,v in pairs(slots) do for i=1,v do itemid = espd:GetItemInEquipSlot2(k, i - 1) if itemid.tdbid.hash ~= 0 then itemdata = ts:GetItemData(player, itemid) statObj = itemdata:GetStatsObjectID() end itemLevel = ss:GetStatValue(statObj, 'ItemLevel') powerLevel = ss:GetStatValue(statObj, 'PowerLevel') addItemLevel = 0 if itemLevel < math.floor(playerPLValue) * 10 then addItemLevel = math.floor(playerPLValue - powerLevel) * 10 + 5 levelMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('ItemLevel', 'Additive', addItemLevel) ss:AddSavedModifier(statObj, levelMod) end itemQuality = ss:GetStatValue(statObj, 'Quality') newItemQuality = itemQuality if itemQuality < 5 then newItemQuality = 4 ss:RemoveAllModifiers(statObj, 'Quality', true) qualityMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('Quality', 'Additive', newItemQuality) ss:AddSavedModifier(statObj, qualityMod) end end end",
+  "Notes": "CLOTHES Conversion to Legendary [ONLY equipped ones]"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() ss = Game.GetStatsSystem() es = ssc:Get(CName.new('EquipmentSystem')) espd = es:GetPlayerData(player) espd['GetItemInEquipSlot2'] = espd['GetItemInEquipSlot;gamedataEquipmentAreaInt32'] playerPLValue = ss:GetStatValue(player:GetEntityID(), 'PowerLevel') local slots = { Weapon = 3 } for k,v in pairs(slots) do for i=1,v do itemid = espd:GetItemInEquipSlot2(k, i - 1) if itemid.tdbid.hash ~= 0 then itemdata = ts:GetItemData(player, itemid) statObj = itemdata:GetStatsObjectID() end itemLevel = ss:GetStatValue(statObj, 'ItemLevel') powerLevel = ss:GetStatValue(statObj, 'PowerLevel') addItemLevel = 0 if itemLevel < math.floor(playerPLValue) * 10 then addItemLevel = math.floor(playerPLValue - powerLevel) * 10 + 5 levelMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('ItemLevel', 'Additive', addItemLevel) ss:AddSavedModifier(statObj, levelMod) end itemQuality = ss:GetStatValue(statObj, 'Quality') newItemQuality = itemQuality if itemQuality < 5 then newItemQuality = 4 ss:RemoveAllModifiers(statObj, 'Quality', true) qualityMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('Quality', 'Additive', newItemQuality) ss:AddSavedModifier(statObj, qualityMod) end end end",
+  "Notes": "WEAPONS Conversion to Legendary [ONLY equipped ones]"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() ss = Game.GetStatsSystem() es = ssc:Get(CName.new('EquipmentSystem')) espd = es:GetPlayerData(player) espd['GetItemInEquipSlot2'] = espd['GetItemInEquipSlot;gamedataEquipmentAreaInt32'] playerPLValue = ss:GetStatValue(player:GetEntityID(), 'PowerLevel') local slots = { Head = 1, Face = 1, InnerChest = 1, OuterChest = 1, Feet = 1, Legs = 1, Outfit = 1, Weapon = 3 } for k,v in pairs(slots) do for i=1,v do itemid = espd:GetItemInEquipSlot2(k, i - 1) if itemid.tdbid.hash ~= 0 then itemdata = ts:GetItemData(player, itemid) statObj = itemdata:GetStatsObjectID() end itemLevel = ss:GetStatValue(statObj, 'ItemLevel') powerLevel = ss:GetStatValue(statObj, 'PowerLevel') addItemLevel = 0 if itemLevel < math.floor(playerPLValue) * 10 then addItemLevel = math.floor(playerPLValue - powerLevel) * 10 + 5 levelMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('ItemLevel', 'Additive', addItemLevel) ss:AddSavedModifier(statObj, levelMod) end itemQuality = ss:GetStatValue(statObj, 'Quality') newItemQuality = itemQuality if itemQuality < 5 then newItemQuality = 4 ss:RemoveAllModifiers(statObj, 'Quality', true) qualityMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('Quality', 'Additive', newItemQuality) ss:AddSavedModifier(statObj, qualityMod) end end end",
+  "Notes": "ALL SLOTS Conversion to Legendary [ONLY equipped ones]"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() cs = ssc:Get(CName.new('CraftingSystem')) ok, backpack_items = ts:GetItemList(player) local modType = { Prt_FabricEnhancer = true, Prt_Mod = true, Prt_Fragment = true, Prt_Scope = true, Prt_Muzzle = true } for i, v in ipairs(backpack_items) do itemid = v:GetID() itemdata = ts:GetItemData(player, v:GetID()) vType = Game[\"gameRPGManager::GetItemType;ItemID\"](itemid) if modType[vType.value] then  cs['SetItemLevel2'] = cs['SetItemLevel;gameItemData'] cs:SetItemLevel2(itemdata) Game['gameRPGManager::ForceItemQuality;GameObjectgameItemDataCName'](player, itemdata, CName.new('Legendary')) end  end",
+  "Notes": "MODS Conversion to Legendary [ONLY NON equipped ones]"
+ },
+ {
+  "Type": "Special",
+  "Command": "player = Game.GetPlayer() ssc = Game.GetScriptableSystemsContainer() ts = Game.GetTransactionSystem() ss = Game.GetStatsSystem() es = ssc:Get(CName.new('EquipmentSystem')) espd = es:GetPlayerData(player) espd['GetItemInEquipSlot2'] = espd['GetItemInEquipSlot;gamedataEquipmentAreaInt32'] playerPLValue = ss:GetStatValue(player:GetEntityID(), 'PowerLevel') local slots = { FrontalCortexCW = 3, EyesCW = 1, CardiovascularSystemCW = 3, ImmuneSystemCW = 2, NervousSystemCW = 2, IntegumentarySystemCW = 3, SystemReplacementCW = 1, MusculoskeletalSystemCW = 2, HandsCW = 2, ArmsCW = 2, LegsCW = 3, PersonalLink = 1, Splinter = 1, Gadget = 1, AbilityCW = 6 } for k,v in pairs(slots) do for i=1,v do itemid = espd:GetItemInEquipSlot2(k, i - 1) if itemid.tdbid.hash ~= 0 then itemdata = ts:GetItemData(player, itemid) statObj = itemdata:GetStatsObjectID() end itemLevel = ss:GetStatValue(statObj, 'ItemLevel') powerLevel = ss:GetStatValue(statObj, 'PowerLevel') addItemLevel = 0 if itemLevel < math.floor(playerPLValue) * 10 then addItemLevel = math.floor(playerPLValue - powerLevel) * 10 + 5 levelMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('ItemLevel', 'Additive', addItemLevel) ss:AddSavedModifier(statObj, levelMod) end itemQuality = ss:GetStatValue(statObj, 'Quality') newItemQuality = itemQuality if itemQuality < 5 then newItemQuality = 4 ss:RemoveAllModifiers(statObj, 'Quality', true) qualityMod = Game['gameRPGManager::CreateStatModifier;gamedataStatTypegameStatModifierTypeFloat']('Quality', 'Additive', newItemQuality) ss:AddSavedModifier(statObj, qualityMod) end end end",
+  "Notes": "CYBERWARE Conversion to Legendary [For aesthetics only]"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ModStatPlayer(\"BufferSize\", \"15\")",
+  "Notes": "MAX Breach Protocol Buffer Slots [cumulative]",
+  "record": "BufferSize"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.PrevSys_on()",
+  "Notes": "ON - Wanted By Police"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.PrevSys_off()",
+  "Notes": "OFF - Wanted By Police"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.Slowmo()",
+  "Notes": "ON - Slow Motion"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.Noslowmo()",
+  "Notes": "OFF - Slow Motion"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ChangeZoneIndicatorDanger()",
+  "Notes": "ON - Hostile Area"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ChangeZoneIndicatorPublic()",
+  "Notes": "OFF - Hostile Area"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ChangeZoneIndicatorSafe()",
+  "Notes": "ON - Safe Area"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ModStatPlayer(\"HasAirThrusters\", \"1\")",
+  "Notes": "ON - Rocket Boots [unremovable until save&reload]",
+  "record": "HasAirThrusters"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ModStatPlayer(\"HasSuperheroFall\",\"1\")",
+  "Notes": "ON - Berserk Landing",
+  "record": "HasSuperheroFall"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "GameOptions.SetFloat(\"Crowds\", \"MinimumSpeedForKnockdownByCar\", 99.000000)",
+  "Notes": "Prevent Knockdown By Cars",
+  "record": "Crowds"
+ },
+ {
+  "Type": "Gameplay",
+  "Command": "Game.ForcedNPCDeath()",
+  "Notes": "Instant Kill NPC"
+ },
+ {
+  "Command": "FOR OTHER FACTS SEE https://pastebin.com/raw/vVmzk2vw"
+ },
+ {
+  "Type": "FACTS",
+  "Command": "print(Game.GetQuestsSystem():GetFactStr(\"factName\"))",
+  "Notes": "Prints the value of the fact; 0 (false), 1 (true)",
+  "record": "factName"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"mq007_skippy_aim_at_head\", 1)",
+  "Notes": "Skippy Aim to the Head",
+  "record": "mq007_skippy_aim_at_head"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"mq007_skippy_aim_at_head\", 0)",
+  "Notes": "Skippy Aim to the Body",
+  "record": "mq007_skippy_aim_at_head"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"mq007_skippy_goes_emo\", 0)",
+  "Notes": "Friendly Skippy",
+  "record": "mq007_skippy_goes_emo"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"mq007_skippy_goes_emo\", 1)",
+  "Notes": "Hostile Skippy",
+  "record": "mq007_skippy_goes_emo"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"sq032_johnny_friend\", 1)",
+  "Notes": "ON - Johnny Friedly [Secret Ending]",
+  "record": "sq032_johnny_friend"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_hospital\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_mama\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_stay_notell\", 1)",
+  "Notes": "Jackie Left In The Car",
+  "record": "q005_jackie_to_hospital"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q005_jackie_stay_notell\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_mama\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_hospital\", 1)",
+  "Notes": "Jackie Sent To Hospital",
+  "record": "q005_jackie_stay_notell"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q005_jackie_stay_notell\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_hospital\", 0) Game.GetQuestsSystem():SetFactStr(\"q005_jackie_to_mama\", 1)",
+  "Notes": "Jackie Sent To Mama Welles",
+  "record": "q005_jackie_stay_notell"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q105_fingers_dead\", 0) Game.GetQuestsSystem():SetFactStr(\"q105_fingers_beaten\", 0)",
+  "Notes": "Set Fingers Friendly",
+  "record": "q105_fingers_dead"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q112_takemura_dead\", 0)",
+  "Notes": "Takemura Is Alive",
+  "record": "q112_takemura_dead"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"q112_takemura_dead\", 1)",
+  "Notes": "Takemura Is Dead",
+  "record": "q112_takemura_dead"
+ },
+ {
+  "Type": "Facts",
+  "Command": "for i, v in next, { \"judy\", \"river\", \"kerry\", \"panam\" } do Game.GetQuestsSystem():SetFactStr(v .. \"_romanceable\", 1) end",
+  "Notes": "Set All Romancable [save&reload] [not tested]",
+  "record": "judy"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"judy_romanceable\", 1)",
+  "Notes": "Judy Romanceable [must be done after each save load]",
+  "record": "judy_romanceable"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"river_romanceable\", 1)",
+  "Notes": "River Romanceable [must be done after each save load]",
+  "record": "river_romanceable"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"panam_romanceable\", 1)",
+  "Notes": "Panam Romanceable [must be done after each save load]",
+  "record": "panam_romanceable"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"kerry_romanceable\", 1)",
+  "Notes": "Kerry Romanceable [must be done after each save load]",
+  "record": "kerry_romanceable"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('Head', 0)",
+  "Notes": "Force Unequip HEAD"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('Face', 0)",
+  "Notes": "Force Unequip FACE"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('InnerChest', 0)",
+  "Notes": "Force Unequip CHEST"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('OuterChest', 0)",
+  "Notes": "Force Unequip OUTER CHEST"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('Legs', 0)",
+  "Notes": "Force Unequip LEGS"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('Feet', 0)",
+  "Notes": "Force Unequip FEET"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('Outfit', 0)",
+  "Notes": "Force Unequip OUTFIT"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('UnderwearTop', 0)",
+  "Notes": "Force Unequip BRA"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.UnequipItem('UnderwearBottom', 0)",
+  "Notes": "Force Unequip PANTIES"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.EquipItem('Items.Underwear_Basic_01_Top')",
+  "Notes": "Equip BRA"
+ },
+ {
+  "Type": "Unequip Slot",
+  "Command": "Game.EquipItem('Items.Underwear_Basic_01_Bottom')",
+  "Notes": "Equip PANTIES"
+ },
+ {
+  "Type": "Tools",
+  "Command": "GameOptions.SetBool(\"SaveConfig\", \"AutoSaveEnabled\", true)",
+  "Notes": "ON - Autosave",
+  "record": "SaveConfig"
+ },
+ {
+  "Type": "Tools",
+  "Command": "GameOptions.SetBool(\"SaveConfig\", \"AutoSaveEnabled\", false)",
+  "Notes": "OFF - Autosave",
+  "record": "SaveConfig"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.PrintItems()",
+  "Notes": "Log Items in Inventory"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.PrintItemsInSlots()",
+  "Notes": "Log Equiped Items"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.PrintEquipment()",
+  "Notes": "Log Full Equipment"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.PrintAttributes()",
+  "Notes": "Log Attributes"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.PrintNPCItems()",
+  "Notes": "Log NPC Items"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.LogPlayerPositionAndName()",
+  "Notes": "Show Current Coordinates"
+ },
+ {
+  "Type": "Tools",
+  "Command": "Game.ClearEquipment()",
+  "Notes": "Remove Slots+Cyberware"
+ },
+ {
+  "Type": "Stats",
+  "Command": "Game.GetStatsSystem():AddModifier(Game.GetPlayer():GetEntityID(), RPGManager.CreateStatModifier(gamedataStatType.Humanity, gameStatModifierType.Additive, XYZ))",
+  "Notes": "Add XYZ Cyberware Capacity",
+  "col4": "Temporary, use shards for permanent effect"
+ },
+ {
+  "Type": "Stats",
+  "Command": "Game.GetStatsSystem():AddModifier(Game.GetPlayer():GetEntityID(), RPGManager.CreateStatModifier(gamedataStatType.Health, gameStatModifierType.Additive, XYZ))",
+  "Notes": "Add XYZ Max Health",
+  "col4": "Temporary, use shards for permanent effect"
+ },
+ {
+  "Type": "Stats",
+  "Command": "Game.GetStatsSystem():AddModifier(Game.GetPlayer():GetEntityID(), RPGManager.CreateStatModifier(gamedataStatType.Armor, gameStatModifierType.Additive, XYZ))",
+  "Notes": "Add XYZ Armor",
+  "col4": "Temporary, use shards for permanent effect"
+ },
+ {
+  "Type": "Stats",
+  "Command": "Game.GetStatsSystem():AddModifier(Game.GetPlayer():GetEntityID(), RPGManager.CreateStatModifier(gamedataStatType.Stamina gameStatModifierType.Additive, XYZ))",
+  "Notes": "Add XYZ Stamina",
+  "col4": "Temporary, use shards for permanent effect"
+ },
+ {
+  "Type": "Facts",
+  "Command": "Game.GetQuestsSystem():SetFactStr(\"nova_doom_doom_owned\", 0) Game.GetQuestsSystem():SetFactStr(\"q003_dumdum_dead\", 1)",
+  "Notes": "Allows you to buy Doom Doom from Herold Lowe",
+  "record": "nova_doom_doom_owned"
+ },
+ {
+  "Type": "ALL VEHICLES",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnableAllPlayerVehicles()",
+  "Notes": "Enable all vehicles"
+ },
+ {
+  "Type": "SUMMON MODE",
+  "Command": "vs = Game.GetVehicleSystem() vs:ToggleSummonMode()",
+  "Notes": "Toggle Vehicle Summon Mode"
+ },
+ {
+  "Type": "Equipment",
+  "Command": "RPGManager.ForceEquipItemOnPlayer(GetPlayer(),\"Items.PlayerSilverhandArm\", true)",
+  "Notes": "Equip Johnny's holographic arm.",
+  "record": "Items.PlayerSilverhandArm"
+ }
+]

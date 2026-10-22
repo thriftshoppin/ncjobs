@@ -1,0 +1,461 @@
+[
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.EMPOverloadLvl1Program\",1)",
+  "Title": "Short Circuit (Tier 2)",
+  "record": "Items.EMPOverloadLvl1Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.EMPOverloadLvl2Program\",1)",
+  "Title": "Short Circuit (Tier 3)",
+  "record": "Items.EMPOverloadLvl2Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.EMPOverloadLvl3Program\",1)",
+  "Title": "Short Circuit (Tier 4)",
+  "record": "Items.EMPOverloadLvl3Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.EMPOverloadLvl4Program\",1)",
+  "Title": "Short Circuit (Tier 5)",
+  "record": "Items.EMPOverloadLvl4Program"
+ },
+ {
+  "Tags": "Combat, Iconic",
+  "Command": "Game.AddToInventory(\"Items.EMPOverloadLvl4PlusPlusProgram\",1)",
+  "Title": "Short Circuit (Iconic)",
+  "record": "Items.EMPOverloadLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.OverheatLvl1Program\",1)",
+  "Title": "Overheat (Tier 2)",
+  "record": "Items.OverheatLvl1Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.OverheatLvl2Program\",1)",
+  "Title": "Overheat (Tier 3)",
+  "record": "Items.OverheatLvl2Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.OverheatLvl3Program\",1)",
+  "Title": "Overheat (Tier 4)",
+  "record": "Items.OverheatLvl3Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.OverheatLvl4Program\",1)",
+  "Title": "Overheat (Tier 5)",
+  "record": "Items.OverheatLvl4Program"
+ },
+ {
+  "Tags": "Combat, Iconic",
+  "Command": "Game.AddToInventory(\"Items.OverheatLvl4PlusPlusProgram\",1)",
+  "Title": "Overheat (Iconic)",
+  "record": "Items.OverheatLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.ContagionProgram\",1)",
+  "Title": "Contagion (Tier 2)",
+  "record": "Items.ContagionProgram"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.ContagionLvl2Program\",1)",
+  "Title": "Contagion (Tier 3)",
+  "record": "Items.ContagionLvl2Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.ContagionLvl3Program\",1)",
+  "Title": "Contagion (Tier 4)",
+  "record": "Items.ContagionLvl3Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.ContagionLvl4Program\",1)",
+  "Title": "Contagion (Tier 5)",
+  "record": "Items.ContagionLvl4Program"
+ },
+ {
+  "Tags": "Combat, Iconic",
+  "Command": "Game.AddToInventory(\"Items.ContagionLvl4PlusPlusProgram\",1)",
+  "Title": "Contagion (Iconic)",
+  "record": "Items.ContagionLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.BrainMeltLvl2Program\",1)",
+  "Title": "Synapse Burnout (Tier 3)",
+  "record": "Items.BrainMeltLvl2Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.BrainMeltLvl3Program\",1)",
+  "Title": "Synapse Burnout (Tier 4)",
+  "record": "Items.BrainMeltLvl3Program"
+ },
+ {
+  "Tags": "Combat",
+  "Command": "Game.AddToInventory(\"Items.BrainMeltLvl4Program\",1)",
+  "Title": "Synapse Burnout (Tier 5)",
+  "record": "Items.BrainMeltLvl4Program"
+ },
+ {
+  "Tags": "Combat, Iconic",
+  "Command": "Game.AddToInventory(\"Items.BrainMeltLvl4PlusPlusProgram\",1)",
+  "Title": "Synapse Burnout (Iconic)",
+  "record": "Items.BrainMeltLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.SuicideLvl3Program\",1)",
+  "Title": "Suicide (Tier 4)",
+  "record": "Items.SuicideLvl3Program"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.SuicideLvl4Program\",1)",
+  "Title": "Suicide (Tier 5)",
+  "record": "Items.SuicideLvl4Program"
+ },
+ {
+  "Tags": "Ultimate, Iconic",
+  "Command": "Game.AddToInventory(\"Items.SuicideLvl4PlusPlusProgram\",1)",
+  "Title": "Suicide (Iconic)",
+  "record": "Items.SuicideLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.GrenadeExplodeLvl3Program\",1)",
+  "Title": "Detonate Grenade (Tier 4)",
+  "record": "Items.GrenadeExplodeLvl3Program"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.GrenadeExplodeLvl4Program\",1)",
+  "Title": "Detonate Grenade (Tier 5)",
+  "record": "Items.GrenadeExplodeLvl4Program"
+ },
+ {
+  "Tags": "Ultimate, Iconic",
+  "Command": "Game.AddToInventory(\"Items.GrenadeExplodeLvl4PlusPlusProgram\",1)",
+  "Title": "Detonate Grenade (Iconic)",
+  "record": "Items.GrenadeExplodeLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.SystemCollapseLvl3Program\",1)",
+  "Title": "System Collapse (Tier 4)",
+  "record": "Items.SystemCollapseLvl3Program"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.SystemCollapseLvl4Program\",1)",
+  "Title": "System Collapse (Tier 5)",
+  "record": "Items.SystemCollapseLvl4Program"
+ },
+ {
+  "Tags": "Ultimate, Iconic",
+  "Command": "Game.AddToInventory(\"Items.SystemCollapseLvl4PlusPlusProgram\",1)",
+  "Title": "System Collapse (Iconic)",
+  "record": "Items.SystemCollapseLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.MadnessLvl3Program\",1)",
+  "Title": "Cyberpsychosis (Tier 4)",
+  "record": "Items.MadnessLvl3Program"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.MadnessLvl4Program\",1)",
+  "Title": "Cyberpsychosis (Tier 5)",
+  "record": "Items.MadnessLvl4Program"
+ },
+ {
+  "Tags": "Ultimate, Iconic",
+  "Command": "Game.AddToInventory(\"Items.MadnessLvl4PlusPlusProgram\",1)",
+  "Title": "Cyberpsychosis (Iconic)",
+  "record": "Items.MadnessLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.DisableCyberwareLvl2Program\",1)",
+  "Title": "Cyberware Malfunction (Tier 3)",
+  "record": "Items.DisableCyberwareLvl2Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.DisableCyberwareLvl3Program\",1)",
+  "Title": "Cyberware Malfunction (Tier 4)",
+  "record": "Items.DisableCyberwareLvl3Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.DisableCyberwareLvl4Program\",1)",
+  "Title": "Cyberware Malfunction (Tier 5)",
+  "record": "Items.DisableCyberwareLvl4Program"
+ },
+ {
+  "Tags": "Control, Iconic",
+  "Command": "Game.AddToInventory(\"Items.DisableCyberwareLvl4PlusPlusProgram\",1)",
+  "Title": "Cyberware Malfunction (Iconic)",
+  "record": "Items.DisableCyberwareLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.LocomotionMalfunctionLvl2Program\",1)",
+  "Title": "Cripple Movement (Tier 3)",
+  "record": "Items.LocomotionMalfunctionLvl2Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.LocomotionMalfunctionLvl3Program\",1)",
+  "Title": "Cripple Movement (Tier 4)",
+  "record": "Items.LocomotionMalfunctionLvl3Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.LocomotionMalfunctionLvl4Program\",1)",
+  "Title": "Cripple Movement (Tier 5)",
+  "record": "Items.LocomotionMalfunctionLvl4Program"
+ },
+ {
+  "Tags": "Control, Iconic",
+  "Command": "Game.AddToInventory(\"Items.LocomotionMalfunctionLvl4PlusPlusProgram\",1)",
+  "Title": "Cripple Movement (Iconic)",
+  "record": "Items.LocomotionMalfunctionLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.WeaponMalfunctionLvl2Program\",1)",
+  "Title": "Weapon Glitch (Tier 3)",
+  "record": "Items.WeaponMalfunctionLvl2Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.WeaponMalfunctionLvl3Program\",1)",
+  "Title": "Weapon Glitch (Tier 4)",
+  "record": "Items.WeaponMalfunctionLvl3Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.WeaponMalfunctionLvl4Program\",1)",
+  "Title": "Weapon Glitch (Tier 5)",
+  "record": "Items.WeaponMalfunctionLvl4Program"
+ },
+ {
+  "Tags": "Control, Iconic",
+  "Command": "Game.AddToInventory(\"Items.WeaponMalfunctionLvl4PlusPlusProgram\",1)",
+  "Title": "Weapon Glitch (Iconic)",
+  "record": "Items.WeaponMalfunctionLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.BlindProgram\",1)",
+  "Title": "Reboot Optics (Tier 1)",
+  "record": "Items.BlindProgram"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.BlindLvl1Program\",1)",
+  "Title": "Reboot Optics (Tier 2)",
+  "record": "Items.BlindLvl1Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.BlindLvl2Program\",1)",
+  "Title": "Reboot Optics (Tier 3)",
+  "record": "Items.BlindLvl2Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.BlindLvl3Program\",1)",
+  "Title": "Reboot Optics (Tier 4)",
+  "record": "Items.BlindLvl3Program"
+ },
+ {
+  "Tags": "Control",
+  "Command": "Game.AddToInventory(\"Items.BlindLvl4Program\",1)",
+  "Title": "Reboot Optics (Tier 5)",
+  "record": "Items.BlindLvl4Program"
+ },
+ {
+  "Tags": "Control, Iconic",
+  "Command": "Game.AddToInventory(\"Items.BlindLvl4PlusPlusProgram\",1)",
+  "Title": "Reboot Optics (Iconic)",
+  "record": "Items.BlindLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsNoiseLvl2Program\",1)",
+  "Title": "Sonic Shock (Tier 3)",
+  "record": "Items.CommsNoiseLvl2Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsNoiseLvl3Program\",1)",
+  "Title": "Sonic Shock (Tier 4)",
+  "record": "Items.CommsNoiseLvl3Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsNoiseLvl4Program\",1)",
+  "Title": "Sonic Shock (Tier 5)",
+  "record": "Items.CommsNoiseLvl4Program"
+ },
+ {
+  "Tags": "Covert, Iconic",
+  "Command": "Game.AddToInventory(\"Items.CommsNoiseLvl4PlusPlusProgram\",1)",
+  "Title": "Sonic Shock (Iconic)",
+  "record": "Items.CommsNoiseLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsCallInLvl1Program\",1)",
+  "Title": "Request Backup (Tier 2)",
+  "record": "Items.CommsCallInLvl1Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsCallInLvl2Program\",1)",
+  "Title": "Request Backup (Tier 3)",
+  "record": "Items.CommsCallInLvl2Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsCallInLvl3Program\",1)",
+  "Title": "Request Backup (Tier 4)",
+  "record": "Items.CommsCallInLvl3Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.CommsCallInLvl4Program\",1)",
+  "Title": "Request Backup (Tier 5)",
+  "record": "Items.CommsCallInLvl4Program"
+ },
+ {
+  "Tags": "Covert, Iconic",
+  "Command": "Game.AddToInventory(\"Items.CommsCallInLvl4PlusPlusProgram\",1)",
+  "Title": "Request Backup (Iconic)",
+  "record": "Items.CommsCallInLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.WhistleLvl1Program\",1)",
+  "Title": "Bait (Tier 2)",
+  "record": "Items.WhistleLvl1Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.WhistleLvl2Program\",1)",
+  "Title": "Bait (Tier 3)",
+  "record": "Items.WhistleLvl2Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.WhistleLvl3Program\",1)",
+  "Title": "Bait (Tier 4)",
+  "record": "Items.WhistleLvl3Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.WhistleLvl4Program\",1)",
+  "Title": "Bait (Tier 5)",
+  "record": "Items.WhistleLvl4Program"
+ },
+ {
+  "Tags": "Covert, Iconic",
+  "Command": "Game.AddToInventory(\"Items.WhistleLvl4PlusPlusProgram\",1)",
+  "Title": "Bait (Iconic)",
+  "record": "Items.WhistleLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.PingProgram\",1)",
+  "Title": "Ping (Tier 1)",
+  "record": "Items.PingProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.PingLvl2Program\",1)",
+  "Title": "Ping (Tier 3)",
+  "record": "Items.PingLvl2Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.PingLvl4Program\",1)",
+  "Title": "Ping (Tier 5)",
+  "record": "Items.PingLvl4Program"
+ },
+ {
+  "Tags": "Covert, Iconic",
+  "Command": "Game.AddToInventory(\"Items.PingLvl4PlusPlusProgram\",1)",
+  "Title": "Ping (Iconic)",
+  "record": "Items.PingLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.MemoryWipeLvl2Program\",1)",
+  "Title": "Memory Wipe (Tier 3)",
+  "record": "Items.MemoryWipeLvl2Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.MemoryWipeLvl3Program\",1)",
+  "Title": "Memory Wipe (Tier 4)",
+  "record": "Items.MemoryWipeLvl3Program"
+ },
+ {
+  "Tags": "Covert",
+  "Command": "Game.AddToInventory(\"Items.MemoryWipeLvl4Program\",1)",
+  "Title": "Memory Wipe (Tier 5)",
+  "record": "Items.MemoryWipeLvl4Program"
+ },
+ {
+  "Tags": "Covert, Iconic",
+  "Command": "Game.AddToInventory(\"Items.MemoryWipeLvl4PlusPlusProgram\",1)",
+  "Title": "Memory Wipe (Iconic)",
+  "record": "Items.MemoryWipeLvl4PlusPlusProgram"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.BlackWallProgramLvl2\",1)",
+  "Title": "Blackwall Gateway (Tier 3) [Does not show up in inventory.]",
+  "Description": "It’s hard to say what exactly makes the deck able to open temporary gates through the Blackwall. It could be a permaflux algorithm, or perhaps even more terrifyingly, its capable of directly communicate with rogue AIs from beyond the Blackwall and somehow persuading them to open these gates.",
+  "record": "Items.BlackWallProgramLvl2"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.BlackWallProgramLvl3\",1)",
+  "Title": "Blackwall Gateway (Tier 4) [Does not show up in inventory.]",
+  "Description": "It’s hard to say what exactly makes the deck able to open temporary gates through the Blackwall. It could be a permaflux algorithm, or perhaps even more terrifyingly, its capable of directly communicate with rogue AIs from beyond the Blackwall and somehow persuading them to open these gates.",
+  "record": "Items.BlackWallProgramLvl3"
+ },
+ {
+  "Tags": "Ultimate",
+  "Command": "Game.AddToInventory(\"Items.BlackWallProgramLvl4\",1)",
+  "Title": "Blackwall Gateway (Tier 5) [Does not show up in inventory.]",
+  "Description": "It’s hard to say what exactly makes the deck able to open temporary gates through the Blackwall. It could be a permaflux algorithm, or perhaps even more terrifyingly, its capable of directly communicate with rogue AIs from beyond the Blackwall and somehow persuading them to open these gates.",
+  "record": "Items.BlackWallProgramLvl4"
+ },
+ {
+  "Description": "Advanced FIA spytech based on abandoned Militech research. Pairing it with a behavioral imprint allows the user to take on the appearance of another person as well as replicate their facial expressions and speech pattern. An experienced agent equipped with a faceplate is virtually indistinguishable from the person they're mimicking, and are capable of clearing even the most sophisticated security scans.",
+  "Source": "I've Seen That Face Before"
+ },
+ {
+  "Description": "Advanced FIA spytech based on abandoned Militech research. Pairing it with a behavioral imprint allows the user to take on the appearance of another person as well as replicate their facial expressions and speech pattern. An experienced agent equipped with a faceplate is virtually indistinguishable from the person they're mimicking, and are capable of clearing even the most sophisticated security scans.",
+  "Source": "I've Seen That Face Before"
+ },
+ {
+  "Description": "Advanced FIA spytech based on abandoned Militech research. Pairing it with a behavioral imprint allows the user to take on the appearance of another person as well as replicate their facial expressions and speech pattern. An experienced agent equipped with a faceplate is virtually indistinguishable from the person they're mimicking, and are capable of clearing even the most sophisticated security scans.",
+  "Source": "I've Seen That Face Before"
+ }
+]

@@ -1,0 +1,931 @@
+[
+ {
+  "Command": "many locations are related to the storyline so maybe unavailable"
+ },
+ {
+  "Type": "Your current position",
+  "Command": "print(GetPlayer():GetWorldPosition())",
+  "Location": "Your current position"
+ },
+ {
+  "Type": "TELEPORT TO\nWAYPOINT",
+  "Command": "1 - If you didn't already, update Cyber Engine Tweaks HERE",
+  "Location": "TELEPORT TO\nWAYPOINT"
+ },
+ {
+  "Command": "2 - In game, open CET settings tab and tick \"Enable Debug Menu\" then close the game"
+ },
+ {
+  "Command": "3 - Open \"Cyberpunk 2077\\r6\\config\\inputUserMappings.xml\" and search"
+ },
+ {
+  "Command": "\"world_map_menu_debug_teleport\"",
+  "record": "world_map_menu_debug_teleport"
+ },
+ {
+  "Command": "4 - Add \"<button id=\"IK_F9\"/>\" underneath (or another unused button) and save",
+  "record": "IK_F9"
+ },
+ {
+  "Command": "5 - Launch the game, open the map and hover an icon, HOLD \"F9\" button to teleport",
+  "record": "F9"
+ },
+ {
+  "Command": "6 - If you look stuck after the teleport just open-close the hub menu"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1392.637329, y=1271.536865, z=123.082397, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Apartment"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1340.884766, y=1190.658203, z=115.007172, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Mansion"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-906.306396, y=1868.635620, z=42.360016, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Judy's House"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1235.896606, y=-504.580139, z=36.427094, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "River's House"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1546.295776, y=1194.164063, z=16.260002, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Misty's Esoterica"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-645.418945, y=-1260.975586, z=9.376778, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Claire's Garage"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=2419.131836, y=-795.221985, z=66.996750, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Dakota Smith"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1967.008423, y=369.847382, z=8.040825, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Dino Dinovic"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=152.79202270508, y=1068.3673095703, z=203.00596618652, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Villa Eurodyne"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=405.594482, y=-2352.642578, z=182.027740, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Mumar \"El Capitan\" Reyes"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1149.433105, y=1581.234619, z=71.712402, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Regina Jones"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1427.401245, y=1014.764099, z=16.901749, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Rogue Amendiares"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-668.265747, y=823.310669, z=19.566063, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Wakako Okada"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1282.4926757812, y=1518.7532958984, z=45.0, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Sandra Dorsett's Apartment"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1803.299805, y=-1279.714111, z=21.837990, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Sebastian \"Padre\" Ibarra"
+ },
+ {
+  "Type": "NPC",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1544.395996, y=-1971.859009, z=73.342407, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Munincipal Landfill"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1941.699097, y=-43.114662, z=-1.532372, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "7th Hell"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1923.0397949219, y=-31.430084228516, z=3.5283889770508, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Maiko Maeda's Office"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1456.893433, y=1038.277222, z=16.825035, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Afterlife"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-652.481812, y=790.145996, z=128.252228, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clouds [Inside]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-665.472961, y=810.591492, z=128.273163, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clouds [Outside]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-346.081238, y=221.274918, z=191.086502, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Dark Matter [Inside]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-346.648010, y=222.090622, z=27.594040, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Dark Matter [Outside]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1207.988525, y=1563.142090, z=22.920128, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Lizzie's Bar"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1164.94140625, y=1576.4152832031, z=18.91512298584, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Lizzie's Bar [Basement]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1639.3608398438, y=1019.9029541016, z=28.824333190918, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Riot [Inside]"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1738.612061, y=2213.224121, z=90.204559, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Totentanz"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-756.44885253906, y=1074.7010498047, z=62.005004882812, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Atlantis"
+ },
+ {
+  "Type": "Club",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1260.774536, y=-981.771790, z=11.589195, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "El Coyote Cojo"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1158.889404, y=1342.452271, z=19.943626, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "No-Tell Motel"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1628.261475, y=-775.431030, z=49.980309, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Sunset Motel"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=3602.863037, y=-879.516479, z=119.546600, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Sunshine Motel"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-3972.6013183594, y=-6495.1479492188, z=75.73356628418, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Nomad Starting Location - Awacs Zone"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=3444.628174, y=-365.633270, z=133.852707, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Mobile Camp"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1816.382324, y=2256.925781, z=180.260223, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Nomad Camp"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-640.769165, y=886.267151, z=19.888809, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Jig-Jig Street"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1751.548462, y=-1933.493042, z=61.524582, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Pacifica District"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2265.841309, y=-2112.402588, z=13.296661, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Grand Imperial Mall"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-940.837341, y=-77.526871, z=7.509773, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Delamain's HQ"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1782.537598, y=-390.172638, z=-4.015121, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Reconciliation Park"
+ },
+ {
+  "Type": "Generic",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=2599.074707, y=-33.218079, z=80.714417, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Rocky Ridge"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1895.527832, y=2504.133301, z=18.263504, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Northside]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1522.441040, y=1701.879639, z=18.317543, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Little China]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1119.808105, y=1752.149658, z=33.722076, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Kabuki]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-682.614563, y=1239.223755, z=37.966957, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Japantown]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-230.233231, y=-36.969742, z=0.883064, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Charter Hill]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1202.813965, y=-570.510498, z=32.692131, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Red Peaks]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=253.300400, y=-1475.245850, z=9.500000, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Rancho Coronado]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1017.764709, y=-1557.709351, z=25.700897, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Arroyo]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2477.911377, y=-2536.459229, z=16.969376, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [West Wind Estate]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2437.346680, y=-666.163452, z=6.922104, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Wellsprings]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1575.944580, y=-282.437988, z=-4.425003, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Clothing Vendor [Corpo Plaza]"
+ },
+ {
+  "Type": "Clothing Store",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1884.361938, y=82.698013, z=7.519997, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Zane Jagger"
+ },
+ {
+  "Type": "Melee Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1430.860107, y=1335.109497, z=119.206131, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Coach Fred"
+ },
+ {
+  "Type": "Melee Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-337.444519, y=563.404053, z=38.349251, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Spector Cheng"
+ },
+ {
+  "Type": "Melee Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2529.142578, y=-2468.510010, z=17.196762, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Melee Weapon Vendor [West Wind Estate]"
+ },
+ {
+  "Type": "Melee Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-476.260040, y=-1942.191772, z=7.003807, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Melee Weapon Vendor [Animals]"
+ },
+ {
+  "Type": "Melee Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=133.805145, y=-4670.488281, z=54.607399, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Melee Weapon Vendor [Jackson Plains]"
+ },
+ {
+  "Type": "Netrunner",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1180.311279, y=2041.457520, z=20.087074, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Yoko Tsuru"
+ },
+ {
+  "Type": "Netrunner",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-351.593842, y=1368.778564, z=42.124115, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Netrunner [Japantown]"
+ },
+ {
+  "Type": "Netrunner",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-492.061035, y=583.292725, z=26.802223, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Chang Hoon Nam"
+ },
+ {
+  "Type": "Netrunner",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1906.515015, y=-1925.094238, z=48.903023, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Netrunner [Coastview]"
+ },
+ {
+  "Type": "Netrunner",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-845.921082, y=-394.881470, z=8.163307, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Netrunner [Vista del Rey]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1450.176147, y=1311.742676, z=119.082397, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Robert Wilson"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1207.415771, y=2043.946289, z=7.844711, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Kabuki]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1895.143433, y=2729.943359, z=7.449997, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Northside]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-783.261963, y=2183.184570, z=52.801941, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Maelstrom]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-453.489319, y=1450.199219, z=37.388107, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Japantown]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1770.706543, y=222.652618, z=43.727768, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Downtown]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2402.214355, y=-630.521790, z=6.906044, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Wellsprings]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1899.170654, y=-1019.690430, z=7.676468, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [The Glen]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-906.048767, y=-703.476807, z=8.237724, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Vista del Rey]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1678.147217, y=-771.591980, z=49.839981, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Red Peaks]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=3429.046387, y=-375.550720, z=133.535477, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Aldecaldos]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1796.789307, y=2253.482178, z=180.262894, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Aldecaldos] Alt"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=569.700745, y=-2201.206787, z=35.345894, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Rancho Coronado]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-992.885986, y=-1589.419189, z=25.700897, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [Arroyo]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2438.164063, y=-2405.232422, z=16.722504, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Weapon Vendor [West Wind Estate]"
+ },
+ {
+  "Type": "Weapon Shop",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1844.916138, y=-4255.368652, z=74.019012, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Marty Jenklow"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1546.726196, y=1227.393066, z=11.520233, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Viktor Vektor"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1686.586182, y=2386.400879, z=18.344055, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Cassius Ryder"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1090.759155, y=2147.218262, z=13.330742, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Charles Bucks"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1245.325439, y=1945.930908, z=8.030479, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Robert Rainwater"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1040.245972, y=1440.913696, z=0.500221, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Kabuki]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-712.370605, y=871.832458, z=11.982414, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ridderdoc [Japantown]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-573.507813, y=795.048279, z=24.906097, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Finn \"Fingers\" Gerstatt"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2411.207764, y=393.523010, z=11.837067, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Downtown]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2361.011475, y=-929.024597, z=12.266129, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Wellsprings]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-40.347633, y=-52.439484, z=7.179688, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Nina Kraviz"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1072.172729, y=-1274.062866, z=11.456871, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Arroyo]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2607.956787, y=-2498.076660, z=17.334549, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [West Wind Estate]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=588.132568, y=-2179.594482, z=42.437347, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Octavio"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=3438.949463, y=-380.475800, z=133.569855, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Aldecaldos] [Mobile Camp]"
+ },
+ {
+  "Type": "Ripperdoc",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1814.132202, y=2274.446289, z=182.176987, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Ripperdoc [Aldecaldos] [Nomad Camp]"
+ },
+ {
+  "Type": "Ripperdoc, PL",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{ x=-1905.2941, y=-2472.1921, z=24.07602, w=1 }, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Farida's Clinic"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-253.68695, y=-1462.9231, z=7.5999146, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arroyo [Arasaka Industrial Park]"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-254.02971, y=-1508.8351, z=12.610001, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arroyo [Arasaka Industrial Park]"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=2287.9966, y=-1051.378, z=55.498795, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Badlands"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1354.8429, y=444.22794, z=13.151001, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Corpo Plaza"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-964.2407, y=2778.072, z=30.049217, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Northside"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=645.40015, y=-2159.7837, z=39.349243, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Rancho Coronado"
+ },
+ {
+  "Type": "Perk Shard",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1984.3334, y=-1027.2446, z=7.6319275, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Glen"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1808.519287, y=-542.195801, z=10.144997, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Death"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=51.435013, y=-498.468506, z=15.313713, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Justice"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=684.020813, y=-616.751282, z=9.846458, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Strenght"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=195.212189, y=574.286682, z=120.330841, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Temperance"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1503.578857, y=1137.667480, z=18.070541, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Chariot"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2103.592773, y=1772.950562, z=18.331223, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Emperor"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1460.803711, y=1047.891846, z=18.762367, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Empress"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1391.457397, y=1268.110229, z=123.082397, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Fool"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1834.668945, y=3877.000000, z=17.890144, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Hanged Man"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1736.029663, y=-1934.164917, z=61.592911, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Heremit"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-880.238464, y=1320.123047, z=5.821556, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Hierophant"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-630.949707, y=-212.408829, z=20.170006, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The High Priestess"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-113.085938, y=1935.875000, z=100.617203, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Lovers"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1231.555420, y=1559.181641, z=22.671944, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Magician"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=397.054016, y=1151.880493, z=220.754074, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Moon"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-611.084839, y=-3845.938721, z=72.121140, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Star"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1330.365479, y=1202.760132, z=19.432549, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Sun"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1574.320435, y=148.965622, z=2.385063, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Tower"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=1650.025879, y=-793.365784, z=49.820427, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The Wheel Of Fortune"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1549.944092, y=1208.757080, z=57.000008, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "The World"
+ },
+ {
+  "Type": "Tarot Card",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1361.474121, y=155.524597, z=-26.648010, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Judgement [Ending Quest]"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1100.2052001953, y=2804.2724609375, z=7.1907348632812, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "1 - Six Feet Under"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1516.0285644531, y=2513.150390625, z=6.9869384765625, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "2 - Bloody Ritual"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1705.8572998047, y=2251.3742675781, z=18.000022888184, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "3 - Where The Bodies Hit The Floor"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-816.72528076172, y=1959.3607177734, z=51.605758666992, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "4 - Demons Of War"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1092.9200439453, y=1546.8303222656, z=2.1322555541992, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "5 - Lt. Mower"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2047.7242431641, y=1252.0526123047, z=3.8899993896484, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "6 - Ticket To The Major Leagues"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2170.1684570312, y=294.23776245117, z=8.010009765625, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "7 - On Deaf Ears"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1641.1397705078, y=245.38659667969, z=8.2137145996094, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "8 - Phantom Of Night City"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2373.6276855469, y=-1098.7713623047, z=12.810585021973, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "9 - Letter Of The Law"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2237.6071777344, y=-1310.1479492188, z=12.271194458008, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "10 - Seaside Cafe"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1939.3024902344, y=-1617.43359375, z=5.9614181518555, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "11 - Smoke On The Water"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2217.8566894531, y=-1943.2907714844, z=5.3432922363281, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "12 - Lex Talionis"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-644.89636230469, y=-1313.7973632812, z=8.0832595825195, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "13 - Under The Bridge"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=324.34515380859, y=-1919.6535644531, z=-5.7975769042969, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "14 - Discount Doc"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=2527.0246582031, y=-1685.0968017578, z=74.852676391602, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "15 - The Wasteland"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=2704.333984375, y=-595.92297363281, z=102.67890930176, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "16 - House On The Hill"
+ },
+ {
+  "Type": "Cyberpsycho",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=4602.4306640625, y=-1240.2567138672, z=142.72061157227, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "17 - Second Chances"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1218.135986, y=1409.635010, z=113.524445, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Akulov Penthouse"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1474.2380371094, y=160.72055053711, z=208.63760375977, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Alt Interrogation Room"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1446.6311035156, y=73.890563964844, z=238.34799194336, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Lower Lower Atrium"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1446.6311035156, y=73.890563964844, z=238.34799194336, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Lower Upper Atrium"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=4743.650879, y=-1091.755127, z=1310.439575, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Orbital Station"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x= 278.5378112793, y=1040.0767822266, z=229.91818237305, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Residence"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1431.7360839844, y=175.07508850098, z=141.9965057373, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Tower Counterintel"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1415.5863037109, y=108.21168518066, z=142.02340698242, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Tower Exec Office"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1449.256470, y=118.300171, z=321.639038, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Tower Jungle"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1427.0634765625, y=181.71881103516, z=206.62599182129, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Tower Server Level"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1383.655518, y=118.832474, z=542.696289, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Arasaka Tower Temple"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=3492.3449707031, y=1171.1573486328, z=138.11395263672, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Badlands Movie Site"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=185.345749, y=2365.449707, z=67.081177, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Badlands Tunnel Entrance"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1798.7280273438, y=-522.03704833984, z=74.244064331055, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Embers [Restaurant]"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=11.151092529297, y=21.749450683594, z=134.8438873291, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Gutierez Apartment"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2154.8049316406, y=461.67517089844, z=89.467163085938, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Joanne Koch Hotel Suite"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1389.446533, y=141.266556, z=-139.361572, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Johnny Interrogation Room"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2475.6154785156, y=-2437.4584960938, z=17.587516784668, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Johnny's Apartment [Reaper Ending]"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2202.186035, y=1783.184204, z=163.000000, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Konpeki Plaza Hotel Suite"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2176.3708496094, y=1784.4736328125, z=275.0, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Konpeki Plaza Pool"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-2226.746582, y=1767.182129, z=308.000000, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Konpeki Plaza Yorinobu's Room"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-701.484680, y=849.270264, z=322.252228, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Megabuilding H 8 Top"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1371.780029, y=1340.888550, z=311.471313, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Megabuilding H 10 Top"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1761.547729, y=-1010.821655, z=94.300003, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "NCPD Room"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-81.354858398438, y=-121.20021057129, y=119.15728759766, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Peralez Apartment"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1466.5828857422, y=179.76396179199, z=594.37310791016, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Saburo Arasaka Office"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1681.2879638672, y=-987.14660644531, z=10.789474487305, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Tucker Albach's Apartment"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1571.0765380859, y=3112.1782226562, z=20.13500213623, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Smasher's Ebunike Cabin"
+ },
+ {
+  "Type": "Extra",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1663.618774, y=-1867.443726, z=54.990150, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Voodoo Boys Subway"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1502.301880, y=2224.2900039, z=22.207458, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Northside Apartment"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-785.953125, y=993.946899, z=12.025284, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Japantown Apartment"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1525.463867, y=-994.359436, z=9.088913, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Glen Apartment"
+ },
+ {
+  "Type": "Apartments",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1601.312256, y=344.187357, z=8.184570, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "V's Corpo Plaza Apartment"
+ },
+ {
+  "Type": "Junk Vendor",
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1022.627319, y=1439.387939, z=16.507629, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Frank"
+ },
+ {
+  "Type": "Junk Vendor",
+  "Location": "Christine Markov"
+ },
+ {
+  "Type": "Junk Vendor",
+  "Location": "Zhan Qiu"
+ },
+ {
+  "Type": "Junk Vendor"
+ },
+ {
+  "Type": "Junk Vendor"
+ },
+ {
+  "Type": "Junk Vendor"
+ },
+ {
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1720.1742, y=-2640.97168, z=60.9924164, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Airdrop 37"
+ },
+ {
+  "Command": "Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=-1852.25757, y=-2667.36621, z=42.584156, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})",
+  "Location": "Airdrop 38"
+ }
+]

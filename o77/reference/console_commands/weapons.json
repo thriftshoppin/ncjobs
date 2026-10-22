@@ -1,0 +1,3326 @@
+[
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chao_Default\")",
+  "Title": "A-22B Chao",
+  "record": "Items.Preset_Chao_Default"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chao_Military\")",
+  "Title": "A-22B Chao",
+  "record": "Items.Preset_Chao_Military"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chao_Neon\")",
+  "Title": "A-22B Chao",
+  "record": "Items.Preset_Chao_Neon"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chao_Pimp\")",
+  "Title": "A-22B Chao",
+  "record": "Items.Preset_Chao_Pimp"
+ },
+ {
+  "Tags": "Tech, Precision Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Collectible\", 1)",
+  "Title": "Achilles x-MOD2",
+  "record": "Items.Preset_Achilles_Collectible"
+ },
+ {
+  "Tags": "Thrown, Axe, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_VB_Axe\")",
+  "Title": "Agaou",
+  "record": "Items.Preset_VB_Axe"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_AirDrop\")",
+  "Title": "Alabai",
+  "Description": "Responds to only one command: \"Sic 'em\"",
+  "Source": "Airdrops",
+  "record": "Items.Preset_Pozhar_AirDrop"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Spy\")",
+  "Title": "Ambition",
+  "record": "Items.Preset_Kenshin_Spy"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Cassidy\")",
+  "Title": "Amnesty",
+  "record": "Items.Preset_Overture_Cassidy"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Amazon\")",
+  "Title": "Amstaff",
+  "Description": "Time to hunt.",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Crusher_Amazon"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Frank\")",
+  "Title": "Apparition",
+  "record": "Items.Preset_Kenshin_Frank"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Toygun\")",
+  "Title": "AR Raygun Supreme 9000",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Toygun"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Kerry\")",
+  "Title": "Archangel",
+  "record": "Items.Preset_Overture_Kerry"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Default\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Default"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Military\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Military"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Neon\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Neon"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Pimp\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Pimp"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Prevention_MaxTac\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Prevention_MaxTac"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Prevention_MaxTac_2nd_wave\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Prevention_MaxTac_2nd_wave"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Reed\")",
+  "Title": "Ashura",
+  "record": "Items.Preset_Ashura_Reed"
+ },
+ {
+  "Tags": "Smart, Shotgun, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Common_Zhuo_Eight_Star\")",
+  "Title": "Ba Xing Chong (Tier 1)",
+  "record": "Items.Common_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Smart, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Zhuo_Eight_Star\")",
+  "Title": "Ba Xing Chong (Tier 2)",
+  "record": "Items.Uncommon_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Smart, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Zhuo_Eight_Star\")",
+  "Title": "Ba Xing Chong (Tier 3)",
+  "record": "Items.Rare_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Smart, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Zhuo_Eight_Star\")",
+  "Title": "Ba Xing Chong (Tier 4)",
+  "record": "Items.Epic_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Smart, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Zhuo_Eight_Star\")",
+  "Title": "Ba Xing Chong (Tier 5)",
+  "record": "Items.Legendary_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club, PL, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Malina\")",
+  "Title": "Baby Boomer",
+  "record": "Items.Preset_Baseball_Bat_Malina"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_Kurt\")",
+  "Title": "Bald Eagle",
+  "Description": "The predator stalks his prey. Nothing escapes his sight.",
+  "record": "Items.Preset_Metel_Kurt"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Aldecados\")",
+  "Title": "Baseball Bat",
+  "Description": "Great for cracking shins and homers.",
+  "record": "Items.Preset_Baseball_Bat_Aldecados"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Default\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Default"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Mox\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Mox"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Neon\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Neon"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Pimp\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Pimp"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_SixStreet\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_SixStreet"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_TygerClaws\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_TygerClaws"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Valentinos\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Valentinos"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Wraiths\")",
+  "Title": "Baseball Bat",
+  "record": "Items.Preset_Baseball_Bat_Wraiths"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club, PL, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Legendary\")",
+  "Title": "Baseball Bat x-MOD2",
+  "record": "Items.Preset_Baseball_Bat_Legendary"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dildo_SexShop\", 1)",
+  "Title": "BFC 9000",
+  "record": "Items.Preset_Dildo_SexShop"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_GoG\")",
+  "Title": "Black Unicorn",
+  "Description": "The razor-like blade is as merciless as death itself, the guard is fashioned from premium materials and the handle is crafted so exquisitely it belongs in a museum. Most importantly, it remains light and nimble to wield because it was forged DRM-free.",
+  "Source": "GOG",
+  "record": "Items.Preset_Katana_GoG"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Dino\")",
+  "Title": "Bloody Maria",
+  "record": "Items.Preset_Tactician_Dino"
+ },
+ {
+  "Tags": "Thrown, Knife, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Neurotoxin_Knife_Iconic\")",
+  "Title": "Blue Fang",
+  "record": "Items.Preset_Neurotoxin_Knife_Iconic"
+ },
+ {
+  "Tags": "Power, Sniper Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_AirDrop\")",
+  "Title": "Borzaya",
+  "Description": "Can't be domesticated.",
+  "Source": "Air Drops, Bugged",
+  "record": "Items.Preset_Grad_AirDrop"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Common_Nekomata_Breakthrough\")",
+  "Title": "Breakthrough (Tier 1)",
+  "record": "Items.Common_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Nekomata_Breakthrough\")",
+  "Title": "Breakthrough (Tier 2)",
+  "record": "Items.Uncommon_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Rare_Nekomata_Breakthrough\")",
+  "Title": "Breakthrough (Tier 3)",
+  "record": "Items.Rare_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Epic_Nekomata_Breakthrough\")",
+  "Title": "Breakthrough (Tier 4)",
+  "record": "Items.Epic_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Nekomata_Breakthrough\")",
+  "Title": "Breakthrough (Tier 5)",
+  "record": "Items.Legendary_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Blade, Knife, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Butchers_Knife_Iconic\")",
+  "Title": "Butcher's Cleaver",
+  "record": "Items.Preset_Butchers_Knife_Iconic"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Common_Pulsar_Buzzsaw\")",
+  "Title": "Buzzsaw (Tier 1)",
+  "record": "Items.Common_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Pulsar_Buzzsaw\")",
+  "Title": "Buzzsaw (Tier 2)",
+  "record": "Items.Uncommon_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Rare_Pulsar_Buzzsaw\")",
+  "Title": "Buzzsaw (Tier 3)",
+  "record": "Items.Rare_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Epic_Pulsar_Buzzsaw\")",
+  "Title": "Buzzsaw (Tier 4)",
+  "record": "Items.Epic_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Pulsar_Buzzsaw\")",
+  "Title": "Buzzsaw (Tier 5)",
+  "record": "Items.Legendary_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Wakako\")",
+  "Title": "Byakko",
+  "record": "Items.Preset_Katana_Wakako"
+ },
+ {
+  "Tags": "Blunt, Hammer, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shovel_Caretaker\")",
+  "Title": "Caretaker's Spade",
+  "record": "Items.Preset_Shovel_Caretaker"
+ },
+ {
+  "Tags": "Blunt, Hammer, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shovel_Caretaker_Stash\")",
+  "Title": "Caretaker's Spade",
+  "record": "Items.Preset_Shovel_Caretaker_Stash"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Bebe\")",
+  "Title": "Carmen",
+  "record": "Items.Preset_Umbra_Bebe"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Default\")",
+  "Title": "Carnage",
+  "record": "Items.Preset_Carnage_Default"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Military\")",
+  "Title": "Carnage",
+  "record": "Items.Preset_Carnage_Military"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Neon\")",
+  "Title": "Carnage",
+  "record": "Items.Preset_Carnage_Neon"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Pimp\")",
+  "Title": "Carnage",
+  "record": "Items.Preset_Carnage_Pimp"
+ },
+ {
+  "Tags": "Power, Shotgun, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_cct_dtn_03\")",
+  "Title": "Carnage",
+  "record": "Items.Preset_Psycho_ma_cct_dtn_03"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Amazon\")",
+  "Title": "Catahoula",
+  "Description": "Good for guarding. Better for attacking.",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Grit_Amazon"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Royce\")",
+  "Title": "Chaos",
+  "record": "Items.Preset_Kenshin_Royce"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryRegular\")",
+  "Title": "CHAR Incendiary Grenade (Tier 2)",
+  "record": "Items.GrenadeIncendiaryRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryUncommonPlus\")",
+  "Title": "CHAR Incendiary Grenade (Tier 2+)",
+  "record": "Items.GrenadeIncendiaryUncommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiarySticky\")",
+  "Title": "CHAR Incendiary Grenade (Tier 3)",
+  "record": "Items.GrenadeIncendiarySticky"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryRarePlus\")",
+  "Title": "CHAR Incendiary Grenade (Tier 3+)",
+  "record": "Items.GrenadeIncendiaryRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryEpic\")",
+  "Title": "CHAR Incendiary Grenade (Tier 4)",
+  "record": "Items.GrenadeIncendiaryEpic"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryEpicPlus\")",
+  "Title": "CHAR Incendiary Grenade (Tier 4+)",
+  "record": "Items.GrenadeIncendiaryEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryLegendary\")",
+  "Title": "CHAR Incendiary Grenade (Tier 5)",
+  "record": "Items.GrenadeIncendiaryLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeIncendiaryLegendaryPlus\")",
+  "Title": "CHAR Incendiary Grenade (Tier 5+)",
+  "record": "Items.GrenadeIncendiaryLegendaryPlus"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Angelica\")",
+  "Title": "Cheetah",
+  "record": "Items.Preset_Unity_Angelica"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chefs_Knife_Default\")",
+  "Title": "Chef's Knife",
+  "record": "Items.Preset_Chefs_Knife_Default"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Amazon\")",
+  "Title": "Chesapeake",
+  "Description": "Man's best friend.",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Warden_Amazon"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Amazon\")",
+  "Title": "Chinook",
+  "Description": "Loves to bury fresh kills in the backyard.",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Kyubi_Amazon"
+ },
+ {
+  "Tags": "Blunt, Axe",
+  "Command": "Game.AddToInventory(\"Items.Preset_Fanged_Axe_Default\")",
+  "Title": "Claw",
+  "record": "Items.Preset_Fanged_Axe_Default"
+ },
+ {
+  "Tags": "Blunt, Axe",
+  "Command": "Game.AddToInventory(\"Items.Preset_Fanged_Axe_Military\")",
+  "Title": "Claw",
+  "record": "Items.Preset_Fanged_Axe_Military"
+ },
+ {
+  "Tags": "Blunt, Axe",
+  "Command": "Game.AddToInventory(\"Items.Preset_Fanged_Axe_Neon\")",
+  "Title": "Claw",
+  "record": "Items.Preset_Fanged_Axe_Neon"
+ },
+ {
+  "Tags": "Thrown, Axe, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Fanged_Axe_Collectible\", 1)",
+  "Title": "Claw x-MOD2",
+  "record": "Items.Preset_Fanged_Axe_Collectible"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Cocktail\")",
+  "Title": "Cocktail Stick",
+  "Description": "Vivid, beautiful and ideal for skewering.",
+  "record": "Items.Preset_Katana_Cocktail"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Common_Burya_Comrade\")",
+  "Title": "Comrade's Hammer (Tier 1)",
+  "record": "Items.Common_Burya_Comrade"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Burya_Comrade\")",
+  "Title": "Comrade's Hammer (Tier 2)",
+  "record": "Items.Uncommon_Burya_Comrade"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Rare_Burya_Comrade\")",
+  "Title": "Comrade's Hammer (Tier 3)",
+  "record": "Items.Rare_Burya_Comrade"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Epic_Burya_Comrade\")",
+  "Title": "Comrade's Hammer (Tier 4)",
+  "record": "Items.Epic_Burya_Comrade"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Burya_Comrade\")",
+  "Title": "Comrade's Hammer (Tier 5)",
+  "record": "Items.Legendary_Burya_Comrade"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Cane_Fingers\")",
+  "Title": "Cottonmouth",
+  "record": "Items.Preset_Cane_Fingers"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_River\")",
+  "Title": "Crash",
+  "record": "Items.Preset_Overture_River"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_George\")",
+  "Title": "Crimestopper",
+  "record": "Items.Preset_Kappa_George"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crowbar_Bunker\")",
+  "Title": "Crowbar",
+  "Description": "Try not to lose it - crowbars don't grow on trees. Shit, even trees don't grow.",
+  "record": "Items.Preset_Crowbar_Bunker"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crowbar_Default\")",
+  "Title": "Crowbar",
+  "record": "Items.Preset_Crowbar_Default"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Default\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Crusher_Default"
+ },
+ {
+  "Tags": "Power, Shotgun, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Krausser\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Crusher_Krausser"
+ },
+ {
+  "Tags": "Power, Shotgun, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Military\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Crusher_Military"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Neon\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Crusher_Neon"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Crusher_Pimp\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Crusher_Pimp"
+ },
+ {
+  "Tags": "Power, Shotgun, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_bls_ina_se1_07\")",
+  "Title": "Crusher",
+  "record": "Items.Preset_Psycho_ma_bls_ina_se1_07"
+ },
+ {
+  "Tags": "Blade, Chainsword",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chainsword_Default\")",
+  "Title": "Cut-o-Matic",
+  "record": "Items.Preset_Chainsword_Default"
+ },
+ {
+  "Tags": "Blade, Chainsword",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chainsword_Military\")",
+  "Title": "Cut-o-Matic",
+  "record": "Items.Preset_Chainsword_Military"
+ },
+ {
+  "Tags": "Blade, Chainsword",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chainsword_Neon\")",
+  "Title": "Cut-o-Matic",
+  "record": "Items.Preset_Chainsword_Neon"
+ },
+ {
+  "Tags": "Blade, Chainsword",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chainsword_Pimp\")",
+  "Title": "Cut-o-Matic",
+  "record": "Items.Preset_Chainsword_Pimp"
+ },
+ {
+  "Tags": "Blade, Chainsword, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chainsword_Legendary\")",
+  "Title": "Cut-o-Matic x-MOD2",
+  "record": "Items.Preset_Chainsword_Legendary"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Default\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Krausser\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Krausser"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Military\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Military"
+ },
+ {
+  "Tags": "Power, Assault Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Military_Crowd\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Military_Crowd"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Neon\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Neon"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Pimp\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Copperhead_Prevention\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Copperhead_Prevention"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_sts_wat_nid_01\")",
+  "Title": "D5 Copperhead",
+  "record": "Items.Preset_Psycho_sts_wat_nid_01"
+ },
+ {
+  "Tags": "Smart, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sidewinder_Default\")",
+  "Title": "D5 Sidewinder",
+  "record": "Items.Preset_Sidewinder_Default"
+ },
+ {
+  "Tags": "Smart, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sidewinder_Military\")",
+  "Title": "D5 Sidewinder",
+  "record": "Items.Preset_Sidewinder_Military"
+ },
+ {
+  "Tags": "Smart, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sidewinder_Neon\")",
+  "Title": "D5 Sidewinder",
+  "record": "Items.Preset_Sidewinder_Neon"
+ },
+ {
+  "Tags": "Smart, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sidewinder_Pimp\")",
+  "Title": "D5 Sidewinder",
+  "record": "Items.Preset_Sidewinder_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Default\")",
+  "Title": "DA8 Umbra",
+  "record": "Items.Preset_Umbra_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Legendary\")",
+  "Title": "DA8 Umbra",
+  "record": "Items.Preset_Umbra_Legendary"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Military\")",
+  "Title": "DA8 Umbra",
+  "record": "Items.Preset_Umbra_Military"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Neon\")",
+  "Title": "DA8 Umbra",
+  "record": "Items.Preset_Umbra_Neon"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Pimp\")",
+  "Title": "DA8 Umbra",
+  "record": "Items.Preset_Umbra_Pimp"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_bls_ina_se1_08\")",
+  "Title": "DB-2 Satara",
+  "record": "Items.Preset_Psycho_ma_bls_ina_se1_08"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Satara_Default\")",
+  "Title": "DB-2 Satara",
+  "record": "Items.Preset_Satara_Default"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Satara_Military\")",
+  "Title": "DB-2 Satara",
+  "record": "Items.Preset_Satara_Military"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Satara_Neon\")",
+  "Title": "DB-2 Satara",
+  "record": "Items.Preset_Satara_Neon"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Satara_Pimp\")",
+  "Title": "DB-2 Satara",
+  "record": "Items.Preset_Satara_Pimp"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Testera_Default\")",
+  "Title": "DB-2 Testera",
+  "record": "Items.Preset_Testera_Default"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Testera_Military\")",
+  "Title": "DB-2 Testera",
+  "record": "Items.Preset_Testera_Military"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Testera_Neon\")",
+  "Title": "DB-2 Testera",
+  "record": "Items.Preset_Testera_Neon"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Testera_Pimp\")",
+  "Title": "DB-2 Testera",
+  "record": "Items.Preset_Testera_Pimp"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Igla_Default\")",
+  "Title": "DB-4 Igla",
+  "record": "Items.Preset_Igla_Default"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Igla_Military\")",
+  "Title": "DB-4 Igla",
+  "record": "Items.Preset_Igla_Military"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Igla_Neon\")",
+  "Title": "DB-4 Igla",
+  "record": "Items.Preset_Igla_Neon"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Igla_Pimp\")",
+  "Title": "DB-4 Igla",
+  "record": "Items.Preset_Igla_Pimp"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_nid_22\")",
+  "Title": "DB-4 Igla",
+  "record": "Items.Preset_Psycho_ma_wat_nid_22"
+ },
+ {
+  "Tags": "Smart, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Palica_Default\")",
+  "Title": "DB-4 Palica",
+  "record": "Items.Preset_Palica_Default"
+ },
+ {
+  "Tags": "Smart, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Palica_Military\")",
+  "Title": "DB-4 Palica",
+  "record": "Items.Preset_Palica_Military"
+ },
+ {
+  "Tags": "Smart, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Palica_Neon\")",
+  "Title": "DB-4 Palica",
+  "record": "Items.Preset_Palica_Neon"
+ },
+ {
+  "Tags": "Smart, Double-Barrel Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Palica_Pimp\")",
+  "Title": "DB-4 Palica",
+  "record": "Items.Preset_Palica_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Maiko\")",
+  "Title": "Death and Taxes",
+  "record": "Items.Preset_Nue_Maiko"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Testera_Nicolas\")",
+  "Title": "Dezerter",
+  "record": "Items.Preset_Testera_Nicolas"
+ },
+ {
+  "Tags": "Smart, Assault Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sidewinder_Divided\")",
+  "Title": "Divided We Stand",
+  "record": "Items.Preset_Sidewinder_Divided"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Doom_Doom\")",
+  "Title": "Doom Doom",
+  "record": "Items.Preset_Nova_Doom_Doom"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Default\")",
+  "Title": "DR-12 Quasar",
+  "record": "Items.Preset_Quasar_Default"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Military\")",
+  "Title": "DR-12 Quasar",
+  "record": "Items.Preset_Quasar_Military"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Neon\")",
+  "Title": "DR-12 Quasar",
+  "record": "Items.Preset_Quasar_Neon"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Patricia\")",
+  "Title": "DR-12 Quasar",
+  "record": "Items.Preset_Quasar_Patricia"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Pimp\")",
+  "Title": "DR-12 Quasar",
+  "record": "Items.Preset_Quasar_Pimp"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_MQ008_Nova\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_MQ008_Nova"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Default\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Default"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Military\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Military"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Neon\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Neon"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Pimp\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Pimp"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Q000_Nomad\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Q000_Nomad"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Scene\")",
+  "Title": "DR5 Nova",
+  "record": "Items.Preset_Nova_Scene"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pulsar_Default\")",
+  "Title": "DS1 Pulsar",
+  "record": "Items.Preset_Pulsar_Default"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pulsar_Military\")",
+  "Title": "DS1 Pulsar",
+  "record": "Items.Preset_Pulsar_Military"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pulsar_Military_Crowd\")",
+  "Title": "DS1 Pulsar",
+  "record": "Items.Preset_Pulsar_Military_Crowd"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pulsar_Neon\")",
+  "Title": "DS1 Pulsar",
+  "record": "Items.Preset_Pulsar_Neon"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pulsar_Pimp\")",
+  "Title": "DS1 Pulsar",
+  "record": "Items.Preset_Pulsar_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Wilson\")",
+  "Title": "Dying Night",
+  "Description": "This thing looks like it was cobbled together by some gonk-brained DIYer, but it shoots like a dream.",
+  "record": "Items.Preset_Lexington_Wilson"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Q001_Lexington\")",
+  "Title": "Dying Night",
+  "Description": "This thing looks like it was cobbled together by some gonk-brained DIYer, but it shoots like a dream.",
+  "record": "Items.Preset_Q001_Lexington"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baton_Alpha\")",
+  "Title": "Electric Baton Alpha",
+  "record": "Items.Preset_Baton_Alpha"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_kab_08\")",
+  "Title": "Electric Baton Alpha",
+  "record": "Items.Preset_Psycho_ma_wat_kab_08"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Stout_Censored\")",
+  "Title": "Electric Baton Alpha",
+  "record": "Items.Preset_Stout_Censored"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baton_Beta\")",
+  "Title": "Electric Baton Beta",
+  "record": "Items.Preset_Baton_Beta"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baton_Gamma\")",
+  "Title": "Electric Baton Gamma",
+  "record": "Items.Preset_Baton_Gamma"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPRegular\")",
+  "Title": "EMP Grenade (Tier 1)",
+  "record": "Items.GrenadeEMPRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPCommonPlus\")",
+  "Title": "EMP Grenade (Tier 1+)",
+  "record": "Items.GrenadeEMPCommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPUncommon\")",
+  "Title": "EMP Grenade (Tier 2)",
+  "record": "Items.GrenadeEMPUncommon"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPUncommonPlus\")",
+  "Title": "EMP Grenade (Tier 2+)",
+  "record": "Items.GrenadeEMPUncommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPHoming\")",
+  "Title": "EMP Grenade (Tier 3)",
+  "record": "Items.GrenadeEMPHoming"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPRarePlus\")",
+  "Title": "EMP Grenade (Tier 3+)",
+  "record": "Items.GrenadeEMPRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPEpic\")",
+  "Title": "EMP Grenade (Tier 4)",
+  "record": "Items.GrenadeEMPEpic"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPEpicPlus\")",
+  "Title": "EMP Grenade (Tier 4+)",
+  "record": "Items.GrenadeEMPEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPLegendary\")",
+  "Title": "EMP Grenade (Tier 5)",
+  "record": "Items.GrenadeEMPLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeEMPLegendaryPlus\")",
+  "Title": "EMP Grenade (Tier 5+)",
+  "record": "Items.GrenadeEMPLegendaryPlus"
+ },
+ {
+  "Tags": "Power, SMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Borg4a_HauntedGun\")",
+  "Title": "Erebus",
+  "record": "Items.Preset_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_E3\")",
+  "Title": "Errata",
+  "Description": "It was worth the wait.",
+  "record": "Items.Preset_Katana_E3"
+ },
+ {
+  "Tags": "Thrown, Knife, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Knife_Kurtz_1\")",
+  "Title": "Fang",
+  "Description": "Good for hunting bear. Or chopping firewood. Or eviscerating another human being.",
+  "record": "Items.Preset_Knife_Kurtz_1"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Maelstrom\")",
+  "Title": "Fenrir",
+  "record": "Items.Preset_Saratoga_Maelstrom"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragRegular\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 1)",
+  "record": "Items.GrenadeFragRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragCommonPlus\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 1+)",
+  "record": "Items.GrenadeFragCommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragUncommon\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 2)",
+  "record": "Items.GrenadeFragUncommon"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragUncommonPlus\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 2+)",
+  "record": "Items.GrenadeFragUncommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragSticky\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 3)",
+  "record": "Items.GrenadeFragSticky"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragRarePlus\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 3+)",
+  "record": "Items.GrenadeFragRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragEpic\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 4)",
+  "record": "Items.GrenadeFragEpic"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragEpicPlus\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 4+)",
+  "record": "Items.GrenadeFragEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragLegendary\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 5)",
+  "record": "Items.GrenadeFragLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFragLegendaryPlus\", 1)",
+  "Title": "F-GX Frag Grenade (Tier 5+)",
+  "record": "Items.GrenadeFragLegendaryPlus"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Amazon\")",
+  "Title": "Foxhound",
+  "Description": "Sensitive to the scent of blood in the air.",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Nekomata_Amazon"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dian_Default\")",
+  "Title": "G-58 Dian",
+  "record": "Items.Preset_Dian_Default"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dian_Military\")",
+  "Title": "G-58 Dian",
+  "record": "Items.Preset_Dian_Military"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dian_Neon\")",
+  "Title": "G-58 Dian",
+  "record": "Items.Preset_Dian_Neon"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dian_Pimp\")",
+  "Title": "G-58 Dian",
+  "record": "Items.Preset_Dian_Pimp"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dian_Trauma\")",
+  "Title": "G-58 Dian",
+  "record": "Items.Preset_Dian_Trauma"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeCuttingRegular\")",
+  "Title": "GASH Antipersonnel Grenade (Tier 5)",
+  "record": "Items.GrenadeCuttingRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.CuttingGrenadeLegendaryPlus\")",
+  "Title": "GASH Antipersonnel Grenade (Tier 5+)",
+  "record": "Items.CuttingGrenadeLegendaryPlus"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Kiji\")",
+  "Title": "Genjiroh",
+  "record": "Items.Preset_Yukimura_Kiji"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baseball_Bat_Denny\")",
+  "Title": "Gold-plated baseball bat",
+  "record": "Items.Preset_Baseball_Bat_Denny"
+ },
+ {
+  "Tags": "Tech, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Quasar_Baron\")",
+  "Title": "Gris-Gris",
+  "record": "Items.Preset_Quasar_Baron"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Default\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Default"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Legendary\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Legendary"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Military\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Military"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Military\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Military"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Neon\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Neon"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Pimp\")",
+  "Title": "Guillotine",
+  "record": "Items.Preset_Guillotine_Pimp"
+ },
+ {
+  "Tags": "Power, SMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Guillotine_Collectible\")",
+  "Title": "Guillotine x-MOD2",
+  "record": "Items.Preset_Guillotine_Collectible"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Edgerunners\")",
+  "Title": "Guts",
+  "record": "Items.Preset_Carnage_Edgerunners"
+ },
+ {
+  "Tags": "Blade, Sword, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sword_Witcher\")",
+  "Title": "Gwynbleidd",
+  "Source": "GOG",
+  "record": "Items.Preset_Sword_Witcher"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Default\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Default"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Krausser\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Krausser"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Legendary\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Legendary"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Military\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Military"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Neon\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Neon"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Pimp\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Pimp"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grit_Prevention\")",
+  "Title": "HA-4 Grit",
+  "record": "Items.Preset_Grit_Prevention"
+ },
+ {
+  "Tags": "Blunt, Hammer",
+  "Command": "Game.AddToInventory(\"Items.Preset_Hammer_Default\")",
+  "Title": "Hammer",
+  "record": "Items.Preset_Hammer_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Myers\")",
+  "Title": "Hawk",
+  "record": "Items.Preset_Kyubi_Myers"
+ },
+ {
+  "Tags": "Thrown, Knife, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Punk_Knife_Iconic\")",
+  "Title": "Headhunter",
+  "record": "Items.Preset_Punk_Knife_Iconic"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Agent\")",
+  "Title": "Her Majesty",
+  "record": "Items.Preset_Unity_Agent"
+ },
+ {
+  "Tags": "Smart, Assault Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Hercules_Prototype\")",
+  "Title": "Hercules 3AX",
+  "record": "Items.Preset_Hercules_Prototype"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Default\")",
+  "Title": "HJKE-11 Yukimura",
+  "record": "Items.Preset_Yukimura_Default"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Legendary\")",
+  "Title": "HJKE-11 Yukimura",
+  "record": "Items.Preset_Yukimura_Legendary"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Military\")",
+  "Title": "HJKE-11 Yukimura",
+  "record": "Items.Preset_Yukimura_Military"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Neon\")",
+  "Title": "HJKE-11 Yukimura",
+  "record": "Items.Preset_Yukimura_Neon"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Pimp\")",
+  "Title": "HJKE-11 Yukimura",
+  "record": "Items.Preset_Yukimura_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Default\")",
+  "Title": "HJSH-18 Masamune",
+  "record": "Items.Preset_Masamune_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Flashlight\")",
+  "Title": "HJSH-18 Masamune",
+  "record": "Items.Preset_Masamune_Flashlight"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Flashlight_Shadows\")",
+  "Title": "HJSH-18 Masamune",
+  "record": "Items.Preset_Masamune_Flashlight_Shadows"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Military\")",
+  "Title": "HJSH-18 Masamune",
+  "record": "Items.Preset_Masamune_Military"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Neon\")",
+  "Title": "HJSH-18 Masamune",
+  "record": "Items.Preset_Masamune_Neon"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Trauma\")",
+  "Title": "HJSH-18 Masamune (Trauma Team)",
+  "record": "Items.Preset_Masamune_Trauma"
+ },
+ {
+  "Tags": "Power, Precision Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kolac_Tiny_Mike\")",
+  "Title": "Hypercritical",
+  "record": "Items.Preset_Kolac_Tiny_Mike"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Takemura\")",
+  "Title": "Jinchu-maru",
+  "record": "Items.Preset_Katana_Takemura"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Default\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_Default"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Military\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_Military"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_MQ041\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_MQ041"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Neon\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_Neon"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Pimp\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_Pimp"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kenshin_Takemura\")",
+  "Title": "JKE-X2 Kenshin",
+  "record": "Items.Preset_Kenshin_Takemura"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tanto_Default\")",
+  "Title": "Kaiken",
+  "record": "Items.Preset_Tanto_Default"
+ },
+ {
+  "Tags": "Blunt, Two-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kanabo_Default\")",
+  "Title": "Kanabo",
+  "record": "Items.Preset_Kanabo_Default"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_Default\")",
+  "Title": "Kappa",
+  "record": "Items.Preset_Kappa_Default"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_Military\")",
+  "Title": "Kappa",
+  "record": "Items.Preset_Kappa_Military"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_Neon\")",
+  "Title": "Kappa",
+  "record": "Items.Preset_Kappa_Neon"
+ },
+ {
+  "Tags": "Smart, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_Pimp\")",
+  "Title": "Kappa",
+  "record": "Items.Preset_Kappa_Pimp"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kappa_Legendary\")",
+  "Title": "Kappa x-MOD2",
+  "record": "Items.Preset_Kappa_Legendary"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Arasaka_2020\")",
+  "Title": "Katana",
+  "Description": "Some have made the grave error of mistaking it for a purely ceremonial weapon.",
+  "record": "Items.Preset_Katana_Arasaka_2020"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Arasaka_2077\")",
+  "Title": "Katana",
+  "Description": "Some have made the grave error of mistaking it for a purely ceremonial weapon.",
+  "record": "Items.Preset_Katana_Arasaka_2077"
+ },
+ {
+  "Tags": "Blade, Katana, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_cct_dtn_07\")",
+  "Title": "Katana",
+  "record": "Items.Preset_Psycho_ma_cct_dtn_07"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Default\")",
+  "Title": "Katana (Default)",
+  "Description": "As elegant as it is deadly.",
+  "record": "Items.Preset_Katana_Default"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Military\")",
+  "Title": "Katana (Military)",
+  "Description": "Bladed weapons have entered another golden age.",
+  "record": "Items.Preset_Katana_Military"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Neon_03\")",
+  "Title": "Katana (Mox)",
+  "Description": "Brighten up your enemies' final moments.",
+  "record": "Items.Preset_Katana_Neon_03"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Neon\")",
+  "Title": "Katana (Neon)",
+  "Description": "Brighten up your enemies' final moments.",
+  "record": "Items.Preset_Katana_Neon"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Pimp\")",
+  "Title": "Katana (Pimp)",
+  "Description": "Brighten up your enemies' final moments.",
+  "record": "Items.Preset_Katana_Pimp"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Pimp_03\")",
+  "Title": "Katana (Tyger Claws)",
+  "Description": "Brighten up your enemies' final moments.",
+  "record": "Items.Preset_Katana_Pimp_03"
+ },
+ {
+  "Tags": "Blade, Katana",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Training\")",
+  "Title": "Katana (VR)",
+  "record": "Items.Preset_Katana_Training"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Knife_Default\")",
+  "Title": "Knife",
+  "Description": "A balanced weapon you can use to slice, dice, stab and throw. Great tool for those with a knack for quiet kills.",
+  "record": "Items.Preset_Knife_Default"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Knife_Military\")",
+  "Title": "Knife",
+  "Description": "A balanced weapon you can use to slice, dice, stab and throw. Great tool for those with a knack for quiet kills.",
+  "record": "Items.Preset_Knife_Military"
+ },
+ {
+  "Tags": "Power, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kolac_Default\")",
+  "Title": "Kolac",
+  "record": "Items.Preset_Kolac_Default"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Yorinobu\")",
+  "Title": "Kongou",
+  "record": "Items.Preset_Liberty_Yorinobu"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kukri_Default\")",
+  "Title": "Kukri",
+  "record": "Items.Preset_Kukri_Default"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kukri_Voodoo\")",
+  "Title": "Kukri",
+  "record": "Items.Preset_Kukri_Voodoo"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Default\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Krausser\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Krausser"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Military\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Military"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Neon\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Neon"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Nusa\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Nusa"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Pimp\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Prevention\")",
+  "Title": "Kyubi",
+  "record": "Items.Preset_Kyubi_Prevention"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Kyubi_Legendary\")",
+  "Title": "Kyubi x-MOD2",
+  "record": "Items.Preset_Kyubi_Legendary"
+ },
+ {
+  "Tags": "Smart, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Zhuo_Default\")",
+  "Title": "L-69 Zhuo",
+  "record": "Items.Preset_Zhuo_Default"
+ },
+ {
+  "Tags": "Smart, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Zhuo_Military\")",
+  "Title": "L-69 Zhuo",
+  "record": "Items.Preset_Zhuo_Military"
+ },
+ {
+  "Tags": "Smart, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Zhuo_Neon\")",
+  "Title": "L-69 Zhuo",
+  "record": "Items.Preset_Zhuo_Neon"
+ },
+ {
+  "Tags": "Smart, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Zhuo_Pimp\")",
+  "Title": "L-69 Zhuo",
+  "record": "Items.Preset_Zhuo_Pimp"
+ },
+ {
+  "Tags": "Smart, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Zhuo_Trauma\")",
+  "Title": "L-69 Zhuo",
+  "record": "Items.Preset_Zhuo_Trauma"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Jackie\")",
+  "Title": "La Chingona Dorada",
+  "record": "Items.Preset_Nue_Jackie"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Burya_AirDrop\")",
+  "Title": "Laika",
+  "Description": "Let it off the leash.",
+  "Source": "Air Drops",
+  "record": "Items.Preset_Burya_AirDrop"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Shooting_Competition\")",
+  "Title": "Lexington x-MOD2",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Shooting_Competition"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Default\")",
+  "Title": "Liberty",
+  "record": "Items.Preset_Liberty_Default"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Military\")",
+  "Title": "Liberty",
+  "record": "Items.Preset_Liberty_Military"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Neon\")",
+  "Title": "Liberty",
+  "record": "Items.Preset_Liberty_Neon"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Pimp\")",
+  "Title": "Liberty",
+  "record": "Items.Preset_Liberty_Pimp"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Suzie\")",
+  "Title": "Lizzie",
+  "record": "Items.Preset_Omaha_Suzie"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Default\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Default"
+ },
+ {
+  "Tags": "Power, Pistol, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Krausser\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Krausser"
+ },
+ {
+  "Tags": "Power, Pistol, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Krausser_Jurij\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Krausser_Jurij"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Military\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Military"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Neon\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Neon"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Pimp\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Prevention\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Prevention"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Training\")",
+  "Title": "M-10AF Lexington",
+  "Description": "God's gift to the inalienable right of self-defense.",
+  "record": "Items.Preset_Lexington_Training"
+ },
+ {
+  "Tags": "Power, Pistol, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_pac_cvi_15\")",
+  "Title": "M-10AF Lexington",
+  "record": "Items.Preset_Psycho_ma_pac_cvi_15"
+ },
+ {
+  "Tags": "Tech, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Default\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Default"
+ },
+ {
+  "Tags": "Tech, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Military\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Military"
+ },
+ {
+  "Tags": "Tech, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Neon\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Neon"
+ },
+ {
+  "Tags": "Tech, Precision Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Nusa_Black\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Nusa_Black"
+ },
+ {
+  "Tags": "Tech, Precision Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Nusa_White\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Nusa_White"
+ },
+ {
+  "Tags": "Tech, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Pimp\")",
+  "Title": "M-179e Achilles",
+  "record": "Items.Preset_Achilles_Pimp"
+ },
+ {
+  "Tags": "Tech, Precision Rifle, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_pac_cvi_08\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Psycho_ma_pac_cvi_08"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Default\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Tactician_Default"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Military\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Tactician_Military"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Neon\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Tactician_Neon"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Pimp\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Tactician_Pimp"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Prevention\")",
+  "Title": "M2038 Tactician",
+  "record": "Items.Preset_Tactician_Prevention"
+ },
+ {
+  "Tags": "Power, Shotgun, BARGHEST",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tactician_Krausser\")",
+  "Title": "M2038 Tactician (BARGHEST)",
+  "record": "Items.Preset_Tactician_Krausser"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_Default\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Defender_Default"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_MaxTac_2nd_wave\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Defender_MaxTac_2nd_wave"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_Military\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Defender_Military"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_Neon\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Defender_Neon"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_Pimp\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Defender_Pimp"
+ },
+ {
+  "Tags": "Power, LMG, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_lch_06\")",
+  "Title": "M2067 Defender",
+  "record": "Items.Preset_Psycho_ma_wat_lch_06"
+ },
+ {
+  "Tags": "Power, SMG, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_std_rcr_11\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Psycho_ma_std_rcr_11"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Default\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Saratoga_Default"
+ },
+ {
+  "Tags": "Power, SMG, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Krausser\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Saratoga_Krausser"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Military\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Saratoga_Military"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Neon\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Saratoga_Neon"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Pimp\")",
+  "Title": "M221 Saratoga",
+  "record": "Items.Preset_Saratoga_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Default\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Default"
+ },
+ {
+  "Tags": "Power, Assault Rifle, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Krausser\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Krausser"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Military\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Military"
+ },
+ {
+  "Tags": "Power, Assault Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Military_MaxTac_2nd_wave\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Military_MaxTac_2nd_wave"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Neon\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Neon"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Pimp\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Scene\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Scene"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Training\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Ajax_Training"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_hey_spr_06\")",
+  "Title": "M251s Ajax",
+  "record": "Items.Preset_Psycho_ma_hey_spr_06"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Default\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Default"
+ },
+ {
+  "Tags": "Tech, Pistol, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Krausser\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Krausser"
+ },
+ {
+  "Tags": "Tech, Pistol, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Krausser_Bennett\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Krausser_Bennett"
+ },
+ {
+  "Tags": "Tech, Pistol, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Krausser_Jurij\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Krausser_Jurij"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Maelstrom\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Maelstrom"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Military\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Military"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Neon\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Neon"
+ },
+ {
+  "Tags": "Tech, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Omaha_Pimp\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Omaha_Pimp"
+ },
+ {
+  "Tags": "Tech, Pistol, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_nid_15\")",
+  "Title": "M76e Omaha",
+  "record": "Items.Preset_Psycho_ma_wat_nid_15"
+ },
+ {
+  "Tags": "Power, LMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Collectible\")",
+  "Title": "MA 70HB x-MOD2",
+  "record": "Items.Preset_MA70_Collectible"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Default\")",
+  "Title": "MA70 HB",
+  "record": "Items.Preset_MA70_Default"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Legendary\")",
+  "Title": "MA70 HB",
+  "record": "Items.Preset_MA70_Legendary"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Military\")",
+  "Title": "MA70 HB",
+  "record": "Items.Preset_MA70_Military"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Neon\")",
+  "Title": "MA70 HB",
+  "record": "Items.Preset_MA70_Neon"
+ },
+ {
+  "Tags": "Power, LMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_MA70_Pimp\")",
+  "Title": "MA70 HB",
+  "record": "Items.Preset_MA70_Pimp"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Default\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Machete_Default"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Kurt\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Machete_Kurt"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Maelstrom\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Machete_Maelstrom"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Valentinos\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Machete_Valentinos"
+ },
+ {
+  "Tags": "Blade, Machete, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_nid_03\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Psycho_ma_wat_nid_03"
+ },
+ {
+  "Tags": "Blade, Machete, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_mq030\")",
+  "Title": "Machete",
+  "record": "Items.Preset_Psycho_mq030"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Silverhand_3516\")",
+  "Title": "Malorian Arms 3516",
+  "record": "Items.Preset_Silverhand_3516"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nova_Hitman\")",
+  "Title": "Mancinella",
+  "record": "Items.Preset_Nova_Hitman"
+ },
+ {
+  "Tags": "Power, Revolver, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_Default\")",
+  "Title": "Metel",
+  "record": "Items.Preset_Metel_Default"
+ },
+ {
+  "Tags": "Power, Revolver, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_Military\")",
+  "Title": "Metel",
+  "record": "Items.Preset_Metel_Military"
+ },
+ {
+  "Tags": "Power, Revolver, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_Neon\")",
+  "Title": "Metel",
+  "record": "Items.Preset_Metel_Neon"
+ },
+ {
+  "Tags": "Power, Revolver, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_Pimp\")",
+  "Title": "Metel",
+  "record": "Items.Preset_Metel_Pimp"
+ },
+ {
+  "Tags": "Power, HMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_HMG_Default\")",
+  "Title": "Mk.31 HMG",
+  "record": "Items.Preset_HMG_Default"
+ },
+ {
+  "Tags": "Power, HMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_HMG_Military\")",
+  "Title": "Mk.31 HMG",
+  "record": "Items.Preset_HMG_Military"
+ },
+ {
+  "Tags": "Power, HMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_HMG_Neon\")",
+  "Title": "Mk.31 HMG",
+  "record": "Items.Preset_HMG_Neon"
+ },
+ {
+  "Tags": "Power, HMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_HMG_Pimp\")",
+  "Title": "Mk.31 HMG",
+  "record": "Items.Preset_HMG_Pimp"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardRegular\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 3)",
+  "record": "Items.GrenadeBiohazardRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardRarePlus\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 3+)",
+  "record": "Items.GrenadeBiohazardRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardHoming\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 4)",
+  "record": "Items.GrenadeBiohazardHoming"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardEpicPlus\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 4+)",
+  "record": "Items.GrenadeBiohazardEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardLegendary\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 5)",
+  "record": "Items.GrenadeBiohazardLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeBiohazardLegendaryPlus\")",
+  "Title": "MOLODETS BioHaz Grenade (Tier 5+)",
+  "record": "Items.GrenadeBiohazardLegendaryPlus"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Common_Ajax_Moron\")",
+  "Title": "Moron Labe (Tier 1)",
+  "record": "Items.Common_Ajax_Moron"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Ajax_Moron\")",
+  "Title": "Moron Labe (Tier 2)",
+  "record": "Items.Uncommon_Ajax_Moron"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Ajax_Moron\")",
+  "Title": "Moron Labe (Tier 3)",
+  "record": "Items.Rare_Ajax_Moron"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Ajax_Moron\")",
+  "Title": "Moron Labe (Tier 4)",
+  "record": "Items.Epic_Ajax_Moron"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Ajax_Moron\")",
+  "Title": "Moron Labe (Tier 5)",
+  "record": "Items.Legendary_Ajax_Moron"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Carnage_Mox\")",
+  "Title": "Mox",
+  "record": "Items.Preset_Carnage_Mox"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baton_Murphy\")",
+  "Title": "Murphy's Law",
+  "record": "Items.Preset_Baton_Murphy"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Osprey_Prototype\")",
+  "Title": "NDI Osprey",
+  "record": "Items.Preset_Osprey_Prototype"
+ },
+ {
+  "Tags": "Blade, Knife, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tanto_Saburo\")",
+  "Title": "Nehan",
+  "record": "Items.Preset_Tanto_Saburo"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Boris\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Boris"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Default\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Default"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Krausser\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Krausser"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Legendary\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Legendary"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_MaxTac\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_MaxTac"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Military\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Military"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Neon\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Neon"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Pimp\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Pimp"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nekomata_Prevention\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Nekomata_Prevention"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_wat_kab_02\")",
+  "Title": "Nekomata",
+  "record": "Items.Preset_Psycho_ma_wat_kab_02"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Neurotoxin_Knife_Default\")",
+  "Title": "Neurotoxin Knife",
+  "record": "Items.Preset_Neurotoxin_Knife_Default"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Neurotoxin_Knife_Military\")",
+  "Title": "Neurotoxin Knife",
+  "record": "Items.Preset_Neurotoxin_Knife_Military"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Neurotoxin_Knife_Neon\")",
+  "Title": "Neurotoxin Knife",
+  "record": "Items.Preset_Neurotoxin_Knife_Neon"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Neurotoxin_Knife_Pimp\")",
+  "Title": "Neurotoxin Knife",
+  "record": "Items.Preset_Neurotoxin_Knife_Pimp"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Arasaka_2020\")",
+  "Title": "Nowaki",
+  "record": "Items.Preset_Masamune_Arasaka_2020"
+ },
+ {
+  "Tags": "Power, Assault Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Arasaka_2077\")",
+  "Title": "Nowaki",
+  "record": "Items.Preset_Masamune_Arasaka_2077"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Default\")",
+  "Title": "Nue",
+  "record": "Items.Preset_Nue_Default"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Military\")",
+  "Title": "Nue",
+  "record": "Items.Preset_Nue_Military"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Neon\")",
+  "Title": "Nue",
+  "record": "Items.Preset_Nue_Neon"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Pimp\")",
+  "Title": "Nue",
+  "record": "Items.Preset_Nue_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_std_arr_06\")",
+  "Title": "Nue",
+  "record": "Items.Preset_Psycho_ma_std_arr_06"
+ },
+ {
+  "Tags": "Power, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Buck\")",
+  "Title": "O'Five",
+  "record": "Items.Preset_Grad_Buck"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Chao_VooDoo\")",
+  "Title": "Ogou",
+  "record": "Items.Preset_Chao_VooDoo"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Dante\", 1)",
+  "Title": "Ol' Reliable",
+  "record": "Items.Preset_Overture_Dante"
+ },
+ {
+  "Tags": "Tech, Double-Barrel Shotgun, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Satara_Brick\")",
+  "Title": "Order",
+  "record": "Items.Preset_Satara_Brick"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Legendary\")",
+  "Title": "Overture",
+  "record": "Items.Preset_Overture_Legendary"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Military\")",
+  "Title": "Overture",
+  "record": "Items.Preset_Overture_Military"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Neon\")",
+  "Title": "Overture",
+  "record": "Items.Preset_Overture_Neon"
+ },
+ {
+  "Tags": "Power, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Pimp\")",
+  "Title": "Overture",
+  "record": "Items.Preset_Overture_Pimp"
+ },
+ {
+  "Tags": "Power, Revolver, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_hey_spr_04\")",
+  "Title": "Overture",
+  "record": "Items.Preset_Psycho_ma_hey_spr_04"
+ },
+ {
+  "Tags": "Power, Sniper Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Panam\")",
+  "Title": "Overwatch",
+  "record": "Items.Preset_Grad_Panam"
+ },
+ {
+  "Tags": "Grenade, Iconic",
+  "Command": "Game.AddToInventory(\"Items.GrenadeOzobsNose\")",
+  "Title": "Ozob's Nose",
+  "record": "Items.GrenadeOzobsNose"
+ },
+ {
+  "Tags": "Tech, SMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Reed\")",
+  "Title": "Pariah",
+  "record": "Items.Preset_Ticon_Reed"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Prime Gaming, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ajax_Amazon\")",
+  "Title": "Pit Bull",
+  "Description": "Who's a good boy?",
+  "Source": "Amazon Prime Gaming",
+  "record": "Items.Preset_Ajax_Amazon"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Boris\")",
+  "Title": "Pizdets",
+  "record": "Items.Preset_Warden_Boris"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Dex\")",
+  "Title": "Plan B",
+  "record": "Items.Preset_Liberty_Dex"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_Legendary\")",
+  "Title": "Pozhar x-MOD2",
+  "record": "Items.Preset_Pozhar_Legendary"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Rogue\")",
+  "Title": "Prejudice",
+  "record": "Items.Preset_Masamune_Rogue"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Masamune_Rogue_Stash\")",
+  "Title": "Prejudice",
+  "record": "Items.Preset_Masamune_Rogue_Stash"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Rogue\")",
+  "Title": "Pride",
+  "record": "Items.Preset_Liberty_Rogue"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Rogue_Stash\")",
+  "Title": "Pride",
+  "record": "Items.Preset_Liberty_Rogue_Stash"
+ },
+ {
+  "Tags": "Power, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Raffen\")",
+  "Title": "Problem Solver",
+  "record": "Items.Preset_Saratoga_Raffen"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shingen_Prototype\")",
+  "Title": "Prototype: Shingen Mark V",
+  "record": "Items.Preset_Shingen_Prototype"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Common_Copperhead_Genesis\")",
+  "Title": "Psalm 11:6 (Tier 1)",
+  "record": "Items.Common_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Copperhead_Genesis\")",
+  "Title": "Psalm 11:6 (Tier 2)",
+  "record": "Items.Uncommon_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Copperhead_Genesis\")",
+  "Title": "Psalm 11:6 (Tier 3)",
+  "record": "Items.Rare_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Copperhead_Genesis\")",
+  "Title": "Psalm 11:6 (Tier 4)",
+  "record": "Items.Epic_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Copperhead_Genesis\")",
+  "Title": "Psalm 11:6 (Tier 5)",
+  "record": "Items.Legendary_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Punk_Knife_Default\")",
+  "Title": "Punknife",
+  "record": "Items.Preset_Punk_Knife_Default"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Punk_Knife_Military\")",
+  "Title": "Punknife",
+  "record": "Items.Preset_Punk_Knife_Military"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Punk_Knife_Neon\")",
+  "Title": "Punknife",
+  "record": "Items.Preset_Punk_Knife_Neon"
+ },
+ {
+  "Tags": "Thrown, Knife",
+  "Command": "Game.AddToInventory(\"Items.Preset_Punk_Knife_Pimp\")",
+  "Title": "Punknife",
+  "record": "Items.Preset_Punk_Knife_Pimp"
+ },
+ {
+  "Tags": "Tech, SMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Senkoh_Prototype\")",
+  "Title": "Raiju",
+  "record": "Items.Preset_Senkoh_Prototype"
+ },
+ {
+  "Tags": "Tech, Sniper Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Rasetsu_Prototype\")",
+  "Title": "Rasetsu",
+  "record": "Items.Preset_Rasetsu_Prototype"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Borg_Default\")",
+  "Title": "Razor",
+  "record": "Items.Preset_Machete_Borg_Default"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Borg_Military\")",
+  "Title": "Razor",
+  "record": "Items.Preset_Machete_Borg_Military"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Borg_Neon\")",
+  "Title": "Razor",
+  "record": "Items.Preset_Machete_Borg_Neon"
+ },
+ {
+  "Tags": "Blade, Machete",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Borg_Pimp\")",
+  "Title": "Razor",
+  "record": "Items.Preset_Machete_Borg_Pimp"
+ },
+ {
+  "Tags": "Blade, Machete, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_sts_std_rcr_05\")",
+  "Title": "Razor",
+  "record": "Items.Preset_Psycho_sts_std_rcr_05"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconRegular\")",
+  "Title": "Recon Grenade (Tier 2)",
+  "record": "Items.GrenadeReconRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconUncommonPlus\")",
+  "Title": "Recon Grenade (Tier 2+)",
+  "record": "Items.GrenadeReconUncommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconSticky\")",
+  "Title": "Recon Grenade (Tier 3)",
+  "record": "Items.GrenadeReconSticky"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconRarePlus\")",
+  "Title": "Recon Grenade (Tier 3+)",
+  "record": "Items.GrenadeReconRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconEpic\")",
+  "Title": "Recon Grenade (Tier 4)",
+  "record": "Items.GrenadeReconEpic"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconEpicPlus\")",
+  "Title": "Recon Grenade (Tier 4+)",
+  "record": "Items.GrenadeReconEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconLegendary\")",
+  "Title": "Recon Grenade (Tier 5)",
+  "record": "Items.GrenadeReconLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeReconLegendaryPlus\")",
+  "Title": "Recon Grenade (Tier 5+)",
+  "record": "Items.GrenadeReconLegendaryPlus"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Bree\")",
+  "Title": "Riskit",
+  "record": "Items.Preset_Nue_Bree"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Lexington_Rook\")",
+  "Title": "Rook",
+  "Description": "Wieldy, efficient, cool. Need anything else?",
+  "record": "Items.Preset_Lexington_Rook"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Overture_Dodger\")",
+  "Title": "Rosco",
+  "record": "Items.Preset_Overture_Dodger"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Burya_Default\")",
+  "Title": "RT-46 Burya",
+  "record": "Items.Preset_Burya_Default"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Burya_Military\")",
+  "Title": "RT-46 Burya",
+  "record": "Items.Preset_Burya_Military"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Burya_Neon\")",
+  "Title": "RT-46 Burya",
+  "record": "Items.Preset_Burya_Neon"
+ },
+ {
+  "Tags": "Tech, Revolver",
+  "Command": "Game.AddToInventory(\"Items.Preset_Burya_Pimp\")",
+  "Title": "RT-46 Burya",
+  "record": "Items.Preset_Burya_Pimp"
+ },
+ {
+  "Tags": "Blunt, Hammer, Iconic",
+  "Command": "Game.AddToInventory(\"Items.w_melee_boss_hammer\")",
+  "Title": "Sasquatch's Hammer",
+  "record": "Items.w_melee_boss_hammer"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Saburo\")",
+  "Title": "Satori",
+  "record": "Items.Preset_Katana_Saburo"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Surgeon\")",
+  "Title": "Scalpel",
+  "record": "Items.Preset_Katana_Surgeon"
+ },
+ {
+  "Tags": "Tech, Pistol, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Gwent\")",
+  "Title": "Scorch",
+  "record": "Items.Preset_Ticon_Gwent"
+ },
+ {
+  "Tags": "Tech, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Senkoh_Default\")",
+  "Title": "Senkoh LX",
+  "record": "Items.Preset_Senkoh_Default"
+ },
+ {
+  "Tags": "Tech, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Senkoh_Military\")",
+  "Title": "Senkoh LX",
+  "record": "Items.Preset_Senkoh_Military"
+ },
+ {
+  "Tags": "Tech, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Senkoh_Neon\")",
+  "Title": "Senkoh LX",
+  "record": "Items.Preset_Senkoh_Neon"
+ },
+ {
+  "Tags": "Tech, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Senkoh_Pimp\")",
+  "Title": "Senkoh LX",
+  "record": "Items.Preset_Senkoh_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Liberty_Padre\")",
+  "Title": "Seraph",
+  "record": "Items.Preset_Liberty_Padre"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Arasaka_2020\")",
+  "Title": "Shigure",
+  "record": "Items.Preset_Saratoga_Arasaka_2020"
+ },
+ {
+  "Tags": "Power, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Saratoga_Arasaka_2077\")",
+  "Title": "Shigure",
+  "record": "Items.Preset_Saratoga_Arasaka_2077"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Dildo_Stout\")",
+  "Title": "Sir John Phallustiff",
+  "record": "Items.Preset_Dildo_Stout"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Skippy\")",
+  "Title": "Skippy",
+  "Description": "A smartgun with a unique voice-user interface. Slightly unpredictable.",
+  "record": "Items.Preset_Yukimura_Skippy"
+ },
+ {
+  "Tags": "Smart, Pistol, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Yukimura_Skippy_PostQuest\")",
+  "Title": "Skippy",
+  "Description": "With its AI interface removed, what remains of Skippy is a rather unremarkable smart pistol.",
+  "record": "Items.Preset_Yukimura_Skippy_PostQuest"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Base_Slaughtomatic\")",
+  "Title": "Slaught-O-Matic",
+  "record": "Items.Preset_Base_Slaughtomatic"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeRegular\", 1)",
+  "Title": "Smoke Grenade (Tier 2)",
+  "record": "Items.GrenadeSmokeRegular"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeUncommonPlus\", 1)",
+  "Title": "Smoke Grenade (Tier 2+)",
+  "record": "Items.GrenadeSmokeUncommonPlus"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeRare\", 1)",
+  "Title": "Smoke Grenade (Tier 3)",
+  "record": "Items.GrenadeSmokeRare"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeRarePlus\", 1)",
+  "Title": "Smoke Grenade (Tier 3+)",
+  "record": "Items.GrenadeSmokeRarePlus"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeEpic\", 1)",
+  "Title": "Smoke Grenade (Tier 4)",
+  "record": "Items.GrenadeSmokeEpic"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeEpicPlus\", 1)",
+  "Title": "Smoke Grenade (Tier 4+)",
+  "record": "Items.GrenadeSmokeEpicPlus"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeLegendary\", 1)",
+  "Title": "Smoke Grenade (Tier 5)",
+  "record": "Items.GrenadeSmokeLegendary"
+ },
+ {
+  "Tags": "Grenade, PL",
+  "Command": "Game.AddToInventory(\"Items.GrenadeSmokeLegendaryPlus\", 1)",
+  "Title": "Smoke Grenade (Tier 5+)",
+  "record": "Items.GrenadeSmokeLegendaryPlus"
+ },
+ {
+  "Tags": "Power, Precision Rifle, Cyberpsycho",
+  "Command": "Game.AddToInventory(\"Items.Preset_Psycho_ma_bls_ina_se1_22\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Psycho_ma_bls_ina_se1_22"
+ },
+ {
+  "Tags": "Power, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Default\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Default"
+ },
+ {
+  "Tags": "Power, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Military\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Military"
+ },
+ {
+  "Tags": "Power, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Neon\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Neon"
+ },
+ {
+  "Tags": "Power, Precision Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Nusa_Black\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Nusa_Black"
+ },
+ {
+  "Tags": "Power, Precision Rifle, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Nusa_White\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Nusa_White"
+ },
+ {
+  "Tags": "Power, Precision Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Sor22_Pimp\")",
+  "Title": "SOR-22",
+  "record": "Items.Preset_Sor22_Pimp"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Common_Igla_Sovereign\")",
+  "Title": "Sovereign (Tier 1)",
+  "record": "Items.Common_Igla_Sovereign"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Igla_Sovereign\")",
+  "Title": "Sovereign (Tier 2)",
+  "record": "Items.Uncommon_Igla_Sovereign"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Igla_Sovereign\")",
+  "Title": "Sovereign (Tier 3)",
+  "record": "Items.Rare_Igla_Sovereign"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Igla_Sovereign\")",
+  "Title": "Sovereign (Tier 4)",
+  "record": "Items.Epic_Igla_Sovereign"
+ },
+ {
+  "Tags": "Power, Double-Barrel Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Igla_Sovereign\")",
+  "Title": "Sovereign (Tier 5)",
+  "record": "Items.Legendary_Igla_Sovereign"
+ },
+ {
+  "Tags": "Power, Sniper Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Scav\")",
+  "Title": "Sparky",
+  "record": "Items.Preset_Grad_Scav"
+ },
+ {
+  "Tags": "Power, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Default\")",
+  "Title": "SPT-32 Grad",
+  "record": "Items.Preset_Grad_Default"
+ },
+ {
+  "Tags": "Power, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Military\")",
+  "Title": "SPT-32 Grad",
+  "record": "Items.Preset_Grad_Military"
+ },
+ {
+  "Tags": "Power, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Neon\")",
+  "Title": "SPT-32 Grad",
+  "record": "Items.Preset_Grad_Neon"
+ },
+ {
+  "Tags": "Power, Sniper Rifle",
+  "Command": "Game.AddToInventory(\"Items.Preset_Grad_Pimp\")",
+  "Title": "SPT-32 Grad",
+  "record": "Items.Preset_Grad_Pimp"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Iron_Pipe_Default\")",
+  "Title": "Steel Pipe",
+  "record": "Items.Preset_Iron_Pipe_Default"
+ },
+ {
+  "Tags": "Thrown, Knife, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Knife_Stinger\")",
+  "Title": "Stinger",
+  "Description": "Small but incredibly deadly. It belonged to Scorpion, a nomad of the Aldecaldos clan.",
+  "record": "Items.Preset_Knife_Stinger"
+ },
+ {
+  "Tags": "Power, Revolver, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Metel_AirDrop\")",
+  "Title": "Taigan",
+  "Description": "Trained to kill.",
+  "Source": "Airdrops",
+  "record": "Items.Preset_Metel_AirDrop"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Arasaka_2020\")",
+  "Title": "Tamayura",
+  "record": "Items.Preset_Nue_Arasaka_2020"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Nue_Arasaka_2077\")",
+  "Title": "Tamayura",
+  "record": "Items.Preset_Nue_Arasaka_2077"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Common_Tactician_Headsman\")",
+  "Title": "The Headsman (Tier 1)",
+  "record": "Items.Common_Tactician_Headsman"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Tactician_Headsman\")",
+  "Title": "The Headsman (Tier 2)",
+  "record": "Items.Uncommon_Tactician_Headsman"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Tactician_Headsman\")",
+  "Title": "The Headsman (Tier 3)",
+  "record": "Items.Rare_Tactician_Headsman"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Tactician_Headsman\")",
+  "Title": "The Headsman (Tier 4)",
+  "record": "Items.Epic_Tactician_Headsman"
+ },
+ {
+  "Tags": "Power, Shotgun, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Tactician_Headsman\")",
+  "Title": "The Headsman (Tier 5)",
+  "record": "Items.Legendary_Tactician_Headsman"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Default\")",
+  "Title": "Ticon",
+  "record": "Items.Preset_Ticon_Default"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Legendary\")",
+  "Title": "Ticon",
+  "record": "Items.Preset_Ticon_Legendary"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Neon\")",
+  "Title": "Ticon",
+  "record": "Items.Preset_Ticon_Neon"
+ },
+ {
+  "Tags": "Tech, Pistol, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ticon_Pimp\")",
+  "Title": "Ticon",
+  "record": "Items.Preset_Ticon_Pimp"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Baton_Tinker_Bell\")",
+  "Title": "Tinker Bell",
+  "record": "Items.Preset_Baton_Tinker_Bell"
+ },
+ {
+  "Tags": "Blunt, One-Handed Club",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tire_Iron_Default\")",
+  "Title": "Tire Iron",
+  "record": "Items.Preset_Tire_Iron_Default"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shingen_Default\")",
+  "Title": "TKI-20 Shingen",
+  "record": "Items.Preset_Shingen_Default"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shingen_Military\")",
+  "Title": "TKI-20 Shingen",
+  "record": "Items.Preset_Shingen_Military"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shingen_Neon\")",
+  "Title": "TKI-20 Shingen",
+  "record": "Items.Preset_Shingen_Neon"
+ },
+ {
+  "Tags": "Smart, SMG",
+  "Command": "Game.AddToInventory(\"Items.Preset_Shingen_Pimp\")",
+  "Title": "TKI-20 Shingen",
+  "record": "Items.Preset_Shingen_Pimp"
+ },
+ {
+  "Tags": "Thrown, Axe",
+  "Command": "Game.AddToInventory(\"Items.Preset_Tomahawk_Default\")",
+  "Title": "Tomahawk",
+  "record": "Items.Preset_Tomahawk_Default"
+ },
+ {
+  "Tags": "Blade, Katana, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Katana_Hiromi\")",
+  "Title": "Tsumetogi",
+  "Description": "Vivid, beautiful and ideal for skewering.",
+  "record": "Items.Preset_Katana_Hiromi"
+ },
+ {
+  "Tags": "Power, Assault Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Umbra_Collectible\")",
+  "Title": "Umbra x-MOD2",
+  "record": "Items.Preset_Umbra_Collectible"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Default\")",
+  "Title": "Unity",
+  "record": "Items.Preset_Unity_Default"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Military\")",
+  "Title": "Unity",
+  "record": "Items.Preset_Unity_Military"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Neon\")",
+  "Title": "Unity",
+  "record": "Items.Preset_Unity_Neon"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_Unity_Pimp\")",
+  "Title": "Unity",
+  "record": "Items.Preset_Unity_Pimp"
+ },
+ {
+  "Tags": "Power, Pistol",
+  "Command": "Game.AddToInventory(\"Items.Preset_V_Unity\")",
+  "Title": "Unity",
+  "record": "Items.Preset_V_Unity"
+ },
+ {
+  "Tags": "Blade, Machete, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Machete_Borg_AirDrop\")",
+  "Title": "Volkodav",
+  "Description": "Not up to date on its rabies shots.",
+  "Source": "Gig",
+  "record": "Items.Preset_Machete_Borg_AirDrop"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_Default\")",
+  "Title": "VST-37 Pozhar",
+  "record": "Items.Preset_Pozhar_Default"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_Military\")",
+  "Title": "VST-37 Pozhar",
+  "record": "Items.Preset_Pozhar_Military"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_Neon\")",
+  "Title": "VST-37 Pozhar",
+  "record": "Items.Preset_Pozhar_Neon"
+ },
+ {
+  "Tags": "Power, Shotgun",
+  "Command": "Game.AddToInventory(\"Items.Preset_Pozhar_Pimp\")",
+  "Title": "VST-37 Pozhar",
+  "record": "Items.Preset_Pozhar_Pimp"
+ },
+ {
+  "Tags": "Smart, SMG, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Default\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Default"
+ },
+ {
+  "Tags": "Smart, SMG, BARGHEST, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Krausser\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Krausser"
+ },
+ {
+  "Tags": "Smart, SMG, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Legendary\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Legendary"
+ },
+ {
+  "Tags": "Smart, SMG, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Military\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Military"
+ },
+ {
+  "Tags": "Smart, SMG, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Neon\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Neon"
+ },
+ {
+  "Tags": "Smart, SMG, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Warden_Pimp\")",
+  "Title": "Warden",
+  "record": "Items.Preset_Warden_Pimp"
+ },
+ {
+  "Tags": "Tech, Precision Rifle, Iconic",
+  "Command": "Game.AddToInventory(\"Items.Preset_Achilles_Nash\")",
+  "Title": "Widow Maker",
+  "record": "Items.Preset_Achilles_Nash"
+ },
+ {
+  "Tags": "Power, LMG, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Defender_Kurt\")",
+  "Title": "Wild Dog",
+  "record": "Items.Preset_Defender_Kurt"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashRegular\")",
+  "Title": "X-22 Flashbang Grenade (Tier 1)",
+  "record": "Items.GrenadeFlashRegular"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashCommonPlus\")",
+  "Title": "X-22 Flashbang Grenade (Tier 1+)",
+  "record": "Items.GrenadeFlashCommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashUncommon\")",
+  "Title": "X-22 Flashbang Grenade (Tier 2)",
+  "record": "Items.GrenadeFlashUncommon"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashUncommonPlus\")",
+  "Title": "X-22 Flashbang Grenade (Tier 2+)",
+  "record": "Items.GrenadeFlashUncommonPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashHoming\")",
+  "Title": "X-22 Flashbang Grenade (Tier 3)",
+  "record": "Items.GrenadeFlashHoming"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashRarePlus\")",
+  "Title": "X-22 Flashbang Grenade (Tier 3+)",
+  "record": "Items.GrenadeFlashRarePlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashEpic\")",
+  "Title": "X-22 Flashbang Grenade (Tier 4)",
+  "record": "Items.GrenadeFlashEpic"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashEpicPlus\")",
+  "Title": "X-22 Flashbang Grenade (Tier 4+)",
+  "record": "Items.GrenadeFlashEpicPlus"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashLegendary\")",
+  "Title": "X-22 Flashbang Grenade (Tier 5)",
+  "record": "Items.GrenadeFlashLegendary"
+ },
+ {
+  "Tags": "Grenade",
+  "Command": "Game.AddToInventory(\"Items.GrenadeFlashLegendaryPlus\")",
+  "Title": "X-22 Flashbang Grenade (Tier 5+)",
+  "record": "Items.GrenadeFlashLegendaryPlus"
+ },
+ {
+  "Tags": "Smart, Sniper Rifle, Iconic, PL",
+  "Command": "Game.AddToInventory(\"Items.Preset_Ashura_Twitch\")",
+  "Title": "Yasha",
+  "Description": "An Arasaka targeting system mounted on a Tsunami weapon? This formidable combination is starting to make waves.",
+  "Source": "Twitch Drop",
+  "record": "Items.Preset_Ashura_Twitch"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Common_Dian_Yinglong\")",
+  "Title": "Yinglong (Tier 1)",
+  "record": "Items.Common_Dian_Yinglong"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Uncommon_Dian_Yinglong\")",
+  "Title": "Yinglong (Tier 2)",
+  "record": "Items.Uncommon_Dian_Yinglong"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Rare_Dian_Yinglong\")",
+  "Title": "Yinglong (Tier 3)",
+  "record": "Items.Rare_Dian_Yinglong"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Epic_Dian_Yinglong\")",
+  "Title": "Yinglong (Tier 4)",
+  "record": "Items.Epic_Dian_Yinglong"
+ },
+ {
+  "Tags": "Smart, SMG, Iconic, Crafted",
+  "Command": "Game.AddToInventory(\"Items.Legendary_Dian_Yinglong\")",
+  "Title": "Yinglong (Tier 5)",
+  "record": "Items.Legendary_Dian_Yinglong"
+ }
+]

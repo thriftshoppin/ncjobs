@@ -1,0 +1,48 @@
+[
+ {
+  "Type": "Money",
+  "Command": "Game.AddToInventory(\"Items.money\", XYZ)",
+  "Effect": "Add XYZ Eurodollars",
+  "record": "Items.money"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.SetLevel(\"Level\", XYZ, 1)",
+  "Effect": "Player Level XYZ",
+  "record": "Level"
+ },
+ {
+  "Type": "Player",
+  "Command": "Game.SetLevel(\"StreetCred\", XYZ, 1)",
+  "Effect": "Street Cred Level XYZ",
+  "record": "StreetCred"
+ },
+ {
+  "Type": "Player",
+  "Command": "PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(XYZ, gamedataDevelopmentPointType.Attribute)",
+  "Effect": "Add XYZ Attribute Points",
+  "Notes": "Strength, Reflexes, Intelligence, TechnicalAbility, Cool, Espionage"
+ },
+ {
+  "Type": "Player",
+  "Command": "PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(XYZ, gamedataDevelopmentPointType.Primary)",
+  "Effect": "Add XYZ Perk Points"
+ },
+ {
+  "Type": "Player",
+  "Command": "PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(XYZ, gamedataDevelopmentPointType.Espionage)",
+  "Effect": "Add XYZ Relic Points"
+ },
+ {
+  "Type": "Player",
+  "Command": "PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute(\"Attribute Category\", XYZ)",
+  "Effect": "Set an Attribute Category level to XYZ",
+  "Notes": "Strength, Reflexes, Intelligence, TechnicalAbility, Cool, Espionage"
+ },
+ {
+  "Type": "Player",
+  "Command": "LvL = XYZ; ProfType = gamedataProficiencyType.SKILLSkill; DS = PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()); DS:SetLevel(ProfType, LvL, telemetryLevelGainReason.Gameplay)",
+  "Effect": "Set Skill Level to XYZ.",
+  "Notes": "Strength, Reflexes, Intelligence, TechnicalAbility, Cool, Espionage"
+ }
+]

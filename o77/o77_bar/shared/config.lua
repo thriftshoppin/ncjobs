@@ -81,7 +81,10 @@ C.shakeByGrade = {
     [3] = { title = "Boss",     speed = 0.85, perfect = 8, good = 18 },
 }
 
--- Drinks. Steps are what the bartender does, in order:
+-- Drinks. `item` is the base game's own consumable record (o77/reference/console_commands/
+-- consumables.json): the served glass is placed on the counter as that native item, so the
+-- customer gets the real icon, name and drink effect.
+-- Steps are what the bartender does, in order:
 --   { id, type = "pour",  label, ml, color, rate? } hold to pour to a line (rate: ml/s, a tap
 --                                                   pours faster than a bottle)
 --   { id, type = "count", label, verb, count }      press N times (ice, dashes, a garnish)
@@ -89,37 +92,37 @@ C.shakeByGrade = {
 --                                                   difficulty comes from shakeByGrade
 C.drinks = {
     broseph = {
-        glass = "pint",
+        item = "Items.LowQualityAlcohol4", glass = "pint",
         label = "Broseph Lager", price = 30, alcohol = 1,
         flavour = "From the tap. Cold, cheap, honest.",
         -- from the tap, to the rim
         steps = { { id = "lager", type = "pour", label = "Broseph lager", ml = 455, rate = 90, color = "#d9a03a" } },
     },
-    synth_soda = {
-        glass = "highball",
-        label = "Synth Soda", price = 20, alcohol = 0,
-        flavour = "Sweet, fizzy, zero eddies of regret.",
+    nicola = {
+        item = "Items.LowQualityDrink10", glass = "highball",
+        label = "NiCola", price = 20, alcohol = 0,
+        flavour = "Poured over ice. No buzz, no hangover.",
         steps = {
             { id = "ice", type = "count", label = "Ice", verb = "Drop a cube", count = 3 },
-            { id = "soda", type = "pour", label = "Soda", ml = 140, color = "#c94b6a" },
+            { id = "nicola", type = "pour", label = "NiCola", ml = 140, color = "#7a1f1a" },
         },
     },
-    whiskey_rocks = {
-        glass = "rocks",
-        label = "Whiskey on the Rocks", price = 60, alcohol = 2,
-        flavour = "Two fingers over ice. Nobody asks which bottle.",
+    odickin_rocks = {
+        item = "Items.MediumQualityAlcohol2", glass = "rocks",
+        label = "O'Dickin on the Rocks", price = 60, alcohol = 2,
+        flavour = "O'Dickin whiskey, two fingers over ice.",
         steps = {
             { id = "ice", type = "count", label = "Ice", verb = "Drop a cube", count = 2 },
-            { id = "whiskey", type = "pour", label = "Whiskey", ml = 60, color = "#b5651d" },
+            { id = "whiskey", type = "pour", label = "O'Dickin whiskey", ml = 60, color = "#b5651d" },
         },
     },
     -- Canon: a tequila old fashioned with a splash of cerveza, lime juice and a chili garnish.
     johnny_silverhand = {
-        glass = "rocks",
+        item = "Items.TopQualityAlcohol8", glass = "rocks",
         label = "Johnny Silverhand", price = 120, alcohol = 3,
         flavour = "Tequila old fashioned, a splash of cerveza, lime, chili. Wake up, samurai.",
         steps = {
-            { id = "tequila", type = "pour", label = "Centzon tequila", ml = 60, color = "#e8c56a" },
+            { id = "tequila", type = "pour", label = "Centzon Totochtin", ml = 60, color = "#e8c56a" },
             { id = "agave", type = "pour", label = "Agave syrup", ml = 10, color = "#c98a2b" },
             { id = "bitters", type = "count", label = "Bitters", verb = "Add a dash", count = 2 },
             { id = "ice", type = "count", label = "Ice", verb = "Drop a cube", count = 2 },
@@ -139,6 +142,8 @@ C.drinks = {
 --             zone counts (fine for a first test; list the real stools before going live:
 --             stand at the bar and run `seating.near` in the server console)
 --   menu      drink ids on this bar's card, in order
+-- Other bars, from the sheet's TELEPORT tab (entrances, not counters; walk the counter with
+-- /pos before adding one):  Lizzie's Bar -1208.0, 1563.1, 22.9  ·  El Coyote Cojo -1260.8, -981.8, 11.6
 C.bars = {
     afterlife = {
         label = "Afterlife",
@@ -148,7 +153,7 @@ C.bars = {
             { position = { x = -1451.5, y = 1012.5, z = 17.8 }, label = "Afterlife - bar" },
         },
         stools = {},
-        menu = { "broseph", "synth_soda", "whiskey_rocks", "johnny_silverhand" },
+        menu = { "broseph", "nicola", "odickin_rocks", "johnny_silverhand" },
         color = "#FF5F58",
     },
 }

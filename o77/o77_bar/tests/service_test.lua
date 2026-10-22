@@ -126,7 +126,7 @@ local PERFECT = {
     johnny_silverhand = { { id = "tequila", ml = 60 }, { id = "agave", ml = 10 }, { id = "bitters", count = 2 }, { id = "ice", count = 2 },
         { id = "stir", hits = { "perfect", "good", "perfect" } }, { id = "lime", ml = 15 }, { id = "cerveza", ml = 30 }, { id = "chili", count = 1 } },
     broseph = { { id = "lager", ml = 455 } },
-    synth_soda = { { id = "ice", count = 3 }, { id = "soda", ml = 140 } },
+    nicola = { { id = "ice", count = 3 }, { id = "nicola", ml = 140 } },
 }
 
 local function makeAll(W, svc, t)

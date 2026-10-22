@@ -1,0 +1,1342 @@
+[
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.BodySkill_Skillbook\", 1)",
+  "Title": "Skill Shard: Solo",
+  "Description": "+100-300 Solo XP",
+  "record": "Items.BodySkill_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.BodySkill_Skillbook_Legendary\", 1)",
+  "Title": "Skill Shard: Solo (Legendary)",
+  "Description": "+400 Solo XP",
+  "record": "Items.BodySkill_Skillbook_Legendary"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.BodySkillbook_Strong\")",
+  "Title": "BodSkulptor 3: Chromium Tears",
+  "Description": "+5,000 Solo XP",
+  "record": "Items.BodySkillbook_Strong"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.CoolSkill_Skillbook\", 1)",
+  "Title": "Skill Shard: Headhunter",
+  "Description": "+100-300 Headhunter XP",
+  "record": "Items.CoolSkill_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.CoolSkill_Skillbook_Legendary\", 1)",
+  "Title": "Skill Shard: Headhunter (Legendary)",
+  "Description": "+400 Headhunter XP",
+  "record": "Items.CoolSkill_Skillbook_Legendary"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.CoolSkillbook_Strong\", 1)",
+  "Title": "Tsuma ga oji ni yukai saretanode kyushutsu suru tameni tokkun shitemiru",
+  "Description": "+5,000 Headhunter XP",
+  "record": "Items.CoolSkillbook_Strong"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.IntelligenceSkill_Skillbook\", 1)",
+  "Title": "Skill Shard: Netrunner",
+  "Description": "+100-300 Netrunner XP",
+  "record": "Items.IntelligenceSkill_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.IntelligenceSkill_Skillbook_Legendary\", 1)",
+  "Title": "Skill Shard: Netrunner (Legendary)",
+  "Description": "+400 Netrunner XP",
+  "record": "Items.IntelligenceSkill_Skillbook_Legendary"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.IntelligenceSkillbook_Strong\", 1)",
+  "Title": "RAMboy 5: First Breach, Part IV",
+  "Description": "+5,000 Netrunner XP",
+  "record": "Items.IntelligenceSkillbook_Strong"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.ReflexSkill_Skillbook\", 1)",
+  "Title": "Skill Shard: Shinobi",
+  "Description": "+100-300 Shinobi XP",
+  "record": "Items.ReflexSkill_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.ReflexSkill_Skillbook_Legendary\", 1)",
+  "Title": "Skill Shard: Shinobi (Legendary)",
+  "Description": "+400 Shinobi XP",
+  "record": "Items.ReflexSkill_Skillbook_Legendary"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.ReflexSkillbook_Strong\", 1)",
+  "Title": "CYBERPSYKO CATCH BULLETZ MIDAIR AMAZING UNQUIE FOOTIGE!!1!.xbd",
+  "Description": "+5,000 Shinobi XP",
+  "record": "Items.ReflexSkillbook_Strong"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.TechnicalAbilitySkill_Skillbook\", 1)",
+  "Title": "Skill Shard: Engineer",
+  "Description": "+100-300 Engineer XP",
+  "record": "Items.TechnicalAbilitySkill_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.TechnicalAbilitySkill_Skillbook_Legendary\", 1)",
+  "Title": "Skill Shard: Engineer (Legendary)",
+  "Description": "+400 Engineer XP",
+  "record": "Items.TechnicalAbilitySkill_Skillbook_Legendary"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.TechnicalSkillbook_Strong\", 1)",
+  "Title": "Livewire Willie's Waterboard Special",
+  "Description": "+5,000 Engineer XP",
+  "record": "Items.TechnicalSkillbook_Strong"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.PerkPointSkillbook\", 1)",
+  "Title": "Perk Shard",
+  "Description": "Provides 1 Perk Point",
+  "record": "Items.PerkPointSkillbook"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.IKPerkPointSkillbook\", 1)",
+  "Title": "72h Extreme Sensory Deprivation",
+  "Description": "Provides 1 Perk Point",
+  "record": "Items.IKPerkPointSkillbook"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.Espionage_Skillbook\", 1)",
+  "Title": "Training Shard",
+  "Description": "Provides 1 Relic Point",
+  "record": "Items.Espionage_Skillbook"
+ },
+ {
+  "Tags": "Progression Shard",
+  "Command": "Game.AddToInventory(\"Items.AttributePointSkillbook\", 1)",
+  "Title": "Attribute Shard",
+  "Description": "Provides 1 Attribute Point",
+  "record": "Items.AttributePointSkillbook"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.AirdropPermaReward\", 1)",
+  "Title": "Carry Capacity Shard",
+  "Description": "Permanently increases Carrying Capacity by 2.",
+  "record": "Items.AirdropPermaReward"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.CWCapacityPermaReward_Uncommon\", 7)",
+  "Title": "Cyberware Capacity Shard",
+  "Description": "Cyberware Capacity Shard +2",
+  "record": "Items.CWCapacityPermaReward_Uncommon"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.CWCapacityPermaReward_Rare\", 4)",
+  "Title": "Cyberware Capacity Shard",
+  "Description": "Cyberware Capacity Shard +3",
+  "record": "Items.CWCapacityPermaReward_Rare"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.CWCapacityPermaReward_Epic\", 4)",
+  "Title": "Cyberware Capacity Shard",
+  "Description": "Cyberware Capacity Shard +4",
+  "record": "Items.CWCapacityPermaReward_Epic"
+ },
+ {
+  "Tags": "Progression Shard, PL",
+  "Command": "Game.AddToInventory(\"Items.CWCapacityPermaReward_Legendary\", 2)",
+  "Title": "Cyberware Capacity Shard",
+  "Description": "Cyberware Capacity Shard +6",
+  "record": "Items.CWCapacityPermaReward_Legendary"
+ },
+ {
+  "Tags": "Long-lasting",
+  "Command": "Game.AddToInventory(\"Items.HealthBooster\")",
+  "Title": "Health Booster",
+  "record": "Items.HealthBooster"
+ },
+ {
+  "Tags": "Long-lasting, PL",
+  "Command": "Game.AddToInventory(\"Items.Blackmarket_HealthBooster\")",
+  "Title": "AssKick",
+  "record": "Items.Blackmarket_HealthBooster"
+ },
+ {
+  "Tags": "Long-lasting",
+  "Command": "Game.AddToInventory(\"Items.StaminaBooster\")",
+  "Title": "Stamina Booster",
+  "record": "Items.StaminaBooster"
+ },
+ {
+  "Tags": "Long-lasting, PL",
+  "Command": "Game.AddToInventory(\"Items.Blackmarket_StaminaBooster\")",
+  "Title": "Jellytricity",
+  "record": "Items.Blackmarket_StaminaBooster"
+ },
+ {
+  "Tags": "Long-lasting",
+  "Command": "Game.AddToInventory(\"Items.MemoryBooster\")",
+  "Title": "RAM Jolt",
+  "record": "Items.MemoryBooster"
+ },
+ {
+  "Tags": "Long-lasting, PL",
+  "Command": "Game.AddToInventory(\"Items.Blackmarket_MemoryBooster\")",
+  "Title": "RAM Nugs",
+  "record": "Items.Blackmarket_MemoryBooster"
+ },
+ {
+  "Tags": "Long-lasting",
+  "Command": "Game.AddToInventory(\"Items.CarryCapacityBooster\")",
+  "Title": "Capacity Booster",
+  "record": "Items.CarryCapacityBooster"
+ },
+ {
+  "Tags": "Long-lasting, PL",
+  "Command": "Game.AddToInventory(\"Items.Blackmarket_CarryCapacityBooster\")",
+  "Title": "Ol' Donkey",
+  "record": "Items.Blackmarket_CarryCapacityBooster"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.OxyBooster\")",
+  "Title": "Oxy Booster",
+  "record": "Items.OxyBooster"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BlackLaceV0\")",
+  "Title": "Black Lace Mk.1",
+  "record": "Items.BlackLaceV0"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BlackLaceV1\")",
+  "Title": "Black Lace Mk.2",
+  "record": "Items.BlackLaceV1"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffV0\")",
+  "Title": "Maxdoc Mk.1 (Tier 1)",
+  "record": "Items.FirstAidWhiffV0"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVCommonPlus\")",
+  "Title": "Maxdoc Mk.1 (Tier 1+)",
+  "record": "Items.FirstAidWhiffVCommonPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVUncommon\")",
+  "Title": "Maxdoc Mk.2 (Tier 2)",
+  "record": "Items.FirstAidWhiffVUncommon"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVUncommonPlus\")",
+  "Title": "Maxdoc Mk.2 (Tier 2+)",
+  "record": "Items.FirstAidWhiffVUncommonPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffV1\")",
+  "Title": "Maxdoc Mk.3 (Tier 3)",
+  "record": "Items.FirstAidWhiffV1"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVRarePlus\")",
+  "Title": "Maxdoc Mk.3 (Tier 3+)",
+  "record": "Items.FirstAidWhiffVRarePlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVEpic\")",
+  "Title": "Maxdoc Mk.4 (Tier 4)",
+  "record": "Items.FirstAidWhiffVEpic"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVEpicPlus\")",
+  "Title": "Maxdoc Mk.4 (Tier 4+)",
+  "record": "Items.FirstAidWhiffVEpicPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffV2\")",
+  "Title": "Maxdoc Mk.5 (Tier 5)",
+  "record": "Items.FirstAidWhiffV2"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.FirstAidWhiffVLegendaryPlus\")",
+  "Title": "Maxdoc Mk.5 (Tier 5+)",
+  "record": "Items.FirstAidWhiffVLegendaryPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70V0\")",
+  "Title": "Bounce Back Mk.1 (Tier 1)",
+  "record": "Items.BonesMcCoy70V0"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VCommonPlus\")",
+  "Title": "Bounce Back Mk.1 (Tier 1+)",
+  "record": "Items.BonesMcCoy70VCommonPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VUncommon\")",
+  "Title": "Bounce Back Mk.2 (Tier 2)",
+  "record": "Items.BonesMcCoy70VUncommon"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VUncommonPlus\")",
+  "Title": "Bounce Back Mk.2 (Tier 2+)",
+  "record": "Items.BonesMcCoy70VUncommonPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70V1\")",
+  "Title": "Bounce Back Mk.3 (Tier 3)",
+  "record": "Items.BonesMcCoy70V1"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VRarePlus\")",
+  "Title": "Bounce Back Mk.3 (Tier 3+)",
+  "record": "Items.BonesMcCoy70VRarePlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VEpic\")",
+  "Title": "Bounce Back Mk.4 (Tier 4)",
+  "record": "Items.BonesMcCoy70VEpic"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VEpicPlus\")",
+  "Title": "Bounce Back Mk.4 (Tier 4+)",
+  "record": "Items.BonesMcCoy70VEpicPlus"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70V2\")",
+  "Title": "Bounce Back Mk.5 (Tier 5)",
+  "record": "Items.BonesMcCoy70V2"
+ },
+ {
+  "Tags": "Inhaler",
+  "Command": "Game.AddToInventory(\"Items.BonesMcCoy70VLegendaryPlus\")",
+  "Title": "Bounce Back Mk.5 (Tier 5+)",
+  "record": "Items.BonesMcCoy70VLegendaryPlus"
+ },
+ {
+  "Tags": "Ammo",
+  "Command": "Game.AddToInventory(\"Ammo.HandgunAmmo\", 1000)",
+  "Title": "Handgun Ammo",
+  "Description": "A case of handgun ammo.",
+  "Source": "Weapon Vendors",
+  "record": "Ammo.HandgunAmmo"
+ },
+ {
+  "Tags": "Ammo",
+  "Command": "Game.AddToInventory(\"Ammo.RifleAmmo\", 1000)",
+  "Title": "Heavy Ammo",
+  "Description": "A case of heavy ammo.",
+  "Source": "Weapon Vendors",
+  "record": "Ammo.RifleAmmo"
+ },
+ {
+  "Tags": "Ammo",
+  "Command": "Game.AddToInventory(\"Ammo.ShotgunAmmo\", 300)",
+  "Title": "Shotgun Ammo",
+  "Description": "A case of shotgun ammo.",
+  "Source": "Weapon Vendors",
+  "record": "Ammo.ShotgunAmmo"
+ },
+ {
+  "Tags": "Ammo",
+  "Command": "Game.AddToInventory(\"Ammo.SniperRifleAmmo\", 150)",
+  "Title": "Sniper Ammo",
+  "Description": "A case of sniper ammo.",
+  "Source": "Weapon Vendors",
+  "record": "Ammo.SniperRifleAmmo"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood1\")",
+  "Title": "EEZYBEEF",
+  "record": "Items.LowQualityFood1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood3\")",
+  "Title": "Hawt Dawg",
+  "record": "Items.LowQualityFood3"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood5\")",
+  "Title": "Moonchies",
+  "record": "Items.LowQualityFood5"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood6\")",
+  "Title": "Mr. Whitey",
+  "record": "Items.LowQualityFood6"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood7\")",
+  "Title": "Orgiatic Omniflave",
+  "record": "Items.LowQualityFood7"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood8\")",
+  "Title": "Pop-Turd",
+  "record": "Items.LowQualityFood8"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood9\")",
+  "Title": "Sojasil Dynamite",
+  "record": "Items.LowQualityFood9"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood10\")",
+  "Title": "Wontons",
+  "record": "Items.LowQualityFood10"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood11\")",
+  "Title": "Cat Food",
+  "record": "Items.LowQualityFood11"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood12\")",
+  "Title": "Holobites Grape Pie",
+  "record": "Items.LowQualityFood12"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood13\")",
+  "Title": "Holobites Mint Pie",
+  "record": "Items.LowQualityFood13"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood14\")",
+  "Title": "Holobites Peach Pie",
+  "record": "Items.LowQualityFood14"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood15\")",
+  "Title": "Orgiatic Salsa Agave",
+  "record": "Items.LowQualityFood15"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood16\")",
+  "Title": "Orgiatic Vinegar Chili",
+  "record": "Items.LowQualityFood16"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood17\")",
+  "Title": "Moonchies Andromeda",
+  "record": "Items.LowQualityFood17"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood18\")",
+  "Title": "Moonchies Pulsar",
+  "record": "Items.LowQualityFood18"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood19\")",
+  "Title": "Moonchies Sour Planet",
+  "record": "Items.LowQualityFood19"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood20\")",
+  "Title": "Leelou Beans Lagoon",
+  "record": "Items.LowQualityFood20"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood21\")",
+  "Title": "Leelou Beans Meyer Lemon",
+  "record": "Items.LowQualityFood21"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood22\")",
+  "Title": "Leelou Beans Plantain",
+  "record": "Items.LowQualityFood22"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood23\")",
+  "Title": "Leelou Beans Tropical",
+  "record": "Items.LowQualityFood23"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood24\")",
+  "Title": "Sojasil Eruption",
+  "record": "Items.LowQualityFood24"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood25\")",
+  "Title": "Sojasil Molotov Cocktail",
+  "record": "Items.LowQualityFood25"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood26\")",
+  "Title": "Sojasil Nitroglycerin",
+  "record": "Items.LowQualityFood26"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood27\")",
+  "Title": "Sojasil Radioactive",
+  "record": "Items.LowQualityFood27"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.LowQualityFood28\")",
+  "Title": "Sojasil Second Impact",
+  "record": "Items.LowQualityFood28"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood1\")",
+  "Title": "Synthsnack",
+  "record": "Items.MediumQualityFood1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood2\")",
+  "Title": "Rammmmen",
+  "record": "Items.MediumQualityFood2"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood3\")",
+  "Title": "Slaughterhouse Jerky",
+  "record": "Items.MediumQualityFood3"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood4\")",
+  "Title": "Burrito XXL",
+  "record": "Items.MediumQualityFood4"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood5\")",
+  "Title": "All Foods Meat Delight",
+  "record": "Items.MediumQualityFood5"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood6\")",
+  "Title": "All Foods Veggie Delight",
+  "record": "Items.MediumQualityFood6"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood7\")",
+  "Title": "Slaughterhouse Prime",
+  "record": "Items.MediumQualityFood7"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood8\")",
+  "Title": "Yikes! Tofu Bar",
+  "record": "Items.MediumQualityFood8"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood9\")",
+  "Title": "Ave Saitan",
+  "record": "Items.MediumQualityFood9"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood10\")",
+  "Title": "Jambalaya",
+  "record": "Items.MediumQualityFood10"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood11\")",
+  "Title": "Mr. Whitey Mint",
+  "record": "Items.MediumQualityFood11"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood12\")",
+  "Title": "Burrito XXL Rosado",
+  "record": "Items.MediumQualityFood12"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood13\")",
+  "Title": "Burrito XXL Turquesa",
+  "record": "Items.MediumQualityFood13"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood14\")",
+  "Title": "Mr. Whitey Crystal",
+  "record": "Items.MediumQualityFood14"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood15\")",
+  "Title": "Mr. Whitey Spiced",
+  "record": "Items.MediumQualityFood15"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood16\")",
+  "Title": "Taco",
+  "record": "Items.MediumQualityFood16"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood17\")",
+  "Title": "Shwabshwab Grape",
+  "record": "Items.MediumQualityFood17"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood18\")",
+  "Title": "Shwabshwab Ketchup",
+  "record": "Items.MediumQualityFood18"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood19\")",
+  "Title": "Shwabshwab Blue",
+  "record": "Items.MediumQualityFood19"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityFood20\")",
+  "Title": "Slaughterhouse Veggie",
+  "record": "Items.MediumQualityFood20"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood1\")",
+  "Title": "RealFruit",
+  "record": "Items.GoodQualityFood1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood2\")",
+  "Title": "Tajine!",
+  "record": "Items.GoodQualityFood2"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood3\")",
+  "Title": "Dark Chocolate",
+  "record": "Items.GoodQualityFood3"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood4\")",
+  "Title": "\"Milk\" Chocccolate",
+  "record": "Items.GoodQualityFood4"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood5\")",
+  "Title": "Norimaki",
+  "record": "Items.GoodQualityFood5"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood6\")",
+  "Title": "Nigiri",
+  "record": "Items.GoodQualityFood6"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood7\")",
+  "Title": "Pierre's Croissants",
+  "record": "Items.GoodQualityFood7"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood8\")",
+  "Title": "Got Escargot?",
+  "record": "Items.GoodQualityFood8"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood9\")",
+  "Title": "Gojilla",
+  "record": "Items.GoodQualityFood9"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood10\")",
+  "Title": "Locust Pepperoni Pizza",
+  "record": "Items.GoodQualityFood10"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood11\")",
+  "Title": "Artichoke 'N' Avocado Pizza",
+  "record": "Items.GoodQualityFood11"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood12\")",
+  "Title": "Tofu'd Tuna and Pineapple Pizza",
+  "record": "Items.GoodQualityFood12"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityFood13\")",
+  "Title": "Loaded Tamale",
+  "record": "Items.GoodQualityFood13"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.NomadsFood1\")",
+  "Title": "Soy Paste",
+  "record": "Items.NomadsFood1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.NomadsFood2\")",
+  "Title": "Dried Meat",
+  "record": "Items.NomadsFood2"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink1\")",
+  "Title": "Matapang Coffee",
+  "record": "Items.LowQualityDrink1"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink2\")",
+  "Title": "Matapang Decaf",
+  "record": "Items.LowQualityDrink2"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink3\")",
+  "Title": "Dairing Dairy \"Milkshake\"",
+  "record": "Items.LowQualityDrink3"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink4\")",
+  "Title": "Spunky Monkey",
+  "record": "Items.LowQualityDrink4"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink5\")",
+  "Title": "Spunky Monkey Mint",
+  "record": "Items.LowQualityDrink5"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink6\")",
+  "Title": "Cirrus Cola Classic",
+  "record": "Items.LowQualityDrink6"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink7\")",
+  "Title": "Cirrus Cola Corn and Lemon",
+  "record": "Items.LowQualityDrink7"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink8\")",
+  "Title": "Cirrus Cola Blood Breeze",
+  "record": "Items.LowQualityDrink8"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink9\")",
+  "Title": "NiCola Blue",
+  "record": "Items.LowQualityDrink9"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink10\")",
+  "Title": "NiCola",
+  "record": "Items.LowQualityDrink10"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink11\")",
+  "Title": "Coffee",
+  "record": "Items.LowQualityDrink11"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink12\")",
+  "Title": "Coffee with Syn-Milk",
+  "record": "Items.LowQualityDrink12"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.LowQualityDrink13\")",
+  "Title": "Latte",
+  "record": "Items.LowQualityDrink13"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink1\")",
+  "Title": "NiCola Fire",
+  "record": "Items.MediumQualityDrink1"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink2\")",
+  "Title": "NiCola Sakura",
+  "record": "Items.MediumQualityDrink2"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink3\")",
+  "Title": "Real Water (Still)",
+  "record": "Items.MediumQualityDrink3"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink4\")",
+  "Title": "Real Water (Sparkling)",
+  "record": "Items.MediumQualityDrink4"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink5\")",
+  "Title": "Naranjita Classic",
+  "record": "Items.MediumQualityDrink5"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink6\")",
+  "Title": "Naranjita Zero",
+  "record": "Items.MediumQualityDrink6"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink7\")",
+  "Title": "Chromanticore",
+  "record": "Items.MediumQualityDrink7"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink8\")",
+  "Title": "Tiancha Kumquat",
+  "record": "Items.MediumQualityDrink8"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink9\")",
+  "Title": "Tiancha Pomelo",
+  "record": "Items.MediumQualityDrink9"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink10\")",
+  "Title": "Soulhiker",
+  "record": "Items.MediumQualityDrink10"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink11\")",
+  "Title": "Oolong Tea",
+  "record": "Items.MediumQualityDrink11"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink12\")",
+  "Title": "Tiancha Pomegranate",
+  "record": "Items.MediumQualityDrink12"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink13\")",
+  "Title": "Tiancha",
+  "record": "Items.MediumQualityDrink13"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityDrink14\")",
+  "Title": "Soop",
+  "record": "Items.MediumQualityDrink14"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink1\")",
+  "Title": "Sain Ruisseau",
+  "record": "Items.GoodQualityDrink1"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink2\")",
+  "Title": "ChroManticore Lime",
+  "record": "Items.GoodQualityDrink2"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink3\")",
+  "Title": "Vita-Mine",
+  "record": "Items.GoodQualityDrink3"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink4\")",
+  "Title": "ChroManticore Carnival",
+  "record": "Items.GoodQualityDrink4"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink5\")",
+  "Title": "Té Matcha",
+  "record": "Items.GoodQualityDrink5"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink6\")",
+  "Title": "Té Sencha",
+  "record": "Items.GoodQualityDrink6"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink7\")",
+  "Title": "Té Oolong",
+  "record": "Items.GoodQualityDrink7"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink8\")",
+  "Title": "Vatnajökull (Still)",
+  "record": "Items.GoodQualityDrink8"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink9\")",
+  "Title": "Vatnajökull (Sparkling)",
+  "record": "Items.GoodQualityDrink9"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink10\")",
+  "Title": "Water",
+  "record": "Items.GoodQualityDrink10"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityDrink11\")",
+  "Title": "Tomato \"Juice\"",
+  "record": "Items.GoodQualityDrink11"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.NomadsDrink1\")",
+  "Title": "Filtered Rainwater",
+  "record": "Items.NomadsDrink1"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.NomadsDrink2\")",
+  "Title": "Cactus Juice",
+  "record": "Items.NomadsDrink2"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol1\")",
+  "Title": "Abydos Classic",
+  "record": "Items.LowQualityAlcohol1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol2\")",
+  "Title": "Abydos King Size",
+  "record": "Items.LowQualityAlcohol2"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol3\")",
+  "Title": "Broseph Ale",
+  "record": "Items.LowQualityAlcohol3"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol4\")",
+  "Title": "Broseph Lager",
+  "record": "Items.LowQualityAlcohol4"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol5\")",
+  "Title": "21st Stout",
+  "record": "Items.LowQualityAlcohol5"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol6\")",
+  "Title": "Bumelant",
+  "record": "Items.LowQualityAlcohol6"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol7\")",
+  "Title": "Chirrisco",
+  "record": "Items.LowQualityAlcohol7"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol8\")",
+  "Title": "Pitorro",
+  "record": "Items.LowQualityAlcohol8"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.LowQualityAlcohol9\")",
+  "Title": "Tequila Especial",
+  "record": "Items.LowQualityAlcohol9"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol1\")",
+  "Title": "Pingo Pálido",
+  "record": "Items.MediumQualityAlcohol1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol2\")",
+  "Title": "O'Dickin Whiskey",
+  "record": "Items.MediumQualityAlcohol2"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol3\")",
+  "Title": "Bolshevik Vodka",
+  "record": "Items.MediumQualityAlcohol3"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol4\")",
+  "Title": "Conine",
+  "record": "Items.MediumQualityAlcohol4"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol5\")",
+  "Title": "Joe Tiel's Okie Hooch",
+  "record": "Items.MediumQualityAlcohol5"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol6\")",
+  "Title": "Papa Garcin",
+  "record": "Items.MediumQualityAlcohol6"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.MediumQualityAlcohol7\")",
+  "Title": "Blue Grass",
+  "record": "Items.MediumQualityAlcohol7"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol1\")",
+  "Title": "Donaghy's",
+  "record": "Items.GoodQualityAlcohol1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol2\")",
+  "Title": "Centzon Totochtin",
+  "record": "Items.GoodQualityAlcohol2"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol3\")",
+  "Title": "Randver",
+  "record": "Items.GoodQualityAlcohol3"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol4\")",
+  "Title": "Ab-Synth",
+  "record": "Items.GoodQualityAlcohol4"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol5\")",
+  "Title": "Champaradise",
+  "record": "Items.GoodQualityAlcohol5"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.GoodQualityAlcohol6\")",
+  "Title": "La Perle des Alpes",
+  "record": "Items.GoodQualityAlcohol6"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol1\")",
+  "Title": "Calavera Feliz",
+  "record": "Items.TopQualityAlcohol1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol2\")",
+  "Title": "Chateau Delen 2012",
+  "record": "Items.TopQualityAlcohol2"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol3\")",
+  "Title": "Armagnac Massy",
+  "record": "Items.TopQualityAlcohol3"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol4\")",
+  "Title": "Sake Utagawa",
+  "record": "Items.TopQualityAlcohol4"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol5\")",
+  "Title": "Baalbek Arak",
+  "record": "Items.TopQualityAlcohol5"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol6\")",
+  "Title": "Romvlvs Gin",
+  "record": "Items.TopQualityAlcohol6"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol7\")",
+  "Title": "Paul Night",
+  "record": "Items.TopQualityAlcohol7"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol8\")",
+  "Title": "Johnny Silverhand",
+  "record": "Items.TopQualityAlcohol8"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol9\")",
+  "Title": "Jackie Welles",
+  "record": "Items.TopQualityAlcohol9"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.TopQualityAlcohol10\")",
+  "Title": "The David Martinez",
+  "record": "Items.TopQualityAlcohol10"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.NomadsAlcohol1\")",
+  "Title": "Moonshine",
+  "record": "Items.NomadsAlcohol1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.NomadsAlcohol2\")",
+  "Title": "Trailerbrew Beer",
+  "record": "Items.NomadsAlcohol2"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.JudyDrink1\")",
+  "Title": "ChroManticore Ultraviolet",
+  "record": "Items.JudyDrink1"
+ },
+ {
+  "Tags": "Drink",
+  "Command": "Game.AddToInventory(\"Items.RiverDrink1\")",
+  "Title": "Kopi Kadal Coffee",
+  "record": "Items.RiverDrink1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.PanamFood1\")",
+  "Title": "Galician Pierogi",
+  "record": "Items.PanamFood1"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.RiverFood1\")",
+  "Title": "Sweets for Sweetie Cupcake",
+  "record": "Items.RiverFood1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.KerryAlcohol\")",
+  "Title": "Centzon Totochtin Indigo",
+  "record": "Items.KerryAlcohol"
+ },
+ {
+  "Tags": "Food",
+  "Command": "Game.AddToInventory(\"Items.JudyFood1\")",
+  "Title": "Ham and Mushroom Pizza",
+  "record": "Items.JudyFood1"
+ },
+ {
+  "Tags": "Alcohol",
+  "Command": "Game.AddToInventory(\"Items.sq004_farmhouse_beer\")",
+  "Title": "Stale Beer",
+  "record": "Items.sq004_farmhouse_beer"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HealthFood1\")",
+  "Title": "Comrade Kolya's Premium Black Caviar",
+  "record": "Items.HealthFood1"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HealthFood2\")",
+  "Title": "Militech MRE (expired)",
+  "record": "Items.HealthFood2"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HealthFood3\")",
+  "Title": "Hefty Chef Fettuccine Alfredo XXL (discontinued)",
+  "record": "Items.HealthFood3"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.NetrunnerFood1\")",
+  "Title": "Bzzzzt! Energy Drink (recalled)",
+  "record": "Items.NetrunnerFood1"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.NetrunnerFood2\")",
+  "Title": "Phish & Chips",
+  "record": "Items.NetrunnerFood2"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.StealthFood1\")",
+  "Title": "Exotic flora and fungi mystery bag",
+  "record": "Items.StealthFood1"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.CarFood1\")",
+  "Title": "Hot Roddy's Road-Ready Coffee (recalled)",
+  "record": "Items.CarFood1"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.CombatFood1\")",
+  "Title": "Devildick Pepper Chips",
+  "record": "Items.CombatFood1"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.CombatFood2\")",
+  "Title": "Creatine-Loaded Protein Log",
+  "record": "Items.CombatFood2"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.CombatFood3\")",
+  "Title": "Dolphin Jerky",
+  "record": "Items.CombatFood3"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.PermanentHealthFood\")",
+  "Title": "Prototype Pseudoembryonic Cell Builder",
+  "record": "Items.PermanentHealthFood"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.PermanentStaminaRegenFood\")",
+  "Title": "Military-Grade Lactic Acid Recyclers",
+  "record": "Items.PermanentStaminaRegenFood"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.PermanentMemoryRegenFood\")",
+  "Title": "Dendritic Protoplasma Supplier",
+  "record": "Items.PermanentMemoryRegenFood"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HawtDawgClassic\")",
+  "Title": "Hawt Dawg",
+  "record": "Items.HawtDawgClassic"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HawtDawgCheese\")",
+  "Title": "Cheese HawtDawg",
+  "record": "Items.HawtDawgCheese"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HawtDawgChilli\")",
+  "Title": "Chilli HawtDawg",
+  "record": "Items.HawtDawgChilli"
+ },
+ {
+  "Tags": "Food, PL",
+  "Command": "Game.AddToInventory(\"Items.HawtDawgKabanos\")",
+  "Title": "Premium HawtDawg",
+  "record": "Items.HawtDawgKabanos"
+ }
+]

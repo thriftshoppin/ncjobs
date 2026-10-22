@@ -1,0 +1,826 @@
+[
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.CommonMaterial1\", 10000)",
+  "Title": "10000× Tier 1 Item Components",
+  "record": "Items.CommonMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.UncommonMaterial1\", 10000)",
+  "Title": "10000× Tier 2 Item Components",
+  "record": "Items.UncommonMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.RareMaterial1\", 10000)",
+  "Title": "10000× Tier 3 Item Components",
+  "record": "Items.RareMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.EpicMaterial1\", 10000)",
+  "Title": "10000× Tier 4 Item Components",
+  "record": "Items.EpicMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.LegendaryMaterial1\", 10000)",
+  "Title": "10000× Tier 5 Item Components",
+  "record": "Items.LegendaryMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.QuickHackUncommonMaterial1\", 10000)",
+  "Title": "10000× Tier 2 Quickhack Components",
+  "record": "Items.QuickHackUncommonMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.QuickHackRareMaterial1\", 10000)",
+  "Title": "10000× Tier 3 Quickhack Components",
+  "record": "Items.QuickHackRareMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.QuickHackEpicMaterial1\", 10000)",
+  "Title": "10000× Tier 4 Quickhack Components",
+  "record": "Items.QuickHackEpicMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.QuickHackLegendaryMaterial1\", 10000)",
+  "Title": "10000× Tier 5 Quickhack Components",
+  "record": "Items.QuickHackLegendaryMaterial1"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.Q305_Cerberus_core_cracked\", 1)",
+  "Title": "Cerberus' decoded behavioral system component",
+  "Description": "Required for Haunted crafting specs.",
+  "record": "Items.Q305_Cerberus_core_cracked"
+ },
+ {
+  "Tags": "Components",
+  "Command": "Game.AddToInventory(\"Items.Q302_Chimera_Core\", 1)",
+  "Title": "Active Chimera Core",
+  "Description": "Can be crafted into Iconic weapon mods.",
+  "record": "Items.Q302_Chimera_Core"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Zhuo_Eight_Star\")",
+  "Title": "Crafting Spec: Ba Xing Chong (Tier 1)",
+  "record": "Items.Recipe_Common_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Zhuo_Eight_Star\")",
+  "Title": "Crafting Spec: Ba Xing Chong (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Zhuo_Eight_Star\")",
+  "Title": "Crafting Spec: Ba Xing Chong (Tier 3)",
+  "record": "Items.Recipe_Rare_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Zhuo_Eight_Star\")",
+  "Title": "Crafting Spec: Ba Xing Chong (Tier 4)",
+  "record": "Items.Recipe_Epic_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Zhuo_Eight_Star\")",
+  "Title": "Crafting Spec: Ba Xing Chong (Tier 5)",
+  "record": "Items.Recipe_Legendary_Zhuo_Eight_Star"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Copperhead_Genesis\")",
+  "Title": "Crafting Spec: Psalm 11:6 (Tier 1)",
+  "record": "Items.Recipe_Common_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Copperhead_Genesis\")",
+  "Title": "Crafting Spec: Psalm 11:6 (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Copperhead_Genesis\")",
+  "Title": "Crafting Spec: Psalm 11:6 (Tier 3)",
+  "record": "Items.Recipe_Rare_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Copperhead_Genesis\")",
+  "Title": "Crafting Spec: Psalm 11:6 (Tier 4)",
+  "record": "Items.Recipe_Epic_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Copperhead_Genesis\")",
+  "Title": "Crafting Spec: Psalm 11:6 (Tier 5)",
+  "record": "Items.Recipe_Legendary_Copperhead_Genesis"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Ajax_Moron\")",
+  "Title": "Crafting Spec: Moron Labe (Tier 1)",
+  "record": "Items.Recipe_Common_Ajax_Moron"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Ajax_Moron\")",
+  "Title": "Crafting Spec: Moron Labe (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Ajax_Moron"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Ajax_Moron\")",
+  "Title": "Crafting Spec: Moron Labe (Tier 3)",
+  "record": "Items.Recipe_Rare_Ajax_Moron"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Ajax_Moron\")",
+  "Title": "Crafting Spec: Moron Labe (Tier 4)",
+  "record": "Items.Recipe_Epic_Ajax_Moron"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Ajax_Moron\")",
+  "Title": "Crafting Spec: Moron Labe (Tier 5)",
+  "record": "Items.Recipe_Legendary_Ajax_Moron"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Igla_Sovereign\")",
+  "Title": "Crafting Spec: Sovereign (Tier 1)",
+  "record": "Items.Recipe_Common_Igla_Sovereign"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Igla_Sovereign\")",
+  "Title": "Crafting Spec: Sovereign (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Igla_Sovereign"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Igla_Sovereign\")",
+  "Title": "Crafting Spec: Sovereign (Tier 3)",
+  "record": "Items.Recipe_Rare_Igla_Sovereign"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Igla_Sovereign\")",
+  "Title": "Crafting Spec: Sovereign (Tier 4)",
+  "record": "Items.Recipe_Epic_Igla_Sovereign"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Igla_Sovereign\")",
+  "Title": "Crafting Spec: Sovereign (Tier 5)",
+  "record": "Items.Recipe_Legendary_Igla_Sovereign"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Pulsar_Buzzsaw\")",
+  "Title": "Crafting Spec: Buzzsaw (Tier 1)",
+  "record": "Items.Recipe_Common_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Pulsar_Buzzsaw\")",
+  "Title": "Crafting Spec: Buzzsaw (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Pulsar_Buzzsaw\")",
+  "Title": "Crafting Spec: Buzzsaw (Tier 3)",
+  "record": "Items.Recipe_Rare_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Pulsar_Buzzsaw\")",
+  "Title": "Crafting Spec: Buzzsaw (Tier 4)",
+  "record": "Items.Recipe_Epic_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Pulsar_Buzzsaw\")",
+  "Title": "Crafting Spec: Buzzsaw (Tier 5)",
+  "record": "Items.Recipe_Legendary_Pulsar_Buzzsaw"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Nekomata_Breakthrough\")",
+  "Title": "Crafting Spec: Breakthrough (Tier 1)",
+  "record": "Items.Recipe_Common_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Nekomata_Breakthrough\")",
+  "Title": "Crafting Spec: Breakthrough (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Nekomata_Breakthrough\")",
+  "Title": "Crafting Spec: Breakthrough (Tier 3)",
+  "record": "Items.Recipe_Rare_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Nekomata_Breakthrough\")",
+  "Title": "Crafting Spec: Breakthrough (Tier 4)",
+  "record": "Items.Recipe_Epic_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Nekomata_Breakthrough\")",
+  "Title": "Crafting Spec: Breakthrough (Tier 5)",
+  "record": "Items.Recipe_Legendary_Nekomata_Breakthrough"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Burya_Comrade\")",
+  "Title": "Crafting Spec: Comrade's Hammer (Tier 1)",
+  "record": "Items.Recipe_Common_Burya_Comrade"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Burya_Comrade\")",
+  "Title": "Crafting Spec: Comrade's Hammer (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Burya_Comrade"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Burya_Comrade\")",
+  "Title": "Crafting Spec: Comrade's Hammer (Tier 3)",
+  "record": "Items.Recipe_Rare_Burya_Comrade"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Burya_Comrade\")",
+  "Title": "Crafting Spec: Comrade's Hammer (Tier 4)",
+  "record": "Items.Recipe_Epic_Burya_Comrade"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Burya_Comrade\")",
+  "Title": "Crafting Spec: Comrade's Hammer (Tier 5)",
+  "record": "Items.Recipe_Legendary_Burya_Comrade"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Dian_Yinglong\")",
+  "Title": "Crafting Spec: Yinglong (Tier 1)",
+  "record": "Items.Recipe_Common_Dian_Yinglong"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Dian_Yinglong\")",
+  "Title": "Crafting Spec: Yinglong (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Dian_Yinglong"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Dian_Yinglong\")",
+  "Title": "Crafting Spec: Yinglong (Tier 3)",
+  "record": "Items.Recipe_Rare_Dian_Yinglong"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Dian_Yinglong\")",
+  "Title": "Crafting Spec: Yinglong (Tier 4)",
+  "record": "Items.Recipe_Epic_Dian_Yinglong"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Dian_Yinglong\")",
+  "Title": "Crafting Spec: Yinglong (Tier 5)",
+  "record": "Items.Recipe_Legendary_Dian_Yinglong"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Tactician_Headsman\")",
+  "Title": "Crafting Spec: The Headsman (Tier 1)",
+  "record": "Items.Recipe_Common_Tactician_Headsman"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Tactician_Headsman\")",
+  "Title": "Crafting Spec: The Headsman (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Tactician_Headsman"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Tactician_Headsman\")",
+  "Title": "Crafting Spec: The Headsman (Tier 3)",
+  "record": "Items.Recipe_Rare_Tactician_Headsman"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Tactician_Headsman\")",
+  "Title": "Crafting Spec: The Headsman (Tier 4)",
+  "record": "Items.Recipe_Epic_Tactician_Headsman"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Tactician_Headsman\")",
+  "Title": "Crafting Spec: The Headsman (Tier 5)",
+  "record": "Items.Recipe_Legendary_Tactician_Headsman"
+ },
+ {
+  "Tags": "Weapon, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Common_Borg4a_HauntedGun\")",
+  "Title": "Crafting Spec: Erebus (Tier 1)",
+  "record": "Items.Recipe_Common_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Weapon, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Uncommon_Borg4a_HauntedGun\")",
+  "Title": "Crafting Spec: Erebus (Tier 2)",
+  "record": "Items.Recipe_Uncommon_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Weapon, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Rare_Borg4a_HauntedGun\")",
+  "Title": "Crafting Spec: Erebus (Tier 3)",
+  "record": "Items.Recipe_Rare_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Weapon, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Epic_Borg4a_HauntedGun\")",
+  "Title": "Crafting Spec: Erebus (Tier 4)",
+  "record": "Items.Recipe_Epic_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Weapon, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_Borg4a_HauntedGun\")",
+  "Title": "Crafting Spec: Erebus (Tier 5)",
+  "record": "Items.Recipe_Legendary_Borg4a_HauntedGun"
+ },
+ {
+  "Tags": "Cyberdeck, PL",
+  "Command": "Game.AddToInventory(\"Items.Recipe_Legendary_HauntedCyberdeck\")",
+  "Title": "Crafting Spec: Militech Canto Mk.6 (Tier 5)",
+  "record": "Items.Recipe_Legendary_HauntedCyberdeck"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonUnityRecipe\")",
+  "Title": "Crafting Spec: Unity (Tier 1)",
+  "record": "Items.CommonUnityRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonUnityRecipe\")",
+  "Title": "Crafting Spec: Unity (Tier 2)",
+  "record": "Items.UncommonUnityRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareUnityRecipe\")",
+  "Title": "Crafting Spec: Unity (Tier 3)",
+  "record": "Items.RareUnityRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicUnityRecipe\")",
+  "Title": "Crafting Spec: Unity (Tier 4)",
+  "record": "Items.EpicUnityRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryUnityRecipe\")",
+  "Title": "Crafting Spec: Unity (Tier 5)",
+  "record": "Items.LegendaryUnityRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonLibertyRecipe\")",
+  "Title": "Crafting Spec: Liberty (Tier 1)",
+  "record": "Items.CommonLibertyRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonLibertyRecipe\")",
+  "Title": "Crafting Spec: Liberty (Tier 2)",
+  "record": "Items.UncommonLibertyRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareLibertyRecipe\")",
+  "Title": "Crafting Spec: Liberty (Tier 3)",
+  "record": "Items.RareLibertyRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicLibertyRecipe\")",
+  "Title": "Crafting Spec: Liberty (Tier 4)",
+  "record": "Items.EpicLibertyRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryLibertyRecipe\")",
+  "Title": "Crafting Spec: Liberty (Tier 5)",
+  "record": "Items.LegendaryLibertyRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonLexingtonRecipe\")",
+  "Title": "Crafting Spec: M-10AF Lexington (Tier 1)",
+  "record": "Items.CommonLexingtonRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonLexingtonRecipe\")",
+  "Title": "Crafting Spec: M-10AF Lexington (Tier 2)",
+  "record": "Items.UncommonLexingtonRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareLexingtonRecipe\")",
+  "Title": "Crafting Spec: M-10AF Lexington (Tier 3)",
+  "record": "Items.RareLexingtonRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicLexingtonRecipe\")",
+  "Title": "Crafting Spec: M-10AF Lexington (Tier 4)",
+  "record": "Items.EpicLexingtonRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryLexingtonRecipe\")",
+  "Title": "Crafting Spec: M-10AF Lexington (Tier 5)",
+  "record": "Items.LegendaryLexingtonRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonOmahaRecipe\")",
+  "Title": "Crafting Spec: M-76e Omaha (Tier 1)",
+  "record": "Items.CommonOmahaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonOmahaRecipe\")",
+  "Title": "Crafting Spec: M-76e Omaha (Tier 2)",
+  "record": "Items.UncommonOmahaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareOmahaRecipe\")",
+  "Title": "Crafting Spec: M-76e Omaha (Tier 3)",
+  "record": "Items.RareOmahaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicOmahaRecipe\")",
+  "Title": "Crafting Spec: M-76e Omaha (Tier 4)",
+  "record": "Items.EpicOmahaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryOmahaRecipe\")",
+  "Title": "Crafting Spec: M-76e Omaha (Tier 5)",
+  "record": "Items.LegendaryOmahaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonChaoRecipe\")",
+  "Title": "Crafting Spec: A-22B Chao (Tier 1)",
+  "record": "Items.CommonChaoRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonChaoRecipe\")",
+  "Title": "Crafting Spec: A-22B Chao (Tier 2)",
+  "record": "Items.UncommonChaoRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareChaoRecipe\")",
+  "Title": "Crafting Spec: A-22B Chao (Tier 3)",
+  "record": "Items.RareChaoRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicChaoRecipe\")",
+  "Title": "Crafting Spec: A-22B Chao (Tier 4)",
+  "record": "Items.EpicChaoRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryChaoRecipe\")",
+  "Title": "Crafting Spec: A-22B Chao (Tier 5)",
+  "record": "Items.LegendaryChaoRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonYukimuraRecipe\")",
+  "Title": "Crafting Spec: HJKE-11 Yukimura (Tier 1)",
+  "record": "Items.CommonYukimuraRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonYukimuraRecipe_2\")",
+  "Title": "Crafting Spec: HJKE-11 Yukimura (Tier 2)",
+  "record": "Items.UncommonYukimuraRecipe_2"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareYukimuraRecipe\")",
+  "Title": "Crafting Spec: HJKE-11 Yukimura (Tier 3)",
+  "record": "Items.RareYukimuraRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicYukimuraRecipe\")",
+  "Title": "Crafting Spec: HJKE-11 Yukimura (Tier 4)",
+  "record": "Items.EpicYukimuraRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryYukimuraRecipe\")",
+  "Title": "Crafting Spec: HJKE-11 Yukimura (Tier 5)",
+  "record": "Items.LegendaryYukimuraRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonKenshinRecipe\")",
+  "Title": "Crafting Spec: JKE-X2 Kenshin (Tier 1)",
+  "record": "Items.CommonKenshinRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UnommonKenshinRecipe\")",
+  "Title": "Crafting Spec: JKE-X2 Kenshin (Tier 2)",
+  "record": "Items.UnommonKenshinRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareKenshinRecipe\")",
+  "Title": "Crafting Spec: JKE-X2 Kenshin (Tier 3)",
+  "record": "Items.RareKenshinRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicKenshinRecipe\")",
+  "Title": "Crafting Spec: JKE-X2 Kenshin (Tier 4)",
+  "record": "Items.EpicKenshinRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryKenshinRecipe\")",
+  "Title": "Crafting Spec: JKE-X2 Kenshin (Tier 5)",
+  "record": "Items.LegendaryKenshinRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonNueRecipe\")",
+  "Title": "Crafting Spec: Nue (Tier 1)",
+  "record": "Items.CommonNueRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonNueRecipe_2\")",
+  "Title": "Crafting Spec: Nue (Tier 2)",
+  "record": "Items.UncommonNueRecipe_2"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareNueRecipe\")",
+  "Title": "Crafting Spec: Nue (Tier 3)",
+  "record": "Items.RareNueRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicNueRecipe\")",
+  "Title": "Crafting Spec: Nue (Tier 4)",
+  "record": "Items.EpicNueRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryNueRecipe\")",
+  "Title": "Crafting Spec: Nue (Tier 5)",
+  "record": "Items.LegendaryNueRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonGritRecipe\")",
+  "Title": "Crafting Spec: HA-4 Grit (Tier 1)",
+  "record": "Items.CommonGritRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonGritRecipe\")",
+  "Title": "Crafting Spec: HA-4 Grit (Tier 2)",
+  "record": "Items.UncommonGritRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareGritRecipe\")",
+  "Title": "Crafting Spec: HA-4 Grit (Tier 3)",
+  "record": "Items.RareGritRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicGritRecipe\")",
+  "Title": "Crafting Spec: HA-4 Grit (Tier 4)",
+  "record": "Items.EpicGritRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryGritRecipe\")",
+  "Title": "Crafting Spec: HA-4 Grit (Tier 5)",
+  "record": "Items.LegendaryGritRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonTiconRecipe\")",
+  "Title": "Crafting Spec: Ticon (Tier 1)",
+  "record": "Items.CommonTiconRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonTiconRecipe\")",
+  "Title": "Crafting Spec: Ticon (Tier 2)",
+  "record": "Items.UncommonTiconRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareTiconRecipe\")",
+  "Title": "Crafting Spec: Ticon (Tier 3)",
+  "record": "Items.RareTiconRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicTiconRecipe\")",
+  "Title": "Crafting Spec: Ticon (Tier 4)",
+  "record": "Items.EpicTiconRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryTiconRecipe\")",
+  "Title": "Crafting Spec: Ticon (Tier 5)",
+  "record": "Items.LegendaryTiconRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonBuryaRecipe\")",
+  "Title": "Crafting Spec: RT-46 Burya (Tier 1)",
+  "record": "Items.CommonBuryaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonBuryaRecipe\")",
+  "Title": "Crafting Spec: RT-46 Burya (Tier 2)",
+  "record": "Items.UncommonBuryaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareBuryaRecipe\")",
+  "Title": "Crafting Spec: RT-46 Burya (Tier 3)",
+  "record": "Items.RareBuryaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicBuryaRecipe\")",
+  "Title": "Crafting Spec: RT-46 Burya (Tier 4)",
+  "record": "Items.EpicBuryaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryBuryaRecipe\")",
+  "Title": "Crafting Spec: RT-46 Burya (Tier 5)",
+  "record": "Items.LegendaryBuryaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonQuasarRecipe\")",
+  "Title": "Crafting Spec: DR-12 Quasar (Tier 1)",
+  "record": "Items.CommonQuasarRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonQuasarRecipe\")",
+  "Title": "Crafting Spec: DR-12 Quasar (Tier 2)",
+  "record": "Items.UncommonQuasarRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareQuasarRecipe\")",
+  "Title": "Crafting Spec: DR-12 Quasar (Tier 3)",
+  "record": "Items.RareQuasarRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicQuasarRecipe\")",
+  "Title": "Crafting Spec: DR-12 Quasar (Tier 4)",
+  "record": "Items.EpicQuasarRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryQuasarRecipe\")",
+  "Title": "Crafting Spec: DR-12 Quasar (Tier 5)",
+  "record": "Items.LegendaryQuasarRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonNovaRecipe\")",
+  "Title": "Crafting Spec: DR-5 Nova (Tier 1)",
+  "record": "Items.CommonNovaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonNovaRecipe\")",
+  "Title": "Crafting Spec: DR-5 Nova (Tier 2)",
+  "record": "Items.UncommonNovaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareNovaRecipe\")",
+  "Title": "Crafting Spec: DR-5 Nova (Tier 3)",
+  "record": "Items.RareNovaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicNovaRecipe\")",
+  "Title": "Crafting Spec: DR-5 Nova (Tier 4)",
+  "record": "Items.EpicNovaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryNovaRecipe\")",
+  "Title": "Crafting Spec: DR-5 Nova (Tier 5)",
+  "record": "Items.LegendaryNovaRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonOvertureRecipe\")",
+  "Title": "Crafting Spec: Overture (Tier 1)",
+  "record": "Items.CommonOvertureRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonOvertureRecipe\")",
+  "Title": "Crafting Spec: Overture (Tier 2)",
+  "record": "Items.UncommonOvertureRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareOvertureRecipe\")",
+  "Title": "Crafting Spec: Overture (Tier 3)",
+  "record": "Items.RareOvertureRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicOvertureRecipe\")",
+  "Title": "Crafting Spec: Overture (Tier 4)",
+  "record": "Items.EpicOvertureRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryOvertureRecipe\")",
+  "Title": "Crafting Spec: Overture (Tier 5)",
+  "record": "Items.LegendaryOvertureRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.CommonMetelRecipe\")",
+  "Title": "Crafting Spec: Metel (Tier 1)",
+  "record": "Items.CommonMetelRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.UncommonMetelRecipe\")",
+  "Title": "Crafting Spec: Metel (Tier 2)",
+  "record": "Items.UncommonMetelRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.RareMetelRecipe\")",
+  "Title": "Crafting Spec: Metel (Tier 3)",
+  "record": "Items.RareMetelRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.EpicMetelRecipe\")",
+  "Title": "Crafting Spec: Metel (Tier 4)",
+  "record": "Items.EpicMetelRecipe"
+ },
+ {
+  "Tags": "Weapon",
+  "Command": "Game.AddToInventory(\"Items.LegendaryMetelRecipe\")",
+  "Title": "Crafting Spec: Metel (Tier 5)",
+  "record": "Items.LegendaryMetelRecipe"
+ }
+]

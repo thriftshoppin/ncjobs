@@ -20,7 +20,7 @@ check("zero qty", select(2, M.priceOrder(C, bar, { { drink = "broseph", qty = 0 
 check("float qty", select(2, M.priceOrder(C, bar, { { drink = "broseph", qty = 1.5 } })) == "invalid_quantity")
 check("too many of one", select(2, M.priceOrder(C, bar, { { drink = "broseph", qty = 5 } })) == "too_many_of_one")
 check("too many items", select(2, M.priceOrder(C, bar, {
-    { drink = "broseph", qty = 4 }, { drink = "synth_soda", qty = 3 } })) == "too_many_items")
+    { drink = "broseph", qty = 4 }, { drink = "nicola", qty = 3 } })) == "too_many_items")
 check("empty", select(2, M.priceOrder(C, bar, {})) == "empty_order")
 
 -- tip and split always sum to the total
@@ -99,5 +99,13 @@ check("pour order has no price", o.price == nil)
 local tk = { id = "abc", attempt = 1 }
 check("op ids distinct", M.payOp(tk) ~= M.settleOp(tk) and M.settleOp(tk) ~= M.refundOp(tk))
 
+-- every drink is a real base-game consumable
+local known = {}
+local f = io.open("../reference/console_commands/consumables.json")
+if f then
+    for rec in f:read("a"):gmatch('"record": "([^"]+)"') do known[rec] = true end
+    f:close()
+    for id, d in pairs(C.drinks) do check("native item " .. id, d.item and known[d.item], d.item) end
+end
 print(("model: %d checks, %d failed"):format(runs, fails))
 os.exit(fails == 0 and 0 or 1)

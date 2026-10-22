@@ -1,0 +1,491 @@
+[
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_hella_player', true, false)",
+  "Title": "Archer Hella EC-D i360"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_mahir_supron_player', true, false)",
+  "Title": "Mahir Supron FS3"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_makigai_maimai_player', true, false)",
+  "Title": "Makigai MaiMai P126"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_colby_player', true, false)",
+  "Title": "Thorton Colby C125"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_colby_pickup_player', true, false)",
+  "Title": "Thorton Colby CX 410 Butte"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_colby_pickup_02_player', true, false)",
+  "Title": "Thorton Colby CX 410 \"Gran Butte\""
+ },
+ {
+  "Tags": "Economy, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_colby_nomad_player', true, false)",
+  "Title": "Thorton Colby \"Little Mule\""
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_galena_player', true, false)",
+  "Title": "Thorton Galena G240"
+ },
+ {
+  "Tags": "Economy, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_galena_nomad_player', true, false)",
+  "Title": "Thorton Galena \"Gecko\""
+ },
+ {
+  "Tags": "Economy, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_galena_bobas_player', true, false)",
+  "Title": "Thorton Galena GA40xt \"Rattler\""
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_thorton_mackinaw_player', true, false)",
+  "Title": "Thorton Mackinaw MTL1"
+ },
+ {
+  "Tags": "Heavy Duty, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_thorton_mackinaw_ncu_player', true, false)",
+  "Title": "Thorton Mackinaw \"Beast\""
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_villefort_alvarado_valentinos_player', true, false)",
+  "Title": "Villefort Alvarado \"Vato\""
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_villefort_alvarado_player', true, false)",
+  "Title": "Villefort Alvarado V4F 570 Delegate"
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_villefort_columbus_player', true, false)",
+  "Title": "Villefort Columbus V340-F Freight"
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_villefort_cortes_player', true, false)",
+  "Title": "Villefort Cortes V5000 Valor"
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_villefort_cortes_delamain_player', true, false)",
+  "Title": "Delamain No.21"
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_chevalier_emperor_player', true, false)",
+  "Title": "Chevalier Emperor 620 Ragnar"
+ },
+ {
+  "Tags": "Executive",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_chevalier_thrax_player', true, false)",
+  "Title": "Chevalier Thrax 338 Jefferson"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_jackie_player', true, false)",
+  "Title": "Jackie's ARCH"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_jackie_tuned_player', true, false)",
+  "Title": "Jackie's Tuned ARCH"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_player', true, false)",
+  "Title": "ARCH Nazaré"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_tyger_player', true, false)",
+  "Title": "ARCH Nazaré \"Itsumade\""
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike3_brennan_apollo_player', true, false)",
+  "Title": "Brennan Apollo"
+ },
+ {
+  "Tags": "Motorcycle, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike3_brennan_apollo_nomad_player', true, false)",
+  "Title": "Brennan Apollo \"Scorpion\""
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike1_yaiba_kusanagi_tyger_player', true, false)",
+  "Title": "Yaiba Kusanagi \"Mizuchi\""
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike1_yaiba_kusanagi_player', true, false)",
+  "Title": "Yaiba Kusanagi CT-3X"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_porsche_911turbo_player', true, false)",
+  "Title": "Porsche 911 Turbo (930)"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_quartz_player', true, false)",
+  "Title": "Archer Quartz EC-T2 r660"
+ },
+ {
+  "Tags": "Sport, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_nomad_player', true, false)",
+  "Title": "Mizutani Shion \"Coyote\" (Blue/Yellow)"
+ },
+ {
+  "Tags": "Sport, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_nomad_02_player', true, false)",
+  "Title": "Mizutani Shion \"Coyote\" (Red)"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_player', true, false)",
+  "Title": "Mizutani Shion MZ2"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_turbo_player', true, false)",
+  "Title": "Quadra Turbo-R 740"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_turbo_r_player', true, false)",
+  "Title": "Quadra Turbo-R V-Tech"
+ },
+ {
+  "Tags": "Sport, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_nomad_ncu_player', true, false)",
+  "Title": "Quadra Type-66 \"Cthulhu\""
+ },
+ {
+  "Tags": "Sport, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_nomad_player', true, false)",
+  "Title": "Quadra Type-66 \"Javelina\""
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_player', true, false)",
+  "Title": "Quadra Type-66 \"Jen Rowley\""
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_avenger_player', true, false)",
+  "Title": "Quadra Type-66 Avenger"
+ },
+ {
+  "Tags": "Hypercar",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_rayfield_aerondight_player', true, false)",
+  "Title": "Rayfield Aerondight \"Guinevere\""
+ },
+ {
+  "Tags": "Hypercar",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_rayfield_caliburn_player', true, false)",
+  "Title": "Rayfield Caliburn"
+ },
+ {
+  "Tags": "Hypercar",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_rayfield_caliburn_02_player', true, false)",
+  "Title": "Rayfield Caliburn \"Murkmobile\""
+ },
+ {
+  "Tags": "Hypercar",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_herrera_outlaw_player', true, false)",
+  "Title": "Herrera Outlaw GTS"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_bandit_player', true, false)",
+  "Title": "Archer Quartz \"Bandit\""
+ },
+ {
+  "Tags": "Heavy Duty",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_thorton_mackinaw_player_02', true, false)",
+  "Title": "Thorton Mackinaw \"Saguaro\""
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_02_player', true, false)",
+  "Title": "Quadra Type-66 640 TS"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_quartz_nomad_player', true, false)",
+  "Title": "Archer Quartz \"Sidewinder\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Heavy Duty",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_utility4_thorton_mackinaw_bmf_player', true, false)",
+  "Title": "Thorton Mackinaw \"Demiurge\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport, Nomad, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_nomad_tribute', true, false)",
+  "Title": "Quadra Quadra Type-66 \"Hoon\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Hypercar, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_herrera_outlaw_heist_player', true, false)",
+  "Title": "Herrera Outlaw \"Weiler\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Hypercar, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_herrera_riptide_player', true, false)",
+  "Title": "Herrera Riptide \"Terrier\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, Nomad, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_galena_nomad_player_missiles', true, false)",
+  "Title": "Thorton Galena \"Locust\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_sport_r7_player', true, false)",
+  "Title": "Quadra Sport R-7 \"Chiaroscuro\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_sport_r7_mrhands', true, false)",
+  "Title": "Quadra Sport R-7 \"Sterling\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_sport_r7_netrunner', true, false)",
+  "Title": "Quadra Sport R-7 \"Charon\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_quadra_sport_r7_player_02', true, false)",
+  "Title": "Quadra Sport R-7 \"Vigilante\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport, Nomad, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_nomad_player_missiles', true, false)",
+  "Title": "Mizutani Shion \"Samum\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport, Nomad, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_nomad_player_03', true, false)",
+  "Title": "Quadra Type-66 \"Wingate\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_villefort_alvarado_hearse_player', true, false)",
+  "Title": "Villefort Alvarado V4FH 570 Herman",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_villefort_deleon_player', true, false)",
+  "Title": "Villefort Deleon \"Vindicator\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_linas_player', true, false)",
+  "Title": "Malina-mobile",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, Nomad",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_quartz_nomad_player_02', true, false)",
+  "Title": "Archer Quartz \"Specter\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_mizutani_hozuki_player', true, false)",
+  "Title": "Mizutani Hozuki \"Hoseki\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, Nomad, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_colby_nomad_player_missiles', true, false)",
+  "Title": "Thorton Colby \"Vulture\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, BARGHEST, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_colby_pickup_kurtz_player', true, false)",
+  "Title": "Thorton Colby BARGHEST",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_thorton_merrimac_player', true, false)",
+  "Title": "Thorton Merrimac \"Warlock\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy, BARGHEST, Combat",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_mahir_supron_kurtz_player', true, false)",
+  "Title": "Mahir Supron \"Trailbruiser\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_makigai_tanishi_player', true, false)",
+  "Title": "Makigai Tanishi \"Kuma\"",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_makigai_tanishi_player_mr_hands', true, false)",
+  "Title": "Makigai Tanishi T400",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Heavy Duty",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard3_militech_hellhound_player', true, false)",
+  "Title": "Militech Hellhound",
+  "col4": "Added in Phantom Liberty."
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_porsche_911turbo_cabrio_player', true, false)",
+  "Title": "Porsche 911 Turbo Cabriolet (930)",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike1_yaiba_kusanagi_player_02', true, false)",
+  "Title": "Yaiba Kusanagi \"Peacekeeper\"",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike1_yaiba_kusanagi_player_03', true, false)",
+  "Title": "Yaiba Kusanagi \"Akashita\"",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_player_02', true, false)",
+  "Title": "ARCH Nazaré \"Racer\"",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike2_arch_player_03', true, false)",
+  "Title": "ARCH Nazaré \"Kobold\"",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike3_brennan_apollo_player_02', true, false)",
+  "Title": "Brennan Apollo 650-S",
+  "col4": "Added in Patch 2.1"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_targa_player', true, false)",
+  "Title": "Mizutani Shion Targa MZT",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_mizutani_shion_base_player', true, false)",
+  "Title": "Mizutani Shion MZ1",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_base_player', true, false)",
+  "Title": "Quadra Type-66 640 TS",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_quadra_type66_gt_player', true, false)",
+  "Title": "Quadra Type-66 680 TS",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Economy, PL",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard25_mahir_supron_gt_player', true, false)",
+  "Title": "Mahir Supron FS3-T",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_archer_quartz_base_player', true, false)",
+  "Title": "Archer Quartz EC-L r275",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_colby_gt_player', true, false)",
+  "Title": "Thorton Colba CST40",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_thorton_galena_gt_player', true, false)",
+  "Title": "Thorton Galena GA32t",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Economy",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_standard2_mizutani_hozuki_gt_player', true, false)",
+  "Title": "Mizutani Hozuki MH2",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Sport, PL",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport2_villefort_deleon_sport_player', true, false)",
+  "Title": "Villefort Deleon V410-S Coupé",
+  "col4": "Added in Patch 2.2"
+ },
+ {
+  "Tags": "Motorcycle",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sportbike1_yaiba_muramasa_naked', true, false)",
+  "Title": "Yaiba ASM-R250 Muramasa",
+  "col4": "Added in Patch 2.3"
+ },
+ {
+  "Tags": "Sport",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_yaiba_semimaru_player', true, false)",
+  "Title": "Yaiba ARV-Q340 Semimaru",
+  "col4": "Added in Patch 2.3"
+ },
+ {
+  "Tags": "Heavy Duty",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_utility4_chevalier_legatus_player', true, false)",
+  "Title": "Chevillon Legatus 450 Aquila",
+  "col4": "Added in Patch 2.3"
+ },
+ {
+  "Tags": "Hypercar",
+  "Command": "vs = Game.GetVehicleSystem() vs:EnablePlayerVehicle('Vehicle.v_sport1_rayfield_caliburn_mordred_player', true, false)",
+  "Title": "Rayfield Caliburn \"Mordred\"",
+  "col4": "Added in Patch 2.3"
+ }
+]
