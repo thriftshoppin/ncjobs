@@ -20,10 +20,12 @@ platform, built on a patched fork of the official
 - **Players only, part-time.** Clock in at the bar's station, out by walking away. No salary:
   bartenders earn their cut and tips per served ticket.
 - **The loop.** A customer sits; the bartender looks at them and presses E to hand the menu;
-  the customer orders; the bartender sends the bill; the customer pays at a kiosk; the
-  bartender pours cocktails at the station and grabs bottles from the cooler; then serves.
-- **Tabs.** Customers order only what they can afford, drink, and close the tab at a kiosk. Leaving the club with an unpaid tab charges it plus the manager's walkout fee.
-  Every charge is one operation with its own id, so retries never charge twice.
+  the customer orders onto their tab; the bartender pours cocktails at the station and grabs
+  bottles from the cooler, then serves. Repeat rounds; close the tab at the kiosk with a tip.
+- **Tabs.** Customers can only order what they can afford (cash + bank), and may carry drinks
+  anywhere in the club. Leaving the club with an unpaid tab charges it plus the manager's
+  walkout fee; what they can't cover becomes debt that blocks new tabs. Every charge is one
+  operation with its own id, so retries never charge twice.
 - **Canon drinks.** The Johnny Silverhand, The Jackie Welles and The David Martinez use the
   game's own item text and records. 74 base-game bottles and cans are on the menu too.
 - **Pour and mix.** Hold to pour to a line, drop ice, shake or stir on the beat. The beat gets
