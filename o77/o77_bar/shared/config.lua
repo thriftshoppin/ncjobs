@@ -116,11 +116,14 @@ C.drinks = {
             { id = "whiskey", type = "pour", label = "O'Dickin whiskey", ml = 60, color = "#b5651d" },
         },
     },
-    -- Canon: a tequila old fashioned with a splash of cerveza, lime juice and a chili garnish.
+    -- The three Afterlife homages. Descriptions are the in-game item text (Cyberpunk Wiki); the
+    -- game sells each for 150 eddies from Claire.
+    -- In game: "A tequila old fashioned with a splash of beer and a chili garnish." Lime juice is
+    -- our addition (not in the item text): keep or drop the `lime` step.
     johnny_silverhand = {
         item = "Items.TopQualityAlcohol8", glass = "rocks",
-        label = "Johnny Silverhand", price = 120, alcohol = 3,
-        flavour = "Tequila old fashioned, a splash of cerveza, lime, chili. Wake up, samurai.",
+        label = "The Johnny Silverhand", price = 150, alcohol = 3,
+        flavour = "A tequila old fashioned with a splash of beer and a chili garnish. For the rockerboy who never gave up.",
         steps = {
             { id = "tequila", type = "pour", label = "Centzon Totochtin", ml = 60, color = "#e8c56a" },
             { id = "agave", type = "pour", label = "Agave syrup", ml = 10, color = "#c98a2b" },
@@ -131,7 +134,31 @@ C.drinks = {
             { id = "cerveza", type = "pour", label = "Splash of cerveza", ml = 30, color = "#d9a03a" },
             { id = "chili", type = "count", label = "Chili garnish", verb = "Garnish", count = 1 },
         },
+    },    -- In game: "A shot of vodka, lime juice, ginger beer and, most importantly... a splash of love."
+    jackie_welles = {
+        item = "Items.TopQualityAlcohol9", glass = "highball",
+        label = "The Jackie Welles", price = 150, alcohol = 3,
+        flavour = "A shot of vodka, lime juice, ginger beer and, most importantly, a splash of love.",
+        steps = {
+            { id = "ice", type = "count", label = "Ice", verb = "Drop a cube", count = 3 },
+            { id = "vodka", type = "pour", label = "Bolshevik vodka", ml = 45, color = "#dfe8ee" },
+            { id = "lime", type = "pour", label = "Lime juice", ml = 15, color = "#b8e05a" },
+            { id = "ginger", type = "pour", label = "Ginger beer", ml = 120, color = "#c9a25a" },
+            { id = "love", type = "count", label = "A splash of love", verb = "Add a splash of love", count = 1 },
+        },
     },
+    -- In game: "A shot of vodka on the rocks, topped with NiCola. Aim high and go out with a bang."
+    david_martinez = {
+        item = "Items.TopQualityAlcohol10", glass = "rocks",
+        label = "The David Martinez", price = 150, alcohol = 3,
+        flavour = "A shot of vodka on the rocks, topped with NiCola. Aim high and go out with a bang.",
+        steps = {
+            { id = "ice", type = "count", label = "Ice", verb = "Drop a cube", count = 2 },
+            { id = "vodka", type = "pour", label = "Bolshevik vodka", ml = 45, color = "#dfe8ee" },
+            { id = "nicola", type = "pour", label = "NiCola", ml = 90, color = "#7a1f1a" },
+        },
+    },
+
 }
 
 -- Bars. Each is data: add Lizzie's or El Coyote here, no code.
@@ -153,7 +180,7 @@ C.bars = {
             { position = { x = -1451.5, y = 1012.5, z = 17.8 }, label = "Afterlife - bar" },
         },
         stools = {},
-        menu = { "broseph", "nicola", "odickin_rocks", "johnny_silverhand" },
+        menu = { "broseph", "nicola", "odickin_rocks", "johnny_silverhand", "jackie_welles", "david_martinez" },
         color = "#FF5F58",
     },
 }

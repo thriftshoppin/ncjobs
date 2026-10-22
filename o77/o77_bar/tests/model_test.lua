@@ -12,7 +12,7 @@ end
 -- pricing
 local lines, sub = M.priceOrder(C, bar, { { drink = "johnny_silverhand", qty = 1 }, { drink = "broseph", qty = 2 } })
 check("price lines", lines and #lines == 2)
-check("subtotal", sub == 180, sub)
+check("subtotal", sub == 210, sub)
 local merged = M.priceOrder(C, bar, { { drink = "broseph", qty = 1 }, { drink = "broseph", qty = 2 } })
 check("duplicates merge", merged and #merged == 1 and merged[1].qty == 3)
 check("not on menu", select(2, M.priceOrder(C, bar, { { drink = "nope", qty = 1 } })) == "not_on_menu")
@@ -25,6 +25,7 @@ check("empty", select(2, M.priceOrder(C, bar, {})) == "empty_order")
 
 -- tip and split always sum to the total
 check("tip 15% of 180", M.tipFor(C, 180, 15) == 27)
+check("legend drinks cost 150", C.drinks.jackie_welles.price == 150 and C.drinks.david_martinez.price == 150)
 check("odd tip rejected", select(2, M.tipFor(C, 180, 13)) == "invalid_tip")
 for _, subtotal in ipairs({ 0, 1, 20, 30, 179, 180, 999 }) do
     for _, pct in ipairs(C.tips) do

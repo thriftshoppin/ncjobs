@@ -154,10 +154,10 @@ do
     check("1 ready", t.state == "ready")
     check("1 serve", svc:lockOn(2, 1) == "served")
     check("1 settled", W.saved[t.id].state == "settled")
-    -- 120 + 30 = 150, tip 15 % = 23 (22.5 rounded), total 173; till 60 % of 150 = 90; bartender 60 + 23 = 83
-    check("1 customer paid total", W.bal["sub:cust:cash"] == 500 - 173, W.bal["sub:cust:cash"])
-    check("1 till", W.bal[TILL] == 90, W.bal[TILL])
-    check("1 bartender cut + tip", W.bal["sub:barb:cash"] == 83, W.bal["sub:barb:cash"])
+    -- 150 + 30 = 180, tip 15 % = 27, total 207; till 60 % of 180 = 108; bartender 72 + 27 = 99
+    check("1 customer paid total", W.bal["sub:cust:cash"] == 500 - 207, W.bal["sub:cust:cash"])
+    check("1 till", W.bal[TILL] == 108, W.bal[TILL])
+    check("1 bartender cut + tip", W.bal["sub:barb:cash"] == 99, W.bal["sub:barb:cash"])
     check("1 ticket gone", svc.tickets[t.id] == nil and svc.ticketOf[1] == nil)
     local served = 0
     for _, e in ipairs(W.events) do if e[1] == "o77_bar:served" then served = served + 1 end end
@@ -296,7 +296,7 @@ end
 do
     local W, svc = setup()
     local start = W.total()
-    local t, ok, why = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 4 } }, 20, "cash")  -- 576 > 500 cash
+    local t, ok, why = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 4 } }, 20, "cash")  -- 720 > 500 cash
     check("11 refused", ok == nil and why == "insufficient_funds", why)
     check("11 back to billed", t.state == "billed")
     local ok2 = svc:kioskPay(1, t.id, 20, "bank")
