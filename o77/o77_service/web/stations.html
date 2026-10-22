@@ -416,10 +416,10 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
           <div class="hint">${esc(s.verb)}: slide to keep the ${esc(s.gauge.toLowerCase())} marker inside the band for ${s.seconds} s. The clock starts when you move it. Drag the slider or the gauge, or use ← →.</div>`;
         const dial = $("dial"); dial.oninput = () => { L.target = dial.value / 1000; L.started = true; };
         dial.onpointerdown = () => { L.started = true; }; },
-      trace() { L.pts = L.pts || []; L.hit = L.hit || new Set();
-        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">0%</span></div>
-          <div class="hint">Drag along the dashed line, start to finish.${on("smartlink") ? " Smart Link is holding your hand steady." : ""}</div>
-          <button class="big" id="act" type="button">Done</button>`;
+      trace() { if (!L.ink) Object.assign(L, { ink: [], prog: 0, started: false, on: 0, off: 0, steady: 100, backs: 0 });
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">0% · steady 100</span></div>
+          <div class="hint">Put your pen on the glowing dot and follow the dashed line forward. You can lift and carry on from the dot. Going backward drops your progress, and straying off the line drains steadiness: at 0 the job fails on the spot.${on("smartlink") ? " Smart Link is holding your hand steady." : ""}</div>
+          <button class="big" id="act" type="button">Stop here</button>`;
         $("act").onclick = endTrace; },
       sort() { if (!L.queue) Object.assign(L, { queue: shuffle(s.items), right: 0, i: 0, t: performance.now() });
         const it = L.queue[L.i];
@@ -545,16 +545,29 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
   const tracePts = n => { const o = []; for (let i = 0; i <= SAMPLES; i++) o.push(PATHS[n](i / SAMPLES)); return o; };
   function traceInput(x, y) {
     const s = cur(); if (st.done || s.type !== "trace") return;
-    const L = st.live, pts = tracePts(s.path), w = s.width * diff().trace; let best = 1, bi = -1;
-    pts.forEach((p, i) => { const dd = Math.hypot(p[0] - x, p[1] - y); if (dd < best) { best = dd; bi = i; } });
-    L.pts.push([x, y]); L.samples = (L.samples || 0) + 1;
-    if (best <= w) { L.onLine = (L.onLine || 0) + 1; L.hit.add(bi); }
-    const rv = $("rv"); if (rv) rv.textContent = `${Math.round(L.hit.size / pts.length * 100)}%`;
+    // In order only: progress moves along the line when the pen is near one of the next few points.
+    // Scribbling over the whole thing does nothing, because the points ahead of you aren't reachable yet.
+    const L = st.live, pts = tracePts(s.path), w = s.width * diff().trace, d = (i, px, py) => Math.hypot(pts[i][0] - px, pts[i][1] - py);
+    if (!L.started) { if (d(0, x, y) > w * 1.5) return; L.started = true; }
+    // Nearest point on the line within reach, looking a little ahead and further behind.
+    let best = -1, bd = w;
+    for (let i = Math.max(0, L.prog - 10); i <= Math.min(SAMPLES, L.prog + 3); i++) { const dd = d(i, x, y); if (dd <= bd) { bd = dd; best = i; } }
+    const near = best >= 0;
+    if (near && best > L.prog) L.prog = best;
+    else if (near && best < L.prog - 1) {                 // backtracking: progress goes down and it costs steadiness
+      L.steady -= (L.prog - best) * 4; L.prog = best; L.backs++; }
+    if (!near) L.steady -= on("smartlink") ? 0.4 : 0.6;   // off the line, per pen sample
+    L.ink.push({ x, y, ok: near, lift: L.lifted }); L.lifted = false;
+    near ? L.on++ : L.off++;
+    L.steady = Math.max(0, L.steady);
+    const rv = $("rv"); if (rv) rv.textContent = `${Math.round(L.prog / SAMPLES * 100)}% · steady ${Math.round(L.steady)}`;
+    if (L.steady <= 0) return finishStep(0, "failed: hand slipped");
+    if (L.prog >= SAMPLES) endTrace();
   }
   function endTrace() {
-    const s = cur(), L = st.live; if (s.type !== "trace") return;
-    const cov = L.hit.size / (SAMPLES + 1), acc = L.samples ? L.onLine / L.samples : 0;
-    finishStep(100 * Math.min(1, cov / 0.9) * (0.4 + 0.6 * acc), `${Math.round(cov * 100)}% · ${Math.round(acc * 100)}%`);
+    const s = cur(), L = st.live; if (s.type !== "trace" || st.done) return;
+    const cov = L.prog / SAMPLES;
+    finishStep(100 * cov * (0.3 + 0.7 * L.steady / 100), `${Math.round(cov * 100)}% · steady ${Math.round(L.steady)}${L.backs ? ` · ${L.backs} back` : ""}`);
   }
 
   /* ============================ frame loop ============================ */
@@ -709,9 +722,22 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
     if (st.job.art === "skin") drawSkin(g, W, H); else if (st.job.art === "arm") drawArm(g, W, H); else drawVessel(g, W, H);
     const pts = tracePts(s.path), w = s.width * diff().trace;
     if (on("smartlink")) { g.strokeStyle = css("--b"); g.globalAlpha = .12; g.lineWidth = w * 2 * W; g.lineCap = "round"; g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); g.globalAlpha = 1; g.lineCap = "butt"; }
-    g.strokeStyle = css("--b"); g.setLineDash([8, 8]); g.lineWidth = 3; g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); g.setLineDash([]);
-    g.fillStyle = css("--a"); g.beginPath(); g.arc(pts[0][0] * W, pts[0][1] * H, 8, 0, 7); g.fill();
-    const L = st.live; if (L.pts && L.pts.length > 1) { g.strokeStyle = s.path === "heart" ? "#f3e2c7" : "#0f0f12"; g.lineWidth = s.path === "heart" ? 6 : 4; g.beginPath(); L.pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); }
+    const L = st.live, prog = L.prog || 0, P = i => [pts[i][0] * W, pts[i][1] * H];
+    const path = (a, b) => { g.beginPath(); for (let i = a; i <= b; i++) { const [x, y] = P(i); i === a ? g.moveTo(x, y) : g.lineTo(x, y); } g.stroke(); };
+    g.lineCap = "round"; g.lineJoin = "round";
+    g.strokeStyle = "rgba(0,0,0,.55)"; g.lineWidth = 7; path(0, SAMPLES);                  // dark under-line so it reads on skin and foam
+    g.strokeStyle = css("--b"); g.setLineDash([10, 9]); g.lineWidth = 3; path(prog, SAMPLES); g.setLineDash([]);
+    if (prog > 0) { g.strokeStyle = css("--a"); g.lineWidth = 4; path(0, prog); }            // the part you've done
+    // the player's own stroke: on the line in ink, off the line in red
+    const ink = L.ink || [];
+    for (let i = 1; i < ink.length; i++) { const a = ink[i - 1], b = ink[i]; if (b.lift) continue;
+      g.strokeStyle = b.ok ? (s.path === "heart" ? "#f3e2c7" : "#101014") : "#ff3b5c"; g.lineWidth = b.ok ? 4 : 3;
+      g.beginPath(); g.moveTo(a.x * W, a.y * H); g.lineTo(b.x * W, b.y * H); g.stroke(); }
+    // where to put the pen next
+    const [nx, ny] = P(prog), pulse = 8 + 3 * Math.sin(performance.now() / 160);
+    g.fillStyle = css("--a"); g.beginPath(); g.arc(nx, ny, pulse, 0, 7); g.fill();
+    g.strokeStyle = "#000"; g.lineWidth = 2; g.stroke();
+    g.lineCap = "butt"; g.lineJoin = "miter";
   }
   function drawSkin(g, W, H) { g.fillStyle = "#c99a7a"; g.beginPath(); g.roundRect(W * 0.06, H * 0.14, W * 0.88, H * 0.72, 60); g.fill(); }
   function drawArm(g, W, H) { g.fillStyle = "#b98f74"; g.beginPath(); g.roundRect(W * 0.1, H * 0.12, W * 0.8, H * 0.76, 80); g.fill();
@@ -743,7 +769,7 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
   const local = e => { const r = art.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
   const gaugeInput = x => { if (st.done || cur().type !== "keep" || !st.live.init) return; const L = st.live;
     L.target = clamp((x - 0.08) / 0.84, 0, 1); L.started = true; const dl = $("dial"); if (dl) dl.value = Math.round(L.target * 1000); };
-  art.onpointerdown = e => { art.setPointerCapture(e.pointerId); st.live.drag = true; const [x, y] = local(e); traceInput(x, y); gaugeInput(x); if (!st.done && cur().type === "catch" && st.live.pieces) st.live.wok = clamp(x, 0.08, 0.92); };
+  art.onpointerdown = e => { art.setPointerCapture(e.pointerId); st.live.drag = true; st.live.lifted = true; const [x, y] = local(e); traceInput(x, y); gaugeInput(x); if (!st.done && cur().type === "catch" && st.live.pieces) st.live.wok = clamp(x, 0.08, 0.92); };
   art.onpointermove = e => { const [x, y] = local(e); if (!st.done && cur().type === "catch" && st.live.pieces) st.live.wok = clamp(x, 0.08, 0.92); if (st.live.drag) { traceInput(x, y); gaugeInput(x); } };
   art.onpointerup = art.onpointercancel = () => { st.live.drag = false; };
   document.addEventListener("keydown", e => {
