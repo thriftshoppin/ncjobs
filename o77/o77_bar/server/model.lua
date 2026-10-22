@@ -29,18 +29,41 @@ function M.refundOp(t) return ("o77bar:%s:refund:%d"):format(t.id, t.attempt or 
 -- Orders and money
 -- ---------------------------------------------------------------------------------------------
 
+-- The bottle ids a bar sells, in config order (sorted by kind, tier price, label).
+function M.barBottles(cfg, bar)
+    local rule, out = bar.bottles, {}
+    if not rule or not cfg.bottles then return out end
+    local skipTier = {}
+    for _, t in ipairs(type(rule) == "table" and rule.exceptTiers or {}) do skipTier[t] = true end
+    if type(rule) == "table" and rule[1] then
+        for _, id in ipairs(rule) do if cfg.bottles[id] then out[#out + 1] = id end end
+        return out
+    end
+    for id, b in pairs(cfg.bottles) do
+        if not skipTier[b.tier] then out[#out + 1] = id end
+    end
+    table.sort(out, function(a, b)
+        local x, y = cfg.bottles[a], cfg.bottles[b]
+        if x.kind ~= y.kind then return x.kind == "alcohol" end
+        if x.price ~= y.price then return x.price < y.price end
+        return x.label < y.label
+    end)
+    return out
+end
+
 -- items: { { drink = id, qty = n }, ... } from the client. Answers the cleaned list and the
 -- subtotal, or nil, reason. Duplicates merge; unknown drinks or ones not on this bar's menu
 -- are refused rather than dropped, so the customer never pays for less than they picked.
 function M.priceOrder(cfg, bar, items)
     if type(items) ~= "table" then return nil, "invalid_order" end
     local onMenu = {}
-    for _, id in ipairs(bar.menu or {}) do onMenu[id] = true end
+    for _, id in ipairs(bar.menu or {}) do onMenu[id] = "mixed" end
+    for _, id in ipairs(M.barBottles(cfg, bar)) do onMenu[id] = "bottle" end
     local qtyOf, order = {}, {}
     for _, it in ipairs(items) do
         if type(it) ~= "table" then return nil, "invalid_order" end
         local id, qty = it.drink, int(it.qty)
-        if type(id) ~= "string" or not onMenu[id] or not cfg.drinks[id] then return nil, "not_on_menu" end
+        if type(id) ~= "string" or not onMenu[id] then return nil, "not_on_menu" end
         if not qty or qty < 1 then return nil, "invalid_quantity" end
         if not qtyOf[id] then order[#order + 1] = id end
         qtyOf[id] = (qtyOf[id] or 0) + qty
@@ -49,10 +72,14 @@ function M.priceOrder(cfg, bar, items)
     local lines, subtotal, count = {}, 0, 0
     for _, id in ipairs(order) do
         local qty = qtyOf[id]
-        if qty > cfg.limits.maxQtyPerDrink then return nil, "too_many_of_one" end
-        count = count + qty
-        local price = int(cfg.drinks[id].price) or 0
-        lines[#lines + 1] = { drink = id, qty = qty, price = price }
+        local kind = onMenu[id]
+        local bulk = kind == "bottle" and qty >= cfg.limits.bulkFrom
+        if kind == "mixed" and qty > cfg.limits.maxQtyPerDrink then return nil, "too_many_of_one" end
+        if kind == "bottle" and qty > cfg.limits.maxBulk then return nil, "too_many_of_one" end
+        if not bulk then count = count + qty end     -- a bulk buy goes in the bag, not on the counter
+        local def = kind == "mixed" and cfg.drinks[id] or cfg.bottles[id]
+        local price = int(def.price) or 0
+        lines[#lines + 1] = { drink = id, qty = qty, price = price, kind = kind, item = def.item, bulk = bulk or nil }
         subtotal = subtotal + price * qty
     end
     if count > cfg.limits.maxItems then return nil, "too_many_items" end
@@ -76,13 +103,37 @@ function M.split(cfg, subtotal, tip)
     return { till = till, bartender = subtotal - till + tip, total = subtotal + tip }
 end
 
--- One entry per glass to make, in ticket order: { drink, n } with n the copy number.
+-- The bartender's tasks for a ticket, in ticket order:
+--   { kind = "pour", drink, n }          one glass per cocktail, poured at a station
+--   { kind = "grab", drink, qty, bulk }  one trip to the cooler per bottle line
 function M.queue(lines)
     local q = {}
     for _, l in ipairs(lines) do
-        for n = 1, l.qty do q[#q + 1] = { drink = l.drink, n = n } end
+        if l.kind == "bottle" then
+            q[#q + 1] = { kind = "grab", drink = l.drink, qty = l.qty, bulk = l.bulk }
+        else
+            for n = 1, l.qty do q[#q + 1] = { kind = "pour", drink = l.drink, n = n } end
+        end
     end
     return q
+end
+
+function M.grabSeconds(cfg, entry)
+    local g = cfg.limits.grabSeconds
+    return math.min(g.max, g.base + g.perUnit * (entry.qty or 1))
+end
+
+-- What the customer gets at serve. `open`: single bottles/cans served in hand (their in-game look),
+-- `bulk`: sealed into the inventory. Each { item, qty, label }.
+function M.bottlesOf(cfg, lines)
+    local open, bulk = {}, {}
+    for _, l in ipairs(lines) do
+        if l.kind == "bottle" then
+            local e = { item = l.item, qty = l.qty, label = cfg.bottles[l.drink].label, drink = l.drink }
+            if l.bulk then bulk[#bulk + 1] = e else open[#open + 1] = e end
+        end
+    end
+    return open, bulk
 end
 
 -- ---------------------------------------------------------------------------------------------

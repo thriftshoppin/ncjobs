@@ -22,8 +22,12 @@ C.tips = { 0, 10, 15, 20 }   -- percent, offered on the kiosk
 C.defaultTip = 15
 
 C.limits = {
-    maxItems = 6,              -- drinks on one ticket (sum of quantities)
-    maxQtyPerDrink = 4,
+    maxItems = 6,              -- drinks served open on one ticket (cocktails + single bottles/cans)
+    maxQtyPerDrink = 4,        -- of one cocktail
+    bulkFrom = 3,              -- this many or more of ONE bottle/can = a bulk buy: sealed, into the inventory
+    maxBulk = 12,              -- of one bottle/can on one ticket
+    coolerReach = 2.0,         -- bartender <-> cooler to grab bottles
+    grabSeconds = { base = 1.0, perUnit = 0.4, max = 4.0 },   -- server-timed grab at the cooler
     orderTimeoutMs = 120000,   -- menu handed -> customer must order
     billTimeoutMs = 90000,     -- bill sent -> customer must pay
     serveTimeoutMs = 600000,   -- paid -> must be served, else refunded
@@ -121,6 +125,7 @@ C.drinks = {
     -- In game: "A tequila old fashioned with a splash of beer and a chili garnish." Lime juice is
     -- our addition (not in the item text): keep or drop the `lime` step.
     johnny_silverhand = {
+        section = "Afterlife legends",
         item = "Items.TopQualityAlcohol8", glass = "rocks",
         label = "The Johnny Silverhand", price = 150, alcohol = 3,
         flavour = "A tequila old fashioned with a splash of beer and a chili garnish. For the rockerboy who never gave up.",
@@ -136,6 +141,7 @@ C.drinks = {
         },
     },    -- In game: "A shot of vodka, lime juice, ginger beer and, most importantly... a splash of love."
     jackie_welles = {
+        section = "Afterlife legends",
         item = "Items.TopQualityAlcohol9", glass = "highball",
         label = "The Jackie Welles", price = 150, alcohol = 3,
         flavour = "A shot of vodka, lime juice, ginger beer and, most importantly, a splash of love.",
@@ -149,6 +155,7 @@ C.drinks = {
     },
     -- In game: "A shot of vodka on the rocks, topped with NiCola. Aim high and go out with a bang."
     david_martinez = {
+        section = "Afterlife legends",
         item = "Items.TopQualityAlcohol10", glass = "rocks",
         label = "The David Martinez", price = 150, alcohol = 3,
         flavour = "A shot of vodka on the rocks, topped with NiCola. Aim high and go out with a bang.",
@@ -169,6 +176,89 @@ C.drinks = {
 --             zone counts (fine for a first test; list the real stools before going live:
 --             stand at the bar and run `seating.near` in the server console)
 --   menu      drink ids on this bar's card, in order
+-- Bottles and cans: every Alcohol and Drink record from the CONSUMABLES tab of the console
+-- command list (o77/reference/console_commands/consumables.json), except the three Afterlife
+-- cocktails (mixed by a bartender only) and quest-only items. Ordered from the menu like a drink,
+-- handed over at the counter as the native item into the customer's inventory: no pour.
+-- Prices are OUR tuning by quality tier (the sheet has none): alcohol house 20 / mid 45 /
+-- good 90 / top 240 / nomad 25; soft cheap 10 / regular 18 / premium 35 / nomad 12.
+C.bottles = {
+    matapang_coffee = { item = "Items.LowQualityDrink1", label = "Matapang Coffee", kind = "soft", tier = "Cheap", price = 10 },
+    matapang_decaf = { item = "Items.LowQualityDrink2", label = "Matapang Decaf", kind = "soft", tier = "Cheap", price = 10 },
+    dairing_dairy_milkshake = { item = "Items.LowQualityDrink3", label = "Dairing Dairy \"Milkshake\"", kind = "soft", tier = "Cheap", price = 10 },
+    spunky_monkey = { item = "Items.LowQualityDrink4", label = "Spunky Monkey", kind = "soft", tier = "Cheap", price = 10 },
+    spunky_monkey_mint = { item = "Items.LowQualityDrink5", label = "Spunky Monkey Mint", kind = "soft", tier = "Cheap", price = 10 },
+    cirrus_cola_classic = { item = "Items.LowQualityDrink6", label = "Cirrus Cola Classic", kind = "soft", tier = "Cheap", price = 10 },
+    cirrus_cola_corn_and_lemon = { item = "Items.LowQualityDrink7", label = "Cirrus Cola Corn and Lemon", kind = "soft", tier = "Cheap", price = 10 },
+    cirrus_cola_blood_breeze = { item = "Items.LowQualityDrink8", label = "Cirrus Cola Blood Breeze", kind = "soft", tier = "Cheap", price = 10 },
+    nicola_blue = { item = "Items.LowQualityDrink9", label = "NiCola Blue", kind = "soft", tier = "Cheap", price = 10 },
+    nicola_can = { item = "Items.LowQualityDrink10", label = "NiCola", kind = "soft", tier = "Cheap", price = 10 },
+    coffee = { item = "Items.LowQualityDrink11", label = "Coffee", kind = "soft", tier = "Cheap", price = 10 },
+    coffee_with_syn_milk = { item = "Items.LowQualityDrink12", label = "Coffee with Syn-Milk", kind = "soft", tier = "Cheap", price = 10 },
+    latte = { item = "Items.LowQualityDrink13", label = "Latte", kind = "soft", tier = "Cheap", price = 10 },
+    nicola_fire = { item = "Items.MediumQualityDrink1", label = "NiCola Fire", kind = "soft", tier = "Regular", price = 18 },
+    nicola_sakura = { item = "Items.MediumQualityDrink2", label = "NiCola Sakura", kind = "soft", tier = "Regular", price = 18 },
+    real_water_still = { item = "Items.MediumQualityDrink3", label = "Real Water (Still)", kind = "soft", tier = "Regular", price = 18 },
+    real_water_sparkling = { item = "Items.MediumQualityDrink4", label = "Real Water (Sparkling)", kind = "soft", tier = "Regular", price = 18 },
+    naranjita_classic = { item = "Items.MediumQualityDrink5", label = "Naranjita Classic", kind = "soft", tier = "Regular", price = 18 },
+    naranjita_zero = { item = "Items.MediumQualityDrink6", label = "Naranjita Zero", kind = "soft", tier = "Regular", price = 18 },
+    chromanticore = { item = "Items.MediumQualityDrink7", label = "Chromanticore", kind = "soft", tier = "Regular", price = 18 },
+    tiancha_kumquat = { item = "Items.MediumQualityDrink8", label = "Tiancha Kumquat", kind = "soft", tier = "Regular", price = 18 },
+    tiancha_pomelo = { item = "Items.MediumQualityDrink9", label = "Tiancha Pomelo", kind = "soft", tier = "Regular", price = 18 },
+    soulhiker = { item = "Items.MediumQualityDrink10", label = "Soulhiker", kind = "soft", tier = "Regular", price = 18 },
+    oolong_tea = { item = "Items.MediumQualityDrink11", label = "Oolong Tea", kind = "soft", tier = "Regular", price = 18 },
+    tiancha_pomegranate = { item = "Items.MediumQualityDrink12", label = "Tiancha Pomegranate", kind = "soft", tier = "Regular", price = 18 },
+    tiancha = { item = "Items.MediumQualityDrink13", label = "Tiancha", kind = "soft", tier = "Regular", price = 18 },
+    soop = { item = "Items.MediumQualityDrink14", label = "Soop", kind = "soft", tier = "Regular", price = 18 },
+    sain_ruisseau = { item = "Items.GoodQualityDrink1", label = "Sain Ruisseau", kind = "soft", tier = "Premium", price = 35 },
+    chromanticore_lime = { item = "Items.GoodQualityDrink2", label = "ChroManticore Lime", kind = "soft", tier = "Premium", price = 35 },
+    vita_mine = { item = "Items.GoodQualityDrink3", label = "Vita-Mine", kind = "soft", tier = "Premium", price = 35 },
+    chromanticore_carnival = { item = "Items.GoodQualityDrink4", label = "ChroManticore Carnival", kind = "soft", tier = "Premium", price = 35 },
+    te_matcha = { item = "Items.GoodQualityDrink5", label = "Té Matcha", kind = "soft", tier = "Premium", price = 35 },
+    te_sencha = { item = "Items.GoodQualityDrink6", label = "Té Sencha", kind = "soft", tier = "Premium", price = 35 },
+    te_oolong = { item = "Items.GoodQualityDrink7", label = "Té Oolong", kind = "soft", tier = "Premium", price = 35 },
+    vatnajokull_still = { item = "Items.GoodQualityDrink8", label = "Vatnajökull (Still)", kind = "soft", tier = "Premium", price = 35 },
+    vatnajokull_sparkling = { item = "Items.GoodQualityDrink9", label = "Vatnajökull (Sparkling)", kind = "soft", tier = "Premium", price = 35 },
+    water = { item = "Items.GoodQualityDrink10", label = "Water", kind = "soft", tier = "Premium", price = 35 },
+    tomato_juice = { item = "Items.GoodQualityDrink11", label = "Tomato \"Juice\"", kind = "soft", tier = "Premium", price = 35 },
+    filtered_rainwater = { item = "Items.NomadsDrink1", label = "Filtered Rainwater", kind = "soft", tier = "Nomad", price = 12 },
+    cactus_juice = { item = "Items.NomadsDrink2", label = "Cactus Juice", kind = "soft", tier = "Nomad", price = 12 },
+    abydos_classic = { item = "Items.LowQualityAlcohol1", label = "Abydos Classic", kind = "alcohol", tier = "House", price = 20 },
+    abydos_king_size = { item = "Items.LowQualityAlcohol2", label = "Abydos King Size", kind = "alcohol", tier = "House", price = 20 },
+    broseph_ale = { item = "Items.LowQualityAlcohol3", label = "Broseph Ale", kind = "alcohol", tier = "House", price = 20 },
+    broseph_lager = { item = "Items.LowQualityAlcohol4", label = "Broseph Lager", kind = "alcohol", tier = "House", price = 20 },
+    ["21st_stout"] = { item = "Items.LowQualityAlcohol5", label = "21st Stout", kind = "alcohol", tier = "House", price = 20 },
+    bumelant = { item = "Items.LowQualityAlcohol6", label = "Bumelant", kind = "alcohol", tier = "House", price = 20 },
+    chirrisco = { item = "Items.LowQualityAlcohol7", label = "Chirrisco", kind = "alcohol", tier = "House", price = 20 },
+    pitorro = { item = "Items.LowQualityAlcohol8", label = "Pitorro", kind = "alcohol", tier = "House", price = 20 },
+    tequila_especial = { item = "Items.LowQualityAlcohol9", label = "Tequila Especial", kind = "alcohol", tier = "House", price = 20 },
+    pingo_palido = { item = "Items.MediumQualityAlcohol1", label = "Pingo Pálido", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    odickin_whiskey = { item = "Items.MediumQualityAlcohol2", label = "O'Dickin Whiskey", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    bolshevik_vodka = { item = "Items.MediumQualityAlcohol3", label = "Bolshevik Vodka", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    conine = { item = "Items.MediumQualityAlcohol4", label = "Conine", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    joe_tiels_okie_hooch = { item = "Items.MediumQualityAlcohol5", label = "Joe Tiel's Okie Hooch", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    papa_garcin = { item = "Items.MediumQualityAlcohol6", label = "Papa Garcin", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    blue_grass = { item = "Items.MediumQualityAlcohol7", label = "Blue Grass", kind = "alcohol", tier = "Mid shelf", price = 45 },
+    donaghys = { item = "Items.GoodQualityAlcohol1", label = "Donaghy's", kind = "alcohol", tier = "Good", price = 90 },
+    centzon_totochtin = { item = "Items.GoodQualityAlcohol2", label = "Centzon Totochtin", kind = "alcohol", tier = "Good", price = 90 },
+    randver = { item = "Items.GoodQualityAlcohol3", label = "Randver", kind = "alcohol", tier = "Good", price = 90 },
+    ab_synth = { item = "Items.GoodQualityAlcohol4", label = "Ab-Synth", kind = "alcohol", tier = "Good", price = 90 },
+    champaradise = { item = "Items.GoodQualityAlcohol5", label = "Champaradise", kind = "alcohol", tier = "Good", price = 90 },
+    la_perle_des_alpes = { item = "Items.GoodQualityAlcohol6", label = "La Perle des Alpes", kind = "alcohol", tier = "Good", price = 90 },
+    calavera_feliz = { item = "Items.TopQualityAlcohol1", label = "Calavera Feliz", kind = "alcohol", tier = "Top shelf", price = 240 },
+    chateau_delen_2012 = { item = "Items.TopQualityAlcohol2", label = "Chateau Delen 2012", kind = "alcohol", tier = "Top shelf", price = 240 },
+    armagnac_massy = { item = "Items.TopQualityAlcohol3", label = "Armagnac Massy", kind = "alcohol", tier = "Top shelf", price = 240 },
+    sake_utagawa = { item = "Items.TopQualityAlcohol4", label = "Sake Utagawa", kind = "alcohol", tier = "Top shelf", price = 240 },
+    baalbek_arak = { item = "Items.TopQualityAlcohol5", label = "Baalbek Arak", kind = "alcohol", tier = "Top shelf", price = 240 },
+    romvlvs_gin = { item = "Items.TopQualityAlcohol6", label = "Romvlvs Gin", kind = "alcohol", tier = "Top shelf", price = 240 },
+    paul_night = { item = "Items.TopQualityAlcohol7", label = "Paul Night", kind = "alcohol", tier = "Top shelf", price = 240 },
+    moonshine = { item = "Items.NomadsAlcohol1", label = "Moonshine", kind = "alcohol", tier = "Nomad", price = 25 },
+    trailerbrew_beer = { item = "Items.NomadsAlcohol2", label = "Trailerbrew Beer", kind = "alcohol", tier = "Nomad", price = 25 },
+    chromanticore_ultraviolet = { item = "Items.JudyDrink1", label = "ChroManticore Ultraviolet", kind = "soft", tier = "Special", price = 25 },
+    kopi_kadal_coffee = { item = "Items.RiverDrink1", label = "Kopi Kadal Coffee", kind = "soft", tier = "Special", price = 25 },
+    centzon_totochtin_indigo = { item = "Items.KerryAlcohol", label = "Centzon Totochtin Indigo", kind = "alcohol", tier = "Special", price = 60 },
+}
+
 -- Other bars, from the sheet's TELEPORT tab (entrances, not counters; walk the counter with
 -- /pos before adding one):  Lizzie's Bar -1208.0, 1563.1, 22.9  ·  El Coyote Cojo -1260.8, -981.8, 11.6
 C.bars = {
@@ -179,8 +269,15 @@ C.bars = {
         stations = {
             { position = { x = -1451.5, y = 1012.5, z = 17.8 }, label = "Afterlife - bar" },
         },
+        -- where bottles and cans are grabbed. PLACEHOLDER next to the station: stand at the real
+        -- cooler behind the bar and replace with /pos before going live.
+        coolers = {
+            { position = { x = -1454.8, y = 1010.4, z = 17.8 }, label = "Afterlife - cooler" },
+        },
         stools = {},
         menu = { "broseph", "nicola", "odickin_rocks", "johnny_silverhand", "jackie_welles", "david_martinez" },
+        -- bottles and cans this bar sells: "all", or { tiers = { ... } } to filter by tier, or a list of ids
+        bottles = { exceptTiers = { "Nomad" } },
         color = "#FF5F58",
     },
 }

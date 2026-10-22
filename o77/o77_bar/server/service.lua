@@ -52,6 +52,9 @@ function S:setState(t, state)
         if self.ticketOf[t.customer.pid] == t.id then self.ticketOf[t.customer.pid] = nil end
         self.tickets[t.id] = nil
         self.nextTry[t.id] = nil
+        for _, sh in pairs(self.shifts) do
+            if sh.grabbing and sh.grabbing.ticket == t.id then sh.grabbing = nil end
+        end
         for key, pid in pairs(self.stationUser) do
             local sh = self.shifts[pid]
             if sh and sh.pouring and sh.pouring.ticket == t.id then
@@ -235,12 +238,19 @@ function S:handMenu(bartender, customer, seat)
     self.ticketOf[customer] = t.id
     local bar = self.cfg.bars[seat.bar]
     local menu = {}
+    for _, id in ipairs(self.M.barBottles(self.cfg, bar)) do
+        local b = self.cfg.bottles[id]
+        menu[#menu + 1] = { drink = id, label = b.label, price = b.price, tier = b.tier, bottle = true,
+            section = b.kind == "alcohol" and "Bottles" or "Soft drinks" }
+    end
     for _, id in ipairs(bar.menu) do
         local d = self.cfg.drinks[id]
-        menu[#menu + 1] = { drink = id, label = d.label, price = d.price, flavour = d.flavour, glass = d.glass }
+        menu[#menu + 1] = { drink = id, label = d.label, price = d.price, flavour = d.flavour,
+            glass = (self.cfg.glasses[d.glass] or {}).label, section = d.section or "From the bar" }
     end
     self.P.ui(customer, "menu", { ticketId = t.id, bar = bar.label, bartender = t.bartender.name,
-        menu = menu, maxItems = self.cfg.limits.maxItems, maxQty = self.cfg.limits.maxQtyPerDrink })
+        menu = menu, maxItems = self.cfg.limits.maxItems, maxQty = self.cfg.limits.maxQtyPerDrink,
+        bulkFrom = self.cfg.limits.bulkFrom, maxBulk = self.cfg.limits.maxBulk })
     self:pushStools(seat.bar)
     return "menu"
 end
@@ -263,8 +273,9 @@ function S:sendBill(t)
     self:setState(t, "billed")
     local items = {}
     for _, l in ipairs(t.lines) do
-        local d = self.cfg.drinks[l.drink]
-        items[#items + 1] = { label = d.label, qty = l.qty, price = l.price, flavour = d.flavour }
+        local d = l.kind == "bottle" and self.cfg.bottles[l.drink] or self.cfg.drinks[l.drink]
+        items[#items + 1] = { label = d.label, qty = l.qty, price = l.price,
+            flavour = l.kind == "bottle" and ("Sealed " .. (d.kind == "alcohol" and "bottle" or "can") .. ", to take with you") or d.flavour }
     end
     self.P.ui(t.customer.pid, "kiosk", { id = t.id, bar = self.cfg.bars[t.bar].label, stool = t.stool,
         bartender = t.bartender.name, defaultTip = self.cfg.defaultTip, tips = self.cfg.tips,
@@ -295,6 +306,12 @@ function S:kioskPay(customer, ticketId, tipPct, method)
     end
     if receipt then
         t.paidAt = self.P.now()
+        if #t.queue == 0 then
+            self:setState(t, "ready")
+            self.P.notify(t.bartender.pid, ("%s paid %d. Bottles only: hand them over."):format(t.customer.name, t.split.total))
+            self:pushStools(t.bar)
+            return true
+        end
         self:setState(t, "paid")
         self.P.notify(t.bartender.pid, ("%s paid %d. Make the drinks at the station."):format(t.customer.name, t.split.total))
         self:pushStools(t.bar)
@@ -329,7 +346,7 @@ function S:stationQueue(bartender)
     for _, t in pairs(self:ticketsOfBartender(bartender)) do
         if t.state == "paid" then
             for i, q in ipairs(t.queue) do
-                if not q.made then
+                if not q.made and q.kind == "pour" then
                     out[#out + 1] = { ticketId = t.id, item = i, customer = t.customer.name,
                         label = self.cfg.drinks[q.drink].label, stool = t.stool, paidAt = t.paidAt }
                 end
@@ -347,6 +364,7 @@ function S:startPour(bartender, ticketId, index)
     if not t or t.bartender.pid ~= bartender or t.state ~= "paid" then return nil, "ticket_gone" end
     local entry = t.queue[index]
     if not entry or entry.made then return nil, "already_made" end
+    if entry.kind ~= "pour" then return nil, "grab_at_cooler" end
     local barId, stationIdx = self:stationNear(bartender)
     if barId ~= sh.bar then return nil, "not_at_station" end
     local key = barId .. ":" .. stationIdx
@@ -383,17 +401,70 @@ function S:pourSubmit(bartender, ticketId, item, steps)
     local score, why = self.M.scorePour(self.cfg, drink, steps)
     if not score then return nil, why end
     if not self:stationNearOk(bartender, sh.bar) then return nil, "not_at_station" end
-    t.queue[index].made = true
     t.queue[index].quality = score
+    return score, self:markMade(t, index)
+end
+
+-- One task done. When none are left the ticket is ready to serve. Answers how many are left.
+function S:markMade(t, index)
+    t.queue[index].made = true
     local left = 0
     for _, q in ipairs(t.queue) do if not q.made then left = left + 1 end end
     if left == 0 then
         self:setState(t, "ready")
-        self:pushStools(t.bar)
     else
         self:save(t)
     end
-    return score, left
+    self:pushStools(t.bar)
+    return left
+end
+
+-- ---------------------------------------------------------------------------------------------
+-- The cooler: bottles and cans are fetched, not poured. A short server-timed grab per line.
+-- ---------------------------------------------------------------------------------------------
+function S:coolerNear(pid, barId)
+    local pos = self.P.position(pid)
+    if not pos then return false end
+    for _, c in ipairs(self.cfg.bars[barId].coolers or {}) do
+        if dist(pos, c.position) <= self.cfg.limits.coolerReach then return true end
+    end
+    return false
+end
+
+function S:startGrab(bartender, ticketId, index)
+    local sh = self.shifts[bartender]
+    if not sh then return nil, "not_on_shift" end
+    if sh.pouring or sh.grabbing then return nil, "busy" end
+    local t = self.tickets[ticketId]
+    if not t or t.bartender.pid ~= bartender or t.state ~= "paid" then return nil, "ticket_gone" end
+    local entry = t.queue[index]
+    if not entry or entry.made then return nil, "already_made" end
+    if entry.kind ~= "grab" then return nil, "pour_at_station" end
+    if not self:coolerNear(bartender, sh.bar) then return nil, "not_at_cooler" end
+    local seconds = self.M.grabSeconds(self.cfg, entry)
+    sh.grabbing = { ticket = t.id, index = index, startedAt = self.P.now(), ms = math.floor(seconds * 1000) }
+    local b = self.cfg.bottles[entry.drink]
+    self.P.progress(bartender, ("Grabbing %d x %s"):format(entry.qty, b.label), sh.grabbing.ms)
+    return seconds
+end
+
+-- Called when the grab bar ends. The server's clock and position decide, not the bar.
+function S:finishGrab(bartender)
+    local sh = self.shifts[bartender]
+    if not sh or not sh.grabbing then return nil, "not_grabbing" end
+    local g = sh.grabbing
+    sh.grabbing = nil
+    if self.P.now() - g.startedAt < g.ms * 0.9 then return nil, "too_fast" end
+    if not self:coolerNear(bartender, sh.bar) then return nil, "not_at_cooler" end
+    local t = self.tickets[g.ticket]
+    if not t or t.state ~= "paid" then return nil, "ticket_gone" end
+    return true, self:markMade(t, g.index)
+end
+
+function S:cancelGrab(bartender)
+    local sh = self.shifts[bartender]
+    if sh then sh.grabbing = nil end
+    return true
 end
 
 function S:stationNearOk(pid, barId)
@@ -415,10 +486,19 @@ function S:serve(t)
     if t.state ~= "ready" then return nil, "not_ready" end
     self:setState(t, "settling")
     self.P.handover(t.bartender.pid, t.customer.pid)
+    -- Cocktails and single bottles/cans go on the counter to be picked up and held; bulk buys go
+    -- sealed into the inventory.
     for _, q in ipairs(t.queue) do
-        local d = self.cfg.drinks[q.drink]
-        self.P.event("o77_bar:served", t.customer.pid, q.drink, q.quality or 0, d.alcohol or 0)
+        if q.kind == "pour" then
+            local d = self.cfg.drinks[q.drink]
+            self.P.event("o77_bar:served", t.customer.pid, q.drink, d.item, q.quality or 0, d.alcohol or 0)
+        end
     end
+    local open, bulk = self.M.bottlesOf(self.cfg, t.lines)
+    for _, b in ipairs(open) do
+        self.P.event("o77_bar:servedBottle", t.customer.pid, b.drink, b.item, b.qty)
+    end
+    if #bulk > 0 then self.P.giveBottles(t.customer.pid, bulk, self.M.settleOp(t)) end
     self:trySettle(t)
     return "served"
 end

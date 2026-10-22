@@ -89,6 +89,8 @@ local function world()
         toCustomer = function() end, toBartender = function() end,
         event = function(...) W.events[#W.events + 1] = { ... } end,
         handover = function() end,
+        progress = function(pid, label, ms) W.progress = { pid, label, ms } end,
+        giveBottles = function(pid, bottles) W.given = W.given or {}; for _, b in ipairs(bottles) do W.given[#W.given + 1] = { pid, b.item, b.qty } end end,
         balances = function(pid) local s = W.P.subject(pid) return { cash = W.bal["sub:" .. s .. ":cash"] or 0, bank = W.bal["sub:" .. s .. ":bank"] or 0 } end,
         store = { save = function(t) W.saved[t.id] = { state = t.state } return true end },
         economy = W.economy,
@@ -129,12 +131,21 @@ local PERFECT = {
     nicola = { { id = "ice", count = 3 }, { id = "nicola", ml = 140 } },
 }
 
+local COOLER = BAR.coolers[1].position
 local function makeAll(W, svc, t)
     for i, q in ipairs(t.queue) do
-        assert(svc:startPour(2, t.id, i))
-        W.t = W.t + 20000
-        local score, left = svc:pourSubmit(2, t.id, i - 1, PERFECT[q.drink])
-        assert(score, left)
+        if q.kind == "grab" then
+            W.pos[2] = { x = COOLER.x, y = COOLER.y, z = COOLER.z }
+            assert(svc:startGrab(2, t.id, i))
+            W.t = W.t + 5000
+            assert(svc:finishGrab(2))
+            W.pos[2] = { x = STATION.x, y = STATION.y, z = STATION.z }
+        else
+            assert(svc:startPour(2, t.id, i))
+            W.t = W.t + 20000
+            local score, left = svc:pourSubmit(2, t.id, i - 1, PERFECT[q.drink])
+            assert(score, left)
+        end
     end
 end
 
@@ -400,6 +411,54 @@ do
     local t = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 1 } })
     assert(svc:startPour(2, t.id, 1))
     check("18 boss beat", lastUi(W, 2, "pour").beat == C.shakeByGrade[3])
+    svc:onStood(1)
+end
+
+-- ------------------------------------------------------------------ 19. bottles: fetched from the cooler, singles held, bulk bagged
+do
+    local W, svc = setup()
+    local start = W.total()
+    local t, ok = orderAndPay(W, svc, { { drink = "odickin_whiskey", qty = 1 }, { drink = "nicola_blue", qty = 6 } })
+    check("19 paid", ok == true and t.state == "paid", t.state)
+    check("19 two cooler trips", #t.queue == 2 and t.queue[1].kind == "grab" and t.queue[2].bulk == true)
+    check("19 cannot pour a bottle", select(2, svc:startPour(2, t.id, 1)) == "grab_at_cooler")
+    check("19 grab refused away from cooler", select(2, svc:startGrab(2, t.id, 1)) == "not_at_cooler")
+    W.pos[2] = { x = COOLER.x, y = COOLER.y, z = COOLER.z }
+    local secs = svc:startGrab(2, t.id, 1)
+    check("19 grab is timed", secs and secs > 0 and W.progress and W.progress[3] == math.floor(secs * 1000))
+    W.t = W.t + 100
+    check("19 grab too fast", select(2, svc:finishGrab(2)) == "too_fast")
+    assert(svc:startGrab(2, t.id, 1)); W.t = W.t + 5000
+    check("19 grab done", svc:finishGrab(2) == true and t.state == "paid")
+    assert(svc:startGrab(2, t.id, 2)); W.t = W.t + 5000
+    assert(svc:finishGrab(2))
+    check("19 ready after both grabs", t.state == "ready", t.state)
+    W.pos[2] = { x = STATION.x, y = STATION.y, z = STATION.z }
+    check("19 serve", svc:lockOn(2, 1) == "served")
+    local held, bagged = 0, W.given and #W.given or 0
+    for _, e in ipairs(W.events) do if e[1] == "o77_bar:servedBottle" and e[4] == "Items.MediumQualityAlcohol2" then held = held + 1 end end
+    check("19 single whiskey served open", held == 1, held)
+    check("19 six NiCola Blue bagged", bagged == 1 and W.given[1][2] == "Items.LowQualityDrink9" and W.given[1][3] == 6)
+    conserved("19", W, start)
+end
+
+-- ------------------------------------------------------------------ 19b. bulk does not count toward the counter limit
+do
+    local lines = M.priceOrder(C, BAR, { { drink = "jackie_welles", qty = 4 }, { drink = "broseph", qty = 2 }, { drink = "broseph_ale", qty = 12 } })
+    check("19b bulk outside maxItems", lines ~= nil)
+    check("19b 13 bottles refused", select(2, M.priceOrder(C, BAR, { { drink = "broseph_ale", qty = 13 } })) == "too_many_of_one")
+    check("19b 7 open drinks refused", select(2, M.priceOrder(C, BAR, { { drink = "jackie_welles", qty = 4 }, { drink = "broseph", qty = 2 }, { drink = "broseph_ale", qty = 1 } })) == "too_many_items")
+end
+
+-- ------------------------------------------------------------------ 20. mixed + bottle: pour only the cocktail
+do
+    local W, svc = setup()
+    local t = orderAndPay(W, svc, { { drink = "jackie_welles", qty = 1 }, { drink = "broseph_ale", qty = 1 } })
+    check("20 one glass and one grab", #t.queue == 2 and t.queue[1].kind == "pour" and t.queue[2].kind == "grab")
+    check("20 nomad bottles not sold here", select(2, (function()
+        local M2 = M
+        return M2.priceOrder(C, C.bars.afterlife, { { drink = "moonshine", qty = 1 } })
+    end)()) == "not_on_menu")
     svc:onStood(1)
 end
 

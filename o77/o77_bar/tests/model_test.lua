@@ -107,6 +107,8 @@ if f then
     for rec in f:read("a"):gmatch('"record": "([^"]+)"') do known[rec] = true end
     f:close()
     for id, d in pairs(C.drinks) do check("native item " .. id, d.item and known[d.item], d.item) end
+    for id, b in pairs(C.bottles) do check("native bottle " .. id, known[b.item], b.item) end
+    for id in pairs(C.bottles) do check("bottle id not a drink id: " .. id, C.drinks[id] == nil) end
 end
 print(("model: %d checks, %d failed"):format(runs, fails))
 os.exit(fails == 0 and 0 or 1)

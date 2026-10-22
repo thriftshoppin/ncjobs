@@ -118,13 +118,77 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
 .hits { display: flex; gap: 6px; font: 13px var(--f-mono); }
 .hint { color: var(--muted); font-size: 14px; }
 .timer { font: 13px var(--f-mono); color: var(--muted); }
+
+/* ---------- Customer menu ---------- */
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tabs button { background: transparent; border: 1px solid var(--line); padding: 6px 12px;
+  font: 600 14px var(--f-display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tabs button[aria-pressed="true"] { border-color: var(--red); color: var(--text); }
+.tabs button small { font: 11px var(--f-mono); margin-left: 6px; color: var(--muted); }
+.menu-list { display: flex; flex-direction: column; gap: 4px; max-height: 46vh; overflow-y: auto; padding-right: 4px; }
+.menu-row { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: center; padding: 10px 12px; background: var(--panel-2); min-width: 0; }
+.menu-row.picked { box-shadow: inset 3px 0 0 var(--cyan); }
+.menu-row .name { font: 600 17px var(--f-display); letter-spacing: .03em; }
+.menu-row small { display: block; color: var(--muted); font-size: 13px; }
+.menu-row .tag { font: 11px var(--f-mono); color: var(--yellow); letter-spacing: .12em; text-transform: uppercase; }
+.stepper { display: flex; align-items: center; gap: 2px; }
+.stepper button { width: 32px; height: 32px; border: 1px solid var(--line); background: transparent; font: 700 18px var(--f-display); }
+.stepper button:disabled { opacity: .3; cursor: not-allowed; }
+.stepper .num { width: 26px; text-align: center; }
+.search { width: 100%; background: #0b0f18; border: 1px solid var(--line); color: var(--text); padding: 8px 10px; font: 15px var(--f-body); }
+.search:focus { outline: 1px solid var(--cyan); }
+
+/* ---------- Bartender: shift HUD (no focus, never takes input) ---------- */
+.hud { width: min(380px, 100%); background: var(--panel); border-left: 2px solid var(--red); pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%); }
+body.ingame .hud { position: fixed; top: 96px; right: 28px; }
+.hud-head { padding: 10px 14px 8px; display: flex; flex-direction: column; gap: 2px; border-bottom: 1px solid var(--line); }
+.hud-head .eyebrow { font-size: 11px; }
+.hud-stats { font: 12px var(--f-mono); color: var(--muted); white-space: nowrap; }
+.hud-stats b { color: var(--yellow); font-weight: 400; }
+.hud-rows { display: flex; flex-direction: column; }
+.hud-row { display: grid; grid-template-columns: 76px 1fr auto; gap: 10px; align-items: center; padding: 8px 14px; border-bottom: 1px solid rgba(42,51,70,.6); min-width: 0; }
+.hud-row:last-child { border-bottom: 0; }
+.chip { font: 700 11px var(--f-mono); letter-spacing: .1em; text-align: center; padding: 3px 0; border: 1px solid currentColor; }
+.chip.greet { color: var(--yellow); } .chip.bill { color: var(--red); } .chip.make { color: var(--cyan); }
+.chip.serve { color: var(--ok); background: rgba(60,232,160,.12); } .chip.wait { color: var(--muted); }
+.hud-row .who { font: 600 15px var(--f-display); letter-spacing: .03em; min-width: 0; }
+.hud-row .who small { display: block; font: 12px var(--f-body); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hud-row .clock { font: 12px var(--f-mono); color: var(--muted); text-align: right; }
+.hud-row .clock.late { color: var(--bad); }
+.hud-empty { padding: 12px 14px; color: var(--muted); font-size: 14px; }
+.hud-foot { padding: 6px 14px 8px; font: 11px var(--f-mono); color: var(--muted); letter-spacing: .06em; border-top: 1px solid var(--line); }
+
+/* ---------- Bartender: station board ---------- */
+.board { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.ticket { background: var(--panel-2); display: flex; flex-direction: column; min-width: 0; border-top: 2px solid var(--cyan); }
+.ticket.late { border-top-color: var(--bad); }
+.ticket-head { padding: 10px 12px 6px; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.ticket-head .who { font: 700 17px var(--f-display); letter-spacing: .04em; text-transform: uppercase; }
+.ticket-head .meta { font: 12px var(--f-mono); color: var(--muted); }
+.serveby { height: 3px; background: #0b0f18; margin: 0 12px; }
+.serveby i { display: block; height: 100%; background: var(--cyan); }
+.ticket.late .serveby i { background: var(--bad); }
+.glasses { list-style: none; margin: 0; padding: 8px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+.glass-row { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; min-width: 0; }
+.glass-row svg { width: 22px; height: 28px; }
+.glass-row .glabel { font-size: 15px; min-width: 0; }
+.glass-row .glabel small { display: block; color: var(--muted); font-size: 12px; }
+.glass-row .btn { padding: 6px 12px; font-size: 14px; }
+.glass-row .done { font: 13px var(--f-mono); color: var(--ok); }
+.glass-row.bottle .glabel { color: var(--text); }
+.board-empty { padding: 28px 12px; text-align: center; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="stage">
   <div class="preview-bar" id="previewBar" hidden>
-    <span>PREVIEW</span>
-    <button class="chip-btn" id="pvKiosk" aria-pressed="true">Customer kiosk</button>
+    <span>CUSTOMER</span>
+    <button class="chip-btn" id="pvMenu" aria-pressed="false">Menu</button>
+    <button class="chip-btn" id="pvKiosk" aria-pressed="true">Kiosk</button>
+    <span>BARTENDER</span>
+    <button class="chip-btn" id="pvHud" aria-pressed="false">Shift HUD</button>
+    <button class="chip-btn" id="pvBoard" aria-pressed="false">Station board</button>
     <button class="chip-btn" id="pvPour" aria-pressed="false">Pour: Silverhand</button>
     <button class="chip-btn" id="pvBeer" aria-pressed="false">Pour: Beer</button>
   </div>
@@ -181,6 +245,53 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     <div class="foot">
       <button class="btn" id="pCancel">Put it down<span class="key">ESC</span></button>
       <button class="btn primary" id="pServe" disabled>Serve</button>
+    </div>
+  </section>
+
+  <!-- ===================== CUSTOMER: MENU ===================== -->
+  <section class="panel wide" id="menu" hidden aria-labelledby="mTitle">
+    <div class="head">
+      <div>
+        <div class="eyebrow" id="mBar">Afterlife // Menu</div>
+        <h1 class="title" id="mTitle">What'll it be?</h1>
+      </div>
+      <div class="meta">Bartender<br><span id="mBartender">—</span></div>
+    </div>
+    <div class="body">
+      <div class="tabs" id="mTabs" role="group" aria-label="Menu sections"></div>
+      <input class="search" id="mSearch" type="search" placeholder="Search the menu" aria-label="Search the menu">
+      <div class="menu-list" id="mList"></div>
+      <div class="total"><span id="mCount">Nothing picked</span><span class="num eddies" id="mSubtotal">0</span></div>
+      <div class="status" id="mStatus" hidden></div>
+    </div>
+    <div class="foot">
+      <button class="btn" id="mCancel">Never mind<span class="key">ESC</span></button>
+      <button class="btn primary" id="mSend" disabled>Send order</button>
+    </div>
+  </section>
+
+  <!-- ===================== BARTENDER: SHIFT HUD ===================== -->
+  <aside class="hud" id="hud" hidden aria-label="Bar shift">
+    <div class="hud-head">
+      <div><div class="eyebrow" id="hBar">Afterlife // On shift</div></div>
+      <div class="hud-stats"><span id="hClock">0:00</span> · <span id="hServed">0</span> served · <b id="hEarned">0 €$</b></div>
+    </div>
+    <div class="hud-rows" id="hRows"></div>
+    <div class="hud-foot">LOOK AT A CUSTOMER + E · STATION + E FOR THE BOARD</div>
+  </aside>
+
+  <!-- ===================== BARTENDER: STATION BOARD ===================== -->
+  <section class="panel wide" id="board" hidden aria-labelledby="bTitle">
+    <div class="head">
+      <div>
+        <div class="eyebrow" id="bBar">Afterlife // Station</div>
+        <h1 class="title" id="bTitle">Paid tickets</h1>
+      </div>
+      <div class="meta" id="bMeta">—</div>
+    </div>
+    <div class="body"><div class="board" id="bTickets"></div></div>
+    <div class="foot">
+      <button class="btn" id="bClose">Close<span class="key">ESC</span></button>
     </div>
   </section>
 </div>
@@ -456,22 +567,194 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   };
   $("pCancel").onclick = () => { bridge.emit("o77bar:pour:cancel", { ticketId: pour.order?.ticketId, item: pour.order?.item }); cancelAnimationFrame(pour.raf); hideAll(); };
 
+
+  /* ============================ CUSTOMER MENU ============================ */
+  const menu = { data: null, qty: {}, tab: null, query: "", busy: false };
+  function openMenu(data) {
+    Object.assign(menu, { data, qty: {}, query: "", busy: false });
+    const sections = [...new Set(data.menu.map(d => d.section))];
+    menu.tab = sections.includes("Afterlife legends") ? "Afterlife legends" : sections[0];
+    $("mBar").textContent = `${data.bar} // Menu`;
+    $("mBartender").textContent = data.bartender;
+    $("mSearch").value = "";
+    renderMenu(); show("menu");
+  }
+  const picked = () => Object.entries(menu.qty).filter(([, n]) => n > 0);
+  const pickedCount = () => picked().reduce((a, [, n]) => a + n, 0);
+  // drinks that end up on the counter (bulk bottles go in the bag and don't count)
+  const openCount = () => picked().reduce((a, [id, n]) => {
+    const x = menu.data.menu.find(m => m.drink === id);
+    return a + (x.bottle && n >= menu.data.bulkFrom ? 0 : n);
+  }, 0);
+  function renderMenu() {
+    const d = menu.data, sections = [...new Set(d.menu.map(x => x.section))];
+    $("mTabs").replaceChildren(...sections.map(sec => {
+      const b = document.createElement("button"); b.type = "button";
+      b.setAttribute("aria-pressed", String(menu.tab === sec && !menu.query));
+      const n = d.menu.filter(x => x.section === sec).reduce((a, x) => a + (menu.qty[x.drink] || 0), 0);
+      b.innerHTML = `${escapeHtml(sec)}${n ? `<small>${n}</small>` : ""}`;
+      b.onclick = () => { menu.tab = sec; menu.query = ""; $("mSearch").value = ""; renderMenu(); };
+      return b;
+    }));
+    const q = menu.query.toLowerCase();
+    const rows = d.menu.filter(x => q ? x.label.toLowerCase().includes(q) : x.section === menu.tab);
+    const full = openCount() >= d.maxItems;
+    $("mList").replaceChildren(...(rows.length ? rows.map(x => {
+      const n = menu.qty[x.drink] || 0;
+      const row = document.createElement("div"); row.className = "menu-row" + (n ? " picked" : "");
+      const info = document.createElement("div"); info.style.minWidth = "0";
+      const tag = x.bottle ? `${x.tier} · ${x.section === "Bottles" ? "bottle" : "can"}` : (x.glass || "");
+      const bulk = x.bottle && n >= d.bulkFrom;
+      const note = x.bottle ? (bulk ? `To go: ${n} sealed, into your bag` : `Served open. ${d.bulkFrom}+ go in your bag sealed.`) : x.flavour;
+      info.innerHTML = `<span class="tag">${escapeHtml(tag)}</span><div class="name">${escapeHtml(x.label)}</div>${note ? `<small>${escapeHtml(note)}</small>` : ""}`;
+      const price = document.createElement("div"); price.className = "num eddies"; price.textContent = fmt(x.price);
+      const st = document.createElement("div"); st.className = "stepper";
+      const minus = document.createElement("button"); minus.type = "button"; minus.textContent = "−"; minus.disabled = !n || menu.busy;
+      minus.setAttribute("aria-label", `One less ${x.label}`);
+      const num = document.createElement("span"); num.className = "num"; num.textContent = n;
+      const cap = x.bottle ? d.maxBulk : d.maxQty;
+      // bulk bottles go in the bag, so the counter limit only stops drinks served open
+      const plus = document.createElement("button"); plus.type = "button"; plus.textContent = "+";
+      plus.disabled = menu.busy || n >= cap || (full && !(x.bottle && n + 1 >= d.bulkFrom));
+      plus.setAttribute("aria-label", `One more ${x.label}`);
+      minus.onclick = () => { menu.qty[x.drink] = n - 1; renderMenu(); };
+      plus.onclick = () => { menu.qty[x.drink] = n + 1; renderMenu(); };
+      st.append(minus, num, plus); row.append(info, price, st); return row;
+    }) : [Object.assign(document.createElement("div"), { className: "hint", textContent: "Nothing on the menu matches that." })]));
+    const count = pickedCount();
+    const sub = picked().reduce((a, [id, n]) => a + n * d.menu.find(x => x.drink === id).price, 0);
+    const open = openCount(), bag = count - open;
+    $("mCount").textContent = count ? `${open} of ${d.maxItems} on the counter${bag ? ` · ${bag} to go` : ""}` : "Nothing picked";
+    $("mSubtotal").textContent = fmt(sub);
+    $("mSend").disabled = !count || menu.busy;
+    $("mSend").textContent = menu.busy ? "Sending…" : "Send order";
+  }
+  $("mSearch").oninput = e => { menu.query = e.target.value.trim(); renderMenu(); };
+  $("mSend").onclick = () => {
+    if (!pickedCount() || menu.busy) return;
+    menu.busy = true; renderMenu();
+    bridge.emit("o77bar:menu:submit", { ticketId: menu.data.ticketId, items: picked().map(([drink, qty]) => ({ drink, qty })) });
+  };
+  $("mCancel").onclick = () => { bridge.emit("o77bar:menu:cancel", { ticketId: menu.data?.ticketId }); hideAll(); };
+  bridge.on("o77bar:menu:result", r => {
+    menu.busy = false;
+    if (r.ok) { status("mStatus", "Order sent. The bartender will bring the bill.", "good"); setTimeout(hideAll, 1200); }
+    else { status("mStatus", MENU_REASONS[r.reason] || `Order refused (${r.reason}).`, "bad"); }
+    renderMenu();
+  });
+  const MENU_REASONS = {
+    too_many_items: "That's more than one tab can hold. Take a few off.",
+    too_many_of_one: "That's too many of one drink for one tab.",
+    ticket_gone: "The bartender closed this tab.",
+    not_on_menu: "Something you picked isn't served here any more.",
+  };
+
+  /* ============================ SHIFT HUD (no focus) ============================ */
+  // Rows sorted by what needs the bartender most. The server sends states; the page only orders
+  // and times them.
+  const HUD_KIND = {
+    ready: ["serve", "SERVE", 0], none: ["greet", "GREET", 1], ordered: ["bill", "BILL", 2],
+    paid: ["make", "MAKE", 3], ordering: ["wait", "MENU", 4], billed: ["wait", "PAYING", 4],
+    paying: ["wait", "PAYING", 4], settling: ["wait", "…", 5], refunding: ["wait", "REFUND", 5],
+  };
+  const hud = { data: null, base: 0, timer: 0 };
+  const clock = ms => { const s = Math.max(0, Math.floor(ms / 1000)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
+    return h ? `${h}:${String(m).padStart(2, "0")}:${String(ss).padStart(2, "0")}` : `${m}:${String(ss).padStart(2, "0")}`; };
+  function setHud(data) {
+    if (!data || !data.onShift) { $("hud").hidden = true; clearInterval(hud.timer); return; }
+    hud.data = data; hud.base = performance.now();
+    $("hBar").textContent = `${data.bar} // On shift`;
+    $("hServed").textContent = data.served || 0;
+    $("hEarned").textContent = `${fmt(data.earned || 0)} €$`;
+    renderHud(); $("hud").hidden = false;
+    clearInterval(hud.timer); hud.timer = setInterval(renderHud, 1000);
+  }
+  function renderHud() {
+    const d = hud.data, dt = performance.now() - hud.base;
+    $("hClock").textContent = clock(d.shiftMs + dt);
+    const rows = [...d.stools].sort((a, b) => (HUD_KIND[a.state]?.[2] ?? 9) - (HUD_KIND[b.state]?.[2] ?? 9) || b.waitedMs - a.waitedMs);
+    $("hRows").replaceChildren(...(rows.length ? rows.map(r => {
+      const [cls, word] = HUD_KIND[r.state] || ["wait", r.state.toUpperCase()];
+      const el = document.createElement("div"); el.className = "hud-row";
+      const chip = document.createElement("span"); chip.className = "chip " + cls;
+      chip.textContent = r.state === "paid" && r.of ? `${word} ${r.made}/${r.of}` : word;
+      const who = document.createElement("div"); who.className = "who"; who.textContent = `${r.name} · stool ${r.stool}`;
+      const sub = document.createElement("small"); sub.textContent = r.detail || r.next || ""; who.append(sub);
+      const c = document.createElement("div");
+      const left = r.serveLeftMs != null ? r.serveLeftMs - dt : null;
+      c.className = "clock" + (left != null && left < 120000 ? " late" : "");
+      c.textContent = left != null ? `refund in ${clock(left)}` : clock(r.waitedMs + dt);
+      el.append(chip, who, c); return el;
+    }) : [Object.assign(document.createElement("div"), { className: "hud-empty", textContent: "Nobody at the bar. Customers show up here when they sit down." })]));
+  }
+  bridge.on("o77bar:hud", setHud);
+
+  /* ============================ STATION BOARD ============================ */
+  const GLASS_SVG = {
+    pint: '<svg viewBox="0 0 22 28"><path d="M3 2 L6 26 H16 L19 2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+    rocks: '<svg viewBox="0 0 22 28"><path d="M3 12 L5 26 H17 L19 12" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 24 H17" stroke="currentColor" stroke-width="3"/></svg>',
+    highball: '<svg viewBox="0 0 22 28"><path d="M5 2 L6 26 H16 L17 2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+    bottle: '<svg viewBox="0 0 22 28"><path d="M9 2 H13 V8 L16 12 V26 H6 V12 L9 8 Z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  };
+  const board = { data: null, base: 0, timer: 0 };
+  function openBoard(data) {
+    board.data = data; board.base = performance.now();
+    $("bBar").textContent = `${data.bar} // Station`;
+    renderBoard(); show("board");
+    clearInterval(board.timer); board.timer = setInterval(renderBoard, 1000);
+  }
+  function renderBoard() {
+    const d = board.data, dt = performance.now() - board.base;
+    const toMake = d.tickets.reduce((a, t) => a + t.glasses.filter(g => !g.made && !g.bottle).length, 0);
+    const toGrab = d.tickets.reduce((a, t) => a + t.glasses.filter(g => !g.made && g.bottle).length, 0);
+    $("bMeta").innerHTML = `${toMake} to pour · ${toGrab} to grab<br>${escapeHtml(d.title || "")} pace`;
+    $("bTickets").replaceChildren(...(d.tickets.length ? [...d.tickets].sort((a, b) => b.paidAgoMs - a.paidAgoMs).map(t => {
+      const left = t.serveLeftMs - dt, late = left < 120000;
+      const card = document.createElement("article"); card.className = "ticket" + (late ? " late" : "");
+      card.innerHTML = `<div class="ticket-head"><span class="who">${escapeHtml(t.customer)}</span>
+        <span class="meta">stool ${escapeHtml(t.stool)} · refund in ${clock(left)}</span></div>
+        <div class="serveby"><i style="width:${Math.max(0, Math.min(100, left / t.serveTotalMs * 100))}%"></i></div>`;
+      const ul = document.createElement("ul"); ul.className = "glasses";
+      for (const g of t.glasses) {
+        const li = document.createElement("li"); li.className = "glass-row" + (g.bottle ? " bottle" : "");
+        const sub = g.bottle ? (g.bulk ? `to go: sealed, into their bag` : `from the cooler, served open`) : "";
+        li.innerHTML = `${GLASS_SVG[g.bottle ? "bottle" : g.glass] || GLASS_SVG.rocks}<span class="glabel">${g.bottle ? `${g.qty} × ` : ""}${escapeHtml(g.label)}${sub ? `<small>${sub}</small>` : ""}</span>`;
+        if (g.made) li.append(Object.assign(document.createElement("span"), { className: "done", textContent: g.bottle ? "✓ grabbed" : `✓ ${g.quality}%` }));
+        else {
+          const b = document.createElement("button"); b.type = "button";
+          b.className = "btn" + (g.bottle ? "" : " primary"); b.textContent = g.bottle ? "Grab" : "Make";
+          b.title = g.bottle ? "Walk to the cooler first" : "Pour at the station";
+          b.onclick = () => {
+            bridge.emit(g.bottle ? "o77bar:board:grab" : "o77bar:board:make", { ticketId: t.ticketId, item: g.item });
+            if (!inGame && !g.bottle) preview("pour");
+            if (!inGame && g.bottle) { g.made = true; renderBoard(); }
+          };
+          li.append(b);
+        }
+        ul.append(li);
+      }
+      card.append(ul); return card;
+    }) : [Object.assign(document.createElement("div"), { className: "board-empty", textContent: "No paid tickets. Greet a customer and hand them the menu to start one." })]));
+  }
+  $("bClose").onclick = () => { bridge.emit("o77bar:board:close", {}); clearInterval(board.timer); hideAll(); };
+
   /* ============================ Keys & views ============================ */
-  const visible = () => !$("pour").hidden ? "pour" : !$("kiosk").hidden ? "kiosk" : null;
+  const VIEWS = ["kiosk", "pour", "menu", "board"];
+  const visible = () => VIEWS.find(v => !$(v).hidden) || null;
   document.addEventListener("keydown", e => {
-    if (e.key === "Escape") { visible() === "pour" ? $("pCancel").click() : visible() === "kiosk" && $("kCancel").click(); return; }
+    if (e.key === "Escape") { const v = visible(); if (v) $({ pour: "pCancel", kiosk: "kCancel", menu: "mCancel", board: "bClose" }[v]).click(); return; }
     if (visible() !== "pour" || pour.done || e.code !== "Space") return;
     e.preventDefault(); if (e.repeat) return;
     const t = cur().type; t === "pour" ? startPour() : t === "count" ? addCount() : shakeHit();
   });
   document.addEventListener("keyup", e => { if (e.code === "Space") stopPour(); });
 
-  function show(id) { $("kiosk").hidden = id !== "kiosk"; $("pour").hidden = id !== "pour"; $("kStatus").hidden = true; }
-  function hideAll() { $("kiosk").hidden = true; $("pour").hidden = true; if (!inGame) setTimeout(() => preview(lastPreview), 600); }
+  function show(id) { for (const v of VIEWS) $(v).hidden = v !== id; $("kStatus").hidden = true; $("mStatus").hidden = true; }
+  function hideAll() { for (const v of VIEWS) $(v).hidden = true; clearInterval(board.timer); if (!inGame) setTimeout(() => preview(lastPreview), 600); }
   function status(id, text, tone) { const el = $(id); el.hidden = false; el.textContent = text; el.className = "status" + (tone ? " " + tone : ""); }
   function escapeHtml(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
 
-  bridge.on("o77bar:open", m => m.view === "kiosk" ? openKiosk(m.ticket) : m.view === "pour" && openPour(m.order));
+  bridge.on("o77bar:open", m => ({ kiosk: () => openKiosk(m.ticket), pour: () => openPour(m.order), menu: () => openMenu(m.menu), board: () => openBoard(m.board) })[m.view]?.());
   bridge.on("o77bar:close", () => { cancelAnimationFrame(pour.raf); hideAll(); });
 
   /* ============================ Browser preview ============================ */
@@ -512,15 +795,74 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   };
   function mockServer(name, p) {
     if (name === "o77bar:kiosk:pay") setTimeout(() => handlers["o77bar:kiosk:result"]?.({ ok: true }), 900);
+    if (name === "o77bar:menu:submit") setTimeout(() => handlers["o77bar:menu:result"]?.({ ok: true }), 600);
   }
+  // Example data only. In game the server sends these.
+  const SAMPLE_MENU = {
+    ticketId: 1042, bar: "Afterlife", bartender: "Claire R.", maxItems: 6, maxQty: 4, bulkFrom: 3, maxBulk: 12,
+    menu: [
+      { drink: "johnny_silverhand", label: "The Johnny Silverhand", price: 150, glass: "Rocks glass", section: "Afterlife legends", flavour: "A tequila old fashioned with a splash of beer and a chili garnish." },
+      { drink: "jackie_welles", label: "The Jackie Welles", price: 150, glass: "Highball glass", section: "Afterlife legends", flavour: "A shot of vodka, lime juice, ginger beer and, most importantly, a splash of love." },
+      { drink: "david_martinez", label: "The David Martinez", price: 150, glass: "Rocks glass", section: "Afterlife legends", flavour: "A shot of vodka on the rocks, topped with NiCola." },
+      { drink: "broseph", label: "Broseph Lager", price: 30, glass: "Pint glass", section: "From the bar", flavour: "From the tap. Cold, cheap, honest." },
+      { drink: "nicola", label: "NiCola", price: 20, glass: "Highball glass", section: "From the bar", flavour: "Poured over ice. No buzz, no hangover." },
+      { drink: "odickin_rocks", label: "O'Dickin on the Rocks", price: 60, glass: "Rocks glass", section: "From the bar", flavour: "O'Dickin whiskey, two fingers over ice." },
+      { drink: "abydos_classic", label: "Abydos Classic", price: 20, tier: "House", bottle: true, section: "Bottles" },
+      { drink: "broseph_ale", label: "Broseph Ale", price: 20, tier: "House", bottle: true, section: "Bottles" },
+      { drink: "21st_stout", label: "21st Stout", price: 20, tier: "House", bottle: true, section: "Bottles" },
+      { drink: "tequila_especial", label: "Tequila Especial", price: 20, tier: "House", bottle: true, section: "Bottles" },
+      { drink: "bolshevik_vodka", label: "Bolshevik Vodka", price: 45, tier: "Mid shelf", bottle: true, section: "Bottles" },
+      { drink: "odickin_whiskey", label: "O'Dickin Whiskey", price: 45, tier: "Mid shelf", bottle: true, section: "Bottles" },
+      { drink: "centzon_totochtin", label: "Centzon Totochtin", price: 90, tier: "Good", bottle: true, section: "Bottles" },
+      { drink: "champaradise", label: "Champaradise", price: 90, tier: "Good", bottle: true, section: "Bottles" },
+      { drink: "calavera_feliz", label: "Calavera Feliz", price: 240, tier: "Top shelf", bottle: true, section: "Bottles" },
+      { drink: "sake_utagawa", label: "Sake Utagawa", price: 240, tier: "Top shelf", bottle: true, section: "Bottles" },
+      { drink: "nicola_can", label: "NiCola", price: 10, tier: "Cheap", bottle: true, section: "Soft drinks" },
+      { drink: "nicola_blue", label: "NiCola Blue", price: 10, tier: "Cheap", bottle: true, section: "Soft drinks" },
+      { drink: "spunky_monkey", label: "Spunky Monkey", price: 10, tier: "Cheap", bottle: true, section: "Soft drinks" },
+      { drink: "cirrus_cola_classic", label: "Cirrus Cola Classic", price: 10, tier: "Cheap", bottle: true, section: "Soft drinks" },
+      { drink: "chromanticore", label: "Chromanticore", price: 18, tier: "Regular", bottle: true, section: "Soft drinks" },
+      { drink: "real_water_still", label: "Real Water (Still)", price: 18, tier: "Regular", bottle: true, section: "Soft drinks" },
+      { drink: "vatnajokull_sparkling", label: "Vatnajökull (Sparkling)", price: 35, tier: "Premium", bottle: true, section: "Soft drinks" },
+    ],
+  };
+  const SAMPLE_HUD = {
+    bar: "Afterlife", onShift: true, shiftMs: 2532000, served: 4, earned: 412,
+    stools: [
+      { stool: 2, name: "Judy", state: "ordering", waitedMs: 41000, detail: "Reading the menu" },
+      { stool: 3, name: "V", state: "paid", waitedMs: 95000, made: 1, of: 3, detail: "Jackie Welles, 2 × Broseph Lager", serveLeftMs: 505000 },
+      { stool: 5, name: "Panam", state: "none", waitedMs: 63000, detail: "Just sat down: hand the menu" },
+      { stool: 6, name: "River", state: "ordered", waitedMs: 22000, detail: "2 drinks, 330 €$: send the bill" },
+      { stool: 7, name: "Kerry", state: "ready", waitedMs: 12000, detail: "Johnny Silverhand + 1 bottle: serve" },
+    ],
+  };
+  const SAMPLE_BOARD = {
+    bar: "Afterlife", title: "Employee",
+    tickets: [
+      { ticketId: 1042, customer: "V", stool: 3, paidAgoMs: 95000, serveLeftMs: 505000, serveTotalMs: 600000,
+        glasses: [ { item: 0, label: "The Jackie Welles", glass: "highball", made: true, quality: 94 },
+                   { item: 1, label: "Broseph Lager", glass: "pint" }, { item: 2, label: "Broseph Lager", glass: "pint" } ] },
+      { ticketId: 1043, customer: "Kerry", stool: 7, paidAgoMs: 480000, serveLeftMs: 100000, serveTotalMs: 600000,
+        glasses: [ { item: 0, label: "The Johnny Silverhand", glass: "rocks" },
+                   { item: 1, bottle: true, label: "Abydos Classic", qty: 2 },
+                   { item: 2, bottle: true, bulk: true, label: "NiCola Blue", qty: 6 } ] },
+    ],
+  };
   function preview(which) {
     lastPreview = which;
-    $("pvKiosk").setAttribute("aria-pressed", String(which === "kiosk"));
-    $("pvPour").setAttribute("aria-pressed", String(which === "pour"));
-    $("pvBeer").setAttribute("aria-pressed", String(which === "beer"));
-    which === "kiosk" ? openKiosk(structuredClone(SAMPLE_TICKET)) : openPour(structuredClone(which === "beer" ? SAMPLE_ORDERS.beer : SAMPLE_ORDERS.silverhand));
+    for (const [id, w] of [["pvMenu", "menu"], ["pvKiosk", "kiosk"], ["pvHud", "hud"], ["pvBoard", "board"], ["pvPour", "pour"], ["pvBeer", "beer"]])
+      $(id).setAttribute("aria-pressed", String(which === w));
+    if (which !== "hud") setHud(null);
+    ({ menu: () => openMenu(structuredClone(SAMPLE_MENU)), kiosk: () => openKiosk(structuredClone(SAMPLE_TICKET)),
+       hud: () => { hideAll2(); setHud(structuredClone(SAMPLE_HUD)); }, board: () => openBoard(structuredClone(SAMPLE_BOARD)),
+       pour: () => openPour(structuredClone(SAMPLE_ORDERS.silverhand)), beer: () => openPour(structuredClone(SAMPLE_ORDERS.beer)) })[which]();
   }
+  function hideAll2() { for (const v of VIEWS) $(v).hidden = true; }
   if (inGame) bridge.emit("o77bar:ready");
-  else { $("previewBar").hidden = false; $("pvKiosk").onclick = () => preview("kiosk"); $("pvPour").onclick = () => preview("pour"); $("pvBeer").onclick = () => preview("beer"); preview("kiosk"); }
+  else {
+    $("previewBar").hidden = false;
+    for (const [id, w] of [["pvMenu", "menu"], ["pvKiosk", "kiosk"], ["pvHud", "hud"], ["pvBoard", "board"], ["pvPour", "pour"], ["pvBeer", "beer"]]) $(id).onclick = () => preview(w);
+    preview("menu");
+  }
 })();
 </script>
