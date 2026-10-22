@@ -334,7 +334,7 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
     start();
   }
   function start() {
-    cancelAnimationFrame(st.raf);
+    cancelAnimationFrame(st.raf); clearTimeout(st.idleT);
     Object.assign(st, { idx: 0, results: [], layers: [], vol: 0, t0: performance.now(), done: false, live: {} });
     const j = st.job, o = order(), root = document.documentElement;
     root.dataset.skin = j.skin; $("hud").dataset.layout = j.layout;
@@ -621,8 +621,23 @@ canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color
     }
     draw(now);
     $("timer").textContent = `${((now - st.t0) / 1000).toFixed(1)} s`;
-    st.raf = requestAnimationFrame(tick);
+    schedule(s);
   }
+  // Only run at full frame rate while something is actually moving; otherwise idle at 4 fps,
+  // and stop completely while the page is hidden. (In game this sits on top of the renderer.)
+  const MOVING = new Set(["hold", "beat", "keep", "chop", "catch", "fry", "assemble", "sort", "trace"]);
+  function schedule(s) {
+    if (document.hidden) return;
+    const live = s && MOVING.has(s.type) && (s.type !== "hold" || st.live.holding) && (s.type !== "trace" || st.live.drag)
+      && (!["keep", "chop"].includes(s.type) || st.live.started);
+    if (live || performance.now() - (st.poke || 0) < 1500) st.raf = requestAnimationFrame(tick);
+    else st.idleT = setTimeout(() => { st.raf = requestAnimationFrame(tick); }, 250);
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { cancelAnimationFrame(st.raf); clearTimeout(st.idleT); st.raf = requestAnimationFrame(tick); } });
+  ["pointerdown", "pointermove", "keydown"].forEach(ev => document.addEventListener(ev, () => {
+    const was = performance.now() - (st.poke || 0) < 1500; st.poke = performance.now();
+    if (!was && !document.hidden) { clearTimeout(st.idleT); cancelAnimationFrame(st.raf); st.raf = requestAnimationFrame(tick); }
+  }, { passive: true }));
 
   /* ============================ drawing ============================ */
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
