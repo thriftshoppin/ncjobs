@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+NUL
+*.log
+kvp.json
+
+__pycache__/
