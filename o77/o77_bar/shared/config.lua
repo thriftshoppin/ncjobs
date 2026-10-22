@@ -66,7 +66,7 @@ end
 
 C.glasses = {
     pint     = pint,
-    rocks    = cutFrom(pint, 0.58, "Rocks glass"),
+    rocks    = cutFrom(pint, 0.42, "Rocks glass"),
     highball = { label = "Highball glass", capacityMl = 350, top = 0.46, bottom = 0.44, height = 0.86, base = 0.06 },
 }
 

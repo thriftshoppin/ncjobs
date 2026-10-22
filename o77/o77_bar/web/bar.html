@@ -401,7 +401,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   function drawGlass() {
     const cv = $("glass"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
     // The glass shape comes with the order: rim and foot width, height, solid base, capacity.
-    const gl = pour.order.glass || { capacityMl: 287, top: 0.56, bottom: 0.46, height: 0.58, base: 0.046 };
+    const gl = pour.order.glass || { capacityMl: 201, top: 0.533, bottom: 0.46, height: 0.42, base: 0.046 };
     const cap = gl.capacityMl, foot = H - 30, top = foot - (H - 70) * gl.height;
     const bot = foot - (H - 70) * (gl.base || 0);                       // the liquid floor: top of the solid base
     const wAt = y => W * (gl.bottom + (gl.top - gl.bottom) * (foot - y) / (foot - top));   // outer width at height y
@@ -488,7 +488,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   // Mirrors shared/config.lua (glasses, drinks, shakeByGrade[1]).
   const GLASSES = {
     pint: { label: "Pint glass", capacityMl: 470, top: 0.62, bottom: 0.46, height: 0.92, base: 0.046 },
-    rocks: { label: "Rocks glass", capacityMl: 287, top: 0.56087, bottom: 0.46, height: 0.58, base: 0.046 },   // cut from the pint
+    rocks: { label: "Rocks glass", capacityMl: 201, top: 0.53304, bottom: 0.46, height: 0.42, base: 0.046 },   // cut from the pint
   };
   const BEAT_EMPLOYEE = { title: "Employee", speed: 1.2, perfect: 4, good: 12 };
   const SAMPLE_ORDERS = {
