@@ -119,7 +119,8 @@ dead by the crew. Which ripper you wake up at, and in what shape, depends on how
   gang that remembers your face.
 - **Betrayal** keeps the take but every fixer hears about it.
 
-**After the ripper**, the city opens: open jobs, then **the fixers' auditions**. Rogue and the
+**After the ripper**, the city opens: open jobs, a gang if you want the street's road (most mercs
+start there, see FIXERS.md "Becoming a merc"), then **the fixers' auditions**. Rogue and the
 Afterlife are NOT part of the prologue: you earn your way there by **working with the other fixers
 first** (standing with at least two of them, see JOBS.md), and only then does Rogue agree to meet
 you, vet you, and let you through the door.

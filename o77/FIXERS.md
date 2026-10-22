@@ -54,6 +54,20 @@ Ghost pays most and costs reputation if you blow it. Loud pays least and brings 
 - They sometimes **get a warning in character:** a contact whispers there's heat on the shipment.
   How often depends on their standing in the company. It gives them a chance, not a guarantee.
 
+## Becoming a merc
+**Merc is a status a fixer gives you, not a job you pick.** Fixers only send vetted mercs on contracts.
+- **The usual road is through a gang.** A gang takes new blood after the prologue: initiation, small
+  jobs on its turf, gang work for corpos (below). It's where most street characters learn the trade
+  and build a name.
+- **Vetting.** A fixer vets a merc after an audition contract, standing earned in gang work or open
+  jobs, and no record of betraying a crew or a client. Vetting is per fixer, like all standing.
+- **Exceptions** (a straight road to a fixer, no gang): nomads Dakota already knows, a prologue crew
+  that came through clean (the fixer already has your name), or a vetted merc vouching for you.
+- **You can be both.** A merc can stay in their gang. When a contract points at their own gang or its
+  client, they choose, and the choice is remembered on both sides.
+- **Not everyone fights.** Civilian work (the bar, the cooks, the mechanics, El Capitan's dealers)
+  never needs a gang or a fixer's vetting beyond its own licences.
+
 ## Gangs: the cheap option
 Mercs are professionals and only work through a fixer. **Lower-tier gangs** (Tyger Claws, Valentinos,
 6th Street, Animals, Maelstrom, Moxes...) are muscle a corpo can **hire directly**, no fixer needed:
