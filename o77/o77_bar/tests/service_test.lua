@@ -1,6 +1,6 @@
 -- Run from the resource folder: lua5.4 tests/service_test.lua
--- The ticket service against a fake economy that keeps real balances and is idempotent per
--- opId, like rp_economy. After every scenario: escrow is 0 and money is conserved.
+-- The bar against a fake economy that keeps real balances and is idempotent per opId, like
+-- rp_economy. After every scenario: money is conserved, and nobody is charged twice.
 dofile("shared/config.lua")
 local C = O77BarConfig
 local M = dofile("server/model.lua")
@@ -14,73 +14,55 @@ end
 
 local BAR = C.bars.afterlife
 local STATION = BAR.stations[1].position
-local ESCROW = "soc:" .. C.escrowSociety
+local COOLER = BAR.coolers[1].position
 local TILL = "soc:" .. BAR.society
+local SUBJECT = { [1] = "cust", [2] = "barb", [3] = "barb2", [4] = "cust2" }
 
 -- ------------------------------------------------------------------ fake world
 local function world()
-    local W = { t = 1000000, pos = {}, jobs = {}, grade = {}, notes = {}, ui = {}, saved = {}, events = {} }
-    W.bal = { ["sub:cust:cash"] = 500, ["sub:cust:bank"] = 2000, ["sub:barb:cash"] = 0, [ESCROW] = 0, [TILL] = 0 }
-    W.ops = {}           -- opId -> receipt (idempotency)
-    W.failNext = nil     -- { kind = "charge"|"pay", reason, info }
-    W.duringCharge = nil -- function() run while a charge is "in flight"
-    W.statusOf = {}      -- opId -> state override for status()
+    local W = { t = 1000000, pos = {}, jobs = {}, grade = {}, notes = {}, ui = {}, events = {}, tabs = {}, debt = {}, settings = {}, charges = 0 }
+    W.bal = { ["sub:cust:cash"] = 500, ["sub:cust:bank"] = 2000, ["sub:cust2:cash"] = 100, ["sub:cust2:bank"] = 0,
+        ["sub:barb:cash"] = 0, ["sub:barb2:cash"] = 0, [TILL] = 0 }
+    W.ops = {}
+    W.failNext = nil
     local function acct(party)
         if party.society then return "soc:" .. party.society end
         return ("sub:%s:%s"):format(party.subject, party.wallet or "cash")
     end
-    local function total() local n = 0 for _, v in pairs(W.bal) do n = n + v end return n end
-    W.total = total
-    local function move(from, to, amount)
-        if (W.bal[from] or 0) < amount then return false end
-        W.bal[from] = W.bal[from] - amount
-        W.bal[to] = (W.bal[to] or 0) + amount
+    function W.total() local n = 0 for _, v in pairs(W.bal) do n = n + v end return n end
+    local function take(subject, instrument, amount)
+        local cash, bank = "sub:" .. subject .. ":cash", "sub:" .. subject .. ":bank"
+        local have = instrument == "cash" and (W.bal[cash] or 0) or instrument == "bank" and (W.bal[bank] or 0)
+            or (W.bal[cash] or 0) + (W.bal[bank] or 0)
+        if have < amount then return false end
+        if instrument == "bank" then W.bal[bank] = W.bal[bank] - amount return true end
+        local fromCash = math.min(W.bal[cash] or 0, amount)
+        W.bal[cash] = (W.bal[cash] or 0) - fromCash
+        if instrument == "cash" then return true end
+        W.bal[bank] = (W.bal[bank] or 0) - (amount - fromCash)
         return true
     end
     W.economy = {
         charge = function(spec)
-            if W.duringCharge then local f = W.duringCharge; W.duringCharge = nil; f() end
             if W.ops[spec.opId] then return W.ops[spec.opId] end
-            if W.failNext and W.failNext.kind == "charge" then
-                local f = W.failNext; W.failNext = nil
-                if f.reason == "in_doubt_committed" then
-                    move(acct(spec.from), acct(spec.to), spec.amount)
-                    W.ops[spec.opId] = { opId = spec.opId, state = "committed" }
-                    return nil, "in_doubt", { retryable = true }
-                end
-                return nil, f.reason, f.info
-            end
-            if not move(acct(spec.from), acct(spec.to), spec.amount) then return nil, "insufficient_funds" end
-            W.ops[spec.opId] = { opId = spec.opId, state = "committed" }
-            return W.ops[spec.opId]
-        end,
-        pay = function(spec)
-            if W.ops[spec.opId] then return W.ops[spec.opId] end
-            if W.failNext and W.failNext.kind == "pay" then
-                local f = W.failNext; W.failNext = nil
-                return nil, f.reason, f.info
-            end
-            local from = acct(spec.from)
-            local lines = spec.payees or { { subject = spec.to.subject, society = spec.to.society, wallet = spec.to.wallet, amount = spec.amount } }
+            if W.failNext then local f = W.failNext; W.failNext = nil; return nil, f.reason, f.info end
             local sum = 0
-            for _, l in ipairs(lines) do sum = sum + l.amount end
-            if (W.bal[from] or 0) < sum then return nil, "insufficient_funds" end
-            for _, l in ipairs(lines) do move(from, acct(l), l.amount) end
+            for _, p in ipairs(spec.payees) do sum = sum + p.amount end
+            assert(sum == spec.amount, ("payees %d ~= amount %d"):format(sum, spec.amount))
+            if not take(spec.from.subject, spec.instrument, spec.amount) then return nil, "insufficient_funds" end
+            for _, p in ipairs(spec.payees) do local a = acct(p); W.bal[a] = (W.bal[a] or 0) + p.amount end
+            W.charges = W.charges + 1
             W.ops[spec.opId] = { opId = spec.opId, state = "committed" }
             return W.ops[spec.opId]
         end,
-        status = function(opId)
-            if W.statusOf[opId] then return { state = W.statusOf[opId] } end
-            if W.ops[opId] then return { state = "committed" } end
-            return { state = "unknown" }
-        end,
+        status = function(opId) return { state = W.ops[opId] and "committed" or "unknown" } end,
     }
+    local function balancesOf(s) return { cash = W.bal["sub:" .. s .. ":cash"] or 0, bank = W.bal["sub:" .. s .. ":bank"] or 0 } end
     W.P = {
-        now = function() return W.t end, bootId = function() return "B1" end,
-        log = function() end,
+        now = function() return W.t end, bootId = function() return "B1" end, log = function() end,
         position = function(pid) return W.pos[pid] end,
         hasJob = function(pid, job) return W.jobs[pid] == job end,
-        subject = function(pid) return ({ [1] = "cust", [2] = "barb", [3] = "barb2", [4] = "cust2" })[pid] end,
+        subject = function(pid) return SUBJECT[pid] end,
         name = function(pid) return "P" .. pid end,
         grade = function(pid) return W.grade[pid] or 0 end,
         employed = function() local o = {} for pid, j in pairs(W.jobs) do if j == C.job then o[#o + 1] = pid end end return o end,
@@ -91,8 +73,14 @@ local function world()
         handover = function() end,
         progress = function(pid, label, ms) W.progress = { pid, label, ms } end,
         giveBottles = function(pid, bottles) W.given = W.given or {}; for _, b in ipairs(bottles) do W.given[#W.given + 1] = { pid, b.item, b.qty } end end,
-        balances = function(pid) local s = W.P.subject(pid) return { cash = W.bal["sub:" .. s .. ":cash"] or 0, bank = W.bal["sub:" .. s .. ":bank"] or 0 } end,
-        store = { save = function(t) W.saved[t.id] = { state = t.state } return true end },
+        balances = function(pid) return SUBJECT[pid] and balancesOf(SUBJECT[pid]) end,
+        balancesOf = balancesOf,
+        store = {
+            saveTab = function(t) W.tabs[t.id] = { state = t.state, how = t.how } return true end,
+            debtOf = function(s) return W.debt[s] or 0 end,
+            addDebt = function(s, bar, amount) W.debt[s] = (W.debt[s] or 0) + amount end,
+            saveSetting = function(bar, key, value) W.settings[bar .. ":" .. key] = value end,
+        },
         economy = W.economy,
     }
     return W
@@ -102,364 +90,324 @@ local function lastUi(W, pid, view)
     for i = #W.ui, 1, -1 do local u = W.ui[i] if u.pid == pid and u.view == view then return u.data end end
 end
 
--- Seat customer 1, clock in bartender 2 at the station; answers W, svc.
+local function at(p) return { x = p.x, y = p.y, z = p.z } end
 local function setup()
     local W = world()
     local svc = S.new(C, M, W.P)
-    W.pos[1] = { x = STATION.x + 1.0, y = STATION.y, z = STATION.z }   -- customer on a stool by the station
-    W.pos[2] = { x = STATION.x, y = STATION.y, z = STATION.z }         -- bartender at the station
+    W.pos[1] = { x = STATION.x + 1.0, y = STATION.y, z = STATION.z }
+    W.pos[2] = at(STATION)
+    W.pos[4] = { x = STATION.x + 1.5, y = STATION.y + 0.5, z = STATION.z }
     W.jobs[2] = C.job
     svc:onSeated(1, "stool_1")
     assert(svc:clockIn(2))
     return W, svc
 end
 
--- Menu -> order -> bill -> pay. Answers the ticket.
-local function orderAndPay(W, svc, items, tip, method)
-    assert(svc:lockOn(2, 1) == "menu")
-    local menu = lastUi(W, 1, "menu")
-    assert(svc:menuSubmit(1, menu.ticketId, items or { { drink = "johnny_silverhand", qty = 1 }, { drink = "broseph", qty = 1 } }))
-    assert(svc:lockOn(2, 1) == "bill")
-    local ok, why = svc:kioskPay(1, menu.ticketId, tip or 15, method or "cash")
-    return svc.tickets[menu.ticketId] or { id = menu.ticketId }, ok, why
-end
-
 local PERFECT = {
     johnny_silverhand = { { id = "tequila", ml = 60 }, { id = "agave", ml = 10 }, { id = "bitters", count = 2 }, { id = "ice", count = 2 },
         { id = "stir", hits = { "perfect", "good", "perfect" } }, { id = "lime", ml = 15 }, { id = "cerveza", ml = 30 }, { id = "chili", count = 1 } },
+    jackie_welles = { { id = "ice", count = 3 }, { id = "vodka", ml = 45 }, { id = "lime", ml = 15 }, { id = "ginger", ml = 120 }, { id = "love", count = 1 } },
     broseph = { { id = "lager", ml = 455 } },
-    nicola = { { id = "ice", count = 3 }, { id = "nicola", ml = 140 } },
 }
 
-local COOLER = BAR.coolers[1].position
-local function makeAll(W, svc, t)
-    for i, q in ipairs(t.queue) do
+-- Hand the menu, order, make everything, serve. Answers the round's id, or nil, reason.
+local function round(W, svc, barman, customer, items)
+    local r, why = svc:lockOn(barman, customer, "menu")
+    assert(r == "menu", why)
+    local id = lastUi(W, customer, "menu").ticketId
+    local ok, why2 = svc:menuSubmit(customer, id, items)
+    if not ok then return nil, why2 end
+    local rd = svc.rounds[id]
+    local home = at(W.pos[barman])
+    for i, q in ipairs(rd.queue) do
         if q.kind == "grab" then
-            W.pos[2] = { x = COOLER.x, y = COOLER.y, z = COOLER.z }
-            assert(svc:startGrab(2, t.id, i))
-            W.t = W.t + 5000
-            assert(svc:finishGrab(2))
-            W.pos[2] = { x = STATION.x, y = STATION.y, z = STATION.z }
+            W.pos[barman] = at(COOLER); assert(svc:startGrab(barman, id, i)); W.t = W.t + 5000; assert(svc:finishGrab(barman))
         else
-            assert(svc:startPour(2, t.id, i))
-            W.t = W.t + 20000
-            local score, left = svc:pourSubmit(2, t.id, i - 1, PERFECT[q.drink])
-            assert(score, left)
+            W.pos[barman] = at(STATION); assert(svc:startPour(barman, id, i)); W.t = W.t + 20000
+            assert(svc:pourSubmit(barman, id, i - 1, PERFECT[q.drink]))
         end
     end
+    W.pos[barman] = home
+    assert(svc:lockOn(barman, customer, "serve") == "served")
+    return id
 end
 
-local function conserved(name, W, start)
-    check(name .. ": escrow empty", W.bal[ESCROW] == 0, W.bal[ESCROW])
-    check(name .. ": money conserved", W.total() == start, W.total() - start)
-end
+local function conserved(name, W, start) check(name .. ": money conserved", W.total() == start, W.total() - start) end
+local function tabOf(svc, pid) return svc:tabOfPlayer(pid) end
+local function lastHow(W) local how for _, t in pairs(W.tabs) do if t.how then how = t.how end end return how end
+local OUTSIDE = { x = BAR.venue.position.x + 80, y = BAR.venue.position.y, z = BAR.venue.position.z }
 
--- ------------------------------------------------------------------ 1. happy path
+-- ------------------------------------------------------------------ 1. two rounds on a tab, then close it at the kiosk
 do
     local W, svc = setup()
     local start = W.total()
-    local t, ok = orderAndPay(W, svc)
-    check("1 paid", ok == true and t.state == "paid")
-    check("1 escrow holds total", W.bal[ESCROW] == t.split.total, W.bal[ESCROW])
-    makeAll(W, svc, t)
-    check("1 ready", t.state == "ready")
-    check("1 serve", svc:lockOn(2, 1) == "served")
-    check("1 settled", W.saved[t.id].state == "settled")
-    -- 150 + 30 = 180, tip 15 % = 27, total 207; till 60 % of 180 = 108; bartender 72 + 27 = 99
-    check("1 customer paid total", W.bal["sub:cust:cash"] == 500 - 207, W.bal["sub:cust:cash"])
-    check("1 till", W.bal[TILL] == 108, W.bal[TILL])
-    check("1 bartender cut + tip", W.bal["sub:barb:cash"] == 99, W.bal["sub:barb:cash"])
-    check("1 ticket gone", svc.tickets[t.id] == nil and svc.ticketOf[1] == nil)
-    local served = 0
-    for _, e in ipairs(W.events) do if e[1] == "o77_bar:served" then served = served + 1 end end
-    check("1 served events per glass", served == 2, served)
+    round(W, svc, 2, 1, { { drink = "johnny_silverhand", qty = 1 } })
+    check("1 nothing charged yet", W.charges == 0 and W.bal["sub:cust:cash"] == 500)
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 1 } })
+    local tab = tabOf(svc, 1)
+    check("1 tab owes 180", M.owed(tab) == 180, M.owed(tab))
+    check("1 bill", svc:lockOn(2, 1, "bill") == "bill")
+    local k = lastUi(W, 1, "kiosk")
+    check("1 kiosk lists both", k and #k.items == 2)
+    check("1 pay", svc:kioskPay(1, tab.id, 15, "cash") == true)
+    -- 180, tip 27: till 108, bartender 72 + 27 = 99
+    check("1 customer paid 207", W.bal["sub:cust:cash"] == 500 - 207, W.bal["sub:cust:cash"])
+    check("1 till 108", W.bal[TILL] == 108, W.bal[TILL])
+    check("1 bartender 99", W.bal["sub:barb:cash"] == 99, W.bal["sub:barb:cash"])
+    check("1 one charge", W.charges == 1)
+    check("1 tab settled", lastHow(W) == "closed" and tabOf(svc, 1) == nil)
     conserved("1", W, start)
 end
 
--- ------------------------------------------------------------------ 2. customer stands up after paying
+-- ------------------------------------------------------------------ 2. only what you can afford
 do
     local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
+    svc:onSeated(4, "stool_2")
+    local _, why = round(W, svc, 2, 4, { { drink = "johnny_silverhand", qty = 1 } })   -- 150 > 100
+    check("2 can't afford a Silverhand", why == "cannot_afford", why)
+    svc:menuCancel(4, lastUi(W, 4, "menu").ticketId)
+    check("2 a beer is fine", round(W, svc, 2, 4, { { drink = "broseph", qty = 1 } }) ~= nil)
+    local _, why2 = round(W, svc, 2, 4, { { drink = "broseph", qty = 3 } })             -- 30 owed + 90 > 100
+    check("2 tab counts against the limit", why2 == "cannot_afford", why2)
+    check("2 menu shows what they can spend", lastUi(W, 4, "menu").canSpend == 70, lastUi(W, 4, "menu").canSpend)
+end
+
+-- ------------------------------------------------------------------ 3. carrying drinks around the club is fine
+do
+    local W, svc = setup()
+    round(W, svc, 2, 1, { { drink = "jackie_welles", qty = 1 } })
     svc:onStood(1)
-    check("2 refunded", W.saved[t.id].state == "refunded")
-    check("2 customer whole", W.bal["sub:cust:cash"] == 500)
-    conserved("2", W, start)
-end
-
--- ------------------------------------------------------------------ 3. customer stands up while the charge is in flight
-do
-    local W, svc = setup()
-    local start = W.total()
-    W.duringCharge = function() svc:onStood(1) end
-    local t, ok, why = orderAndPay(W, svc)
-    check("3 pay reports refund", ok == true or why == "ticket_gone", why)
-    check("3 refunded", W.saved[t.id] and W.saved[t.id].state == "refunded", W.saved[t.id] and W.saved[t.id].state)
-    check("3 customer whole", W.bal["sub:cust:cash"] == 500, W.bal["sub:cust:cash"])
-    conserved("3", W, start)
-end
-
--- ------------------------------------------------------------------ 4. bartender walks out after payment
-do
-    local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    W.pos[2] = { x = STATION.x + 200, y = STATION.y, z = STATION.z }
+    W.pos[1] = { x = BAR.venue.position.x + 30, y = BAR.venue.position.y, z = BAR.venue.position.z }   -- dance floor
     svc:tick()
-    check("4 off shift", svc.shifts[2] == nil)
-    check("4 refunded", W.saved[t.id].state == "refunded")
+    check("3 tab still open", tabOf(svc, 1) and tabOf(svc, 1).state == "open")
+    check("3 not charged", W.charges == 0)
+    W.pos[2] = { x = W.pos[1].x + 1, y = W.pos[1].y, z = W.pos[1].z }
+    check("3 bartender can bill them on the floor", svc:lockOn(2, 1, "bill") == "bill")
+end
+
+-- ------------------------------------------------------------------ 4. walkout: tab + fee, cash first then bank
+do
+    local W, svc = setup()
+    local start = W.total()
+    round(W, svc, 2, 1, { { drink = "johnny_silverhand", qty = 2 }, { drink = "broseph", qty = 3 } })   -- 390
+    W.pos[1] = at(OUTSIDE)
+    svc:tick()
+    local fee = M.walkoutFee(C.tab.walkout, 390)
+    check("4 fee is 25 %", fee == 98, fee)
+    check("4 charged tab + fee", W.bal["sub:cust:cash"] + W.bal["sub:cust:bank"] == 2500 - 390 - fee)
+    check("4 cash went first", W.bal["sub:cust:cash"] == 12, W.bal["sub:cust:cash"])
+    check("4 fee to the till", W.bal[TILL] == math.floor(390 * 0.6) + fee, W.bal[TILL])
+    check("4 bartender still paid", W.bal["sub:barb:cash"] == 390 - math.floor(390 * 0.6))
+    check("4 recorded as walkout", lastHow(W) == "walkout", lastHow(W))
+    svc:tick()
+    check("4 charged once", W.charges == 1)
     conserved("4", W, start)
 end
 
--- ------------------------------------------------------------------ 5. double tap on Pay
+-- ------------------------------------------------------------------ 5. the boss sets the walkout fee
 do
     local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    local ok, why = svc:kioskPay(1, t.id, 15, "cash")
-    check("5 second tap refused", ok == nil and why == "ticket_gone", why)
-    check("5 charged once", W.bal["sub:cust:cash"] == 500 - t.split.total)
-    svc:onStood(1)
-    conserved("5", W, start)
+    check("5 employee can't", select(2, svc:setWalkoutFee(2, "flat", 100)) == "not_the_boss")
+    W.grade[2] = 3
+    check("5 bad value", select(2, svc:setWalkoutFee(2, "percent", 400)) == "invalid_fee")
+    check("5 bad mode", select(2, svc:setWalkoutFee(2, "free", 1)) == "invalid_fee")
+    check("5 boss sets 100 flat", svc:setWalkoutFee(2, "flat", 100) ~= nil and W.settings["afterlife:walkout"].value == 100)
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 1 } })
+    W.pos[1] = at(OUTSIDE)
+    svc:tick()
+    check("5 flat fee charged", W.bal["sub:cust:cash"] == 500 - 30 - 100, W.bal["sub:cust:cash"])
+    local svc2 = S.new(C, M, W.P)
+    svc2:loadSettings({ { bar = "afterlife", key = "walkout", value = W.settings["afterlife:walkout"] } })
+    check("5 setting survives restart", svc2:feeSetting("afterlife").value == 100)
 end
 
--- ------------------------------------------------------------------ 6. too-fast pours end the shift and refund
+-- ------------------------------------------------------------------ 6. walkout they can't cover: pay what they have, rest is debt
 do
     local W, svc = setup()
+    svc:onSeated(4, "stool_2")
+    round(W, svc, 2, 4, { { drink = "broseph", qty = 3 } })   -- 90 of their 100
+    W.bal["sub:cust2:cash"] = 40                               -- spent it elsewhere
+    W.bal["sub:other:cash"] = 60                               -- (where it went)
     local start = W.total()
-    local t = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 1 } })
-    for strike = 1, C.pour.tooFastStrikes do
-        if svc.shifts[2] then
-            assert(svc:startPour(2, t.id, 1))
-            W.t = W.t + 500
-            local ok, why = svc:pourSubmit(2, t.id, 0, PERFECT.johnny_silverhand)
-            check("6 too fast " .. strike, ok == nil and why == "too_fast", why)
-        end
-    end
-    check("6 shift ended", svc.shifts[2] == nil)
-    check("6 refunded", W.saved[t.id].state == "refunded")
+    W.pos[4] = at(OUTSIDE)
+    svc:tick()
+    -- owes 90 + fee 50 (25 % = 23, minimum 50) = 140; has 40
+    check("6 took everything", W.bal["sub:cust2:cash"] == 0)
+    check("6 bartender paid first", W.bal["sub:barb:cash"] == 36, W.bal["sub:barb:cash"])
+    check("6 rest is debt", W.debt.cust2 == 100, W.debt.cust2)
+    W.pos[4] = { x = STATION.x + 1.5, y = STATION.y, z = STATION.z }
+    svc:onSeated(4, "stool_2")
+    check("6 no new tab while owing", select(2, svc:lockOn(2, 4, "menu")) == "customer_owes")
     conserved("6", W, start)
 end
 
--- ------------------------------------------------------------------ 7. payout fails once, retried, paid once
+-- ------------------------------------------------------------------ 7. disconnect: grace, reconnect keeps the tab, no-show is charged without a fee
 do
     local W, svc = setup()
     local start = W.total()
-    local t = orderAndPay(W, svc)
-    makeAll(W, svc, t)
-    W.failNext = { kind = "pay", reason = "store_unavailable", info = { retryable = true } }
-    check("7 serve", svc:lockOn(2, 1) == "served")
-    check("7 still settling", t.state == "settling")
-    W.t = W.t + C.retryMs + 1
+    round(W, svc, 2, 1, { { drink = "jackie_welles", qty = 1 } })
+    svc:onDropped(1)
+    W.t = W.t + C.tab.disconnectGraceMs - 1000
     svc:tick()
-    check("7 settled after retry", W.saved[t.id].state == "settled")
-    W.t = W.t + C.retryMs + 1
+    check("7 not charged during grace", W.charges == 0)
+    svc:onJoined(1)
+    check("7 tab back", tabOf(svc, 1).customer.pid == 1)
+    svc:onDropped(1)
+    W.t = W.t + C.tab.disconnectGraceMs + 1
     svc:tick()
-    check("7 bartender paid once", W.bal["sub:barb:cash"] == t.split.bartender, W.bal["sub:barb:cash"])
+    check("7 charged tab only", W.bal["sub:cust:cash"] == 500 - 150, W.bal["sub:cust:cash"])
+    check("7 recorded as leave", lastHow(W) == "leave", lastHow(W))
     conserved("7", W, start)
 end
 
--- ------------------------------------------------------------------ 8. fenced payout id: new id, paid once
+-- ------------------------------------------------------------------ 8. restart: open tabs come back and get the same grace
 do
     local W, svc = setup()
     local start = W.total()
-    local t = orderAndPay(W, svc)
-    makeAll(W, svc, t)
-    local firstOp = M.settleOp(t)
-    W.failNext = { kind = "pay", reason = "store_unavailable", info = { state = "aborted" } }
-    svc:lockOn(2, 1)
-    check("8 attempt bumped", t.attempt == 2 and M.settleOp(t) ~= firstOp)
-    W.t = W.t + C.retryMs + 1
-    svc:tick()
-    check("8 settled", W.saved[t.id].state == "settled")
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 2 } })
+    local tab = tabOf(svc, 1)
+    local row = { id = tab.id, bar = tab.bar, customer = { subject = "cust", name = "P1", pid = 1 }, state = "open",
+        served = tab.served, attempt = 1 }
+    local svc2 = S.new(C, M, W.P)
+    check("8 recovered", svc2:recover({ row }) == 1)
+    svc2:onJoined(1)
+    check("8 customer gets it back", svc2:tabOfPlayer(1) and svc2:tabOfPlayer(1).customer.pid == 1)
+    svc2:onDropped(1)
+    W.t = W.t + C.tab.disconnectGraceMs + 1
+    svc2:tick()
+    check("8 charged after grace", W.bal["sub:cust:cash"] == 440, W.bal["sub:cust:cash"])
     conserved("8", W, start)
 end
 
--- ------------------------------------------------------------------ 9. charge in doubt, then committed
+-- ------------------------------------------------------------------ 9. kiosk charge fails once: retried, charged once
 do
     local W, svc = setup()
     local start = W.total()
-    W.failNext = { kind = "charge", reason = "in_doubt_committed" }
-    local t, ok, why = orderAndPay(W, svc)
-    check("9 in doubt", ok == nil and why == "in_doubt" and t.state == "paying", why)
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 1 } })
+    local tab = tabOf(svc, 1)
+    W.failNext = { reason = "store_unavailable", info = { retryable = true } }
+    check("9 first try fails", svc:kioskPay(1, tab.id, 0, "cash") == nil and tab.state == "closing")
     W.t = W.t + C.retryMs + 1
     svc:tick()
-    check("9 resolved to paid", t.state == "paid", t.state)
-    svc:onStood(1)
+    check("9 resolved: unknown -> reopened", tab.state == "open" and tab.attempt == 2, tab.state)
+    check("9 pay again", svc:kioskPay(1, tab.id, 0, "cash") == true)
+    check("9 once", W.charges == 1 and W.bal["sub:cust:cash"] == 470)
     conserved("9", W, start)
 end
 
--- ------------------------------------------------------------------ 10. charge in doubt, customer leaves, then committed
+-- ------------------------------------------------------------------ 10. two bartenders: cuts and tip follow who served what
 do
     local W, svc = setup()
     local start = W.total()
-    W.failNext = { kind = "charge", reason = "in_doubt_committed" }
-    local t = orderAndPay(W, svc)
-    svc:onStood(1)
-    check("10 marked abandoning", t.state == "abandoning")
-    W.t = W.t + C.retryMs + 1
-    svc:tick()
-    check("10 refunded", W.saved[t.id].state == "refunded", W.saved[t.id].state)
+    W.jobs[3] = C.job
+    W.pos[3] = { x = STATION.x, y = STATION.y + 0.6, z = STATION.z }
+    assert(svc:clockIn(3))
+    round(W, svc, 2, 1, { { drink = "johnny_silverhand", qty = 1 } })   -- 150 by barb
+    W.pos[3] = { x = STATION.x, y = STATION.y + 0.6, z = STATION.z }
+    round(W, svc, 3, 1, { { drink = "broseph", qty = 1 } })             -- 30 by barb2
+    local tab = tabOf(svc, 1)
+    assert(svc:kioskPay(1, tab.id, 20, "bank"))                         -- 180 + 36
+    -- till 108; cuts 72 split 150:30 -> 60 / 12; tip 36 -> 30 / 6
+    check("10 barb", W.bal["sub:barb:cash"] == 90, W.bal["sub:barb:cash"])
+    check("10 barb2", W.bal["sub:barb2:cash"] == 18, W.bal["sub:barb2:cash"])
+    check("10 HUD earnings", svc.shifts[2].earned == 90 and svc.shifts[3].earned == 18)
     conserved("10", W, start)
 end
 
--- ------------------------------------------------------------------ 11. charge refused: back to the bill, nothing moved
+-- ------------------------------------------------------------------ 11. too-fast pours end the shift; served drinks stay on the tab
 do
     local W, svc = setup()
-    local start = W.total()
-    local t, ok, why = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 4 } }, 20, "cash")  -- 720 > 500 cash
-    check("11 refused", ok == nil and why == "insufficient_funds", why)
-    check("11 back to billed", t.state == "billed")
-    local ok2 = svc:kioskPay(1, t.id, 20, "bank")
-    check("11 bank works", ok2 == true and t.state == "paid")
-    svc:onStood(1)
-    conserved("11", W, start)
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 1 } })
+    assert(svc:lockOn(2, 1, "menu") == "menu")
+    local id = lastUi(W, 1, "menu").ticketId
+    assert(svc:menuSubmit(1, id, { { drink = "johnny_silverhand", qty = 1 } }))
+    for _ = 1, C.pour.tooFastStrikes do
+        if svc.shifts[2] then
+            W.pos[2] = at(STATION); assert(svc:startPour(2, id, 1)); W.t = W.t + 500
+            svc:pourSubmit(2, id, 0, PERFECT.johnny_silverhand)
+        end
+    end
+    check("11 off shift", svc.shifts[2] == nil)
+    check("11 unmade round dropped", svc.rounds[id] == nil)
+    check("11 served beer still owed", M.owed(tabOf(svc, 1)) == 30)
 end
 
--- ------------------------------------------------------------------ 12. restart: paid ticket is refunded on boot
+-- ------------------------------------------------------------------ 12. bottles: cooler, singles served open, bulk bagged, all on the tab
 do
     local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    local row = {}
-    for k, v in pairs(t) do row[k] = v end
-    local svc2 = S.new(C, M, W.P)   -- the server came back: nobody seated, nobody on shift
-    svc2:recover({ row })
-    check("12 refunded on boot", W.saved[t.id].state == "refunded")
-    conserved("12", W, start)
+    round(W, svc, 2, 1, { { drink = "odickin_whiskey", qty = 1 }, { drink = "nicola_blue", qty = 6 } })
+    local held = 0
+    for _, e in ipairs(W.events) do if e[1] == "o77_bar:servedBottle" and e[4] == "Items.MediumQualityAlcohol2" then held = held + 1 end end
+    check("12 whiskey served open", held == 1)
+    check("12 six NiCola Blue bagged", W.given and #W.given == 1 and W.given[1][3] == 6)
+    check("12 on the tab", M.owed(tabOf(svc, 1)) == 45 + 6 * 10, M.owed(tabOf(svc, 1)))
 end
 
--- ------------------------------------------------------------------ 13. restart mid-settle: paid out, not refunded
-do
-    local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    makeAll(W, svc, t)
-    W.failNext = { kind = "pay", reason = "store_unavailable", info = { retryable = true } }
-    svc:lockOn(2, 1)
-    local row = {}
-    for k, v in pairs(t) do row[k] = v end
-    local svc2 = S.new(C, M, W.P)
-    svc2:recover({ row })
-    check("13 settled on boot", W.saved[t.id].state == "settled")
-    check("13 bartender paid", W.bal["sub:barb:cash"] == t.split.bartender)
-    conserved("13", W, start)
-end
-
--- ------------------------------------------------------------------ 14. guards
+-- ------------------------------------------------------------------ 13. guards
 do
     local W, svc = setup()
     W.jobs[3] = C.job
-    W.pos[3] = { x = STATION.x, y = STATION.y + 0.5, z = STATION.z }
+    W.pos[3] = { x = STATION.x, y = STATION.y + 0.6, z = STATION.z }
     assert(svc:clockIn(3))
-    local t = orderAndPay(W, svc)
-    check("14 other bartender refused", select(2, svc:lockOn(3, 1)) == "another_bartender")
-    check("14 bad tip", select(2, svc:kioskPay(1, t.id, 7, "cash")) == "ticket_gone")
-    check("14 self service", select(2, svc:lockOn(2, 2)) == "not_seated_here")
-    check("14 not a bartender", select(2, svc:clockIn(4)) == "not_a_bartender")
-    check("14 wrong item submit", select(2, svc:pourSubmit(2, t.id, 0, PERFECT.broseph)) == "not_pouring")
-    assert(svc:startPour(2, t.id, 1))
-    check("14 station busy", select(2, svc:startPour(3, t.id, 2)) == "ticket_gone")
-    W.t = W.t + 20000
-    check("14 wrong steps", select(2, svc:pourSubmit(2, t.id, 0, PERFECT.broseph)) == "steps_mismatch")
-    check("14 cannot cancel after pay", select(2, svc:kioskCancel(1, t.id)) == "already_paid")
-    svc:onStood(1)
+    assert(svc:lockOn(2, 1, "menu") == "menu")
+    check("13 another bartender's round", select(2, svc:lockOn(3, 1, "menu")) == "another_bartender")
+    check("13 self service", select(2, svc:lockOn(2, 2)) == "self_service")
+    check("13 not a customer", select(2, svc:lockOn(2, 4)) == "not_a_customer_here")
+    check("13 bill with nothing served", select(2, svc:lockOn(2, 1, "bill")) == "nothing_served")
+    check("13 not a bartender", select(2, svc:clockIn(4)) == "not_a_bartender")
 end
 
--- ------------------------------------------------------------------ 15. serve timeout refunds
+-- ------------------------------------------------------------------ 14. picking too long, or standing up mid-order, drops only that order
 do
     local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    W.t = W.t + C.limits.serveTimeoutMs + 1
+    round(W, svc, 2, 1, { { drink = "broseph", qty = 1 } })
+    assert(svc:lockOn(2, 1, "menu") == "menu")
+    W.t = W.t + C.limits.orderTimeoutMs + 1
     svc:tick()
-    check("15 refunded", W.saved[t.id].state == "refunded")
-    conserved("15", W, start)
-end
-
--- ------------------------------------------------------------------ 16. tab closed before paying: nothing moves
-do
-    local W, svc = setup()
-    local start = W.total()
-    assert(svc:lockOn(2, 1) == "menu")
-    local id = lastUi(W, 1, "menu").ticketId
-    assert(svc:menuSubmit(1, id, { { drink = "broseph", qty = 1 } }))
-    assert(svc:lockOn(2, 1) == "bill")
-    check("16 cancel", svc:kioskCancel(1, id) == true)
-    check("16 next customer can order", svc:lockOn(2, 1) == "menu")
-    conserved("16", W, start)
-end
-
--- ------------------------------------------------------------------ 17. refund retried until it lands
-do
-    local W, svc = setup()
-    local start = W.total()
-    local t = orderAndPay(W, svc)
-    W.failNext = { kind = "pay", reason = "store_unavailable", info = { retryable = true } }
+    check("14 order timed out", svc:roundOfCustomer(1) == nil)
+    check("14 tab untouched", M.owed(tabOf(svc, 1)) == 30)
+    assert(svc:lockOn(2, 1, "menu") == "menu")
     svc:onStood(1)
-    check("17 refunding", t.state == "refunding")
-    W.t = W.t + C.retryMs + 1
-    svc:tick()
-    check("17 refunded", W.saved[t.id].state == "refunded")
-    conserved("17", W, start)
+    check("14 standing drops the open menu", svc:roundOfCustomer(1) == nil and M.owed(tabOf(svc, 1)) == 30)
 end
 
--- ------------------------------------------------------------------ 18. difficulty follows the title
+-- ------------------------------------------------------------------ 15. leaving with an empty tab costs nothing
+do
+    local W, svc = setup()
+    assert(svc:lockOn(2, 1, "menu") == "menu")
+    svc:menuCancel(1, lastUi(W, 1, "menu").ticketId)
+    W.pos[1] = at(OUTSIDE)
+    svc:tick()
+    check("15 no charge", W.charges == 0 and tabOf(svc, 1) == nil)
+end
+
+-- ------------------------------------------------------------------ 16. difficulty follows the title
 do
     local W, svc = setup()
     W.grade[2] = 3
-    local t = orderAndPay(W, svc, { { drink = "johnny_silverhand", qty = 1 } })
-    assert(svc:startPour(2, t.id, 1))
-    check("18 boss beat", lastUi(W, 2, "pour").beat == C.shakeByGrade[3])
-    svc:onStood(1)
+    assert(svc:lockOn(2, 1, "menu") == "menu")
+    local id = lastUi(W, 1, "menu").ticketId
+    assert(svc:menuSubmit(1, id, { { drink = "johnny_silverhand", qty = 1 } }))
+    assert(svc:startPour(2, id, 1))
+    check("16 boss beat", lastUi(W, 2, "pour").beat == C.shakeByGrade[3])
 end
 
--- ------------------------------------------------------------------ 19. bottles: fetched from the cooler, singles held, bulk bagged
+-- ------------------------------------------------------------------ 17. split math: any tab, any tip, parts sum exactly
 do
-    local W, svc = setup()
-    local start = W.total()
-    local t, ok = orderAndPay(W, svc, { { drink = "odickin_whiskey", qty = 1 }, { drink = "nicola_blue", qty = 6 } })
-    check("19 paid", ok == true and t.state == "paid", t.state)
-    check("19 two cooler trips", #t.queue == 2 and t.queue[1].kind == "grab" and t.queue[2].bulk == true)
-    check("19 cannot pour a bottle", select(2, svc:startPour(2, t.id, 1)) == "grab_at_cooler")
-    check("19 grab refused away from cooler", select(2, svc:startGrab(2, t.id, 1)) == "not_at_cooler")
-    W.pos[2] = { x = COOLER.x, y = COOLER.y, z = COOLER.z }
-    local secs = svc:startGrab(2, t.id, 1)
-    check("19 grab is timed", secs and secs > 0 and W.progress and W.progress[3] == math.floor(secs * 1000))
-    W.t = W.t + 100
-    check("19 grab too fast", select(2, svc:finishGrab(2)) == "too_fast")
-    assert(svc:startGrab(2, t.id, 1)); W.t = W.t + 5000
-    check("19 grab done", svc:finishGrab(2) == true and t.state == "paid")
-    assert(svc:startGrab(2, t.id, 2)); W.t = W.t + 5000
-    assert(svc:finishGrab(2))
-    check("19 ready after both grabs", t.state == "ready", t.state)
-    W.pos[2] = { x = STATION.x, y = STATION.y, z = STATION.z }
-    check("19 serve", svc:lockOn(2, 1) == "served")
-    local held, bagged = 0, W.given and #W.given or 0
-    for _, e in ipairs(W.events) do if e[1] == "o77_bar:servedBottle" and e[4] == "Items.MediumQualityAlcohol2" then held = held + 1 end end
-    check("19 single whiskey served open", held == 1, held)
-    check("19 six NiCola Blue bagged", bagged == 1 and W.given[1][2] == "Items.LowQualityDrink9" and W.given[1][3] == 6)
-    conserved("19", W, start)
-end
-
--- ------------------------------------------------------------------ 19b. bulk does not count toward the counter limit
-do
-    local lines = M.priceOrder(C, BAR, { { drink = "jackie_welles", qty = 4 }, { drink = "broseph", qty = 2 }, { drink = "broseph_ale", qty = 12 } })
-    check("19b bulk outside maxItems", lines ~= nil)
-    check("19b 13 bottles refused", select(2, M.priceOrder(C, BAR, { { drink = "broseph_ale", qty = 13 } })) == "too_many_of_one")
-    check("19b 7 open drinks refused", select(2, M.priceOrder(C, BAR, { { drink = "jackie_welles", qty = 4 }, { drink = "broseph", qty = 2 }, { drink = "broseph_ale", qty = 1 } })) == "too_many_items")
-end
-
--- ------------------------------------------------------------------ 20. mixed + bottle: pour only the cocktail
-do
-    local W, svc = setup()
-    local t = orderAndPay(W, svc, { { drink = "jackie_welles", qty = 1 }, { drink = "broseph_ale", qty = 1 } })
-    check("20 one glass and one grab", #t.queue == 2 and t.queue[1].kind == "pour" and t.queue[2].kind == "grab")
-    check("20 nomad bottles not sold here", select(2, (function()
-        local M2 = M
-        return M2.priceOrder(C, C.bars.afterlife, { { drink = "moonshine", qty = 1 } })
-    end)()) == "not_on_menu")
-    svc:onStood(1)
+    local served = {}
+    for i = 1, 7 do served[#served + 1] = { price = ({ 30, 150, 45, 20, 240, 10, 60 })[i], qty = i % 3 + 1, bartender = "b" .. (i % 3) } end
+    for _, tip in ipairs({ 0, 1, 13, 99 }) do
+        for _, fee in ipairs({ 0, 50, 97 }) do
+            local sp = M.tabSplit(C, BAR, { served = served }, tip, fee)
+            local sum = 0
+            for _, p in ipairs(sp.payees) do sum = sum + p.amount; check("17 non-negative", p.amount >= 0) end
+            check(("17 sums %d/%d"):format(tip, fee), sum == sp.total, sum - sp.total)
+            local payees, debt, paid = M.partial(sp, 123)
+            local s2 = 0
+            for _, p in ipairs(payees) do s2 = s2 + p.amount end
+            check("17 partial sums", s2 == paid and paid == math.min(123, sp.total) and debt == sp.total - paid)
+        end
+    end
 end
 
 print(("service: %d checks, %d failed"):format(runs, fails))

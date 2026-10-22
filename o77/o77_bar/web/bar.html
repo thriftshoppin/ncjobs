@@ -135,6 +135,9 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
 .stepper button { width: 32px; height: 32px; border: 1px solid var(--line); background: transparent; font: 700 18px var(--f-display); }
 .stepper button:disabled { opacity: .3; cursor: not-allowed; }
 .stepper .num { width: 26px; text-align: center; }
+.spend { display: flex; justify-content: space-between; gap: 12px; font: 13px var(--f-mono); color: var(--muted); flex-wrap: wrap; }
+.spend b { color: var(--yellow); font-weight: 400; }
+.spend .over { color: var(--bad); }
 .search { width: 100%; background: #0b0f18; border: 1px solid var(--line); color: var(--text); padding: 8px 10px; font: 15px var(--f-body); }
 .search:focus { outline: 1px solid var(--cyan); }
 
@@ -198,7 +201,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
     <div class="head">
       <div>
         <div class="eyebrow" id="kBar">Afterlife // Stool 3</div>
-        <h1 class="title" id="kTitle">Your tab</h1>
+        <h1 class="title" id="kTitle">Close your tab</h1>
       </div>
       <div class="meta">Bartender<br><span id="kBartender">—</span></div>
     </div>
@@ -258,6 +261,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
       <div class="meta">Bartender<br><span id="mBartender">—</span></div>
     </div>
     <div class="body">
+      <div class="spend" id="mSpend"></div>
       <div class="tabs" id="mTabs" role="group" aria-label="Menu sections"></div>
       <input class="search" id="mSearch" type="search" placeholder="Search the menu" aria-label="Search the menu">
       <div class="menu-list" id="mList"></div>
@@ -327,7 +331,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
 
   function openKiosk(ticket) {
     Object.assign(kiosk, { ticket, tip: ticket.defaultTip ?? 15, method: ticket.balances.cash >= 0 ? "cash" : "bank", busy: false, done: false });
-    $("kBar").textContent = `${ticket.bar} // Stool ${ticket.stool}`;
+    $("kBar").textContent = `${ticket.bar} // Your tab`;
     $("kBartender").textContent = ticket.bartender;
     $("kLines").replaceChildren(...ticket.items.map(it => {
       const row = document.createElement("div"); row.className = "line";
@@ -377,7 +381,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   };
   bridge.on("o77bar:kiosk:result", r => {
     kiosk.busy = false;
-    if (r.ok) { kiosk.done = true; status("kStatus", "Paid. Your drink is being made. Stand up before it arrives and you get it all back.", "good"); }
+    if (r.ok) { kiosk.done = true; status("kStatus", "Tab closed. You're free to go.", "good"); }
     else status("kStatus", REASONS[r.reason] || `Payment refused (${r.reason}).`, "bad");
     renderKiosk();
   });
@@ -623,11 +627,14 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
     }) : [Object.assign(document.createElement("div"), { className: "hint", textContent: "Nothing on the menu matches that." })]));
     const count = pickedCount();
     const sub = picked().reduce((a, [id, n]) => a + n * d.menu.find(x => x.drink === id).price, 0);
+    const over = d.canSpend != null && sub > d.canSpend;
+    $("mSpend").innerHTML = `<span>On your tab: <b>${fmt(d.tabSoFar || 0)} €$</b></span>` +
+      `<span class="${over ? "over" : ""}">You can still spend: <b>${fmt(Math.max(0, (d.canSpend ?? 0) - sub))} €$</b>${over ? " (too much)" : ""}</span>`;
     const open = openCount(), bag = count - open;
     $("mCount").textContent = count ? `${open} of ${d.maxItems} on the counter${bag ? ` · ${bag} to go` : ""}` : "Nothing picked";
     $("mSubtotal").textContent = fmt(sub);
-    $("mSend").disabled = !count || menu.busy;
-    $("mSend").textContent = menu.busy ? "Sending…" : "Send order";
+    $("mSend").disabled = !count || menu.busy || over;
+    $("mSend").textContent = menu.busy ? "Sending…" : "Put it on my tab";
   }
   $("mSearch").oninput = e => { menu.query = e.target.value.trim(); renderMenu(); };
   $("mSend").onclick = () => {
@@ -638,12 +645,14 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   $("mCancel").onclick = () => { bridge.emit("o77bar:menu:cancel", { ticketId: menu.data?.ticketId }); hideAll(); };
   bridge.on("o77bar:menu:result", r => {
     menu.busy = false;
-    if (r.ok) { status("mStatus", "Order sent. The bartender will bring the bill.", "good"); setTimeout(hideAll, 1200); }
+    if (r.ok) { status("mStatus", "On your tab. The bartender's making it now.", "good"); setTimeout(hideAll, 1200); }
     else { status("mStatus", MENU_REASONS[r.reason] || `Order refused (${r.reason}).`, "bad"); }
     renderMenu();
   });
   const MENU_REASONS = {
-    too_many_items: "That's more than one tab can hold. Take a few off.",
+    too_many_items: "That's more than one round can hold. Take a few off.",
+    cannot_afford: "That's more than you've got. Your tab can't go over what's in your cash and bank.",
+    customer_owes: "You still owe a bar from last time. Settle that first.",
     too_many_of_one: "That's too many of one drink for one tab.",
     ticket_gone: "The bartender closed this tab.",
     not_on_menu: "Something you picked isn't served here any more.",
@@ -655,7 +664,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   const HUD_KIND = {
     ready: ["serve", "SERVE", 0], none: ["greet", "GREET", 1], ordered: ["bill", "BILL", 2],
     paid: ["make", "MAKE", 3], ordering: ["wait", "MENU", 4], billed: ["wait", "PAYING", 4],
-    paying: ["wait", "PAYING", 4], settling: ["wait", "…", 5], refunding: ["wait", "REFUND", 5],
+    paying: ["wait", "PAYING", 4], tab: ["wait", "TAB", 5],
   };
   const hud = { data: null, base: 0, timer: 0 };
   const clock = ms => { const s = Math.max(0, Math.floor(ms / 1000)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
@@ -678,7 +687,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
       const el = document.createElement("div"); el.className = "hud-row";
       const chip = document.createElement("span"); chip.className = "chip " + cls;
       chip.textContent = r.state === "paid" && r.of ? `${word} ${r.made}/${r.of}` : word;
-      const who = document.createElement("div"); who.className = "who"; who.textContent = `${r.name} · stool ${r.stool}`;
+      const who = document.createElement("div"); who.className = "who"; who.textContent = `${r.name} · ${r.stool === "-" ? "on the floor" : "stool " + r.stool}`;
       const sub = document.createElement("small"); sub.textContent = r.detail || r.next || ""; who.append(sub);
       const c = document.createElement("div");
       const left = r.serveLeftMs != null ? r.serveLeftMs - dt : null;
@@ -761,7 +770,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   // Example data only. In game the server sends the real ticket and order.
   let lastPreview = "kiosk";
   const SAMPLE_TICKET = {
-    id: 1042, bar: "Afterlife", stool: 3, bartender: "Claire R.", defaultTip: 15,
+    id: 1042, bar: "Afterlife", stool: "tab", bartender: "Claire R.", defaultTip: 15,
     balances: { cash: 340, bank: 12850 },
     items: [
       { label: "The Johnny Silverhand", qty: 1, price: 150, flavour: "A tequila old fashioned with a splash of beer and a chili garnish." },
@@ -800,6 +809,7 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   // Example data only. In game the server sends these.
   const SAMPLE_MENU = {
     ticketId: 1042, bar: "Afterlife", bartender: "Claire R.", maxItems: 6, maxQty: 4, bulkFrom: 3, maxBulk: 12,
+    canSpend: 420, tabSoFar: 180,
     menu: [
       { drink: "johnny_silverhand", label: "The Johnny Silverhand", price: 150, glass: "Rocks glass", section: "Afterlife legends", flavour: "A tequila old fashioned with a splash of beer and a chili garnish." },
       { drink: "jackie_welles", label: "The Jackie Welles", price: 150, glass: "Highball glass", section: "Afterlife legends", flavour: "A shot of vodka, lime juice, ginger beer and, most importantly, a splash of love." },
@@ -829,10 +839,11 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   const SAMPLE_HUD = {
     bar: "Afterlife", onShift: true, shiftMs: 2532000, served: 4, earned: 412,
     stools: [
-      { stool: 2, name: "Judy", state: "ordering", waitedMs: 41000, detail: "Reading the menu" },
-      { stool: 3, name: "V", state: "paid", waitedMs: 95000, made: 1, of: 3, detail: "Jackie Welles, 2 × Broseph Lager", serveLeftMs: 505000 },
+      { stool: 2, name: "Judy", state: "tab", waitedMs: 41000, detail: "Tab open: 150 · wants the bill" },
+      { stool: 3, name: "V", state: "paid", waitedMs: 95000, made: 1, of: 3, detail: "Jackie Welles, 2 × Broseph Lager" },
+      { stool: "-", name: "Rogue", state: "tab", waitedMs: 610000, detail: "Tab open: 300 · dancing" },
       { stool: 5, name: "Panam", state: "none", waitedMs: 63000, detail: "Just sat down: hand the menu" },
-      { stool: 6, name: "River", state: "ordered", waitedMs: 22000, detail: "2 drinks, 330 €$: send the bill" },
+      { stool: 6, name: "River", state: "ordering", waitedMs: 22000, detail: "Reading the menu" },
       { stool: 7, name: "Kerry", state: "ready", waitedMs: 12000, detail: "Johnny Silverhand + 1 bottle: serve" },
     ],
   };

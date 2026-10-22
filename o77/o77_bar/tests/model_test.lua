@@ -30,9 +30,11 @@ check("odd tip rejected", select(2, M.tipFor(C, 180, 13)) == "invalid_tip")
 for _, subtotal in ipairs({ 0, 1, 20, 30, 179, 180, 999 }) do
     for _, pct in ipairs(C.tips) do
         local tip = M.tipFor(C, subtotal, pct)
-        local s = M.split(C, subtotal, tip)
-        check(("split sums %d/%d"):format(subtotal, pct), s.till + s.bartender == s.total and s.total == subtotal + tip)
-        check(("split non-negative %d/%d"):format(subtotal, pct), s.till >= 0 and s.bartender >= 0)
+        local tab = { served = { { price = subtotal, qty = 1, bartender = "b" } } }
+        local s = M.tabSplit(C, bar, tab, tip, 0)
+        local sum = 0
+        for _, p in ipairs(s.payees) do sum = sum + p.amount; check("split non-negative", p.amount >= 0) end
+        check(("split sums %d/%d"):format(subtotal, pct), sum == s.total and s.total == subtotal + tip)
     end
 end
 
@@ -98,7 +100,13 @@ check("pour order has no price", o.price == nil)
 
 -- op ids are stable and distinct
 local tk = { id = "abc", attempt = 1 }
-check("op ids distinct", M.payOp(tk) ~= M.settleOp(tk) and M.settleOp(tk) ~= M.refundOp(tk))
+check("op ids distinct", M.closeOp(tk) ~= M.walkOp(tk) and M.walkOp(tk) ~= M.leaveOp(tk))
+
+-- walkout fee: percent with a minimum, or flat
+check("fee 25 % of 390", M.walkoutFee({ mode = "percent", value = 25, min = 50 }, 390) == 98)
+check("fee minimum", M.walkoutFee({ mode = "percent", value = 25, min = 50 }, 60) == 50)
+check("fee flat", M.walkoutFee({ mode = "flat", value = 100 }, 60) == 100)
+check("no fee on nothing", M.walkoutFee({ mode = "flat", value = 100 }, 0) == 0)
 
 -- every drink is a real base-game consumable
 local known = {}

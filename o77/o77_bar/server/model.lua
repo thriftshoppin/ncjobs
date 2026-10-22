@@ -6,24 +6,19 @@ local function int(v) return math.tointeger(tonumber(v)) end
 M.int = int
 
 -- ---------------------------------------------------------------------------------------------
--- Ticket states
---   ordering   menu handed, waiting for the customer to pick       (no money)
---   ordered    customer picked, waiting for the bartender's bill   (no money)
---   billed     kiosk open on the customer                          (no money)
---   paying     escrow charge in flight                             (money may be moving)
---   paid       escrow holds total; drinks being made               (money held)
---   ready      every drink made, waiting for the hand-over         (money held)
---   settling   payout from escrow in flight / retried              (money held until done)
---   refunding  refund from escrow in flight / retried              (money held until done)
---   settled | refunded | cancelled                                 (final)
+-- Rounds and tabs
+--   A ROUND is one order: ordering -> making -> ready -> served (or cancelled). No money moves.
+--   A TAB is what a customer owes at one bar: every served round adds its lines.
+--     open -> closing (kiosk charge in flight) -> settled
+--     open -> walking (walkout charge in flight) -> settled
+--     open -> leaving (disconnect / restart charge, no fee) -> settled
+--   A tab is saved whenever it changes, so a restart never forgets what is owed.
 -- ---------------------------------------------------------------------------------------------
-M.HOLDS_MONEY = { paying = true, paid = true, ready = true, settling = true, refunding = true }
-M.FINAL = { settled = true, refunded = true, cancelled = true }
-M.PRE_PAY = { ordering = true, ordered = true, billed = true }
+M.ROUND_LIVE = { ordering = true, making = true, ready = true }
 
-function M.payOp(t) return ("o77bar:%s:pay"):format(t.id) end
-function M.settleOp(t) return ("o77bar:%s:settle:%d"):format(t.id, t.attempt or 1) end
-function M.refundOp(t) return ("o77bar:%s:refund:%d"):format(t.id, t.attempt or 1) end
+function M.closeOp(tab) return ("o77bar:%s:close:%d"):format(tab.id, tab.attempt or 1) end
+function M.walkOp(tab) return ("o77bar:%s:walkout:%d"):format(tab.id, tab.attempt or 1) end
+function M.leaveOp(tab) return ("o77bar:%s:leave:%d"):format(tab.id, tab.attempt or 1) end
 
 -- ---------------------------------------------------------------------------------------------
 -- Orders and money
@@ -94,16 +89,89 @@ function M.tipFor(cfg, subtotal, tipPct)
     return (subtotal * pct + 50) // 100   -- rounded to the nearest eddy
 end
 
--- The till gets floor(subtotal * tillShare); the bartender gets the rest of the subtotal and the
--- whole tip. Parts always sum to the total.
-function M.split(cfg, subtotal, tip)
-    local till = math.floor(subtotal * (cfg.split.tillShare or 0.6))
-    if till < 0 then till = 0 end
-    if till > subtotal then till = subtotal end
-    return { till = till, bartender = subtotal - till + tip, total = subtotal + tip }
+-- What a tab owes: the sum of its served lines.
+function M.owed(tab)
+    local n = 0
+    for _, l in ipairs(tab.served or {}) do n = n + l.price * l.qty end
+    return n
 end
 
--- The bartender's tasks for a ticket, in ticket order:
+-- The walkout fee for a tab, from the bar's setting { mode = "percent"|"flat", value, min }.
+function M.walkoutFee(setting, owed)
+    if owed <= 0 then return 0 end
+    local fee
+    if setting.mode == "flat" then fee = setting.value
+    else fee = (owed * setting.value + 50) // 100 end
+    if setting.min and fee < setting.min then fee = setting.min end
+    return math.max(0, math.floor(fee))
+end
+
+-- Splits `n` into integer parts proportional to `weights` (largest remainder); parts sum to n.
+local function apportion(n, weights)
+    local total, parts, rems = 0, {}, {}
+    for i, w in ipairs(weights) do total = total + w end
+    if total <= 0 then
+        for i in ipairs(weights) do parts[i] = 0 end
+        if #weights > 0 then parts[1] = n end
+        return parts
+    end
+    local given = 0
+    for i, w in ipairs(weights) do
+        local exact = n * w / total
+        parts[i] = math.floor(exact)
+        rems[#rems + 1] = { i = i, r = exact - parts[i] }
+        given = given + parts[i]
+    end
+    table.sort(rems, function(a, b) if a.r ~= b.r then return a.r > b.r end return a.i < b.i end)
+    for k = 1, n - given do parts[rems[k].i] = parts[rems[k].i] + 1 end
+    return parts
+end
+M.apportion = apportion
+
+-- Who gets what when a tab is paid. The till takes floor(subtotal * tillShare) plus any fee;
+-- each bartender gets the rest of the subtotal in proportion to what they served, and the tip
+-- in the same proportion. Answers { payees = { {society=..|subject=.., amount} }, total }, parts
+-- always summing to total.
+function M.tabSplit(cfg, bar, tab, tip, fee)
+    local subtotal = M.owed(tab)
+    local till = math.floor(subtotal * (cfg.split.tillShare or 0.6))
+    local order, by = {}, {}
+    for _, l in ipairs(tab.served or {}) do
+        local who = l.bartender
+        if not by[who] then by[who] = 0; order[#order + 1] = who end
+        by[who] = by[who] + l.price * l.qty
+    end
+    local weights = {}
+    for i, who in ipairs(order) do weights[i] = by[who] end
+    local cuts = apportion(subtotal - till, weights)
+    local tips = apportion(tip or 0, weights)
+    local payees = {}
+    if till + (fee or 0) > 0 then payees[#payees + 1] = { society = bar.society, amount = till + (fee or 0) } end
+    for i, who in ipairs(order) do
+        local amount = cuts[i] + tips[i]
+        if amount > 0 then payees[#payees + 1] = { subject = who, amount = amount } end
+    end
+    return { payees = payees, total = subtotal + (tip or 0) + (fee or 0), till = till, fee = fee or 0, tip = tip or 0 }
+end
+
+-- Scales a split down to what the customer actually has, paying bartenders first, then the till's
+-- share, then the fee. Answers the reduced payees and the amount left unpaid (debt).
+function M.partial(split, available)
+    local left, payees = math.max(0, available), {}
+    local order = {}
+    for _, p in ipairs(split.payees) do if p.subject then order[#order + 1] = p end end
+    for _, p in ipairs(split.payees) do if p.society then order[#order + 1] = p end end
+    for _, p in ipairs(order) do
+        local amount = math.min(left, p.amount)
+        if amount > 0 then payees[#payees + 1] = { subject = p.subject, society = p.society, amount = amount } end
+        left = left - amount
+    end
+    local paid = 0
+    for _, p in ipairs(payees) do paid = paid + p.amount end
+    return payees, split.total - paid, paid
+end
+
+-- The bartender's tasks for a round, in order:
 --   { kind = "pour", drink, n }          one glass per cocktail, poured at a station
 --   { kind = "grab", drink, qty, bulk }  one trip to the cooler per bottle line
 function M.queue(lines)
@@ -202,7 +270,7 @@ end
 
 -- What the pour page needs for one glass (no prices, nothing the client could act on).
 function M.pourOrder(cfg, t, index, grade)
-    local entry = t.queue[index]
+    local entry = t.queue[index]   -- t is a round
     local drink = cfg.drinks[entry.drink]
     local glass = cfg.glasses[drink.glass] or {}
     return {

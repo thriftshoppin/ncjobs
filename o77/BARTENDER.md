@@ -97,3 +97,22 @@ Open question: which Afterlife bar stools exist in `open77_furniture`'s catalogu
 Open item: placing the glass ON the counter. `Open77.props.create` takes curated aliases or a raw
 `.mesh` depot path, not `Items.*` records. Need the drink models' mesh paths (find in game via the
 RTTI tools, docs/rtti-testing) or a curated alias added for each glass.
+
+## Tabs replace pay-first (2026-10-22)
+The kiosk-before-making flow above is replaced. Customers drink on a **tab**:
+- **Rounds.** Bartender hands the menu (E on the customer, anywhere in the club). The customer can
+  only order what they can afford: open tab + rounds in progress + this round <= cash + bank.
+  The round is made (pour/grab) and served onto the tab. Nothing is charged per round.
+- **Walk around.** Standing up or wandering the club with drinks is fine; only an order still being
+  picked is dropped. Bartenders can serve or bill a customer anywhere in the club.
+- **Close the tab.** Bartender picks "bill" (or the customer asks); the kiosk shows the whole tab and a
+  tip. One charge pays the till (60 % of drinks) and each bartender (their share of the rest, by what
+  they served, plus the same share of the tip).
+- **Walkout.** Leaving the club's venue zone (radius 50 at the Afterlife) with an unpaid tab charges
+  the tab + the walkout fee, cash first then bank. The fee goes to the till; bartenders keep their cut.
+  Default fee 25 % with a 50 eddie minimum; the bar's boss (rp_jobs grade 3) sets percent or flat at the
+  station, saved per bar.
+- **Can't cover it.** They pay what they have (bartenders first, then the till, then the fee) and the
+  rest is recorded as debt. Nobody with debt can start a tab at any bar.
+- **Disconnect / restart.** 5 minutes to come back with the tab intact; after that the tab is charged
+  without the fee.

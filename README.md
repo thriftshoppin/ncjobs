@@ -22,10 +22,8 @@ platform, built on a patched fork of the official
 - **The loop.** A customer sits; the bartender looks at them and presses E to hand the menu;
   the customer orders; the bartender sends the bill; the customer pays at a kiosk; the
   bartender pours cocktails at the station and grabs bottles from the cooler; then serves.
-- **Money never half-moves.** Payment goes into escrow in one operation. Serving pays the till,
-  the bartender's cut and the tip in one more. Standing up, the bartender leaving, a timeout or
-  a server restart refunds the customer in full. Every operation has an id, so retries never
-  charge or pay twice.
+- **Tabs.** Customers order only what they can afford, drink, and close the tab at a kiosk. Leaving the club with an unpaid tab charges it plus the manager's walkout fee.
+  Every charge is one operation with its own id, so retries never charge twice.
 - **Canon drinks.** The Johnny Silverhand, The Jackie Welles and The David Martinez use the
   game's own item text and records. 74 base-game bottles and cans are on the menu too.
 - **Pour and mix.** Hold to pour to a line, drop ice, shake or stir on the beat. The beat gets

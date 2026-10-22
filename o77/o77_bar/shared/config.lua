@@ -7,10 +7,16 @@ local C = O77BarConfig
 -- NOT used (bartenders are paid per served ticket, see `split`).
 C.job = "barman"
 
--- Where customer money waits between the kiosk and the hand-over (an rp_economy society).
--- Nobody withdraws from it; its balance should equal the totals of the live paid tickets
--- (`o77bar.status` prints both).
-C.escrowSociety = "o77bar_escrow"
+-- Customers drink on a TAB: every round is checked against what they can afford (cash + bank),
+-- made and served, and the tab is paid at the kiosk when they are done. Leaving the club with
+-- an unpaid tab charges it automatically, plus the bar's walkout fee.
+C.tab = {
+    disconnectGraceMs = 300000,   -- a dropped customer has this long to come back before the tab is charged (no fee)
+    -- default walkout fee; each bar's boss can change it at the station (saved per bar)
+    walkout = { mode = "percent", value = 25, min = 50 },   -- 25 % of the tab, at least 50 eddies
+    feeLimits = { percentMax = 100, flatMax = 2000 },
+    bossGrade = 3,                 -- rp_jobs grade that may set the fee
+}
 
 -- How a settled ticket is split. The tip always goes to the bartender in full.
 C.split = {
@@ -34,6 +40,7 @@ C.limits = {
     lockReach = 3.0,           -- bartender <-> customer for menu, bill and serve
     stationReach = 2.0,        -- bartender <-> station to pour
     zoneGrace = 4.0,           -- metres beyond a bar's zone before a bartender is clocked out
+    venueGrace = 2.0,          -- metres beyond the club's venue zone before an open tab is a walkout
     ringCooldownMs = 45000,    -- a customer may ring for service this often
 }
 
@@ -265,6 +272,10 @@ C.bars = {
     afterlife = {
         label = "Afterlife",
         zone = { position = { x = -1453.0, y = 1016.7, z = 16.5 }, radius = 25.0 },
+        -- the whole club: drinks may be carried anywhere inside; leaving it with an unpaid tab is
+        -- a walkout. Matches rp_zones' `afterlife` (radius 50); the street entrance from the
+        -- sheet's teleport (-1456.9, 1038.3) is 22 m from the centre, inside.
+        venue = { position = { x = -1453.0, y = 1017.0, z = 16.6 }, radius = 50.0, maxHeight = 12.0 },
         society = "bar_afterlife",
         stations = {
             { position = { x = -1451.5, y = 1012.5, z = 17.8 }, label = "Afterlife - bar" },
