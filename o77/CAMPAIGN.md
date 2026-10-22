@@ -58,8 +58,20 @@ and the David Martinez got there. Players can earn the same, but **for how they 
 - Only a character who **survived a long time** (a real-time threshold, weeks not hours) AND built
   real standing (fixer reputation, notable contracts) can be named a legend by Rogue when they die.
   Dying early, recklessly or on purpose never qualifies, however famous the character was.
-- Their name goes on the Afterlife's wall and the player writes their drink from the bar's
-  ingredient list. Rogue approves it and it goes on the menu for good.
+- Their name goes on the Afterlife's wall and their drink goes on the menu for good.
+
+**The last thing a legend does: choose their drink.** When a qualifying character flatlines, the
+player gets the **legend's recipe screen before character creation opens**:
+- Name: always "The <character name>", like the canon three.
+- Glass: pint, rocks or highball (the bar's glasses).
+- Steps: 3 to 8, built from the bar's own pours, counts and beats (spirits, mixers, ice, a stir or
+  shake, a garnish). The same pieces the bartender's minigame already plays, so the new drink is
+  pourable the moment it's approved.
+- One line of flavour text, like the canon item descriptions.
+- Price: 150 eddies, the same as the other Afterlife homages.
+
+It goes to staff (in character: Rogue) for approval, then onto every Afterlife bartender's menu.
+The player can skip it and come back to it later; it never blocks making the new character.
 
 ## 5. Making a character (lifepath)
 RED has characters roll or pick a **Lifepath**: where they're from, family, a friend, an enemy,
