@@ -25,30 +25,45 @@ canon setting 2077 grew out of) rather than inventing our own.
   new character.
 - A dead character's name can't be reused for a new one.
 
-## 2. Going down: Death Saves (from Cyberpunk RED)
-In RED, a mortally wounded character makes a **Death Save** each round: roll a d10 and stay under
-their BODY, with the target getting harder every roll. Fail once and they're dead. We do the same,
-on a timer:
-- **Downed** at 0 health: on the ground, can't fight, can talk and call for help.
-- Every **N seconds** the server rolls a Death Save. Each roll is a bit harder than the last
-  (RED's growing penalty). Fail, and the character flatlines.
-- **Stabilised** stops the rolls: a Trauma Team medic, a medic player, a ripperdoc, or a bystander
-  with a Bounce Back / MaxDoc (real items, CONSUMABLES tab) at a worse chance.
-- A Trauma Team plan (upstream `rp_trauma`: Silver, Gold, Platinum) gets you a faster response,
-  not immunity. The Trauma Team can arrive too late.
-- The server rolls, never the client, and every roll is logged.
+## 2. Going down: down fast, not dead fast
+**Damage is realistic.** Fights are short and ugly: a few hits put you on the ground. But damage
+puts you **down**, it doesn't kill you outright. Everyone who goes down gets a **bleedout timer**,
+so medics, the Trauma Team and support chrome always matter. No dice: the clock is the clock, so
+everyone knows exactly how long they have.
+
+**Wounds set the timer.**
+
+| How you went down | Bleedout timer |
+|---|---|
+| Body or limbs | 90 s |
+| Gut wound | 60 s |
+| Head wound | 30 s |
+
+(Tuning numbers; the point is that where you were hit matters.)
+
+**Downed means neutralized.** A downed character **can't be targeted**: not "damage doesn't land",
+the game treats them as out of the fight. Nobody can finish them off. The only way a downed
+character dies is the timer running out.
+- They **can** still be restrained, carried, searched and kidnapped: that's roleplay (snatch
+  contracts, robbery), not violence.
+- The few deaths that skip the timer are applied by the system, never by another player's weapon:
+  a fatal fall, standing on a point-blank explosion, being zeroed by Rogue, a staff character death.
+
+**Stabilised stops the clock:** a Trauma Team medic, a medic player, a ripperdoc, or a bystander
+with a Bounce Back / MaxDoc (real items, CONSUMABLES tab) who buys a bit of time rather than a full
+stabilise. A Trauma Team plan (upstream `rp_trauma`: Silver, Gold, Platinum) gets help to you
+faster, not immunity: they can still arrive too late.
 
 ### Your chrome decides how long you have
-How long a downed character lasts depends on their **support cyberware** (real items, CYBERWARE tab).
-That makes survival chrome a better investment than combat chrome: killing faster doesn't keep you
-alive, staying alive does.
+Support cyberware changes the timer (real items, CYBERWARE tab). That makes survival chrome a better
+investment than combat chrome: killing faster doesn't keep you alive, staying alive does.
 
 | Implant (tiers) | Effect while downed |
 |---|---|
-| **No support chrome** | base: a Death Save every 10 s, each harder than the last; about a minute to live |
-| **Blood Pump** (2 to 5++) | slows the bleed: more time between Death Saves, more per tier |
-| **Biomonitor** (1 to 5++) | calls for help the moment you go down: pings on-duty medics and your Trauma Team plan with your location; higher tiers also soften each Save |
-| **Second Heart** (4 to 5++) | once per long cooldown (a real-time day or more), catches the first failed Death Save and holds you stabilised for a while; the rarest and most valuable implant in the city |
+| **No support chrome** | the wound's timer, nothing else |
+| **Blood Pump** (2 to 5++) | adds seconds to the timer, more per tier |
+| **Biomonitor** (1 to 5++) | calls for help the moment you go down: pings on-duty medics and your Trauma Team plan with your location; higher tiers add a little time too |
+| **Second Heart** (4 to 5++) | once per long cooldown (a real-time day or more), freezes the timer for a while when you go down; the rarest and most valuable implant in the city |
 | **Adrenaline Booster** | lets you crawl to cover while downed |
 | **Heal-On-Kill, Gorilla Arms, combat chrome** | nothing. Combat chrome helps you win fights, not survive losing them |
 
@@ -57,8 +72,7 @@ alive, staying alive does.
 - It competes for **cyberware capacity**: every slot spent on a Second Heart is one not spent on a
   mantis blade. That's the choice we want players to make.
 - It feeds the **ripperdoc job**: support chrome becomes what people save up for.
-- Numbers (seconds per tier) are tuning; the order matters more: nothing beats a Second Heart, and
-  combat chrome adds nothing.
+- The timer runs on the server and every second of it is logged, so a death is a fact staff can check.
 
 Upstream `rp_trauma` already does the downed state, stabilise, evacuate and Trauma Team plans. Its
 `/respawn` (wake up at Vik's after a countdown) is what we replace with Death Saves and a real end.
@@ -75,15 +89,23 @@ Upstream `rp_trauma` already does the downed state, stabilise, evacuate and Trau
 - **Businesses they ran:** the fixer appoints someone else.
 
 ## 4. Becoming a legend
-The Afterlife names drinks after dead legends: that's how the Johnny Silverhand, the Jackie Welles
-and the David Martinez got there. Players can earn the same, but **for how they lived, not how they died**:
-- Only a character who **survived a long time** (a real-time threshold, weeks not hours) AND built
-  real standing (fixer reputation, notable contracts) can be named a legend by Rogue when they die.
-  Dying early, recklessly or on purpose never qualifies, however famous the character was.
-- Their name goes on the Afterlife's wall and their drink goes on the menu for good.
+The Afterlife names drinks after legends: that's how the Johnny Silverhand, the Jackie Welles and the
+David Martinez got there. Players earn the same **by completing their character's story**, not by
+dying and not just by surviving a long time:
+- Every character has an **in-city quest line** shaped by their lifepath and role: their origin's
+  loose ends, their enemy, their fixers' biggest jobs, a name for themselves in Night City.
+- **Finishing it makes them a legend.** Rogue knows the name. The character is at the peak.
+- **Then the player chooses:**
+  - **Keep playing** as a legend, for the roleplay. Permadeath still applies.
+  - **Die a legend and prestige.** The character goes out on their own terms in a scene the player
+    helps write; they go on the Afterlife's wall and their drink goes on the menu. Then a new
+    character starts the prologue.
+- A legend who dies by any other means (the timer, a bad night) still gets the wall and the drink:
+  they earned it while alive.
+- A character who never finished their story is never a legend, however long they lived.
 
-**The last thing a legend does: choose their drink.** When a qualifying character flatlines, the
-player gets the **legend's recipe screen before character creation opens**:
+**The last thing a legend does: choose their drink.** When a legend dies or prestiges, the player
+gets the **legend's recipe screen before character creation opens**:
 - Name: always "The <character name>", like the canon three.
 - Glass: pint, rocks or highball (the bar's glasses).
 - Steps: 3 to 8, built from the bar's own pours, counts and beats (spirits, mixers, ice, a stir or
@@ -217,13 +239,14 @@ Permadeath only works if death is earned, so:
   city) are short and few.
 
 ## 7. Rogue's rule, now with real stakes
-On the Afterlife clock you fight for the house or Rogue zeroes you, and zeroed now means **dead**.
+On the Afterlife clock you fight for the house or Rogue zeroes you, and zeroed now means **dead**
+(a system death: it's the one kind that doesn't wait for a timer).
 That makes it the hardest licence in the city to hold, which is right.
 
 ## Open questions
-1. **How long between Death Saves**, and how many before it's certain? (RED: every round; we need seconds.)
-2. **Who rolls RED stats?** We could give characters a BODY stat at creation (affects Death Saves)
-   or keep everyone equal and let cyberware and plans do the work.
+1. **Timer numbers:** 90 / 60 / 30 s by wound, and how much each chrome tier adds.
+2. **Prestige:** does dying a legend give the player anything beyond the wall and the drink (an
+   account badge, a title)? It must never give the next character a head start.
 3. **Restores:** admin-only, or a player appeal flow with logs attached?
 4. **Starting money and gear:** RED gives each role a starting kit. Do we?
 5. **Crews:** 2-4 players? How long should someone wait for a crew before an NPC partner joins?
