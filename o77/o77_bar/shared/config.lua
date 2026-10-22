@@ -10,6 +10,11 @@ C.job = "barman"
 -- Customers drink on a TAB: every round is checked against what they can afford (cash + bank),
 -- made and served, and the tab is paid at the kiosk when they are done. Leaving the club with
 -- an unpaid tab charges it automatically, plus the bar's walkout fee.
+-- ...or PAY NOW: a round paid at the kiosk when it is ordered. The money waits in this rp_economy
+-- society until the round is handed over (then it pays the till and the bartender), and is
+-- refunded in full if the round is never served. Nobody withdraws from it by hand.
+C.escrowSociety = "o77bar_escrow"
+
 C.tab = {
     disconnectGraceMs = 300000,   -- a dropped customer has this long to come back before the tab is charged (no fee)
     -- default walkout fee; each bar's boss can change it at the station (saved per bar)

@@ -14,11 +14,24 @@ M.int = int
 --     open -> leaving (disconnect / restart charge, no fee) -> settled
 --   A tab is saved whenever it changes, so a restart never forgets what is owed.
 -- ---------------------------------------------------------------------------------------------
-M.ROUND_LIVE = { ordering = true, making = true, ready = true }
+M.ROUND_LIVE = { ordering = true, billed = true, paying = true, making = true, ready = true }
+-- Pay-now rounds: ordering -> billed (kiosk open) -> paying (charge to escrow in flight) -> making
+--   -> ready -> settling (escrow pays out at the hand-over) -> settled
+--   any point after paying, if never served: refunding -> refunded
 
 function M.closeOp(tab) return ("o77bar:%s:close:%d"):format(tab.id, tab.attempt or 1) end
 function M.walkOp(tab) return ("o77bar:%s:walkout:%d"):format(tab.id, tab.attempt or 1) end
 function M.leaveOp(tab) return ("o77bar:%s:leave:%d"):format(tab.id, tab.attempt or 1) end
+function M.payOp(r) return ("o77bar:%s:pay"):format(r.id) end
+function M.settleOp(r) return ("o77bar:%s:settle:%d"):format(r.id, r.attempt or 1) end
+function M.refundOp(r) return ("o77bar:%s:refund:%d"):format(r.id, r.attempt or 1) end
+
+-- A round's lines in the shape tabSplit reads (who served what).
+function M.roundAsTab(r)
+    local served = {}
+    for _, l in ipairs(r.lines) do served[#served + 1] = { price = l.price, qty = l.qty, bartender = r.bartender.subject } end
+    return { served = served }
+end
 
 -- ---------------------------------------------------------------------------------------------
 -- Orders and money

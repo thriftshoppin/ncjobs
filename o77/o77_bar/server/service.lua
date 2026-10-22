@@ -22,6 +22,7 @@ function S.new(cfg, M, P)
     self.lastRing = {}       -- customer pid -> ms
     self.nextTry = {}        -- tab id -> ms (charge retries)
     self.away = {}           -- customer subject -> ms they dropped (disconnect grace)
+    self.payouts = {}        -- round id -> pay-now round whose escrow is paying out or refunding
     self.fees = {}           -- bar id -> walkout fee setting (loaded from the store, else config)
     self.seq = 0
     self.bootId = tostring(P.bootId())
@@ -152,7 +153,7 @@ function S:onStood(pid)
     if not seat then return end
     self.seats[pid] = nil
     local r = self:roundOfCustomer(pid)
-    if r and r.state == "ordering" then self:cancelRound(r, "customer_left_seat") end
+    if r and (r.state == "ordering" or r.state == "billed") then self:cancelRound(r, "customer_left_seat") end
     self.P.toCustomer(pid, "stood", {})
     self:pushBar(seat.bar)
 end
@@ -227,7 +228,8 @@ function S:headroom(pid, tab)
     if not b then return nil, "wallet_unavailable" end
     local committed = tab and self.M.owed(tab) or 0
     for _, r in pairs(self.rounds) do
-        if r.customer.pid == pid and r.subtotal then committed = committed + r.subtotal end
+        -- tab rounds not served yet, and pay-now rounds not paid yet, still need covering
+        if r.customer.pid == pid and r.subtotal and not r.paid then committed = committed + r.subtotal end
     end
     return (b.cash or 0) + (b.bank or 0) - committed
 end
@@ -311,7 +313,7 @@ end
 
 -- The customer sends their pick. It is refused unless the whole tab, other open rounds and this
 -- round fit in what they have right now.
-function S:menuSubmit(customer, roundId, items)
+function S:menuSubmit(customer, roundId, items, mode)
     local r = self.rounds[roundId]
     if not r or r.customer.pid ~= customer or r.state ~= "ordering" then return nil, "ticket_gone" end
     local lines, subtotal = self.M.priceOrder(self.cfg, self.cfg.bars[r.bar], items)
@@ -320,10 +322,65 @@ function S:menuSubmit(customer, roundId, items)
     if not room then return nil, "wallet_unavailable" end
     if subtotal > room then return nil, "cannot_afford", { canSpend = math.max(0, room), costs = subtotal } end
     r.lines, r.subtotal, r.queue = lines, subtotal, self.M.queue(lines)
-    r.state, r.updatedAt = "making", self.P.now()
+    r.updatedAt = self.P.now()
+    if mode == "now" then
+        r.pay, r.state = "now", "billed"
+        local items = {}
+        for _, l in ipairs(lines) do
+            local def = l.kind == "bottle" and self.cfg.bottles[l.drink] or self.cfg.drinks[l.drink]
+            items[#items + 1] = { label = def.label, qty = l.qty, price = l.price, flavour = l.bulk and "To go, sealed" or def.flavour }
+        end
+        self.P.ui(customer, "kiosk", { id = r.id, kind = "round", bar = self.cfg.bars[r.bar].label, stool = r.stool,
+            bartender = r.bartender.name, defaultTip = self.cfg.defaultTip, tips = self.cfg.tips,
+            balances = self.P.balances(customer), items = items })
+        self:pushBar(r.bar)
+        return "pay"
+    end
+    r.pay, r.state = "tab", "making"
     self.P.notify(r.bartender.pid, ("%s ordered %d item(s) on their tab."):format(r.customer.name, #r.queue))
     self:pushBar(r.bar)
     return true
+end
+
+-- Pay now: the round's total + tip goes to escrow in one charge whose id comes from the round.
+function S:payRound(customer, r, tipPct, method)
+    if r.customer.pid ~= customer or r.state ~= "billed" then return nil, "ticket_gone" end
+    local tip, why = self.M.tipFor(self.cfg, r.subtotal, tipPct)
+    if not tip then return nil, why end
+    r.tip, r.method, r.state = tip, method, "paying"
+    self:saveRound(r)
+    local receipt, reason = self.P.economy.charge({
+        opId = self.M.payOp(r), from = { subject = r.customer.subject, wallet = method },
+        amount = r.subtotal + tip, instrument = method,
+        payees = { { society = self.cfg.escrowSociety, amount = r.subtotal + tip } },
+    })
+    if r.state ~= "paying" then
+        -- the round was dropped while the charge was in flight
+        if receipt then r.paid = true; return self:startRefund(r) end
+        return nil, "ticket_gone"
+    end
+    if receipt then
+        r.paid, r.state, r.updatedAt = true, "making", self.P.now()
+        self:saveRound(r)
+        self.P.notify(r.bartender.pid, ("%s paid %d up front. Make it."):format(r.customer.name, r.subtotal + tip))
+        self:pushBar(r.bar)
+        return true
+    end
+    if reason == "in_doubt" then
+        self.nextTry[r.id] = self.P.now() + self.cfg.retryMs
+        return nil, "in_doubt"
+    end
+    r.state = "billed"
+    self:saveRound(r)
+    return nil, reason
+end
+
+function S:saveRound(r)
+    r.updatedAt = r.updatedAt or self.P.now()
+    if r.pay == "now" and (r.paid or r.state == "paying" or r.state == "abandoning") then
+        local ok, why = self.P.store.saveRound(r)
+        if not ok then self:log("round %s not saved (%s)", r.id, tostring(why)) end
+    end
 end
 
 function S:menuCancel(customer, roundId)
@@ -335,7 +392,15 @@ end
 
 function S:cancelRound(r, reason)
     if not self.M.ROUND_LIVE[r.state] then return end
-    r.state, r.reason = "cancelled", reason
+    r.reason = reason
+    if r.state == "paying" then
+        -- the charge is in flight: payRound() refunds when its answer lands
+        r.state = "abandoning"
+        self:saveRound(r)
+        return
+    end
+    local wasPaid = r.paid
+    r.state = "cancelled"
     self.rounds[r.id] = nil
     if self.roundOf[r.customer.pid] == r.id then self.roundOf[r.customer.pid] = nil end
     for key, pid in pairs(self.stationUser) do
@@ -345,7 +410,61 @@ function S:cancelRound(r, reason)
     for _, sh in pairs(self.shifts) do if sh.grabbing and sh.grabbing.ticket == r.id then sh.grabbing = nil end end
     self.P.ui(r.customer.pid, "close")
     self:log("round %s cancelled (%s)", r.id, reason)
+    if wasPaid then self:startRefund(r) end
     self:pushBar(r.bar)
+end
+
+-- Pay-now escrow: refund in full, or pay out at the hand-over. Retried with the same id.
+function S:startRefund(r)
+    r.state = "refunding"
+    self.rounds[r.id] = nil
+    if self.roundOf[r.customer.pid] == r.id then self.roundOf[r.customer.pid] = nil end
+    self.payouts[r.id] = r
+    self:saveRound(r)
+    return self:tryRefund(r)
+end
+
+function S:tryRefund(r)
+    local total = r.subtotal + (r.tip or 0)
+    local receipt, why, info = self.P.economy.pay({
+        opId = self.M.refundOp(r), from = { society = self.cfg.escrowSociety },
+        to = { subject = r.customer.subject, wallet = r.method }, amount = total,
+    })
+    if receipt then
+        r.state = "refunded"
+        self:saveRound(r)
+        self.payouts[r.id], self.nextTry[r.id] = nil, nil
+        if r.customer.pid > 0 then self.P.notify(r.customer.pid, ("Refunded %d: that round was never served."):format(total)) end
+        return true
+    end
+    self:retryRound(r, info)
+    return nil, why
+end
+
+function S:trySettle(r)
+    local split = self.M.tabSplit(self.cfg, self.cfg.bars[r.bar], self.M.roundAsTab(r), r.tip or 0, 0)
+    local receipt, why, info = self.P.economy.pay({
+        opId = self.M.settleOp(r), from = { society = self.cfg.escrowSociety }, payees = split.payees,
+    })
+    if receipt then
+        r.state = "settled"
+        self:saveRound(r)
+        self.payouts[r.id], self.nextTry[r.id] = nil, nil
+        for _, p in ipairs(split.payees) do
+            if p.subject then
+                for pid, sh in pairs(self.shifts) do if self.P.subject(pid) == p.subject then sh.earned = sh.earned + p.amount end end
+            end
+        end
+        return true
+    end
+    self:retryRound(r, info)
+    return nil, why
+end
+
+function S:retryRound(r, info)
+    if type(info) == "table" and info.state == "aborted" then r.attempt = (r.attempt or 1) + 1 end
+    self:saveRound(r)
+    self.nextTry[r.id] = self.P.now() + self.cfg.retryMs
 end
 
 -- ---------------------------------------------------------------------------------------------
@@ -473,16 +592,22 @@ end
 -- ---------------------------------------------------------------------------------------------
 function S:serve(r)
     local tab = self.tabs[r.tab]
-    if not tab or tab.state ~= "open" then self:cancelRound(r, "tab_closed") return nil, "tab_closed" end
-    r.state = "served"
+    local prepaid = r.pay == "now"
+    if not prepaid and (not tab or tab.state ~= "open") then self:cancelRound(r, "tab_closed") return nil, "tab_closed" end
+    r.state = prepaid and "settling" or "served"
     self.rounds[r.id] = nil
     if self.roundOf[r.customer.pid] == r.id then self.roundOf[r.customer.pid] = nil end
-    for _, l in ipairs(r.lines) do
+    for _, l in ipairs(prepaid and {} or r.lines) do
         local def = l.kind == "bottle" and self.cfg.bottles[l.drink] or self.cfg.drinks[l.drink]
         tab.served[#tab.served + 1] = { drink = l.drink, label = def.label, qty = l.qty, price = l.price,
             bulk = l.bulk, bartender = r.bartender.subject, bartenderName = r.bartender.name, round = r.id }
     end
-    self:saveTab(tab)
+    if prepaid then
+        self.payouts[r.id] = r
+        self:trySettle(r)
+    else
+        self:saveTab(tab)
+    end
     self.P.handover(r.bartender.pid, r.customer.pid)
     for _, q in ipairs(r.queue) do
         if q.kind == "pour" then
@@ -495,7 +620,9 @@ function S:serve(r)
     if #bulk > 0 then self.P.giveBottles(r.customer.pid, bulk, r.id) end
     local sh = self.shifts[r.bartender.pid]
     if sh then sh.served = sh.served + 1 end
-    self.P.notify(r.customer.pid, ("On your tab: %d. Pay at the kiosk before you leave the club."):format(self.M.owed(tab)))
+    if not prepaid then
+        self.P.notify(r.customer.pid, ("On your tab: %d. Pay at the kiosk before you leave the club."):format(self.M.owed(tab)))
+    end
     self:pushBar(r.bar)
     return "served"
 end
@@ -526,6 +653,9 @@ function S:sendBill(customer)
 end
 
 function S:kioskPay(customer, tabId, tipPct, method)
+    if method ~= "cash" and method ~= "bank" then return nil, "invalid_method" end
+    local r = self.rounds[tabId]
+    if r then return self:payRound(customer, r, tipPct, method) end
     local tab = self.tabs[tabId]
     if not tab or tab.customer.pid ~= customer or tab.state ~= "open" then return nil, "ticket_gone" end
     if method ~= "cash" and method ~= "bank" then return nil, "invalid_method" end
@@ -580,9 +710,10 @@ end
 -- with debt cannot start a tab at any bar until it is paid.
 -- ---------------------------------------------------------------------------------------------
 function S:chargeOnExit(tab, how)
+    -- unserved rounds first: tab rounds cost nothing, paid-now rounds are refunded
+    for _, r in pairs(self.rounds) do if r.tab == tab.id then self:cancelRound(r, "customer_" .. how) end end
     local owed = self.M.owed(tab)
     if owed <= 0 then self:finishTab(tab, "empty") return true end
-    for _, r in pairs(self.rounds) do if r.tab == tab.id then self:cancelRound(r, "customer_" .. how) end end
     if tab.state == "open" then
         local fee = how == "walkout" and self.M.walkoutFee(self:feeSetting(tab.bar), owed) or 0
         tab.split = self.M.tabSplit(self.cfg, self.cfg.bars[tab.bar], tab, 0, fee)
@@ -645,7 +776,18 @@ function S:tick()
         if pos and dist(pos, bar.zone.position) > bar.zone.radius + L.zoneGrace then self:clockOut(pid, "left_bar") end
     end
     for _, r in pairs(self.rounds) do
-        if r.state == "ordering" and now - r.updatedAt > L.orderTimeoutMs then self:cancelRound(r, "order_timeout") end
+        if r.state == "ordering" and now - r.updatedAt > L.orderTimeoutMs then self:cancelRound(r, "order_timeout")
+        elseif r.state == "billed" and now - r.updatedAt > L.billTimeoutMs then self:cancelRound(r, "bill_timeout")
+        elseif (r.state == "paying" or r.state == "abandoning") and (self.nextTry[r.id] or math.huge) <= now then
+            self.nextTry[r.id] = nil
+            self:resolvePay(r)
+        end
+    end
+    for id, r in pairs(self.payouts) do
+        if (self.nextTry[id] or math.huge) <= now then
+            self.nextTry[id] = nil
+            if r.state == "settling" then self:trySettle(r) else self:tryRefund(r) end
+        end
     end
     for id, tab in pairs(self.tabs) do
         local bar = self.cfg.bars[tab.bar]
@@ -654,7 +796,7 @@ function S:tick()
             if away then
                 if now - away >= self.cfg.tab.disconnectGraceMs then self.away[tab.customer.subject] = nil; self:chargeOnExit(tab, "leave") end
             elseif tab.customer.pid > 0 and not inside(self.P.position(tab.customer.pid), bar.venue, L.venueGrace) then
-                if #tab.served > 0 then self:chargeOnExit(tab, "walkout") else self:finishTab(tab, "empty") end
+                self:chargeOnExit(tab, "walkout")
             end
         elseif (self.nextTry[id] or math.huge) <= now then
             self.nextTry[id] = nil
@@ -662,6 +804,46 @@ function S:tick()
             else self:tryExitCharge(tab) end
         end
     end
+end
+
+-- A pay-now charge with no answer: ask what happened.
+function S:resolvePay(r)
+    local st = self.P.economy.status(self.M.payOp(r))
+    local state = type(st) == "table" and st.state or nil
+    if state == "committed" then
+        r.paid = true
+        if r.state == "abandoning" then return self:startRefund(r) end
+        r.state, r.updatedAt = "making", self.P.now()
+        self:saveRound(r)
+        self:pushBar(r.bar)
+    elseif state == "in_doubt" or state == "committing" or state == nil then
+        self.nextTry[r.id] = self.P.now() + self.cfg.retryMs
+    elseif r.state == "abandoning" then
+        r.state = "cancelled"
+        self.rounds[r.id] = nil
+        if self.roundOf[r.customer.pid] == r.id then self.roundOf[r.customer.pid] = nil end
+    else
+        r.state = "billed"
+    end
+end
+
+-- Pay-now rounds that held money when the server stopped: nobody is waiting for them any more, so
+-- each is refunded (or paid out, if the hand-over had already happened).
+function S:recoverRounds(rows)
+    local n = 0
+    for _, r in ipairs(rows) do
+        if r.state ~= "settled" and r.state ~= "refunded" and r.state ~= "cancelled" then
+            n = n + 1
+            r.customer.pid, r.bartender.pid = -1, -1
+            if r.state == "settling" then self.payouts[r.id] = r; self:trySettle(r)
+            elseif r.state == "paying" or r.state == "abandoning" then
+                self.rounds[r.id] = r; r.state = "abandoning"; self:resolvePay(r)
+            else
+                r.paid = true; self:startRefund(r)
+            end
+        end
+    end
+    return n
 end
 
 -- A close charge with no answer: ask what happened, then finish or reopen.

@@ -270,7 +270,8 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
     </div>
     <div class="foot">
       <button class="btn" id="mCancel">Never mind<span class="key">ESC</span></button>
-      <button class="btn primary" id="mSend" disabled>Send order</button>
+      <button class="btn" id="mNow" disabled>Pay now</button>
+      <button class="btn primary" id="mSend" disabled>Put it on my tab</button>
     </div>
   </section>
 
@@ -331,7 +332,9 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
 
   function openKiosk(ticket) {
     Object.assign(kiosk, { ticket, tip: ticket.defaultTip ?? 15, method: ticket.balances.cash >= 0 ? "cash" : "bank", busy: false, done: false });
-    $("kBar").textContent = `${ticket.bar} // Your tab`;
+    const round = ticket.kind === "round";
+    $("kBar").textContent = `${ticket.bar} // ${round ? "This round" : "Your tab"}`;
+    $("kTitle").textContent = round ? "Pay for this round" : "Close your tab";
     $("kBartender").textContent = ticket.bartender;
     $("kLines").replaceChildren(...ticket.items.map(it => {
       const row = document.createElement("div"); row.className = "line";
@@ -381,7 +384,9 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
   };
   bridge.on("o77bar:kiosk:result", r => {
     kiosk.busy = false;
-    if (r.ok) { kiosk.done = true; status("kStatus", "Tab closed. You're free to go.", "good"); }
+    if (r.ok) { kiosk.done = true; status("kStatus", kiosk.ticket.kind === "round"
+      ? "Paid. Your round's being made. If it's never served, you get it all back."
+      : "Tab closed. You're free to go.", "good"); }
     else status("kStatus", REASONS[r.reason] || `Payment refused (${r.reason}).`, "bad");
     renderKiosk();
   });
@@ -633,19 +638,27 @@ body.ingame .hud { position: fixed; top: 96px; right: 28px; }
     const open = openCount(), bag = count - open;
     $("mCount").textContent = count ? `${open} of ${d.maxItems} on the counter${bag ? ` · ${bag} to go` : ""}` : "Nothing picked";
     $("mSubtotal").textContent = fmt(sub);
-    $("mSend").disabled = !count || menu.busy || over;
-    $("mSend").textContent = menu.busy ? "Sending…" : "Put it on my tab";
+    $("mSend").disabled = $("mNow").disabled = !count || menu.busy || over;
+    $("mSend").textContent = menu.busy === "tab" ? "Sending…" : "Put it on my tab";
+    $("mNow").textContent = menu.busy === "now" ? "Sending…" : `Pay now${sub ? ` · ${fmt(sub)} €$` : ""}`;
   }
   $("mSearch").oninput = e => { menu.query = e.target.value.trim(); renderMenu(); };
-  $("mSend").onclick = () => {
+  function sendOrder(mode) {
     if (!pickedCount() || menu.busy) return;
-    menu.busy = true; renderMenu();
-    bridge.emit("o77bar:menu:submit", { ticketId: menu.data.ticketId, items: picked().map(([drink, qty]) => ({ drink, qty })) });
-  };
+    menu.busy = mode; menu.mode = mode; renderMenu();
+    bridge.emit("o77bar:menu:submit", { ticketId: menu.data.ticketId, mode, items: picked().map(([drink, qty]) => ({ drink, qty })) });
+  }
+  $("mSend").onclick = () => sendOrder("tab");
+  $("mNow").onclick = () => sendOrder("now");
   $("mCancel").onclick = () => { bridge.emit("o77bar:menu:cancel", { ticketId: menu.data?.ticketId }); hideAll(); };
   bridge.on("o77bar:menu:result", r => {
     menu.busy = false;
-    if (r.ok) { status("mStatus", "On your tab. The bartender's making it now.", "good"); setTimeout(hideAll, 1200); }
+    if (r.ok && menu.mode === "now") {
+      // the server opens the kiosk for this round next
+      if (!inGame) { const items = picked().map(([id, qty]) => { const x = menu.data.menu.find(m => m.drink === id);
+        return { label: x.label, qty, price: x.price, flavour: x.flavour || "" }; });
+        setTimeout(() => openKiosk({ ...structuredClone(SAMPLE_TICKET), kind: "round", items }), 300); }
+    } else if (r.ok) { status("mStatus", "On your tab. The bartender's making it now.", "good"); setTimeout(hideAll, 1200); }
     else { status("mStatus", MENU_REASONS[r.reason] || `Order refused (${r.reason}).`, "bad"); }
     renderMenu();
   });
