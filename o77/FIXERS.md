@@ -96,7 +96,7 @@ standing, and a fixer who stops trusting you stops calling.
 ## Rules
 - A contract is the story, so the violence it involves is roleplay, not random. Doing more than the
   contract asks (killing bystanders on a Ghost job, hitting someone who isn't the target) is not.
-- Everything is permadeath on both sides. Mercs die on contracts too.
+- Everyone who goes down on a contract pays the flatline costs (CAMPAIGN.md section 3). Mercs get time to pay their ripper; others pay up front.
 - **Hits on player characters** are the heaviest thing in the system: see the open question below.
 
 ## How it maps to the platform
