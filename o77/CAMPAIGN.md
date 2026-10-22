@@ -94,6 +94,41 @@ what drives them. We use it at character creation:
 
 Role is a lean, not a lock: anyone can pour drinks.
 
+## 5b. Starting again: the prologue
+A new character doesn't waltz back into the Afterlife. Everyone, on their first character or their
+tenth, plays **the prologue**: a short story with several paths that ends when the city notices them.
+The canon game does the same: V and Jackie earn their way into the Afterlife through the heist.
+
+**Act 1: Origin (solo, ~20 min).** Picked by lifepath: Street Kid in Watson, Corpo at Arasaka,
+Nomad in the Badlands. Each has 2-3 variations so repeat players don't replay the same thing.
+
+**Act 2: The crew (2-4 new characters).** New characters who start around the same time are put
+together into a crew by a starter fixer from their origin (Regina for Watson, Dakota for the
+Badlands, Wakako for Japantown...). The crew takes small gigs together: everyone in it is new to
+the city, so **you meet people you don't already know.**
+- The matcher **mixes crews**: it avoids putting players who were in the same crew in their last
+  lives together again, so cliques can't just re-form after a death.
+- Nobody else starting? After a wait, the crew fills with an NPC partner (the Jackie role) so no
+  one is stuck.
+
+**Act 3: The job.** One bigger gig for the crew, with branches:
+- **Shortcuts:** a clean job gets the crew noticed: Rogue lets them through the Afterlife door, a
+  fixer offers an early audition, a little starting standing.
+- **Setbacks:** a botched job means owing the fixer (a debt to work off), the door stays shut until
+  you do another job, or a gang remembers your face.
+- **Betrayal is possible.** Bail on the crew or sell them out and you keep the take, but every fixer
+  hears about it.
+
+**After the prologue** the city opens up: the Afterlife door, the fixers' auditions, Rogue's vetting.
+Players who knew each other in past lives can of course find each other again; they just meet
+someone new first.
+
+**Prologue rules**
+- Deaths in the prologue are real (it's the same city), but its threats are tuned so careful play survives.
+- The prologue can't be skipped, by anyone, however many characters they've had.
+- Open jobs (Lizzie's, couriers, sanitation) work during the prologue, so new characters can earn
+  their first eddies honestly.
+
 ## 6. Keeping permadeath fair
 Permadeath only works if death is earned, so:
 - **Combat logging is death.** Disconnecting while downed, or within a short window after taking or
@@ -119,3 +154,5 @@ That makes it the hardest licence in the city to hold, which is right.
    or keep everyone equal and let cyberware and plans do the work.
 3. **Restores:** admin-only, or a player appeal flow with logs attached?
 4. **Starting money and gear:** RED gives each role a starting kit. Do we?
+5. **Crews:** 2-4 players? How long should someone wait for a crew before an NPC partner joins?
+6. **Prologue length:** about an hour, one evening, or spread over a few sessions?
