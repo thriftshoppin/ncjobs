@@ -4,6 +4,15 @@ The server plays like a tabletop campaign. One character, one life. Mistakes sti
 handed anything. **There are no living legends in this city: only the strong survive, and you
 only become a legend once you're dead.**
 
+## Why: this rule exists to keep characters ALIVE
+Permadeath is not a death mechanic, it's a **life** mechanic. When respawning is free, nobody cares
+and RP turns casual and reckless. When one death ends a character, everyone in Night City changes
+how they go about their business: they negotiate, back off, pay for Trauma Team, hire a Solo, think
+twice before drawing on someone, and value the medic who keeps them breathing.
+
+**Rule for every feature we add: dying must never be worth it.** No reward, honour, payout or
+reset should ever be easier to get by dying than by living. Check new features against this.
+
 Where tabletop rules help, we borrow from **Cyberpunk RED** (R. Talsorian's tabletop game, the
 canon setting 2077 grew out of) rather than inventing our own.
 
@@ -36,18 +45,21 @@ Upstream `rp_trauma` already does the downed state, stabilise, evacuate and Trau
 - **Their body can be looted** where they fell (open77_loot): what they carried is up for grabs.
 - **Open tab at a bar:** charged from their accounts on the spot, no walkout fee (they didn't walk out).
 - **Paid-now rounds:** refunded to their accounts as usual, then everything goes with them.
-- **Debts they owed:** die with them. Bars eat the loss.
+- **Debts they owed:** do NOT disappear. They stay recorded against the player's account, so dying
+  is never a way out of debt. The new character doesn't pay them, but bars that were burned won't
+  give that account a tab until the new character has been around for a while (cash and pay-now only).
 - **Apartments:** the lease ends; the flat goes back to El Capitan's listings.
 - **Cars:** go to impound, then back on the market.
 - **Businesses they ran:** the fixer appoints someone else.
 
 ## 4. Becoming a legend
 The Afterlife names drinks after dead legends: that's how the Johnny Silverhand, the Jackie Welles
-and the David Martinez got there. We do the same for players:
-- A character who dies having done enough (fixer reputation, notable contracts, a long life) can
-  be **named a legend by Rogue**. Their name goes on the Afterlife's wall and a drink is named after them.
-- The player who played them writes the recipe, from the bar's ingredient list, and Rogue approves it.
-  It goes on the menu for good.
+and the David Martinez got there. Players can earn the same, but **for how they lived, not how they died**:
+- Only a character who **survived a long time** (a real-time threshold, weeks not hours) AND built
+  real standing (fixer reputation, notable contracts) can be named a legend by Rogue when they die.
+  Dying early, recklessly or on purpose never qualifies, however famous the character was.
+- Their name goes on the Afterlife's wall and the player writes their drink from the bar's
+  ingredient list. Rogue approves it and it goes on the menu for good.
 
 ## 5. Making a character (lifepath)
 RED has characters roll or pick a **Lifepath**: where they're from, family, a friend, an enemy,
@@ -80,6 +92,8 @@ Permadeath only works if death is earned, so:
 - **Random killing has consequences.** Rogue bars people who shoot her staff (see JOBS.md). Later:
   NCPD, bounties, fixers refusing to work with known killers. Killing someone in this city should be
   expensive in reputation even when it's free in eddies.
+- **No reward for dying.** A new character never starts with more than the last one would have:
+  no fresh-start bonus, no inheritance, no faster unlocks.
 - **Safe spots** where a player can't be attacked (character creation, the first few minutes in the
   city) are short and few.
 
