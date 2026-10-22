@@ -128,6 +128,26 @@ you, vet you, and let you through the door.
 - Deaths in the prologue are real, but its threats are tuned so careful play survives.
 - The prologue can't be skipped, by anyone, however many characters they've had.
 
+## 5d. Corpo or street
+At the end of the Corpo origin a character chooses: **stay with the company**, or fall out of it and
+end up on the street like everyone else (the canon Corpo path, where V gets cut loose).
+
+**Staying corpo** means power and funding, but **no cred**:
+- **Merc safe zones are closed to you.** The Afterlife, Lizzie's, El Coyote Cojo, the Dogtown market,
+  the nomad camps and the other places the street calls its own won't let a corpo in. The door is
+  refused, and pushing your way in makes you a hostile there (in the Afterlife, Rogue's crew answers).
+- **No fixer licences.** Fixers don't contract their businesses to corporate employees, and Rogue
+  will never vet one.
+- **What you get instead:** corporate work that pays well per job (security, exec errands, corporate
+  courier, research), company housing, company cars and gear, and corporate spaces the street can't
+  walk into (Corpo Plaza offices, Arasaka Tower floors, Konpeki Plaza).
+- **Hiring the street.** Corpos can't walk into the Afterlife, but they can pay a fixer to put a
+  contract out. Mercs take corporate money through a fixer, never face to face in a merc bar.
+
+**Leaving the company** is possible and **one way**: the corporation takes back its housing, cars and
+gear, and the character starts on the street with what's in their pockets and no cred. Some fixers
+will want to know why before they trust an ex-corpo. There is no going back to the company.
+
 ## 5c. Staying in character
 The whole server only works if everyone stays in character, so the rules are blunt:
 - **Breaking character** (talking out of character in the world, metagaming what your character
