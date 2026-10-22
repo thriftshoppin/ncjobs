@@ -12,6 +12,8 @@ twice before drawing on someone, and value the medic who keeps them breathing.
 
 **Rule for every feature we add: dying must never be worth it.** No reward, honour, payout or
 reset should ever be easier to get by dying than by living. Check new features against this.
+The one thing that carries over to a new character, legacy experience, comes only from **finishing
+a character's story** (section 4), never from dying.
 
 Where tabletop rules help, we borrow from **Cyberpunk RED** (R. Talsorian's tabletop game, the
 canon setting 2077 grew out of) rather than inventing our own.
@@ -100,8 +102,17 @@ dying and not just by surviving a long time:
   - **Die a legend and prestige.** The character goes out on their own terms in a scene the player
     helps write; they go on the Afterlife's wall and their drink goes on the menu. Then a new
     character starts the prologue.
-- A legend who dies by any other means (the timer, a bad night) still gets the wall and the drink:
-  they earned it while alive.
+- A legend who dies by any other means (the timer, a bad night) still gets the wall, the drink and
+  the rewards below: they earned them while alive.
+
+**What a legend leaves the player**
+- **Legacy experience.** Finishing a character's story earns experience that carries to the player's
+  next character and **unlocks more of the skill tree** for them: deeper perks become available.
+  Unlocking a perk is not owning it: the new character still spends the points they earn by
+  playing, so a legend's successor starts with more options, not more power.
+- **A player badge** on the account: one per legend, with the character's name, shown in the
+  player's profile and on the Afterlife wall.
+- Characters who die before finishing their story leave nothing: no experience, no badge.
 - A character who never finished their story is never a legend, however long they lived.
 
 **The last thing a legend does: choose their drink.** When a legend dies or prestiges, the player
@@ -234,7 +245,8 @@ Permadeath only works if death is earned, so:
   NCPD, bounties, fixers refusing to work with known killers. Killing someone in this city should be
   expensive in reputation even when it's free in eddies.
 - **No reward for dying.** A new character never starts with more than the last one would have:
-  no fresh-start bonus, no inheritance, no faster unlocks.
+  no fresh-start bonus, no inheritance. The only exception is legacy experience from a finished
+  story (section 4), which widens the skill tree but never hands over points, money or gear.
 - **Safe spots** where a player can't be attacked (character creation, the first few minutes in the
   city) are short and few.
 
@@ -245,8 +257,8 @@ That makes it the hardest licence in the city to hold, which is right.
 
 ## Open questions
 1. **Timer numbers:** 90 / 60 / 30 s by wound, and how much each chrome tier adds.
-2. **Prestige:** does dying a legend give the player anything beyond the wall and the drink (an
-   account badge, a title)? It must never give the next character a head start.
+2. **Legacy experience:** how much of the skill tree a legend unlocks, and does it stack across
+   several legends (a player on their third legend sees the most)?
 3. **Restores:** admin-only, or a player appeal flow with logs attached?
 4. **Starting money and gear:** RED gives each role a starting kit. Do we?
 5. **Crews:** 2-4 players? How long should someone wait for a crew before an NPC partner joins?
