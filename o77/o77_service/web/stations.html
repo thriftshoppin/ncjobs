@@ -1,0 +1,772 @@
+<title>Night City Work Stations</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<style>
+/* Concept: every job is a JOBSHARD your chrome runs. The frame is an optics HUD (corner brackets,
+   scanlines, a boot line); the vendor sets the colours; the job TYPE sets the layout:
+     bar        drinks: the glass on the left, steps on the right
+     line       food: a wide cook line on top, the ticket and controls below
+     scan       garage, car lot: a scanner schematic on top, readouts below
+     precision  ink, ripperdoc: a big working canvas beside a slim step list
+     pos        shops: a counter strip on top, a big point-of-sale grid below
+     ritual     Misty's: the table on top, the reading below
+   Installed chrome shows up as ASSISTS that change the games.
+   Single committed dark look: these screens are drawn over the game. */
+:root {
+  --night: #070a10; --panel: rgba(10, 14, 22, 0.95); --panel-2: #121927; --line: #26304a;
+  --text: #e6edf3; --muted: #8b97a8; --ok: #3ce8a0; --bad: #ff3b5c; --warn: #fcee0a;
+  --a: #ff5f58; --b: #5ef6ff; --ground: #0a0d14; --ink: #160606;
+  --f-display: "Rajdhani", "Bahnschrift", "Arial Narrow", sans-serif;
+  --f-body: "Barlow Semi Condensed", "Segoe UI", "Arial Narrow", sans-serif;
+  --f-mono: "Share Tech Mono", "Consolas", monospace;
+  color-scheme: dark;
+}
+[data-skin="afterlife"] { --a: #e3263a; --b: #efe6d6; --ground: #120708; --ink: #fff; }
+[data-skin="noodle"]    { --a: #ffb02e; --b: #2ee6c9; --ground: #0b1110; --ink: #1a0d00; }
+[data-skin="hawt"]      { --a: #ff6a2b; --b: #ffe14d; --ground: #120a06; --ink: #1a0600; }
+[data-skin="coffee"]    { --a: #d08a4e; --b: #f3e2c7; --ground: #120d0a; --ink: #1a0c02; }
+[data-skin="garage"]    { --a: #f5d300; --b: #9fd3ff; --ground: #0c0e10; --ink: #141100; }
+[data-skin="ink"]       { --a: #ff3fb4; --b: #a57bff; --ground: #100914; --ink: #1a0010; }
+[data-skin="ripper"]    { --a: #3df2b0; --b: #e8fff6; --ground: #08110f; --ink: #00160d; }
+[data-skin="junk"]      { --a: #e0702b; --b: #b8c47a; --ground: #100c08; --ink: #1a0800; }
+[data-skin="misty"]     { --a: #b48cff; --b: #e9c46a; --ground: #0e0a16; --ink: #12002b; }
+[data-skin="autofixer"] { --a: #34d5ff; --b: #ffd23f; --ground: #081016; --ink: #001722; }
+[data-skin="threads"]   { --a: #ff4f8b; --b: #d6dbe4; --ground: #110a0e; --ink: #1c0010; }
+
+html, body { height: 100%; }
+body { margin: 0; background: var(--night); color: var(--text); font: 16px/1.4 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px; box-sizing: border-box; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--b); outline-offset: 2px; }
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+
+.rail { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.rail button { flex: 0 0 auto; background: var(--panel-2); border: 1px solid var(--line); padding: 6px 11px;
+  font: 600 14px var(--f-display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rail button[aria-pressed="true"] { color: var(--text); border-color: var(--a); box-shadow: inset 0 -2px 0 var(--a); }
+.rail button small { display: block; font: 10px var(--f-mono); letter-spacing: .08em; color: var(--muted); text-transform: none; }
+
+/* the HUD frame */
+.hud { position: relative; background: var(--panel); border: 1px solid color-mix(in srgb, var(--a) 35%, transparent);
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--a) 12%, transparent), transparent 60%), linear-gradient(var(--ground), var(--ground)); }
+.hud::before, .hud::after { content: ""; position: absolute; width: 22px; height: 22px; border: 2px solid var(--a); pointer-events: none; }
+.hud::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+.hud::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+.boot { font: 11px var(--f-mono); letter-spacing: .14em; color: var(--a); padding: 8px 20px 0; text-transform: uppercase; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.boot .live::before { content: "● "; color: var(--ok); }
+.boot.booting .live { animation: blink .25s steps(2) 3; }
+@keyframes blink { 50% { opacity: 0; } }
+.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding: 4px 20px 10px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.title { font: 700 26px/1.1 var(--f-display); letter-spacing: .04em; text-transform: uppercase; margin: 0; text-wrap: balance; }
+.who { font: 13px var(--f-mono); color: var(--muted); }
+.assists { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.assist { font: 11px var(--f-mono); letter-spacing: .06em; padding: 4px 8px; border: 1px dashed var(--line); background: transparent; color: var(--muted); text-align: left; }
+.assist[aria-pressed="true"] { border-style: solid; border-color: var(--b); color: var(--b); }
+.assist small { display: block; color: var(--muted); font-size: 10px; }
+
+.body { display: grid; gap: 16px; padding: 14px 20px; }
+.visual { display: grid; place-items: center; gap: 6px; min-width: 0; }
+canvas.art { width: 100%; max-width: 100%; touch-action: none; background: color-mix(in srgb, var(--ground) 60%, #000); border: 1px solid var(--line); }
+.timer { font: 12px var(--f-mono); color: var(--muted); }
+.side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.step { display: grid; grid-template-columns: 18px 1fr auto; gap: 10px; align-items: center; padding: 7px 10px; background: var(--panel-2); border-left: 3px solid transparent; min-width: 0; }
+.step.active { border-left-color: var(--a); }
+.step.done { opacity: .7; }
+.dot { width: 10px; height: 10px; border: 1px solid var(--muted); transform: rotate(45deg); }
+.step.active .dot { border-color: var(--a); }
+.step.done .dot { background: var(--ok); border-color: var(--ok); }
+.step.done.g-good .dot { background: var(--b); border-color: var(--b); }
+.step.done.g-off .dot { background: var(--bad); border-color: var(--bad); }
+.grade { font: 12px var(--f-mono); }
+.grade.perfect { color: var(--ok); } .grade.good { color: var(--b); } .grade.off { color: var(--bad); }
+
+/* layouts by job type */
+[data-layout="bar"] .body { grid-template-columns: 220px 1fr; }
+[data-layout="precision"] .body { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+[data-layout="line"] .steps, [data-layout="scan"] .steps, [data-layout="pos"] .steps, [data-layout="ritual"] .steps { flex-direction: row; flex-wrap: wrap; }
+[data-layout="line"] .step, [data-layout="scan"] .step, [data-layout="pos"] .step, [data-layout="ritual"] .step { flex: 1 1 150px; }
+[data-layout="pos"] canvas.art { max-height: 160px; object-fit: contain; }
+@media (max-width: 680px) { [data-layout="bar"] .body, [data-layout="precision"] .body { grid-template-columns: 1fr; } [data-layout="bar"] canvas.art { max-width: 220px; } }
+
+.control { background: var(--panel-2); padding: 14px; display: flex; flex-direction: column; gap: 10px; min-height: 130px; border-left: 2px solid color-mix(in srgb, var(--a) 50%, transparent); }
+.readout { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font: 700 21px var(--f-display); flex-wrap: wrap; }
+.readout .num { font: 24px var(--f-mono); color: var(--b); font-variant-numeric: tabular-nums; }
+.hint { color: var(--muted); font-size: 14px; }
+.big { width: 100%; padding: 14px; background: transparent; border: 1px solid var(--a); color: var(--a);
+  font: 700 17px var(--f-display); letter-spacing: .14em; text-transform: uppercase; touch-action: none; user-select: none; }
+.big.on, .big:active { background: var(--a); color: var(--ink); }
+.key { font: 11px var(--f-mono); opacity: .7; margin-left: 6px; letter-spacing: .05em; }
+.dial { width: 100%; height: 34px; margin: 0; accent-color: var(--a); cursor: pointer; }
+.meter { position: relative; height: 22px; background: #0b0f18; border: 1px solid var(--line); }
+.meter .zone { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--b) 18%, transparent); border-inline: 1px solid var(--b); }
+.meter .core { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--ok) 30%, transparent); }
+.meter .needle { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--warn); }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 6px; }
+.choices button { background: transparent; border: 1px solid var(--line); padding: 10px 8px; text-align: left; }
+.choices button:hover { border-color: var(--a); }
+.choices button.right { border-color: var(--ok); color: var(--ok); }
+.choices button.wrong { border-color: var(--bad); color: var(--bad); }
+.choices button small { display: block; font: 11px var(--f-mono); color: var(--muted); }
+[data-layout="pos"] .choices button { padding: 18px 12px; font: 700 18px var(--f-display); letter-spacing: .04em; }
+.readings { display: grid; grid-template-columns: 1fr auto; gap: 2px 14px; font: 14px var(--f-mono); }
+.readings .val { text-align: right; color: var(--b); }
+.readings .val.flag { color: var(--warn); }
+.readings .val.flag::before { content: "▲ "; }
+.item { font: 700 22px var(--f-display); letter-spacing: .03em; }
+.item small { display: block; font: 12px var(--f-mono); color: var(--muted); letter-spacing: .06em; }
+.ticket { display: flex; gap: 6px; flex-wrap: wrap; }
+.ticket span { font: 13px var(--f-mono); padding: 4px 8px; border: 1px solid var(--line); }
+.ticket span.got { border-color: var(--ok); color: var(--ok); }
+.tarot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.card { aspect-ratio: 2 / 3; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; padding: 8px; background: linear-gradient(160deg, color-mix(in srgb, var(--a) 22%, var(--panel-2)), var(--panel-2)); min-width: 0; max-height: 220px; }
+.card.face { border-color: var(--b); }
+.card .pos { font: 10px var(--f-mono); color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+.card .name { font: 700 16px/1.1 var(--f-display); color: var(--b); text-transform: uppercase; }
+.card .mean { font-size: 12px; color: var(--muted); }
+.foot { display: flex; gap: 10px; justify-content: space-between; align-items: center; padding: 12px 20px 16px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.btn { border: 1px solid var(--line); background: transparent; padding: 10px 16px; font: 700 15px var(--f-display); letter-spacing: .12em; text-transform: uppercase; }
+.btn.primary { background: var(--a); border-color: var(--a); color: var(--ink); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+.note { font: 12px var(--f-mono); color: var(--muted); }
+.result { display: flex; justify-content: space-between; align-items: baseline; font: 700 22px var(--f-display); }
+.result .num { color: var(--b); font: 28px var(--f-mono); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Stations"></nav>
+  <section class="hud" id="hud" aria-labelledby="title">
+    <div class="boot" id="boot"><span id="bootText">JOBSHARD</span><span class="live" id="bootLive">LINKED</span></div>
+    <div class="head">
+      <div><h1 class="title" id="title">—</h1><div class="who" id="who">—</div></div>
+      <div class="assists" id="assists" aria-label="Chrome assists"></div>
+    </div>
+    <div class="body">
+      <div class="visual"><canvas class="art" id="art" width="400" height="560"></canvas><div class="timer" id="timer">0.0 s</div></div>
+      <div class="side"><ol class="steps" id="steps"></ol><div class="control" id="control"></div></div>
+    </div>
+    <div class="foot">
+      <span class="note">Preview. In game the server times every job and re-scores it.</span>
+      <div style="display:flex;gap:8px"><button class="btn" id="restart">Start over</button><button class="btn primary" id="finish" disabled>Hand it over</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  /* ===================================================================================
+     Chrome assists: real implants (CYBERWARE tab). In game the server reads what's installed.
+     =================================================================================== */
+  const ASSISTS = {
+    kiroshi:    { name: "Kiroshi Optics",        rec: "Items.AdvancedKiroshiOpticsBareCommon", does: "wider target zones" },
+    reflex:     { name: "Reflex Tuner",          rec: "Items.AdvancedReflexRecorderCommon",    does: "slower needles and falling food" },
+    smartlink:  { name: "Smart Link",            rec: "Items.AdvancedSmartLinkCommon",         does: "steadier tracing" },
+    memory:     { name: "Memory Boost",          rec: "Items.AdvancedMemoryBoostUncommon",     does: "longer look at the ticket" },
+    biomonitor: { name: "Biomonitor",            rec: "Items.AdvancedBiomonitorCommon",        does: "steadier vitals" },
+    cortex:     { name: "Visual Cortex Support", rec: "Items.AdvancedVisualCortexSupportCommon", does: "flags the reading that matters" },
+    kerenzikov: { name: "Kerenzikov",            rec: "Items.AdvancedKerenzikovUncommon",      does: "longer timing windows" },
+  };
+  const on = k => st.assists.has(k);
+  // Pace by job title (rp_jobs grade), then chrome on top.
+  const RANK = { speed: 1.2, perfect: 4, good: 12, zone: 0.24 };
+  function diff() {
+    const d = { ...RANK, fall: 1, chopSpeed: 1, trace: 1, showMs: 3000, window: 1 };
+    if (on("kiroshi")) { d.perfect += 3; d.good += 4; d.zone += 0.06; }
+    if (on("reflex")) { d.speed *= 0.8; d.fall *= 0.75; d.chopSpeed *= 0.8; }
+    if (on("smartlink")) d.trace = 1.45;
+    if (on("memory")) d.showMs = 5000;
+    if (on("biomonitor") && st.job.id === "ripper") d.zone += 0.08;
+    if (on("kerenzikov")) d.window = 1.6;
+    return d;
+  }
+
+  const VESSELS = {
+    rocks: { top: 0.533, bottom: 0.46, height: 0.42, base: 0.046, cap: 201 },
+    pint:  { top: 0.62, bottom: 0.46, height: 0.92, base: 0.046, cap: 470 },
+    cup:   { top: 0.5, bottom: 0.4, height: 0.4, base: 0.05, cap: 260, handle: true },
+  };
+  const TAROT = [["The Fool", "a leap with no net"], ["The Magician", "skill turned to will"], ["The High Priestess", "what isn't said"],
+    ["The Empress", "plenty, for now"], ["The Emperor", "someone else's rules"], ["The Hierophant", "the old ways"], ["The Lovers", "a choice of the heart"],
+    ["The Chariot", "push through"], ["Strength", "quiet nerve"], ["The Hermit", "go alone"], ["Wheel of Fortune", "the city turns"],
+    ["Justice", "debts come due"], ["The Hanged Man", "wait it out"], ["Death", "an ending, not the end"], ["Temperance", "mix it right"],
+    ["The Devil", "a deal you'll regret"], ["The Tower", "it all comes down"], ["The Star", "a reason to keep going"],
+    ["The Moon", "nothing is what it seems"], ["The Sun", "a clean run"], ["Judgement", "the past calls"], ["The World", "the job's done"]];
+
+  /* ===================================================================================
+     Stations. Items in [] are base-game records from the console command list.
+     Step types:
+       drinks   hold (fill to a line), count, beat (hit the needle)
+       food     chop (cut on the marks), catch (catch the toss), fry (juggle baskets), assemble (build from memory)
+       craft    keep (hold the needle in a drifting band), trace (follow the line), pick (read and choose)
+       shop     sort (bin it against the clock), pick
+       ritual   cards
+     =================================================================================== */
+  const JOBS = [
+    { id: "afterlife", skin: "afterlife", layout: "bar", tab: "Afterlife", sub: "bar", shard: "AFTERLIFE.BAR", art: "vessel", assists: ["kiroshi", "reflex"],
+      orders: [
+        { title: "The Johnny Silverhand", who: "V · stool 3", item: "Items.TopQualityAlcohol8", price: 150, vessel: "rocks", steps: [
+          { type: "hold", label: "Centzon Totochtin", target: 60, unit: "ml", rate: 32, color: "#e8c56a" },
+          { type: "hold", label: "Agave syrup", target: 10, unit: "ml", rate: 32, color: "#c98a2b" },
+          { type: "count", label: "Bitters", verb: "Add a dash", count: 2 },
+          { type: "count", label: "Ice", verb: "Drop a cube", count: 2, mark: "ice" },
+          { type: "beat", label: "Stir", verb: "Stir", beats: 3 },
+          { type: "hold", label: "Lime juice", target: 15, unit: "ml", rate: 32, color: "#b8e05a" },
+          { type: "hold", label: "Splash of cerveza", target: 30, unit: "ml", rate: 32, color: "#d9a03a" },
+          { type: "count", label: "Chili garnish", verb: "Garnish", count: 1, mark: "chili" } ] },
+        { title: "Broseph Lager", who: "Judy · stool 5", item: "Items.LowQualityAlcohol4", price: 30, vessel: "pint", steps: [
+          { type: "hold", label: "Broseph lager", target: 455, unit: "ml", rate: 90, color: "#d9a03a" } ] },
+      ] },
+    { id: "noodle", skin: "noodle", layout: "line", tab: "Noodle Stall", sub: "street food", shard: "KABUKI.NOODLES", art: "line", assists: ["reflex", "memory", "kiroshi"],
+      orders: [
+        { title: "Rammmmen", who: "Walk-up · queue 2", item: "Items.MediumQualityFood2", price: 18, steps: [
+          { type: "chop", label: "Chop scallions", ingredient: "scallion", cuts: 7 },
+          { type: "catch", label: "Toss the noodles", pieces: 8 },
+          { type: "assemble", label: "Build the bowl", recipe: ["Noodles", "Broth", "Chashu", "Egg", "Scallions"],
+            pool: ["Noodles", "Broth", "Chashu", "Egg", "Scallions", "Chili oil", "Tofu", "Nori"] } ] },
+        { title: "Wontons", who: "Walk-up · queue 3", item: "Items.LowQualityFood10", price: 12, steps: [
+          { type: "fry", label: "Work the fryer", items: ["Wontons", "Wontons", "Spring rolls", "Wontons"] },
+          { type: "assemble", label: "Plate it", recipe: ["Wontons", "Chili oil", "Scallions"], pool: ["Wontons", "Chili oil", "Scallions", "Soy", "Vinegar", "Sesame"] } ] },
+      ] },
+    { id: "hawt", skin: "hawt", layout: "line", tab: "Hawt Dawg", sub: "street food", shard: "HAWT.DAWG.CART", art: "line", assists: ["kerenzikov", "memory", "reflex"],
+      orders: [
+        { title: "Chilli HawtDawg", who: "Walk-up · Jig-Jig Street", item: "Items.HawtDawgChilli", price: 10, steps: [
+          { type: "fry", label: "Work the grill", items: ["Sausage", "Sausage", "Bun", "Sausage", "Bun"], grill: true },
+          { type: "chop", label: "Dice onions", ingredient: "onion", cuts: 6 },
+          { type: "assemble", label: "Dress it", recipe: ["Bun", "Sausage", "Chilli", "Onions"], pool: ["Bun", "Sausage", "Chilli", "Onions", "Cheese", "Mustard", "Pickles"] } ] },
+      ] },
+    { id: "coffee", skin: "coffee", layout: "bar", tab: "Matapang", sub: "coffee kiosk", shard: "MATAPANG.KIOSK", art: "vessel", assists: ["kiroshi", "smartlink"],
+      orders: [
+        { title: "Latte", who: "Corpo · to go", item: "Items.LowQualityDrink13", price: 9, vessel: "cup", steps: [
+          { type: "count", label: "Dose beans", verb: "Scoop", count: 2 },
+          { type: "keep", label: "Tamp", verb: "Press", seconds: 3, gauge: "Pressure" },
+          { type: "hold", label: "Pull the shot", target: 30, unit: "ml", rate: 8, color: "#4a2a17" },
+          { type: "keep", label: "Steam the milk", verb: "Steam", seconds: 4, gauge: "Milk °C" },
+          { type: "hold", label: "Pour milk", target: 170, unit: "ml", rate: 40, color: "#d9c3a3" },
+          { type: "trace", label: "Latte art", path: "heart", width: 0.07 } ] },
+      ] },
+    { id: "garage", skin: "garage", layout: "scan", tab: "Garage", sub: "mechanic", shard: "GARAGE.DIAG", art: "car", assists: ["cortex", "kiroshi", "reflex"],
+      orders: [
+        { title: "Quadra Type-66 Avenger", who: "Customer car · runs rough", price: 420, steps: [
+          { type: "pick", label: "Diagnose", prompt: "It shakes at idle and the light's on. What's wrong?",
+            readings: [["Oil pressure", "52 psi"], ["Coolant", "91 °C"], ["Battery", "13.9 V"], ["Cylinder 3", "misfire", true], ["Fuel trim", "+2 %"]],
+            options: ["Coolant pump", "Ignition coil, cyl 3", "Battery", "Fuel injector, cyl 1"], answer: 1 },
+          { type: "count", label: "Unbolt the coil", verb: "Loosen a bolt", count: 4 },
+          { type: "beat", label: "Torque to spec", verb: "Torque", beats: 4 },
+          { type: "keep", label: "Idle tune", verb: "Feather the throttle", seconds: 5, gauge: "RPM" } ] },
+      ] },
+    { id: "ink", skin: "ink", layout: "precision", tab: "Ink", sub: "tattoo", shard: "KABUKI.INK", art: "skin", assists: ["smartlink", "kiroshi"],
+      orders: [
+        { title: "Koi, left forearm", who: "Tyger Claws · walk-in", price: 260, steps: [
+          { type: "count", label: "Prep and wipe", verb: "Wipe", count: 2 },
+          { type: "keep", label: "Needle depth", verb: "Steady", seconds: 4, gauge: "Depth" },
+          { type: "trace", label: "Outline", path: "koi", width: 0.05 },
+          { type: "trace", label: "Fin line", path: "fin", width: 0.05 } ] },
+      ] },
+    { id: "ripper", skin: "ripper", layout: "precision", tab: "Ripperdoc", sub: "install", shard: "CLINIC.INSTALL", art: "arm", assists: ["biomonitor", "smartlink", "kiroshi"],
+      orders: [
+        { title: "Biomonitor (Tier 2)", who: "Patient · Silver plan", item: "Items.AdvancedBiomonitorUncommon", price: 1800, steps: [
+          { type: "keep", label: "Anaesthetic", verb: "Dose", seconds: 4, gauge: "Heart rate" },
+          { type: "trace", label: "Open the port", path: "incision", width: 0.05 },
+          { type: "sort", label: "Match the leads", seconds: 12, bins: ["Red port", "Blue port", "Green port"],
+            items: [["Red lead", 0], ["Blue lead", 1], ["Green lead", 2], ["Red lead", 0], ["Green lead", 2], ["Blue lead", 1]] },
+          { type: "trace", label: "Close up", path: "suture", width: 0.06 } ] },
+      ] },
+    { id: "junk", skin: "junk", layout: "pos", tab: "Junk Dealer", sub: "buy scrap", shard: "JUNK.BUY", art: "scale", assists: ["cortex", "reflex"],
+      orders: [
+        { title: "Bag of scrap", who: "Seller · street kid", price: 60, steps: [
+          { type: "sort", label: "Sort the haul", seconds: 15, bins: ["Metal", "Plastic", "Electronics", "Trash"],
+            items: [["Rebar offcut", 0], ["Bottle crate", 1], ["Busted cyberdeck", 2], ["Food wrapper", 3], ["Copper coil", 0],
+                    ["Holo-ad panel", 2], ["Car bumper", 1], ["Old shard", 2], ["Rusted plate", 0], ["Noodle cup", 3]] },
+          { type: "pick", label: "Make an offer", prompt: "14 kg, mostly metal and two good boards. What do you offer?",
+            readings: [["Metal", "8 kg"], ["Plastic", "3 kg"], ["Electronics", "2 boards", true], ["Trash", "1 kg"]],
+            options: ["25 eddies", "60 eddies", "140 eddies"], answer: 1 } ] },
+      ] },
+    { id: "misty", skin: "misty", layout: "ritual", tab: "Misty's", sub: "tarot", shard: "ESOTERICA", art: "candles", assists: [],
+      orders: [
+        { title: "Past, present, future", who: "Customer · first reading", price: 50, steps: [
+          { type: "count", label: "Light the candles", verb: "Light one", count: 3, mark: "flame" },
+          { type: "cards", label: "Draw three", draw: 3 } ] },
+      ] },
+    { id: "autofixer", skin: "autofixer", layout: "scan", tab: "Autofixer", sub: "El Capitan", shard: "AUTOFIXER.LOT", art: "car", assists: ["cortex", "kiroshi"],
+      orders: [
+        { title: "Mizutani Shion MZ2", who: "Buyer · nomad", price: 88000, steps: [
+          { type: "pick", label: "Read the buyer", prompt: "Dusty jacket, keeps asking about the suspension. What do you lead with?",
+            readings: [["Budget", "tight"], ["Drives", "Badlands", true], ["Wants", "something that lasts"]],
+            options: ["Top speed", "Off-road handling", "The paint job"], answer: 1 },
+          { type: "keep", label: "Work the deal", verb: "Push", seconds: 6, gauge: "Interest" },
+          { type: "count", label: "Hand over the keys", verb: "Hand over", count: 1 } ] },
+      ] },
+    { id: "threads", skin: "threads", layout: "pos", tab: "Threads", sub: "clothing", shard: "THREADS.FLOOR", art: "rack", assists: ["reflex", "cortex"],
+      orders: [
+        { title: "Restock and fit", who: "Customer · fitting room 2", price: 340, steps: [
+          { type: "sort", label: "Restock the racks", seconds: 14, bins: ["Jackets", "Shirts", "Pants", "Shoes"],
+            items: [["Polyamide-blend suit jacket", 0], ["Carbonweave silk corporate shirt", 1], ["Sturdy synfiber pleated pants", 2],
+                    ["Heavy-duty biker boots", 3], ["AT-AK reinforced biker coat", 0], ["Reinforced breathable dress shirt", 1],
+                    ["Military shoes with shock-absorbent insole", 3], ["Classic composite-lined pleated pants", 2]] },
+          { type: "pick", label: "Size them up", prompt: "Chest 104, waist 88, wants it loose for a holster.",
+            readings: [["Chest", "104 cm"], ["Waist", "88 cm"], ["Holster", "shoulder", true]], options: ["M", "L", "XL"], answer: 1 },
+          { type: "count", label: "Bag it", verb: "Fold and bag", count: 1 } ] },
+      ] },
+  ];
+  const CANVAS = { bar: [400, 560], precision: [560, 560], line: [880, 330], scan: [880, 330], pos: [880, 200], ritual: [880, 300] };
+
+  /* ============================ state ============================ */
+  const st = { job: JOBS[0], orderIx: 0, idx: 0, results: [], layers: [], vol: 0, t0: 0, raf: 0, done: false, live: {}, assists: new Set() };
+  const order = () => st.job.orders[st.orderIx];
+  const cur = () => order().steps[st.idx];
+
+  function selectJob(j) {
+    st.job = j; st.orderIx = 0;
+    st.assists = new Set(j.assists.slice(0, 1));         // the preview starts with one implant installed
+    try { localStorage.setItem("o77.station", j.id); } catch (e) {}
+    start();
+  }
+  function start() {
+    cancelAnimationFrame(st.raf);
+    Object.assign(st, { idx: 0, results: [], layers: [], vol: 0, t0: performance.now(), done: false, live: {} });
+    const j = st.job, o = order(), root = document.documentElement;
+    root.dataset.skin = j.skin; $("hud").dataset.layout = j.layout;
+    const [w, h] = CANVAS[j.layout]; const cv = $("art"); cv.width = w; cv.height = h;
+    cv.style.aspectRatio = `${w} / ${h}`;
+    $("bootText").textContent = `JOBSHARD // ${j.shard} v2.31`;
+    const boot = $("boot"); boot.classList.remove("booting"); void boot.offsetWidth; boot.classList.add("booting");
+    $("title").textContent = o.title;
+    $("who").textContent = `${o.who}${j.orders.length > 1 ? ` · order ${st.orderIx + 1}/${j.orders.length}` : ""}${o.item ? ` · ${o.item}` : ""}`;
+    renderRail(); renderAssists(); renderSteps(); renderControl(); tick();
+  }
+
+  function renderRail() {
+    $("rail").replaceChildren(...JOBS.map(j => {
+      const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-pressed", String(j === st.job));
+      b.innerHTML = `${esc(j.tab)}<small>${esc(j.sub)}</small>`; b.onclick = () => selectJob(j); return b;
+    }));
+  }
+  function renderAssists() {
+    const box = $("assists");
+    if (!st.job.assists.length) { box.innerHTML = `<span class="assist">NO CHROME NEEDED<small>it's the reading that matters</small></span>`; return; }
+    box.replaceChildren(...st.job.assists.map(k => {
+      const a = ASSISTS[k], b = document.createElement("button"); b.type = "button"; b.className = "assist";
+      b.setAttribute("aria-pressed", String(on(k))); b.title = `${a.rec} (preview: tap to install or remove)`;
+      b.innerHTML = `${esc(a.name)}<small>${on(k) ? "assist: " + esc(a.does) : "not installed"}</small>`;
+      b.onclick = () => { on(k) ? st.assists.delete(k) : st.assists.add(k); start(); };
+      return b;
+    }));
+  }
+  function renderSteps() {
+    $("steps").replaceChildren(...order().steps.map((s, i) => {
+      const li = document.createElement("li"); const r = st.results[i];
+      li.className = "step" + (i === st.idx && !st.done ? " active" : "") + (r ? " done g-" + r.grade : "");
+      li.innerHTML = `<span class="dot"></span><span>${esc(stepText(s))}</span><span class="grade ${r ? r.grade : ""}">${r ? esc(r.text) : ""}</span>`;
+      return li;
+    }));
+  }
+  const stepText = s => ({ hold: () => `${s.label}: ${s.target} ${s.unit}`, count: () => `${s.label} × ${s.count}`, beat: () => `${s.label}: ${s.beats} beats`,
+    keep: () => `${s.label}: ${s.seconds} s`, trace: () => s.label, sort: () => `${s.label} (${s.items.length})`, pick: () => s.label, cards: () => s.label,
+    chop: () => `${s.label}: ${s.cuts} cuts`, catch: () => `${s.label}: ${s.pieces}`, fry: () => `${s.label}: ${s.items.length}`, assemble: () => s.label })[s.type]();
+
+  function finishStep(score, text) {
+    const grade = score >= 90 ? "perfect" : score >= 60 ? "good" : "off";
+    st.results[st.idx] = { score: Math.round(score), grade, text };
+    st.idx++; st.live = {};
+    if (st.idx >= order().steps.length) st.done = true;
+    renderSteps(); renderControl();
+  }
+
+  /* ============================ controls ============================ */
+  function renderControl() {
+    const c = $("control"); c.replaceChildren(); $("finish").disabled = !st.done;
+    if (st.done) {
+      const graded = st.results.filter(r => r.text !== "—");
+      const q = graded.length ? Math.round(graded.reduce((a, r) => a + r.score, 0) / graded.length) : 100;
+      const word = q >= 90 ? "Flawless" : q >= 75 ? "Clean" : q >= 55 ? "Rough" : "Botched";
+      c.innerHTML = `<div class="result"><span>${word}</span><span class="num">${q}%</span></div>
+        <div class="hint">${esc(order().title)} · ${order().price.toLocaleString("en-US")} €$. Quality moves the tip, the customer's mood and your standing, never the price.</div>`;
+      return;
+    }
+    const s = cur(), L = st.live, d = diff();
+    ({
+      hold() { L.got = L.got || 0;
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span><span class="num" id="rv">0</span> / ${s.target} ${s.unit}</span></div>
+          <button class="big" id="act" type="button">Hold <span class="key">SPACE</span></button><div class="hint">Let go on the line.</div>`;
+        bindHold($("act"), startHold, stopHold); },
+      count() { L.n = L.n || 0;
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num">${L.n} / ${s.count}</span></div>
+          <button class="big" id="act" type="button">${esc(s.verb)} <span class="key">SPACE</span></button>`;
+        $("act").onclick = press; },
+      beat() { L.hits = L.hits || [];
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num">${L.hits.length} / ${s.beats}</span></div>
+          <div class="meter"><div class="zone" style="left:${50 - d.good}%;width:${d.good * 2}%"></div><div class="core" style="left:${50 - d.perfect}%;width:${d.perfect * 2}%"></div><div class="needle" id="needle"></div></div>
+          <button class="big" id="act" type="button">${esc(s.verb)} <span class="key">SPACE</span></button>`;
+        $("act").onclick = press; },
+      keep() { if (!L.init) Object.assign(L, { init: true, started: false, y: 0.5, target: 0.5, zone: 0.5, inZone: 0, total: 0, t: 0, phase: Math.random() * 6 });
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">${L.started ? "" : "ready"}</span></div>
+          <input class="dial" id="dial" type="range" min="0" max="1000" value="${Math.round(L.target * 1000)}" aria-label="${esc(s.gauge)}">
+          <div class="hint">${esc(s.verb)}: slide to keep the ${esc(s.gauge.toLowerCase())} marker inside the band for ${s.seconds} s. The clock starts when you move it. Drag the slider or the gauge, or use ← →.</div>`;
+        const dial = $("dial"); dial.oninput = () => { L.target = dial.value / 1000; L.started = true; };
+        dial.onpointerdown = () => { L.started = true; }; },
+      trace() { L.pts = L.pts || []; L.hit = L.hit || new Set();
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">0%</span></div>
+          <div class="hint">Drag along the dashed line, start to finish.${on("smartlink") ? " Smart Link is holding your hand steady." : ""}</div>
+          <button class="big" id="act" type="button">Done</button>`;
+        $("act").onclick = endTrace; },
+      sort() { if (!L.queue) Object.assign(L, { queue: shuffle(s.items), right: 0, i: 0, t: performance.now() });
+        const it = L.queue[L.i];
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">${s.seconds}s</span></div>
+          <div class="item">${esc(it[0])}<small>${L.i + 1} of ${L.queue.length}</small></div>
+          <div class="choices">${s.bins.map((b, k) => `<button type="button" data-k="${k}">${esc(b)}<small>${k + 1}</small></button>`).join("")}</div>`;
+        c.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => sortPick(+b.dataset.k)); },
+      pick() { const flag = on("cortex");
+        c.innerHTML = `<div class="hint">${esc(s.prompt)}</div>
+          <div class="readings">${s.readings.map(([k, v, bad]) => `<span>${esc(k)}</span><span class="val ${bad && flag ? "flag" : ""}">${esc(v)}</span>`).join("")}</div>
+          <div class="choices">${s.options.map((o, k) => `<button type="button" data-k="${k}">${esc(o)}<small>${k + 1}</small></button>`).join("")}</div>`;
+        c.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => choose(+b.dataset.k)); },
+      cards() { if (!L.deck) Object.assign(L, { deck: shuffle(TAROT), drawn: [] });
+        const pos = ["Past", "Present", "Future"];
+        c.innerHTML = `<div class="tarot">${pos.slice(0, s.draw).map((p, k) => { const x = L.drawn[k];
+            return `<div class="card ${x ? "face" : ""}"><span class="pos">${p}</span><span class="name">${x ? esc(x[0]) : "?"}</span><span class="mean">${x ? esc(x[1]) : ""}</span></div>`; }).join("")}</div>
+          <button class="big" id="act" type="button">${L.drawn.length < s.draw ? "Turn a card" : "Read it to them"} <span class="key">SPACE</span></button>`;
+        $("act").onclick = press; },
+      // ---------- food ----------
+      chop() { if (!L.marks) { const gap = 0.11; Object.assign(L, { x: 1.05, started: false, whiffs: 0, marks: Array.from({ length: s.cuts }, (_, k) => ({ at: 0.25 + k * gap, hit: null })), last: performance.now() }); }
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">${L.marks.filter(m => m.hit !== null).length} / ${s.cuts}</span></div>
+          <button class="big" id="act" type="button">${L.started ? "Chop" : "Start the board"} <span class="key">SPACE</span></button>
+          <div class="hint">${L.started ? "Chop when a mark lines up with the blade. Chopping air wastes a cut." : `The ${esc(s.ingredient)} waits on the board until you start. Then it slides under the blade: chop when a mark lines up.`}</div>`;
+        $("act").onclick = press; },
+      catch() { if (!L.pieces) Object.assign(L, { wok: 0.5, pieces: [], launched: 0, caught: 0, missed: 0, next: performance.now() + 400, last: performance.now() });
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">0 / ${s.pieces}</span></div>
+          <div class="hint">Everything's in the air. Move the wok under it: drag on the cook line or use ← →.</div>`; },
+      fry() { if (!L.slots) Object.assign(L, { slots: [null, null, null], queue: s.items.slice(), scores: [], last: performance.now(), nextIn: 0 });
+        c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">0 / ${s.items.length}</span></div>
+          <div class="choices">${[0, 1, 2].map(k => `<button type="button" data-k="${k}">${s.grill ? "Flip / plate" : "Pull basket"} ${k + 1}<small>${k + 1}</small></button>`).join("")}</div>
+          <div class="hint">${s.grill ? "Pull each one off the grill" : "Pull each basket"} when the bar is in the green. Burnt is burnt.</div>`;
+        c.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => pull(+b.dataset.k)); },
+      assemble() { if (!L.phase) Object.assign(L, { phase: "look", until: performance.now() + d.showMs, got: [], wrong: 0, pool: shuffle(s.pool) });
+        if (L.phase === "look") {
+          c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num" id="rv">${(d.showMs / 1000).toFixed(0)}s</span></div>
+            <div class="hint">Remember the ticket${on("memory") ? " (Memory Boost gives you longer)" : ""}:</div>
+            <div class="ticket">${s.recipe.map(x => `<span>${esc(x)}</span>`).join("")}</div>`;
+        } else {
+          c.innerHTML = `<div class="readout"><span>${esc(s.label)}</span><span class="num">${L.got.length} / ${s.recipe.length}</span></div>
+            <div class="ticket">${s.recipe.map((x, k) => `<span class="${k < L.got.length ? "got" : ""}">${k < L.got.length ? esc(x) : "?"}</span>`).join("")}</div>
+            <div class="choices">${L.pool.map((x, k) => `<button type="button" data-k="${k}">${esc(x)}</button>`).join("")}</div>`;
+          c.querySelectorAll("button[data-k]").forEach(b => b.onclick = () => addIngredient(L.pool[+b.dataset.k], b));
+        } },
+    })[s.type]();
+  }
+  function bindHold(el, down, up) { el.onpointerdown = e => { el.setPointerCapture(e.pointerId); down(); }; el.onpointerup = el.onpointercancel = () => up(); }
+
+  // ---- drinks
+  function startHold() { if (st.done || cur().type !== "hold") return; st.live.holding = true; st.live.last = performance.now(); $("act")?.classList.add("on"); }
+  function stopHold() {
+    const L = st.live, s = cur(); if (!L.holding) return; L.holding = false; $("act")?.classList.remove("on");
+    if (!(L.got > 0)) return;
+    const tol = ((s.rate || 32) / 32) * (on("kiroshi") ? 1.3 : 1);
+    finishStep(Math.max(0, 100 - Math.abs(L.got - s.target) / tol * 4), `${L.got.toFixed(0)} ${s.unit}`);
+  }
+  const needle = () => 50 + 50 * Math.sin((performance.now() - st.t0) / 1000 * Math.PI * diff().speed);
+  function press() {
+    if (st.done) return; const s = cur(), L = st.live, d = diff();
+    if (s.type === "count") { L.n++; if (s.mark) st.layers.push({ mark: s.mark }); if (L.n >= s.count) finishStep(100, `${L.n}`); else renderControl(); }
+    else if (s.type === "beat") { const off = Math.abs(needle() - 50);
+      L.hits.push(off <= d.perfect ? "perfect" : off <= d.good ? "good" : "off");
+      if (L.hits.length >= s.beats) finishStep(L.hits.reduce((a, h) => a + ({ perfect: 100, good: 70, off: 20 })[h], 0) / s.beats, L.hits.map(h => ({ perfect: "◆", good: "◇", off: "×" })[h]).join(" "));
+      else renderControl(); }
+    else if (s.type === "cards") { if (L.drawn.length < s.draw) { L.drawn.push(L.deck[L.drawn.length]); renderControl(); } else finishStep(100, "—"); }
+    else if (s.type === "chop") chopNow();
+  }
+  // ---- food: chop
+  function chopNow() {
+    const L = st.live, s = cur(), d = diff(); if (!L.marks) return;
+    if (!L.started) { L.started = true; renderControl(); return; }   // first press starts the board
+    // the blade sits at x = 0.5; a mark's screen x = L.x + mark.at - 0.75 (the board slides left)
+    let best = null, bd = 0.08;   // only a mark near the blade can be cut; chopping air is a whiff
+    for (const m of L.marks) if (m.hit === null) { const sx = L.x + m.at - 0.75, dd = Math.abs(sx - 0.5); if (dd < bd) { bd = dd; best = m; } }
+    st.live.flash = performance.now();
+    if (!best) { L.whiffs = (L.whiffs || 0) + 1; return; }
+    const win = 0.012 + (d.perfect / 4) * 0.008;
+    best.hit = bd <= win ? 100 : bd <= win * 3 ? 70 : 30;
+    checkChopDone();
+  }
+  function checkChopDone() {
+    const L = st.live, s = cur(); const done = L.marks.filter(m => m.hit !== null).length;
+    const rv = $("rv"); if (rv) rv.textContent = `${done} / ${s.cuts}`;
+    if (done >= s.cuts) { const w = L.whiffs || 0, sc = Math.max(0, L.marks.reduce((a, m) => a + m.hit, 0) / s.cuts - w * 8);
+      finishStep(sc, `${L.marks.filter(m => m.hit >= 70).length}/${s.cuts} clean${w ? ` · ${w} wasted` : ""}`); }
+  }
+  // ---- food: fry / grill
+  function pull(k) {
+    const L = st.live, s = cur(); if (s.type !== "fry" || !L.slots[k]) return;
+    const it = L.slots[k], d = diff(), lo = 0.7, hi = 0.7 + 0.18 * d.window;
+    const sc = it.done > 1 ? 0 : it.done >= lo && it.done <= hi ? 100 : it.done >= 0.55 ? 60 : 20;
+    L.scores.push(sc); L.slots[k] = null; L.flash = { k, sc, at: performance.now() };
+    const rv = $("rv"); if (rv) rv.textContent = `${L.scores.length} / ${s.items.length}`;
+    if (L.scores.length >= s.items.length) finishStep(L.scores.reduce((a, b) => a + b, 0) / L.scores.length, `${L.scores.filter(x => x >= 100).length}/${s.items.length} golden`);
+  }
+  // ---- food: assemble
+  function addIngredient(x, btn) {
+    const L = st.live, s = cur(); if (s.type !== "assemble" || L.phase !== "build") return;
+    if (x === s.recipe[L.got.length]) { L.got.push(x); if (L.got.length >= s.recipe.length) return finishStep(Math.max(0, 100 - L.wrong * 20), L.wrong ? `${L.wrong} slip${L.wrong > 1 ? "s" : ""}` : "perfect"); renderControl(); }
+    else { L.wrong++; btn.classList.add("wrong"); setTimeout(() => btn.classList.remove("wrong"), 350); }
+  }
+  // ---- shop
+  function sortPick(k) {
+    const s = cur(), L = st.live; if (s.type !== "sort") return;
+    if (L.queue[L.i][1] === k) L.right++; L.i++;
+    if (L.i >= L.queue.length) { const secs = (performance.now() - L.t) / 1000, speed = clamp(s.seconds / Math.max(secs, 0.1), 0.5, 1);
+      finishStep(100 * L.right / L.queue.length * speed, `${L.right}/${L.queue.length}`); } else renderControl();
+  }
+  function choose(k) {
+    const s = cur(); if (s.type !== "pick") return;
+    const btns = [...$("control").querySelectorAll("button[data-k]")]; btns.forEach(b => b.disabled = true);
+    btns[s.answer].classList.add("right"); if (k !== s.answer) btns[k].classList.add("wrong");
+    setTimeout(() => finishStep(k === s.answer ? 100 : 30, k === s.answer ? "right" : "wrong"), 700);
+  }
+  // ---- craft: trace
+  const PATHS = {
+    heart: t => { const a = t * Math.PI * 2; return [0.5 + 0.16 * Math.pow(Math.sin(a), 3), 0.42 - 0.13 * Math.cos(a) + 0.05 * Math.cos(2 * a) + 0.02 * Math.cos(3 * a)]; },
+    koi: t => [0.18 + 0.64 * t, 0.5 + 0.18 * Math.sin(t * Math.PI * 1.6) - 0.05 * t],
+    fin: t => [0.55 + 0.2 * Math.sin(t * Math.PI), 0.28 + 0.36 * t],
+    incision: t => [0.25 + 0.5 * t, 0.52 - 0.03 * Math.sin(t * Math.PI * 2)],
+    suture: t => [0.25 + 0.5 * t, 0.52 + (Math.floor(t * 10) % 2 ? 0.04 : -0.04) * (1 - Math.abs((t * 10 % 1) - 0.5) * 2)],
+  };
+  const SAMPLES = 60;
+  const tracePts = n => { const o = []; for (let i = 0; i <= SAMPLES; i++) o.push(PATHS[n](i / SAMPLES)); return o; };
+  function traceInput(x, y) {
+    const s = cur(); if (st.done || s.type !== "trace") return;
+    const L = st.live, pts = tracePts(s.path), w = s.width * diff().trace; let best = 1, bi = -1;
+    pts.forEach((p, i) => { const dd = Math.hypot(p[0] - x, p[1] - y); if (dd < best) { best = dd; bi = i; } });
+    L.pts.push([x, y]); L.samples = (L.samples || 0) + 1;
+    if (best <= w) { L.onLine = (L.onLine || 0) + 1; L.hit.add(bi); }
+    const rv = $("rv"); if (rv) rv.textContent = `${Math.round(L.hit.size / pts.length * 100)}%`;
+  }
+  function endTrace() {
+    const s = cur(), L = st.live; if (s.type !== "trace") return;
+    const cov = L.hit.size / (SAMPLES + 1), acc = L.samples ? L.onLine / L.samples : 0;
+    finishStep(100 * Math.min(1, cov / 0.9) * (0.4 + 0.6 * acc), `${Math.round(cov * 100)}% · ${Math.round(acc * 100)}%`);
+  }
+
+  /* ============================ frame loop ============================ */
+  function tick() {
+    const now = performance.now(), s = !st.done && cur(), L = st.live, d = diff();
+    if (s) {
+      const dt = Math.min(0.05, (now - (L.last || now)) / 1000); L.last = now;
+      if (s.type === "hold" && L.holding) {
+        const add = (s.rate || 32) * dt * (1 + 0.12 * Math.sin(now / 90)); L.got += add; st.vol += add;
+        const top = st.layers[st.layers.length - 1];
+        if (top && top.step === st.idx) top.ml += add; else st.layers.push({ step: st.idx, ml: add, color: s.color });
+        const rv = $("rv"); if (rv) rv.textContent = L.got.toFixed(0);
+      }
+      if (s.type === "beat") { const n = $("needle"); if (n) n.style.left = `calc(${needle()}% - 1px)`; }
+      if (s.type === "keep" && L.init) {
+        L.y += (L.target - L.y) * Math.min(1, dt * 14);            // follows your hand directly, no momentum
+        if (L.started) {
+          L.t += dt;
+          const ease = Math.min(1, L.t / 1.5);                      // band starts still, then drifts gently
+          L.zone = 0.5 + ease * (0.24 * Math.sin(L.phase + L.t * 0.5 / (d.speed / 1.2)) + 0.05 * Math.sin(L.t * 1.3));
+          L.total += dt; if (Math.abs(L.y - L.zone) <= d.zone / 2) L.inZone += dt;
+          const pct = Math.round(100 * L.inZone / Math.max(L.total, 0.001));
+          const rv = $("rv"); if (rv) rv.textContent = `${pct}% · ${Math.max(0, s.seconds - L.total).toFixed(1)}s`;
+          if (L.total >= s.seconds) finishStep(Math.min(100, pct / 0.85), `${pct}%`);
+        }
+      }
+      if (s.type === "sort" && L.queue) { const rv = $("rv"); if (rv) rv.textContent = `${Math.max(0, s.seconds - (now - L.t) / 1000).toFixed(0)}s`; }
+      if (s.type === "chop" && L.marks && L.started) {
+        L.x -= 0.16 * d.chopSpeed * dt;
+        for (const m of L.marks) if (m.hit === null && L.x + m.at - 0.75 < 0.5 - 0.09) m.hit = 0;   // slid past the blade: a miss
+        checkChopDone();
+      }
+      if (s.type === "catch" && L.pieces) {
+        if (L.keyDir) L.wok = clamp(L.wok + L.keyDir * 1.1 * dt, 0.08, 0.92);
+        if (L.launched < s.pieces && now >= L.next) { L.pieces.push({ x: 0.15 + Math.random() * 0.7, y: -0.05, vy: 0.2 + Math.random() * 0.2, kind: L.launched % 3 }); L.launched++; L.next = now + 650 + Math.random() * 450; }
+        for (const p of L.pieces) { if (p.done) continue; p.vy += 0.55 * d.fall * dt; p.y += p.vy * dt;
+          if (p.y >= 0.82 && p.y <= 0.9 && Math.abs(p.x - L.wok) <= 0.11) { p.done = "caught"; L.caught++; }
+          else if (p.y > 1.02) { p.done = "missed"; L.missed++; } }
+        const rv = $("rv"); if (rv) rv.textContent = `${L.caught} / ${s.pieces}`;
+        if (L.caught + L.missed >= s.pieces) finishStep(100 * L.caught / s.pieces, `${L.caught}/${s.pieces} caught`);
+      }
+      if (s.type === "fry" && L.slots) {
+        L.nextIn -= dt;
+        if (L.queue.length && L.nextIn <= 0) { const k = L.slots.indexOf(null); if (k >= 0) { L.slots[k] = { name: L.queue.shift(), done: 0, rate: 0.12 + Math.random() * 0.08 }; L.nextIn = 1.4; } }
+        for (let k = 0; k < 3; k++) { const it = L.slots[k]; if (it) { it.done += it.rate * dt * (on("reflex") ? 0.85 : 1); if (it.done > 1.15) pull(k); } }
+      }
+      if (s.type === "assemble" && L.phase === "look") {
+        const left = (L.until - now) / 1000; const rv = $("rv"); if (rv) rv.textContent = `${Math.max(0, left).toFixed(0)}s`;
+        if (left <= 0) { L.phase = "build"; renderControl(); }
+      }
+    }
+    draw(now);
+    $("timer").textContent = `${((now - st.t0) / 1000).toFixed(1)} s`;
+    st.raf = requestAnimationFrame(tick);
+  }
+
+  /* ============================ drawing ============================ */
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const scanlines = (g, W, H) => { g.fillStyle = "rgba(255,255,255,.025)"; for (let y = 0; y < H; y += 4) g.fillRect(0, y, W, 1); };
+  function frame(g, W, H, label) { // HUD corners + a label, like an optics overlay
+    g.strokeStyle = css("--a"); g.lineWidth = 3; const k = 22;
+    for (const [x, y, sx, sy] of [[8, 8, 1, 1], [W - 8, 8, -1, 1], [8, H - 8, 1, -1], [W - 8, H - 8, -1, -1]]) { g.beginPath(); g.moveTo(x, y + sy * k); g.lineTo(x, y); g.lineTo(x + sx * k, y); g.stroke(); }
+    if (label) { g.fillStyle = css("--a"); g.font = "14px 'Share Tech Mono', monospace"; g.fillText(label, 20, 30); }
+  }
+  function draw(now) {
+    const cv = $("art"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
+    g.clearRect(0, 0, W, H);
+    const s = !st.done && cur();
+    if (s && s.type === "keep") drawKeep(g, W, H, s);
+    else if (s && s.type === "trace") drawTrace(g, W, H, s);
+    else ({ vessel: drawVessel, line: drawLine, car: drawCar, skin: drawSkin, arm: drawArm, scale: drawScale, candles: drawCandles, rack: drawRack })[st.job.art](g, W, H, now, s);
+    scanlines(g, W, H);
+    frame(g, W, H, s ? `> ${s.label.toUpperCase()}` : "> DONE");
+  }
+
+  function drawVessel(g, W, H) {
+    const gl = VESSELS[order().vessel]; const foot = H - 40, top = foot - (H - 90) * gl.height, bot = foot - (H - 90) * gl.base;
+    const wAt = y => W * (gl.bottom + (gl.top - gl.bottom) * (foot - y) / (foot - top));
+    const xL = y => W / 2 - wAt(y) / 2 + 6, xR = y => W / 2 + wAt(y) / 2 - 6, yAt = ml => bot - (bot - top) * Math.min(ml, gl.cap) / gl.cap;
+    let acc = 0;
+    for (const L of st.layers) { if (L.mark) continue; const y0 = yAt(acc), y1 = yAt(acc + L.ml); acc += L.ml;
+      g.fillStyle = L.color; g.beginPath(); g.moveTo(xL(y0), y0); g.lineTo(xR(y0), y0); g.lineTo(xR(y1), y1); g.lineTo(xL(y1), y1); g.fill(); }
+    let i = 0;
+    for (const L of st.layers) if (L.mark) { const y = clamp(yAt(acc) - 8 + (i % 2) * 14, top + 24, bot - 16), x = W / 2 - 40 + (i % 4) * 26;
+      g.save(); g.translate(x, y);
+      if (L.mark === "ice") { g.fillStyle = "rgba(220,245,255,.55)"; g.strokeStyle = "rgba(255,255,255,.8)"; g.lineWidth = 2; g.rotate(.2 * (i % 3 - 1)); g.fillRect(-14, -14, 28, 28); g.strokeRect(-14, -14, 28, 28); }
+      else if (L.mark === "chili") { g.translate(xR(top) - x + 8, top - y + 4); g.rotate(-0.95); g.fillStyle = "#e0312b"; g.beginPath(); g.ellipse(0, 0, 30, 9, 0, 0, 7); g.fill(); g.fillStyle = "#3a8f2f"; g.fillRect(26, -4, 12, 8); }
+      g.restore(); i++; }
+    const s = !st.done && cur();
+    if (s && s.type === "hold") { const y = yAt(st.vol - (st.live.got || 0) + s.target); g.strokeStyle = css("--b"); g.setLineDash([10, 8]); g.lineWidth = 3; g.beginPath(); g.moveTo(xL(y) - 18, y); g.lineTo(xR(y) + 18, y); g.stroke(); g.setLineDash([]);
+      if (on("kiroshi")) { g.fillStyle = css("--b"); g.globalAlpha = .12; g.fillRect(xL(y) - 18, y - 14, xR(y) - xL(y) + 36, 28); g.globalAlpha = 1; } }
+    g.fillStyle = "rgba(230,237,243,.10)"; g.beginPath(); g.moveTo(W / 2 - wAt(foot) / 2, foot); g.lineTo(W / 2 + wAt(foot) / 2, foot); g.lineTo(W / 2 + wAt(bot) / 2, bot); g.lineTo(W / 2 - wAt(bot) / 2, bot); g.fill();
+    g.strokeStyle = "#e6edf3"; g.lineWidth = 4; g.lineJoin = "round";
+    g.beginPath(); g.moveTo(W / 2 - wAt(top) / 2, top); g.lineTo(W / 2 - wAt(foot) / 2, foot); g.lineTo(W / 2 + wAt(foot) / 2, foot); g.lineTo(W / 2 + wAt(top) / 2, top); g.stroke();
+    if (gl.handle) { g.beginPath(); g.ellipse(W / 2 + wAt((top + foot) / 2) / 2 + 18, (top + foot) / 2, 22, 34, 0, -1.4, 1.4); g.stroke(); }
+  }
+
+  // The cook line: board, wok or fryer depending on the step.
+  function drawLine(g, W, H, now, s) {
+    const L = st.live, A = css("--a"), B = css("--b");
+    g.fillStyle = "#1a1c1f"; g.fillRect(0, H * 0.78, W, H * 0.22); // counter
+    if (s && s.type === "chop" && L.marks) {
+      const bx = (L.x - 0.75) * W; // board slides left
+      g.fillStyle = "#6b4a2b"; g.fillRect(bx + W * 0.2, H * 0.42, W * (s.cuts * 0.11 + 0.15), H * 0.3);
+      g.fillStyle = s.ingredient === "onion" ? "#e9d7c0" : "#6fbf4f";
+      g.fillRect(bx + W * 0.22, H * 0.52, W * (s.cuts * 0.11 + 0.1), H * 0.09);
+      for (const m of L.marks) { const x = (L.x + m.at - 0.75) * W;
+        g.strokeStyle = m.hit === null ? B : m.hit >= 70 ? "#3ce8a0" : "#ff3b5c"; g.lineWidth = 3; g.setLineDash(m.hit === null ? [6, 5] : []);
+        g.beginPath(); g.moveTo(x, H * 0.46); g.lineTo(x, H * 0.68); g.stroke(); g.setLineDash([]); }
+      const flash = L.flash && now - L.flash < 120;
+      g.fillStyle = "#cfd6de"; g.fillRect(W * 0.5 - 4, flash ? H * 0.42 : H * 0.12, 8, H * 0.28); // blade
+      g.fillStyle = A; g.fillRect(W * 0.5 - 18, flash ? H * 0.36 : H * 0.06, 36, 18); // handle
+      if (on("kiroshi")) { g.strokeStyle = B; g.globalAlpha = .3; g.strokeRect(W * 0.5 - 12, H * 0.44, 24, H * 0.26); g.globalAlpha = 1; }
+    } else if (s && s.type === "catch" && L.pieces) {
+      for (const p of L.pieces) { if (p.done) continue; g.fillStyle = ["#f2d38a", "#c9853a", "#6fbf4f"][p.kind];
+        g.beginPath(); g.ellipse(p.x * W, p.y * H, 14, 7, p.y * 4, 0, 7); g.fill(); }
+      const wx = L.wok * W; g.fillStyle = "#2b2f35"; g.beginPath(); g.ellipse(wx, H * 0.86, W * 0.11, H * 0.06, 0, 0, Math.PI); g.fill();
+      g.strokeStyle = A; g.lineWidth = 4; g.beginPath(); g.moveTo(wx + W * 0.11, H * 0.86); g.lineTo(wx + W * 0.2, H * 0.8); g.stroke();
+      g.fillStyle = "rgba(255,120,30,.35)"; for (let k = 0; k < 5; k++) g.fillRect(wx - 40 + k * 18, H * 0.93 + Math.sin(now / 80 + k) * 3, 10, 10);
+    } else if (s && s.type === "fry" && L.slots) {
+      const d = diff(), lo = 0.7, hi = 0.7 + 0.18 * d.window;
+      for (let k = 0; k < 3; k++) { const x = W * (0.18 + k * 0.3), it = L.slots[k];
+        g.strokeStyle = "#555c66"; g.lineWidth = 3; g.strokeRect(x - 80, H * 0.5, 160, H * 0.24);
+        g.fillStyle = "#8b97a8"; g.font = "13px 'Share Tech Mono', monospace"; g.fillText(`${s.grill ? "GRILL" : "BASKET"} ${k + 1}`, x - 78, H * 0.47);
+        if (it) { g.fillStyle = it.done > 1 ? "#3a2416" : it.done > 0.7 ? "#d8962f" : "#efd6a0"; g.fillRect(x - 60, H * 0.56, 120, H * 0.12);
+          g.fillStyle = "#e6edf3"; g.font = "700 16px Rajdhani, sans-serif"; g.fillText(it.name, x - 58, H * 0.2);
+          g.fillStyle = "#0b0f18"; g.fillRect(x - 70, H * 0.26, 140, 12); g.fillStyle = "rgba(60,232,160,.35)"; g.fillRect(x - 70 + 140 * lo, H * 0.26, 140 * (hi - lo), 12);
+          g.fillStyle = it.done > hi ? "#ff3b5c" : B; g.fillRect(x - 70, H * 0.26, 140 * clamp(it.done, 0, 1.1) / 1.1 * 1.1 > 140 ? 140 : 140 * clamp(it.done, 0, 1), 12); }
+        if (L.flash && L.flash.k === k && now - L.flash.at < 500) { g.fillStyle = L.flash.sc >= 100 ? "#3ce8a0" : L.flash.sc >= 60 ? B : "#ff3b5c"; g.font = "700 20px Rajdhani, sans-serif"; g.fillText(L.flash.sc >= 100 ? "GOLDEN" : L.flash.sc >= 60 ? "OK" : "RUINED", x - 34, H * 0.4); } }
+    } else if (s && s.type === "assemble") {
+      const L2 = st.live; g.fillStyle = "#e9e1cf"; g.beginPath(); g.ellipse(W / 2, H * 0.62, W * 0.2, H * 0.14, 0, 0, 7); g.fill();
+      (L2.got || []).forEach((x, k) => { g.fillStyle = ["#f2d38a", "#c9853a", "#b0503a", "#ffe08a", "#6fbf4f", "#c2361c"][k % 6]; g.beginPath(); g.ellipse(W / 2 - 80 + k * 40, H * 0.6, 26, 12, 0, 0, 7); g.fill(); });
+    } else {
+      g.fillStyle = A; g.font = "700 46px Rajdhani, sans-serif"; g.fillText(order().title.toUpperCase(), 30, H * 0.55);
+    }
+  }
+
+  function drawKeep(g, W, H, s) {
+    // Horizontal gauge in every layout, so it moves the same way as the slider under it.
+    const L = st.live, d = diff(), half = d.zone / 2, x0 = W * 0.08, w = W * 0.84, gh = Math.min(70, H * 0.2), gy = H / 2 - gh / 2;
+    const xv = v => x0 + v * w, inBand = Math.abs(L.y - L.zone) <= half;
+    g.fillStyle = "#0b0f18"; g.fillRect(x0, gy, w, gh); g.strokeStyle = "#26304a"; g.lineWidth = 2; g.strokeRect(x0, gy, w, gh);
+    g.fillStyle = css("--b"); g.globalAlpha = .2; g.fillRect(xv(L.zone - half), gy, xv(L.zone + half) - xv(L.zone - half), gh); g.globalAlpha = 1;
+    g.strokeStyle = css("--b"); g.strokeRect(xv(L.zone - half), gy, xv(L.zone + half) - xv(L.zone - half), gh);
+    g.fillStyle = inBand ? "#3ce8a0" : css("--a"); g.fillRect(xv(L.y) - 4, gy - 14, 8, gh + 28);
+    g.fillStyle = "#8b97a8"; g.font = "16px 'Share Tech Mono', monospace"; g.fillText(s.gauge.toUpperCase(), x0, gy - 24);
+    if (!L.started) { g.fillStyle = css("--b"); g.fillText("MOVE THE SLIDER TO START", x0, gy + gh + 40); }
+    g.fillStyle = css("--a"); g.fillRect(x0, H - 30, w * Math.min(1, L.total / s.seconds), 6);
+  }
+
+  function drawTrace(g, W, H, s) {
+    if (st.job.art === "skin") drawSkin(g, W, H); else if (st.job.art === "arm") drawArm(g, W, H); else drawVessel(g, W, H);
+    const pts = tracePts(s.path), w = s.width * diff().trace;
+    if (on("smartlink")) { g.strokeStyle = css("--b"); g.globalAlpha = .12; g.lineWidth = w * 2 * W; g.lineCap = "round"; g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); g.globalAlpha = 1; g.lineCap = "butt"; }
+    g.strokeStyle = css("--b"); g.setLineDash([8, 8]); g.lineWidth = 3; g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); g.setLineDash([]);
+    g.fillStyle = css("--a"); g.beginPath(); g.arc(pts[0][0] * W, pts[0][1] * H, 8, 0, 7); g.fill();
+    const L = st.live; if (L.pts && L.pts.length > 1) { g.strokeStyle = s.path === "heart" ? "#f3e2c7" : "#0f0f12"; g.lineWidth = s.path === "heart" ? 6 : 4; g.beginPath(); L.pts.forEach((p, i) => i ? g.lineTo(p[0] * W, p[1] * H) : g.moveTo(p[0] * W, p[1] * H)); g.stroke(); }
+  }
+  function drawSkin(g, W, H) { g.fillStyle = "#c99a7a"; g.beginPath(); g.roundRect(W * 0.06, H * 0.14, W * 0.88, H * 0.72, 60); g.fill(); }
+  function drawArm(g, W, H) { g.fillStyle = "#b98f74"; g.beginPath(); g.roundRect(W * 0.1, H * 0.12, W * 0.8, H * 0.76, 80); g.fill();
+    g.strokeStyle = css("--a"); g.globalAlpha = .35; g.lineWidth = 2; for (let k = 0; k < 5; k++) { g.beginPath(); g.moveTo(W * (0.2 + k * 0.14), H * 0.15); g.lineTo(W * (0.24 + k * 0.13), H * 0.85); g.stroke(); } g.globalAlpha = 1; }
+  function drawCar(g, W, H, now, s) { // scanner schematic
+    const A = css("--a"), B = css("--b"), sx = W / 880, sy = H / 330;
+    g.save(); g.scale(sx, sy); g.strokeStyle = A; g.lineWidth = 3; g.lineJoin = "round";
+    g.beginPath(); g.moveTo(140, 240); g.lineTo(200, 190); g.lineTo(330, 170); g.lineTo(420, 120); g.lineTo(560, 125); g.lineTo(640, 180); g.lineTo(720, 205); g.lineTo(740, 250); g.lineTo(140, 250); g.closePath(); g.stroke();
+    g.fillStyle = "#0b0f18"; g.strokeStyle = B; for (const x of [250, 640]) { g.beginPath(); g.arc(x, 255, 38, 0, 7); g.fill(); g.stroke(); }
+    const scan = (now / 12) % 900; g.strokeStyle = B; g.globalAlpha = .5; g.beginPath(); g.moveTo(scan, 90); g.lineTo(scan, 300); g.stroke(); g.globalAlpha = 1;
+    if (st.job.id === "garage" && on("cortex") && s && s.type === "pick") { g.strokeStyle = "#fcee0a"; g.strokeRect(590, 150, 70, 50); g.fillStyle = "#fcee0a"; g.font = "14px 'Share Tech Mono', monospace"; g.fillText("CYL 3", 598, 142); }
+    g.fillStyle = "#8b97a8"; g.font = "15px 'Share Tech Mono', monospace"; g.fillText(order().title.toUpperCase(), 30, 300); g.fillStyle = B; g.fillText(`${order().price.toLocaleString("en-US")} €$`, 30, 322);
+    g.restore();
+  }
+  function drawScale(g, W, H) { const A = css("--a"), B = css("--b");
+    g.strokeStyle = A; g.lineWidth = 3; g.beginPath(); g.moveTo(W / 2, H * 0.2); g.lineTo(W / 2, H * 0.85); g.moveTo(W / 2 - 200, H * 0.3); g.lineTo(W / 2 + 200, H * 0.3); g.stroke();
+    for (const x of [W / 2 - 200, W / 2 + 200]) { g.beginPath(); g.moveTo(x, H * 0.3); g.lineTo(x - 50, H * 0.65); g.lineTo(x + 50, H * 0.65); g.closePath(); g.stroke(); }
+    g.fillStyle = B; g.font = "700 30px Rajdhani, sans-serif"; g.fillText("14 kg", 40, H * 0.6); }
+  function drawCandles(g, W, H, now) { const lit = st.layers.filter(l => l.mark === "flame").length;
+    g.strokeStyle = css("--a"); g.lineWidth = 2; g.strokeRect(W * 0.1, H * 0.86, W * 0.8, 6);
+    for (let k = 0; k < 3; k++) { const x = W * (0.3 + k * 0.2); g.fillStyle = "#e9e1cf"; g.fillRect(x - 14, H * 0.45, 28, H * 0.4);
+      if (k < lit) { g.fillStyle = css("--b"); g.beginPath(); g.ellipse(x, H * 0.4 + Math.sin(now / 120 + k) * 3, 9, 18, 0, 0, 7); g.fill(); } } }
+  function drawRack(g, W, H) { g.strokeStyle = css("--b"); g.lineWidth = 3; g.beginPath(); g.moveTo(40, H * 0.2); g.lineTo(W - 40, H * 0.2); g.stroke();
+    for (let k = 0; k < 8; k++) { const x = 90 + k * ((W - 180) / 7); g.strokeStyle = css("--a");
+      g.beginPath(); g.moveTo(x, H * 0.2); g.lineTo(x, H * 0.3); g.lineTo(x - 30, H * 0.42); g.lineTo(x - 26, H * 0.85); g.lineTo(x + 26, H * 0.85); g.lineTo(x + 30, H * 0.42); g.lineTo(x, H * 0.3); g.stroke(); } }
+
+  /* ============================ input ============================ */
+  const art = $("art");
+  const local = e => { const r = art.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
+  const gaugeInput = x => { if (st.done || cur().type !== "keep" || !st.live.init) return; const L = st.live;
+    L.target = clamp((x - 0.08) / 0.84, 0, 1); L.started = true; const dl = $("dial"); if (dl) dl.value = Math.round(L.target * 1000); };
+  art.onpointerdown = e => { art.setPointerCapture(e.pointerId); st.live.drag = true; const [x, y] = local(e); traceInput(x, y); gaugeInput(x); if (!st.done && cur().type === "catch" && st.live.pieces) st.live.wok = clamp(x, 0.08, 0.92); };
+  art.onpointermove = e => { const [x, y] = local(e); if (!st.done && cur().type === "catch" && st.live.pieces) st.live.wok = clamp(x, 0.08, 0.92); if (st.live.drag) { traceInput(x, y); gaugeInput(x); } };
+  art.onpointerup = art.onpointercancel = () => { st.live.drag = false; };
+  document.addEventListener("keydown", e => {
+    if (st.done) return; const s = cur();
+    if (/^[1-4]$/.test(e.key)) { if (s.type === "sort") sortPick(+e.key - 1); if (s.type === "pick") choose(+e.key - 1); if (s.type === "fry") pull(+e.key - 1); return; }
+    if (s.type === "catch" && (e.key === "ArrowLeft" || e.key === "ArrowRight")) { e.preventDefault(); st.live.keyDir = e.key === "ArrowLeft" ? -1 : 1; return; }
+    if (s.type === "keep" && /^Arrow(Left|Right|Up|Down)$/.test(e.key) && document.activeElement !== $("dial")) {
+      e.preventDefault(); const L = st.live, dir = /Left|Down/.test(e.key) ? -1 : 1;
+      L.target = clamp(L.target + dir * 0.03, 0, 1); L.started = true; const dl = $("dial"); if (dl) dl.value = Math.round(L.target * 1000); return; }
+    if (e.code !== "Space") return; e.preventDefault(); if (e.repeat) return;
+    if (s.type === "hold") startHold();
+    else if (["count", "beat", "cards", "chop"].includes(s.type)) press();
+  });
+  document.addEventListener("keyup", e => {
+    if (st.done) return; const s = cur();
+    if (s.type === "catch" && (e.key === "ArrowLeft" || e.key === "ArrowRight")) st.live.keyDir = 0;
+    if (e.code !== "Space") return;
+    if (s.type === "hold") stopHold();
+  });
+  $("restart").onclick = start;
+  $("finish").onclick = () => { st.orderIx = (st.orderIx + 1) % st.job.orders.length; start(); };
+
+  let saved = null; try { saved = localStorage.getItem("o77.station"); } catch (e) {}
+  selectJob(JOBS.find(j => j.id === (location.hash.slice(1) || saved)) || JOBS[0]);
+})();
+</script>
