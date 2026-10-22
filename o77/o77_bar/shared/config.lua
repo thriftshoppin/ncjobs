@@ -49,11 +49,25 @@ C.pour = {
 -- Glasses. The page draws the shape; capacity sets how a pour fills it.
 --   top / bottom   rim and foot width, as a fraction of the drawing's width
 --   height         glass height, as a fraction of the drawing's height
---   base           solid glass at the bottom, as a fraction of the glass height
+--   base           solid glass at the bottom, as a fraction of the drawing's height
+local pint = { label = "Pint glass", capacityMl = 470, top = 0.62, bottom = 0.46, height = 0.92, base = 0.046 }
+
+-- A shorter glass cut from the same shape: same foot, same taper, same base thickness. Its
+-- width at the cut and its capacity follow from the new height, so the two never drift apart.
+local function cutFrom(src, height, label)
+    local taper = (src.top - src.bottom) / src.height           -- width gained per unit of height
+    local liquid = (height - src.base) / (src.height - src.base)
+    return {
+        label = label, height = height, bottom = src.bottom, base = src.base,
+        top = src.bottom + taper * height,
+        capacityMl = math.floor(src.capacityMl * liquid + 0.5),
+    }
+end
+
 C.glasses = {
-    pint     = { label = "Pint glass",     capacityMl = 470, top = 0.62, bottom = 0.46, height = 0.92, base = 0.05 },
-    rocks    = { label = "Rocks glass",    capacityMl = 300, top = 0.58, bottom = 0.54, height = 0.58, base = 0.16 },
-    highball = { label = "Highball glass", capacityMl = 350, top = 0.46, bottom = 0.44, height = 0.86, base = 0.08 },
+    pint     = pint,
+    rocks    = cutFrom(pint, 0.58, "Rocks glass"),
+    highball = { label = "Highball glass", capacityMl = 350, top = 0.46, bottom = 0.44, height = 0.86, base = 0.06 },
 }
 
 -- Shake/stir difficulty by rp_jobs grade: the better your title, the easier the beat.
@@ -68,7 +82,8 @@ C.shakeByGrade = {
 }
 
 -- Drinks. Steps are what the bartender does, in order:
---   { id, type = "pour",  label, ml, color }        hold to pour to a line
+--   { id, type = "pour",  label, ml, color, rate? } hold to pour to a line (rate: ml/s, a tap
+--                                                   pours faster than a bottle)
 --   { id, type = "count", label, verb, count }      press N times (ice, dashes, a garnish)
 --   { id, type = "beat",  label, verb, beats, speed } hit the beat N times (shake, stir);
 --                                                   difficulty comes from shakeByGrade
@@ -77,7 +92,8 @@ C.drinks = {
         glass = "pint",
         label = "Broseph Lager", price = 30, alcohol = 1,
         flavour = "From the tap. Cold, cheap, honest.",
-        steps = { { id = "lager", type = "pour", label = "Broseph lager", ml = 160, color = "#d9a03a" } },
+        -- from the tap, to the rim
+        steps = { { id = "lager", type = "pour", label = "Broseph lager", ml = 455, rate = 90, color = "#d9a03a" } },
     },
     synth_soda = {
         glass = "highball",

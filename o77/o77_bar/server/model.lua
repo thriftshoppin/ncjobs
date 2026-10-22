@@ -100,7 +100,7 @@ end
 function M.minSeconds(cfg, drink)
     local p, total = cfg.pour, 0
     for _, s in ipairs(drink.steps) do
-        if s.type == "pour" then total = total + s.ml / p.rateMlPerSec
+        if s.type == "pour" then total = total + s.ml / (s.rate or p.rateMlPerSec)
         elseif s.type == "count" then total = total + s.count * p.minSecondsPerIce
         elseif s.type == "beat" then total = total + s.beats * p.minSecondsPerBeat
         end
@@ -126,7 +126,9 @@ function M.scorePour(cfg, drink, submitted)
             local ml = tonumber(got.ml)
             if not ml or ml ~= ml or ml < 0 then return nil, "invalid_pour" end
             if ml > cap then ml = cap end
-            score = math.max(0, 100 - math.abs(ml - s.ml) * 4)
+            -- tolerance is in time: a tap that pours 3x faster allows 3x the millilitres
+            local scale = (s.rate or cfg.pour.rateMlPerSec) / cfg.pour.rateMlPerSec
+            score = math.max(0, 100 - math.abs(ml - s.ml) / scale * 4)
         elseif s.type == "count" then
             if int(got.count) ~= s.count then return nil, "invalid_pour" end
             score = 100

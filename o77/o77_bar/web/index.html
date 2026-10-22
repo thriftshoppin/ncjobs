@@ -353,10 +353,11 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   function startPour() { if (pour.done || cur()?.type !== "pour") return; pour.holding = true; pour.last = performance.now(); $("pHold")?.classList.add("on"); }
   function stopPour() {
     if (!pour.holding) return; pour.holding = false; $("pHold")?.classList.remove("on");
-    const s = cur(); if (s.poured > 0) finishStep(gradeMl(s.poured, s.ml), { id: s.id, ml: Math.round(s.poured * 10) / 10 });
+    const s = cur(); if (s.poured > 0) finishStep(gradeMl(s.poured, s.ml, s.rate), { id: s.id, ml: Math.round(s.poured * 10) / 10 });
   }
-  function gradeMl(got, want) {
-    const d = Math.abs(got - want);
+  // Tolerance is in time: a tap that pours 3x faster allows 3x the millilitres.
+  function gradeMl(got, want, rate) {
+    const d = Math.abs(got - want) / ((rate || POUR_RATE) / POUR_RATE);
     const grade = d <= PERFECT_ML ? "perfect" : d <= GOOD_ML ? "good" : "off";
     return { grade, text: `${got.toFixed(0)} ml`, score: Math.max(0, 100 - d * 4) };
   }
@@ -392,7 +393,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     if (pour.holding) {
       const s = cur(); const dt = (now - pour.last) / 1000; pour.last = now;
       const wobble = 1 + 0.12 * Math.sin(now / 90);           // the bottle never pours perfectly even
-      const add = POUR_RATE * dt * wobble; s.poured += add; pour.vol += add;
+      const add = (s.rate || POUR_RATE) * dt * wobble; s.poured += add; pour.vol += add;
       const top = pour.layers[pour.layers.length - 1];
       if (top && top.id === s.id) top.ml += add; else pour.layers.push({ id: s.id, ml: add, color: s.color });
       const el = $("pMl"); if (el) el.textContent = s.poured.toFixed(0);
@@ -407,9 +408,9 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   function drawGlass() {
     const cv = $("glass"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
     // The glass shape comes with the order: rim and foot width, height, solid base, capacity.
-    const gl = pour.order.glass || { capacityMl: 300, top: 0.58, bottom: 0.54, height: 0.58, base: 0.16 };
+    const gl = pour.order.glass || { capacityMl: 287, top: 0.56, bottom: 0.46, height: 0.58, base: 0.046 };
     const cap = gl.capacityMl, foot = H - 30, top = foot - (H - 70) * gl.height;
-    const bot = foot - (foot - top) * (gl.base || 0);                 // the liquid floor: top of the solid base
+    const bot = foot - (H - 70) * (gl.base || 0);                       // the liquid floor: top of the solid base
     const wAt = y => W * (gl.bottom + (gl.top - gl.bottom) * (foot - y) / (foot - top));   // outer width at height y
     const xL = y => W / 2 - wAt(y) / 2 + 6, xR = y => W / 2 + wAt(y) / 2 - 6;            // inner wall, 6 px glass
     const l0 = W / 2 - wAt(top) / 2, r0 = W / 2 + wAt(top) / 2, l1 = W / 2 - wAt(foot) / 2, r1 = W / 2 + wAt(foot) / 2;
@@ -442,7 +443,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
       const before = pour.vol - (s.poured || 0), y = yAt(before + s.ml);
       g.strokeStyle = "#5ef6ff"; g.setLineDash([10, 8]); g.lineWidth = 3;
       g.beginPath(); g.moveTo(xL(y) - 18, y); g.lineTo(xR(y) + 18, y); g.stroke(); g.setLineDash([]);
-      const band = (bot - top) * GOOD_ML / cap;
+      const band = (bot - top) * GOOD_ML * ((s.rate || POUR_RATE) / POUR_RATE) / cap;
       g.fillStyle = "rgba(94,246,255,.10)"; g.fillRect(xL(y) - 18, y - band, xR(y) - xL(y) + 36, band * 2);
     }
     // glass: walls, the solid base and the rim
@@ -493,8 +494,8 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
   };
   // Mirrors shared/config.lua (glasses, drinks, shakeByGrade[1]).
   const GLASSES = {
-    pint: { label: "Pint glass", capacityMl: 470, top: 0.62, bottom: 0.46, height: 0.92, base: 0.05 },
-    rocks: { label: "Rocks glass", capacityMl: 300, top: 0.58, bottom: 0.54, height: 0.58, base: 0.16 },
+    pint: { label: "Pint glass", capacityMl: 470, top: 0.62, bottom: 0.46, height: 0.92, base: 0.046 },
+    rocks: { label: "Rocks glass", capacityMl: 287, top: 0.56087, bottom: 0.46, height: 0.58, base: 0.046 },   // cut from the pint
   };
   const BEAT_EMPLOYEE = { title: "Employee", speed: 1.2, perfect: 4, good: 12 };
   const SAMPLE_ORDERS = {
@@ -513,7 +514,7 @@ canvas.glass { width: 200px; height: 280px; max-width: 100%; }
     },
     beer: {
       ticketId: 1042, stool: 3, customer: "V", item: 1, of: 3, label: "Broseph Lager", glass: GLASSES.pint, beat: BEAT_EMPLOYEE,
-      steps: [{ id: "lager", type: "pour", label: "Broseph lager", ml: 160, color: "#d9a03a" }],
+      steps: [{ id: "lager", type: "pour", label: "Broseph lager", ml: 455, rate: 90, color: "#d9a03a" }],
     },
   };
   function mockServer(name, p) {
