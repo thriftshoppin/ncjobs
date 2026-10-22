@@ -38,6 +38,28 @@ on a timer:
   not immunity. The Trauma Team can arrive too late.
 - The server rolls, never the client, and every roll is logged.
 
+### Your chrome decides how long you have
+How long a downed character lasts depends on their **support cyberware** (real items, CYBERWARE tab).
+That makes survival chrome a better investment than combat chrome: killing faster doesn't keep you
+alive, staying alive does.
+
+| Implant (tiers) | Effect while downed |
+|---|---|
+| **No support chrome** | base: a Death Save every 10 s, each harder than the last; about a minute to live |
+| **Blood Pump** (2 to 5++) | slows the bleed: more time between Death Saves, more per tier |
+| **Biomonitor** (1 to 5++) | calls for help the moment you go down: pings on-duty medics and your Trauma Team plan with your location; higher tiers also soften each Save |
+| **Second Heart** (4 to 5++) | once per long cooldown (a real-time day or more), catches the first failed Death Save and holds you stabilised for a while; the rarest and most valuable implant in the city |
+| **Adrenaline Booster** | lets you crawl to cover while downed |
+| **Heal-On-Kill, Gorilla Arms, combat chrome** | nothing. Combat chrome helps you win fights, not survive losing them |
+
+- Implants are **server-owned** on Open//77 (the server decides what a player has installed; the
+  ripperdoc job records each install), so these bonuses can't be faked from the client.
+- It competes for **cyberware capacity**: every slot spent on a Second Heart is one not spent on a
+  mantis blade. That's the choice we want players to make.
+- It feeds the **ripperdoc job**: support chrome becomes what people save up for.
+- Numbers (seconds per tier) are tuning; the order matters more: nothing beats a Second Heart, and
+  combat chrome adds nothing.
+
 Upstream `rp_trauma` already does the downed state, stabilise, evacuate and Trauma Team plans. Its
 `/respawn` (wake up at Vik's after a countdown) is what we replace with Death Saves and a real end.
 
