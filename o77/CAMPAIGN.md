@@ -96,38 +96,49 @@ Role is a lean, not a lock: anyone can pour drinks.
 
 ## 5b. Starting again: the prologue
 A new character doesn't waltz back into the Afterlife. Everyone, on their first character or their
-tenth, plays **the prologue**: a short story with several paths that ends when the city notices them.
-The canon game does the same: V and Jackie earn their way into the Afterlife through the heist.
+tenth, plays **the prologue**, and **the city doesn't open up until it ends with you waking up on a
+ripperdoc's chair**, the way V wakes up at Vik's.
 
-**Act 1: Origin (solo, ~20 min).** Picked by lifepath: Street Kid in Watson, Corpo at Arasaka,
-Nomad in the Badlands. Each has 2-3 variations so repeat players don't replay the same thing.
+**Act 1: Origin (solo).** Picked by lifepath: Street Kid in Watson, Corpo at Arasaka, Nomad in the
+Badlands, each with a few variations so repeat players don't replay the same story.
 
 **Act 2: The crew (2-4 new characters).** New characters who start around the same time are put
-together into a crew by a starter fixer from their origin (Regina for Watson, Dakota for the
-Badlands, Wakako for Japantown...). The crew takes small gigs together: everyone in it is new to
-the city, so **you meet people you don't already know.**
-- The matcher **mixes crews**: it avoids putting players who were in the same crew in their last
-  lives together again, so cliques can't just re-form after a death.
-- Nobody else starting? After a wait, the crew fills with an NPC partner (the Jackie role) so no
-  one is stuck.
+together by a starter fixer from their origin (Regina for Watson, Dakota for the Badlands, Wakako for
+Japantown...). Everyone in it is new to the city, so **you meet people you don't already know.**
+- The matcher **mixes crews**: it avoids putting players who shared a crew in a past life together
+  again, so cliques can't just re-form after a death.
+- Nobody else starting? After a wait, an NPC partner fills in (the Jackie role).
 
-**Act 3: The job.** One bigger gig for the crew, with branches:
-- **Shortcuts:** a clean job gets the crew noticed: Rogue lets them through the Afterlife door, a
-  fixer offers an early audition, a little starting standing.
-- **Setbacks:** a botched job means owing the fixer (a debt to work off), the door stays shut until
-  you do another job, or a gang remembers your face.
-- **Betrayal is possible.** Bail on the crew or sell them out and you keep the take, but every fixer
-  hears about it.
+**Act 3: Something goes wrong, and you wake up at a ripper.** Every path ends with an incident that
+puts the character in a ripperdoc's chair, and there are many ways it can go down: shot on the job,
+a car wreck in the getaway, bad chrome from a back-alley install, a dose that hit wrong, left for
+dead by the crew. Which ripper you wake up at, and in what shape, depends on how the crew played it:
+- **Shortcuts:** a clean job with the crew intact means a good ripper (Vik), little debt, and a
+  fixer who already knows your name.
+- **Setbacks:** a botched job means a back-alley ripper, a bill you owe from the first minute, a
+  gang that remembers your face.
+- **Betrayal** keeps the take but every fixer hears about it.
 
-**After the prologue** the city opens up: the Afterlife door, the fixers' auditions, Rogue's vetting.
-Players who knew each other in past lives can of course find each other again; they just meet
-someone new first.
+**After the ripper**, the city opens: open jobs, then **the fixers' auditions**. Rogue and the
+Afterlife are NOT part of the prologue: you earn your way there by **working with the other fixers
+first** (standing with at least two of them, see JOBS.md), and only then does Rogue agree to meet
+you, vet you, and let you through the door.
 
 **Prologue rules**
-- Deaths in the prologue are real (it's the same city), but its threats are tuned so careful play survives.
+- Deaths in the prologue are real, but its threats are tuned so careful play survives.
 - The prologue can't be skipped, by anyone, however many characters they've had.
-- Open jobs (Lizzie's, couriers, sanitation) work during the prologue, so new characters can earn
-  their first eddies honestly.
+
+## 5c. Staying in character
+The whole server only works if everyone stays in character, so the rules are blunt:
+- **Breaking character** (talking out of character in the world, metagaming what your character
+  couldn't know) and **violence without roleplay** (attacking someone with no in-character lead-up:
+  random killing, revenge for something your character never saw) **result in character death**,
+  applied by staff after reviewing the logs.
+- **Repeat offences result in a ban.**
+- Fighting that comes out of roleplay is part of the city: a deal gone bad, Rogue's crew holding the
+  Afterlife, a gang defending its turf. The rule is about violence with no story behind it.
+- Players get a single out-of-character channel (reports and help) so nobody has to break character
+  in the world to deal with a problem.
 
 ## 6. Keeping permadeath fair
 Permadeath only works if death is earned, so:

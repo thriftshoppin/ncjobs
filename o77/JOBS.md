@@ -126,8 +126,9 @@ Capitan takes a cut of every lease, as he does on every car.
 You don't have to be a merc to pour drinks at the Afterlife, but Rogue has to **vet** you, and while
 you're on the clock you're **hers**.
 
-- **Vetting.** A one-time check by Rogue: no open debt at any bar, no walkouts, a clean record with
-  the other fixers, and a short audition shift under a vetted bartender. Pass and you can clock in
+- **Vetting.** Rogue only meets characters who have **worked with at least two other fixers**
+  (standing with them). Then a one-time check: no open debt at any bar, no walkouts, a clean record
+  with the fixers, and a short audition shift under a vetted bartender. Pass and you can clock in
   at the Afterlife. Lizzie's and El Coyote Cojo don't need it.
 - **On the clock you're crew.** If gonks start shooting inside the Afterlife, on-shift staff fight
   for the house. "Shooting" = anyone not on Afterlife staff damaging a player or NPC inside the club.
