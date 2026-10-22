@@ -54,6 +54,26 @@ Ghost pays most and costs reputation if you blow it. Loud pays least and brings 
 - They sometimes **get a warning in character:** a contact whispers there's heat on the shipment.
   How often depends on their standing in the company. It gives them a chance, not a guarantee.
 
+## Gangs: the cheap option
+Mercs are professionals and only work through a fixer. **Lower-tier gangs** (Tyger Claws, Valentinos,
+6th Street, Animals, Maelstrom, Moxes...) are muscle a corpo can **hire directly**, no fixer needed:
+cheaper, faster to arrange, less reliable.
+
+| Gang job for a corpo | What it is | Pays out |
+|---|---|---|
+| **Protection** | escort a corpo job (a courier run, a shipment, an exec) through their turf | a fee up front, a bonus if the job arrives intact |
+| **Hired hustle** | intimidation, collections, leaning on a witness, shaking down a rival's people | on completion |
+| **Dirty work** | the corpo's own sabotage or retrievals against a rival corp | on completion |
+
+- **It's how contracts collide.** A corpo hires a gang to protect a shipment; a fixer has already sold
+  a contract on that shipment to a merc crew. Gangs and mercs meet in the middle.
+- **Turf matters.** A gang protects best on its own turf; outside it, it's just more targets.
+- **Paid through escrow,** like everything else: the corpo's money is held when the deal is made and
+  released when the job is done, so neither side can stiff the other.
+- **Gangs can betray the client.** A gang that sells its own client to a fixer keeps both payments,
+  but no corpo will hire that gang again for a long time.
+- **Gang standing with corps** works like merc standing with fixers: reliable crews get better offers.
+
 ## Reputation
 Every finished contract builds standing **with that fixer** (see JOBS.md: licences, auditions,
 Rogue only after two other fixers). Failing, betraying a crew or breaking a contract's rules costs
