@@ -78,3 +78,22 @@ Bars.afterlife = {
 ```
 Open question: which Afterlife bar stools exist in `open77_furniture`'s catalogue
 (`seating.near` at the bar will tell us). Unlisted stools need catalogue entries.
+
+## Served drinks: held, not inventory (2026-10-22)
+- **Mixed drinks never enter an inventory.** The bartender's finished glass is set on the counter in
+  front of the customer's stool. The customer looks at it and presses E to pick it up.
+- **In hand:** `Open77.animations.play(pid, "hold_item_walk", { item = drink.item })` with the drink's
+  native record (`Items.TopQualityAlcohol8` for a Silverhand). Walk around holding it.
+- **Sip:** `drink_walk` (or `bottle_walk`) with the same `item`, then back to `hold_item_walk`. Same
+  record keeps the same prop, so the glass doesn't flicker. Each sip adds buzz; N sips empties it.
+- **Slam it:** one long `drink_walk` that finishes the glass in a single go: all remaining buzz at
+  once, and the glass is gone when the animation completes.
+- **Put it down / drop it:** stop the animation (removes the animation-owned item). Death,
+  disconnect and punching already clean it up (platform behaviour).
+- **Only the customer it was made for** can pick it up (server checks the ticket).
+- **Bottles are different:** a sealed bottle ordered off the menu IS an inventory item (the native
+  consumable), handed over through the inventory system. Cocktails only come from a bartender.
+
+Open item: placing the glass ON the counter. `Open77.props.create` takes curated aliases or a raw
+`.mesh` depot path, not `Items.*` records. Need the drink models' mesh paths (find in game via the
+RTTI tools, docs/rtti-testing) or a curated alias added for each glass.
