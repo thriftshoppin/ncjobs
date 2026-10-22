@@ -1,0 +1,489 @@
+<title>Afterlife Bar Station</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600&family=Share+Tech+Mono&display=swap">
+<style>
+/* Layout: one floating terminal panel, centred over gameplay; chamfered corners like the
+   vanilla HUD. Kiosk = customer side, Pour station = bartender side.
+   Single committed dark look: it is drawn over the game, never on a light page. */
+:root {
+  --night:   #0a0d14;   /* page ground in the browser preview */
+  --panel:   rgba(12, 16, 26, 0.95);
+  --panel-2: #141b2a;
+  --line:    #2a3346;
+  --text:    #e6edf3;
+  --muted:   #8b97a8;
+  --red:     #ff5f58;   /* vanilla UI red: primary frame + action */
+  --cyan:    #5ef6ff;   /* vanilla info cyan: live values */
+  --yellow:  #fcee0a;   /* money / eddies */
+  --ok:      #3ce8a0;
+  --bad:     #ff3b5c;
+  --f-display: "Rajdhani", "Bahnschrift", "Arial Narrow", sans-serif;
+  --f-body:    "Barlow Semi Condensed", "Segoe UI", "Arial Narrow", sans-serif;
+  --f-mono:    "Share Tech Mono", "Consolas", monospace;
+  --cut: 14px;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: var(--night); color: var(--text); font: 16px/1.4 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px;
+  box-sizing: border-box;
+}
+body.ingame { background: transparent; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.stage { min-height: 100%; display: grid; place-items: center; gap: 16px; }
+.preview-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.preview-bar span { font: 12px var(--f-mono); color: var(--muted); align-self: center; letter-spacing: .08em; }
+.chip-btn { background: var(--panel-2); border: 1px solid var(--line); padding: 6px 14px;
+  font: 600 14px var(--f-display); letter-spacing: .1em; text-transform: uppercase; }
+.chip-btn[aria-pressed="true"] { border-color: var(--red); color: var(--red); }
+
+/* The panel: chamfered top-left and bottom-right, red frame line. */
+.panel {
+  width: min(560px, 100%); background: var(--panel); position: relative;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+  border-top: 2px solid var(--red);
+  display: flex; flex-direction: column;
+}
+.panel.wide { width: min(820px, 100%); }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 14px 20px 10px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.eyebrow { font: 12px var(--f-mono); color: var(--red); letter-spacing: .14em; text-transform: uppercase; }
+.title { font: 700 26px/1.1 var(--f-display); letter-spacing: .04em; text-transform: uppercase; margin: 2px 0 0; text-wrap: balance; }
+.meta { font: 13px var(--f-mono); color: var(--muted); text-align: right; }
+.body { padding: 16px 20px; display: flex; flex-direction: column; gap: 16px; }
+.foot { padding: 12px 20px 16px; display: flex; gap: 10px; justify-content: flex-end; border-top: 1px solid var(--line); flex-wrap: wrap; }
+
+.btn { border: 1px solid var(--line); background: transparent; padding: 10px 18px;
+  font: 700 16px var(--f-display); letter-spacing: .12em; text-transform: uppercase; }
+.btn.primary { background: var(--red); border-color: var(--red); color: #160606; }
+.btn.primary:disabled { background: transparent; color: var(--muted); border-color: var(--line); cursor: not-allowed; }
+.btn .key { font: 12px var(--f-mono); opacity: .7; margin-left: 8px; }
+
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eddies { color: var(--yellow); }
+.eddies::after { content: " €$"; font-size: .8em; opacity: .8; }
+
+/* ---------- Kiosk ---------- */
+.lines { display: flex; flex-direction: column; gap: 6px; }
+.line { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.line small { display: block; color: var(--muted); font-size: 13px; }
+.label { font: 12px var(--f-mono); color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.seg.two { grid-template-columns: 1fr 1fr; }
+.seg button { background: var(--panel-2); border: 1px solid var(--line); padding: 10px 6px; text-align: center; }
+.seg button[aria-pressed="true"] { border-color: var(--cyan); color: var(--cyan); }
+.seg button small { display: block; font: 12px var(--f-mono); color: var(--muted); }
+.seg button:disabled { opacity: .4; cursor: not-allowed; }
+.total { display: flex; justify-content: space-between; align-items: baseline; font: 700 30px var(--f-display); }
+.status { font: 14px var(--f-mono); padding: 10px 12px; border-left: 3px solid var(--cyan); background: var(--panel-2); }
+.status.bad { border-color: var(--bad); color: var(--bad); }
+.status.good { border-color: var(--ok); color: var(--ok); }
+
+/* ---------- Pour station ---------- */
+.pour-grid { display: grid; grid-template-columns: 220px 1fr; gap: 20px; }
+@media (max-width: 640px) { .pour-grid { grid-template-columns: 1fr; } }
+.glass-wrap { display: grid; place-items: center; gap: 8px; }
+canvas.glass { width: 200px; height: 280px; max-width: 100%; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.step { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center;
+  padding: 8px 10px; background: var(--panel-2); border-left: 3px solid transparent; min-width: 0; }
+.step.active { border-left-color: var(--red); }
+.step.done { opacity: .65; }
+.step .dot { width: 12px; height: 12px; border: 1px solid var(--muted); transform: rotate(45deg); }
+.step.done .dot { background: var(--ok); border-color: var(--ok); }
+.step.done.g-good .dot { background: var(--cyan); border-color: var(--cyan); }
+.step.done.g-off .dot { background: var(--bad); border-color: var(--bad); }
+.step.active .dot { border-color: var(--red); }
+.grade { font: 13px var(--f-mono); }
+.grade.perfect { color: var(--ok); } .grade.good { color: var(--cyan); } .grade.off { color: var(--bad); }
+
+.control { background: var(--panel-2); padding: 14px; display: flex; flex-direction: column; gap: 10px; min-height: 132px; }
+.readout { display: flex; justify-content: space-between; align-items: baseline; font: 700 22px var(--f-display); }
+.readout .num { font-size: 26px; color: var(--cyan); }
+.hold { width: 100%; padding: 16px; background: transparent; border: 1px solid var(--red); color: var(--red);
+  font: 700 18px var(--f-display); letter-spacing: .14em; text-transform: uppercase; touch-action: none; user-select: none; }
+.hold.on { background: var(--red); color: #160606; }
+.meter { position: relative; height: 22px; background: #0b0f18; border: 1px solid var(--line); }
+.meter .zone { position: absolute; top: 0; bottom: 0; background: rgba(94, 246, 255, .18); border-inline: 1px solid var(--cyan); }
+.meter .core { position: absolute; top: 0; bottom: 0; background: rgba(60, 232, 160, .3); }
+.meter .needle { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--yellow); }
+.hits { display: flex; gap: 6px; font: 13px var(--f-mono); }
+.hint { color: var(--muted); font-size: 14px; }
+.timer { font: 13px var(--f-mono); color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="stage">
+  <div class="preview-bar" id="previewBar" hidden>
+    <span>PREVIEW</span>
+    <button class="chip-btn" id="pvKiosk" aria-pressed="true">Customer kiosk</button>
+    <button class="chip-btn" id="pvPour" aria-pressed="false">Pour station</button>
+  </div>
+
+  <!-- ===================== CUSTOMER: KIOSK ===================== -->
+  <section class="panel" id="kiosk" hidden aria-labelledby="kTitle">
+    <div class="head">
+      <div>
+        <div class="eyebrow" id="kBar">Afterlife // Stool 3</div>
+        <h1 class="title" id="kTitle">Your tab</h1>
+      </div>
+      <div class="meta">Bartender<br><span id="kBartender">—</span></div>
+    </div>
+    <div class="body">
+      <div class="lines" id="kLines"></div>
+      <div>
+        <div class="label">Tip</div>
+        <div class="seg" id="kTips"></div>
+      </div>
+      <div>
+        <div class="label">Pay with</div>
+        <div class="seg two" id="kMethods"></div>
+      </div>
+      <div class="total"><span>Total</span><span class="num eddies" id="kTotal">0</span></div>
+      <div class="status" id="kStatus" hidden></div>
+    </div>
+    <div class="foot">
+      <button class="btn" id="kCancel">Not now<span class="key">ESC</span></button>
+      <button class="btn primary" id="kPay">Pay</button>
+    </div>
+  </section>
+
+  <!-- ===================== BARTENDER: POUR STATION ===================== -->
+  <section class="panel wide" id="pour" hidden aria-labelledby="pTitle">
+    <div class="head">
+      <div>
+        <div class="eyebrow" id="pTicket">Ticket — // Stool —</div>
+        <h1 class="title" id="pTitle">—</h1>
+      </div>
+      <div class="meta" id="pMeta">—</div>
+    </div>
+    <div class="body">
+      <div class="pour-grid">
+        <div class="glass-wrap">
+          <canvas class="glass" id="glass" width="400" height="560"></canvas>
+          <div class="timer" id="pTimer">0.0 s</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+          <ol class="steps" id="pSteps"></ol>
+          <div class="control" id="pControl"></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <button class="btn" id="pCancel">Put it down<span class="key">ESC</span></button>
+      <button class="btn primary" id="pServe" disabled>Serve</button>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  /* ---------------------------------------------------------------------------
+     Bridge. In game the page talks to o77_bar's client Lua through Open77.on/emit.
+       in : o77bar:open   { view: "kiosk", ticket } | { view: "pour", order }
+            o77bar:kiosk:result { ok, reason?, balance? }
+            o77bar:close
+       out: o77bar:ready
+            o77bar:kiosk:pay    { ticketId, tipPct, method }
+            o77bar:kiosk:cancel { ticketId }
+            o77bar:pour:submit  { ticketId, item, steps: [ {id, ml} | {id, hits:[...]} | {id, count} ] }
+            o77bar:pour:cancel  { ticketId, item }
+     Nothing here decides money or quality: the server re-scores the submitted amounts.
+     The grades shown are a preview for the player.
+  --------------------------------------------------------------------------- */
+  const inGame = typeof window.Open77 === "object" && typeof window.Open77.on === "function";
+  const handlers = {};
+  const bridge = inGame
+    ? { on: (n, f) => window.Open77.on(n, f), emit: (n, p) => window.Open77.emit(n, p || {}) }
+    : { on: (n, f) => { handlers[n] = f; }, emit: (n, p) => mockServer(n, p || {}) };
+  const $ = id => document.getElementById(id);
+  const fmt = n => Math.round(n).toLocaleString("en-US");
+  if (inGame) document.body.classList.add("ingame");
+
+  /* ============================ KIOSK ============================ */
+  const kiosk = { ticket: null, tip: 15, method: "cash", busy: false, done: false };
+  const TIPS = [0, 10, 15, 20];
+
+  function openKiosk(ticket) {
+    Object.assign(kiosk, { ticket, tip: ticket.defaultTip ?? 15, method: ticket.balances.cash >= 0 ? "cash" : "bank", busy: false, done: false });
+    $("kBar").textContent = `${ticket.bar} // Stool ${ticket.stool}`;
+    $("kBartender").textContent = ticket.bartender;
+    $("kLines").replaceChildren(...ticket.items.map(it => {
+      const row = document.createElement("div"); row.className = "line";
+      const name = document.createElement("div"); name.textContent = `${it.qty} × ${it.label}`;
+      const desc = document.createElement("small"); desc.textContent = it.flavour || ""; name.append(desc);
+      const price = document.createElement("div"); price.className = "num eddies"; price.textContent = fmt(it.price * it.qty);
+      row.append(name, price); return row;
+    }));
+    renderKiosk(); show("kiosk");
+  }
+  const subtotal = () => kiosk.ticket.items.reduce((s, it) => s + it.price * it.qty, 0);
+  const tipAmount = () => Math.round(subtotal() * kiosk.tip / 100);
+  function renderKiosk() {
+    const t = kiosk.ticket, sub = subtotal(), total = sub + tipAmount();
+    $("kTips").replaceChildren(...TIPS.map(p => {
+      const b = document.createElement("button"); b.type = "button";
+      b.setAttribute("aria-pressed", String(kiosk.tip === p)); b.disabled = kiosk.busy || kiosk.done;
+      b.innerHTML = `${p}%<small>+${fmt(Math.round(sub * p / 100))}</small>`;
+      b.onclick = () => { kiosk.tip = p; renderKiosk(); }; return b;
+    }));
+    $("kMethods").replaceChildren(...["cash", "bank"].map(m => {
+      const b = document.createElement("button"); b.type = "button";
+      const bal = t.balances[m]; const short = bal < total;
+      b.setAttribute("aria-pressed", String(kiosk.method === m)); b.disabled = kiosk.busy || kiosk.done || short;
+      b.innerHTML = `${m === "cash" ? "Cash" : "Bank"}<small>${short ? "not enough" : fmt(bal) + " €$"}</small>`;
+      b.onclick = () => { kiosk.method = m; renderKiosk(); }; return b;
+    }));
+    if (t.balances[kiosk.method] < total) {
+      const other = kiosk.method === "cash" ? "bank" : "cash";
+      if (t.balances[other] >= total) { kiosk.method = other; return renderKiosk(); }
+    }
+    $("kTotal").textContent = fmt(total);
+    const canPay = !kiosk.busy && !kiosk.done && t.balances[kiosk.method] >= total;
+    $("kPay").disabled = !canPay;
+    $("kPay").textContent = kiosk.done ? "Paid" : kiosk.busy ? "Authorizing…" : `Pay ${fmt(total)} €$`;
+    $("kCancel").textContent = kiosk.done ? "Close" : "Not now"; $("kCancel").insertAdjacentHTML("beforeend", '<span class="key">ESC</span>');
+    if (!kiosk.busy && !kiosk.done && t.balances.cash < total && t.balances.bank < total) status("kStatus", "Not enough eddies for this tab. Lower the tip or ask the bartender to change the order.", "bad");
+  }
+  $("kPay").onclick = () => {
+    if (kiosk.busy || kiosk.done) return;
+    kiosk.busy = true; status("kStatus", "Holding the payment…"); renderKiosk();
+    bridge.emit("o77bar:kiosk:pay", { ticketId: kiosk.ticket.id, tipPct: kiosk.tip, method: kiosk.method });
+  };
+  $("kCancel").onclick = () => {
+    if (!kiosk.done) bridge.emit("o77bar:kiosk:cancel", { ticketId: kiosk.ticket?.id });
+    hideAll();
+  };
+  bridge.on("o77bar:kiosk:result", r => {
+    kiosk.busy = false;
+    if (r.ok) { kiosk.done = true; status("kStatus", "Paid. Your drink is being made. Stand up before it arrives and you get it all back.", "good"); }
+    else status("kStatus", REASONS[r.reason] || `Payment refused (${r.reason}).`, "bad");
+    renderKiosk();
+  });
+  const REASONS = {
+    insufficient_funds: "Not enough eddies in that account. Pick the other one or lower the tip.",
+    ticket_gone: "This tab was closed by the bar. Nothing was charged.",
+    bank_offline: "The bank is not answering. Try cash, or try again in a moment.",
+  };
+
+  /* ============================ POUR STATION ============================ */
+  // Order from the server: one drink at a time. Steps: pour (ml target), ice (count), shake (beats).
+  const POUR_RATE = 32;           // ml per second at full flow
+  const PERFECT_ML = 3, GOOD_ML = 8;
+  const pour = { order: null, idx: 0, results: [], started: 0, raf: 0, holding: false, last: 0, vol: 0, layers: [], done: false };
+
+  function openPour(order) {
+    cancelAnimationFrame(pour.raf);
+    Object.assign(pour, { order, idx: 0, results: [], started: performance.now(), holding: false, vol: 0, layers: [], done: false });
+    $("pTicket").textContent = `Ticket #${order.ticketId} // Stool ${order.stool}`;
+    $("pTitle").textContent = order.label;
+    $("pMeta").innerHTML = `${escapeHtml(order.customer)}<br>Drink ${order.item + 1} of ${order.of}`;
+    renderSteps(); renderControl(); show("pour"); tick();
+  }
+  const cur = () => pour.order.steps[pour.idx];
+
+  function renderSteps() {
+    $("pSteps").replaceChildren(...pour.order.steps.map((s, i) => {
+      const li = document.createElement("li");
+      li.className = "step" + (i === pour.idx && !pour.done ? " active" : "") + (i < pour.idx ? " done g-" + pour.results[i].grade : "");
+      const dot = document.createElement("span"); dot.className = "dot";
+      const txt = document.createElement("span"); txt.textContent = stepText(s);
+      const g = document.createElement("span"); const r = pour.results[i];
+      if (r) { g.className = "grade " + r.grade; g.textContent = r.text; }
+      li.append(dot, txt, g); return li;
+    }));
+  }
+  const stepText = s => s.type === "pour" ? `Pour ${s.ml} ml ${s.label}` : s.type === "ice" ? `Add ${s.count} ice` : `Shake: ${s.beats} beats`;
+
+  function renderControl() {
+    const c = $("pControl"); c.replaceChildren();
+    if (pour.done) {
+      const q = quality();
+      c.innerHTML = `<div class="readout"><span>Ready to serve</span><span class="num">${q}%</span></div>
+        <div class="hint">Estimated quality. The bar re-scores your pour when you serve it.</div>`;
+      $("pServe").disabled = false; return;
+    }
+    $("pServe").disabled = true;
+    const s = cur();
+    if (s.type === "pour") {
+      s.poured = s.poured || 0;
+      c.innerHTML = `<div class="readout"><span>${escapeHtml(s.label)}</span><span><span class="num" id="pMl">${s.poured.toFixed(0)}</span> / ${s.ml} ml</span></div>
+        <button class="hold" id="pHold" type="button">Hold to pour <span class="key">SPACE</span></button>
+        <div class="hint">Release on the line. You can't pour it back.</div>`;
+      const h = $("pHold");
+      h.onpointerdown = e => { h.setPointerCapture(e.pointerId); startPour(); };
+      h.onpointerup = h.onpointercancel = () => stopPour();
+    } else if (s.type === "ice") {
+      s.added = s.added || 0;
+      c.innerHTML = `<div class="readout"><span>Ice</span><span><span class="num" id="pIce">${s.added}</span> / ${s.count}</span></div>
+        <button class="hold" id="pIceBtn" type="button">Drop a cube <span class="key">SPACE</span></button>`;
+      $("pIceBtn").onclick = addIce;
+    } else {
+      s.hits = s.hits || []; s.phase = s.phase ?? 0;
+      c.innerHTML = `<div class="readout"><span>Shake</span><span class="num">${s.hits.length} / ${s.beats}</span></div>
+        <div class="meter" id="pMeter"><div class="zone" style="left:38%;width:24%"></div><div class="core" style="left:46%;width:8%"></div><div class="needle" id="pNeedle"></div></div>
+        <div class="hits" id="pHits"></div>
+        <button class="hold" id="pShake" type="button">Shake <span class="key">SPACE</span></button>`;
+      $("pShake").onclick = shakeHit;
+      $("pHits").textContent = s.hits.map(h => h === "perfect" ? "◆ perfect" : h === "good" ? "◇ good" : "× off").join("   ");
+    }
+  }
+
+  function startPour() { if (pour.done || cur()?.type !== "pour") return; pour.holding = true; pour.last = performance.now(); $("pHold")?.classList.add("on"); }
+  function stopPour() {
+    if (!pour.holding) return; pour.holding = false; $("pHold")?.classList.remove("on");
+    const s = cur(); if (s.poured > 0) finishStep(gradeMl(s.poured, s.ml), { id: s.id, ml: Math.round(s.poured * 10) / 10 });
+  }
+  function gradeMl(got, want) {
+    const d = Math.abs(got - want);
+    const grade = d <= PERFECT_ML ? "perfect" : d <= GOOD_ML ? "good" : "off";
+    return { grade, text: `${got.toFixed(0)} ml`, score: Math.max(0, 100 - d * 4) };
+  }
+  function addIce() {
+    const s = cur(); s.added++; pour.layers.push({ ice: true });
+    if (s.added >= s.count) finishStep({ grade: "perfect", text: `${s.added}`, score: 100 }, { id: s.id, count: s.added });
+    else renderControl();
+  }
+  function shakeHit() {
+    const s = cur(); const x = needlePos(s);
+    const g = Math.abs(x - 50) <= 4 ? "perfect" : Math.abs(x - 50) <= 12 ? "good" : "off";
+    s.hits.push(g);
+    if (s.hits.length >= s.beats) {
+      const score = s.hits.reduce((a, h) => a + (h === "perfect" ? 100 : h === "good" ? 70 : 20), 0) / s.beats;
+      finishStep({ grade: score >= 90 ? "perfect" : score >= 60 ? "good" : "off", text: s.hits.map(h => h === "perfect" ? "◆" : h === "good" ? "◇" : "×").join(" "), score },
+        { id: s.id, hits: s.hits.slice() });
+    } else renderControl();
+  }
+  const needlePos = s => 50 + 50 * Math.sin((performance.now() - pour.started) / 1000 * Math.PI * (s.speed || 1.1));
+
+  function finishStep(result, payload) {
+    pour.results[pour.idx] = { ...result, payload };
+    pour.idx++;
+    if (pour.idx >= pour.order.steps.length) pour.done = true;
+    renderSteps(); renderControl();
+  }
+  const quality = () => Math.round(pour.results.reduce((a, r) => a + r.score, 0) / pour.results.length);
+
+  // Animation: pouring, the shake needle, the glass and the timer.
+  function tick() {
+    const now = performance.now();
+    if (pour.holding) {
+      const s = cur(); const dt = (now - pour.last) / 1000; pour.last = now;
+      const wobble = 1 + 0.12 * Math.sin(now / 90);           // the bottle never pours perfectly even
+      const add = POUR_RATE * dt * wobble; s.poured += add; pour.vol += add;
+      const top = pour.layers[pour.layers.length - 1];
+      if (top && top.id === s.id) top.ml += add; else pour.layers.push({ id: s.id, ml: add, color: s.color });
+      const el = $("pMl"); if (el) el.textContent = s.poured.toFixed(0);
+    }
+    const s = !pour.done && cur();
+    if (s && s.type === "shake") { const n = $("pNeedle"); if (n) n.style.left = `calc(${needlePos(s)}% - 1px)`; }
+    drawGlass();
+    $("pTimer").textContent = `${((now - pour.started) / 1000).toFixed(1)} s`;
+    pour.raf = requestAnimationFrame(tick);
+  }
+
+  function drawGlass() {
+    const cv = $("glass"), g = cv.getContext("2d"), W = cv.width, H = cv.height;
+    const cap = pour.order.capacity || 200;
+    const top = 40, bot = H - 30, l0 = 70, r0 = W - 70, l1 = 100, r1 = W - 100;   // tumbler: wider at the top
+    const yAt = ml => bot - (bot - top) * Math.min(ml, cap) / cap;
+    const xL = y => l1 + (l0 - l1) * (bot - y) / (bot - top), xR = y => r1 + (r0 - r1) * (bot - y) / (bot - top);
+    g.clearRect(0, 0, W, H);
+    // liquid layers
+    let acc = 0;
+    for (const L of pour.layers) {
+      if (L.ice) continue;
+      const y0 = yAt(acc), y1 = yAt(acc + L.ml); acc += L.ml;
+      g.fillStyle = L.color || "#c98a2b";
+      g.beginPath(); g.moveTo(xL(y0), y0); g.lineTo(xR(y0), y0); g.lineTo(xR(y1), y1); g.lineTo(xL(y1), y1); g.closePath(); g.fill();
+    }
+    // ice cubes
+    let i = 0;
+    for (const L of pour.layers) if (L.ice) {
+      const y = Math.max(top + 20, yAt(acc) - 10 + (i % 2) * 18), x = W / 2 - 34 + (i % 3) * 30;
+      g.fillStyle = "rgba(220,245,255,.55)"; g.strokeStyle = "rgba(255,255,255,.8)"; g.lineWidth = 2;
+      g.save(); g.translate(x, y); g.rotate((i * 37 % 20 - 10) * Math.PI / 180); g.fillRect(-15, -15, 30, 30); g.strokeRect(-15, -15, 30, 30); g.restore(); i++;
+    }
+    // target line for the current pour step
+    const s = !pour.done && cur();
+    if (s && s.type === "pour") {
+      const before = pour.vol - (s.poured || 0), y = yAt(before + s.ml);
+      g.strokeStyle = "#5ef6ff"; g.setLineDash([10, 8]); g.lineWidth = 3;
+      g.beginPath(); g.moveTo(xL(y) - 18, y); g.lineTo(xR(y) + 18, y); g.stroke(); g.setLineDash([]);
+      const band = (bot - top) * GOOD_ML / cap;
+      g.fillStyle = "rgba(94,246,255,.10)"; g.fillRect(xL(y) - 18, y - band, xR(y) - xL(y) + 36, band * 2);
+    }
+    // glass outline
+    g.strokeStyle = "#e6edf3"; g.lineWidth = 4;
+    g.beginPath(); g.moveTo(l0, top); g.lineTo(l1, bot); g.lineTo(r1, bot); g.lineTo(r0, top); g.stroke();
+    g.lineWidth = 10; g.beginPath(); g.moveTo(l1, bot + 5); g.lineTo(r1, bot + 5); g.stroke();
+  }
+
+  $("pServe").onclick = () => {
+    if (!pour.done) return;
+    bridge.emit("o77bar:pour:submit", { ticketId: pour.order.ticketId, item: pour.order.item, steps: pour.results.map(r => r.payload) });
+    cancelAnimationFrame(pour.raf); hideAll();
+  };
+  $("pCancel").onclick = () => { bridge.emit("o77bar:pour:cancel", { ticketId: pour.order?.ticketId, item: pour.order?.item }); cancelAnimationFrame(pour.raf); hideAll(); };
+
+  /* ============================ Keys & views ============================ */
+  const visible = () => !$("pour").hidden ? "pour" : !$("kiosk").hidden ? "kiosk" : null;
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { visible() === "pour" ? $("pCancel").click() : visible() === "kiosk" && $("kCancel").click(); return; }
+    if (visible() !== "pour" || pour.done || e.code !== "Space") return;
+    e.preventDefault(); if (e.repeat) return;
+    const t = cur().type; t === "pour" ? startPour() : t === "ice" ? addIce() : shakeHit();
+  });
+  document.addEventListener("keyup", e => { if (e.code === "Space") stopPour(); });
+
+  function show(id) { $("kiosk").hidden = id !== "kiosk"; $("pour").hidden = id !== "pour"; $("kStatus").hidden = true; }
+  function hideAll() { $("kiosk").hidden = true; $("pour").hidden = true; if (!inGame) setTimeout(() => preview(lastPreview), 600); }
+  function status(id, text, tone) { const el = $(id); el.hidden = false; el.textContent = text; el.className = "status" + (tone ? " " + tone : ""); }
+  function escapeHtml(s) { return String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+  bridge.on("o77bar:open", m => m.view === "kiosk" ? openKiosk(m.ticket) : m.view === "pour" && openPour(m.order));
+  bridge.on("o77bar:close", () => { cancelAnimationFrame(pour.raf); hideAll(); });
+
+  /* ============================ Browser preview ============================ */
+  // Example data only. In game the server sends the real ticket and order.
+  let lastPreview = "kiosk";
+  const SAMPLE_TICKET = {
+    id: 1042, bar: "Afterlife", stool: 3, bartender: "Claire R.", defaultTip: 15,
+    balances: { cash: 340, bank: 12850 },
+    items: [
+      { label: "Johnny Silverhand", qty: 1, price: 120, flavour: "Tequila, lager, lime. Wake up, samurai." },
+      { label: "Broseph Lager", qty: 2, price: 30, flavour: "From the tap. Cold, cheap, honest." },
+    ],
+  };
+  const SAMPLE_ORDER = {
+    ticketId: 1042, stool: 3, customer: "V", item: 0, of: 3, label: "Johnny Silverhand", capacity: 200,
+    steps: [
+      { id: "tequila", type: "pour", label: "Tequila", ml: 45, color: "#e8c56a" },
+      { id: "lime", type: "pour", label: "Lime juice", ml: 15, color: "#b8e05a" },
+      { id: "ice", type: "ice", count: 3 },
+      { id: "shake", type: "shake", beats: 3, speed: 1.1 },
+      { id: "lager", type: "pour", label: "Lager", ml: 90, color: "#d9a03a" },
+    ],
+  };
+  function mockServer(name, p) {
+    if (name === "o77bar:kiosk:pay") setTimeout(() => handlers["o77bar:kiosk:result"]?.({ ok: true }), 900);
+  }
+  function preview(which) {
+    lastPreview = which;
+    $("pvKiosk").setAttribute("aria-pressed", String(which === "kiosk"));
+    $("pvPour").setAttribute("aria-pressed", String(which === "pour"));
+    which === "kiosk" ? openKiosk(structuredClone(SAMPLE_TICKET)) : openPour(structuredClone(SAMPLE_ORDER));
+  }
+  if (inGame) bridge.emit("o77bar:ready");
+  else { $("previewBar").hidden = false; $("pvKiosk").onclick = () => preview("kiosk"); $("pvPour").onclick = () => preview("pour"); preview("kiosk"); }
+})();
+</script>

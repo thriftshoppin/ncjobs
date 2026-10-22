@@ -2,6 +2,17 @@
 
 Player-to-player table service at a bar. Replaces upstream `rp_bar`.
 
+## Decisions (2026-10-22)
+- **Players only.** No NPC customers.
+- **Bartending is part-time.** Players drift between the bar, gigs and other city work, so:
+  - Clocking in/out is instant and free, and only works inside the bar zone. Leaving the zone
+    clocks you out (open tickets refund, see exit edges).
+  - **No salary.** Pay comes only from served tickets (cut + tip). Fixes upstream AFK payroll.
+  - Employment must not block gigs: gigs are open to anyone and live in a separate system,
+    so holding the bartender job never stops someone taking a gig.
+  - A customer who sits with no bartender on duty gets a **Ring for service** button, which
+    pings employed bartenders who are online (on duty or not) with the bar name and distance.
+
 ## The loop
 
 | # | State | Trigger | Customer sees | Bartender sees |
