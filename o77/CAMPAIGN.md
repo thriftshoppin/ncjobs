@@ -75,7 +75,7 @@ investment than combat chrome: killing faster doesn't keep you alive, staying al
 - The timer runs on the server and every second of it is logged, so a death is a fact staff can check.
 
 Upstream `rp_trauma` already does the downed state, stabilise, evacuate and Trauma Team plans. Its
-`/respawn` (wake up at Vik's after a countdown) is what we replace with Death Saves and a real end.
+`/respawn` (wake up at Vik's after a countdown) is what we replace with the bleedout timer and a real end.
 
 ## 3. What happens to a dead character's things
 - **Their body can be looted** where they fell (open77_loot): what they carried is up for grabs.
@@ -226,7 +226,7 @@ The whole server only works if everyone stays in character, so the rules are blu
 ## 6. Keeping permadeath fair
 Permadeath only works if death is earned, so:
 - **Combat logging is death.** Disconnecting while downed, or within a short window after taking or
-  dealing damage, counts as failing every remaining Death Save.
+  dealing damage, counts as the timer running out.
 - **Platform bugs are not death.** Falling through the map, desync deaths, a server crash: admins
   can restore a character from the logs. Every death keeps a record (who, what, where, the saves
   rolled) so a restore is a decision, not a guess.
