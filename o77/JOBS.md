@@ -72,6 +72,61 @@ Size: **S** config on the core, **M** one new mechanic, **L** its own subsystem.
 | **Park keeper** | Reconciliation Park | upkeep tasks | light, social job for new players | S |
 | **Real estate agent** | V's apartments in the tab (Japantown, Northside, Glen, Corpo Plaza) | show and lease flats to players | viewing tour, lease contract with rent; ties into `rp_housing` | M |
 
+## Fixer-backed jobs: you work FOR a fixer
+
+The fixers are NPCs and stay that way. They don't hand their own role to players. They **contract
+out their businesses** to players who have earned their trust. Each fixer has their own district,
+their own businesses and their own reputation track. Impress them and they license you to run part
+of their operation, for a cut.
+
+### How it works
+- **Reputation per fixer**, not one global score: being trusted by El Capitan means nothing to Padre.
+- **Auditions.** Each fixer posts contracts that prove you to them. These are the first jobs a player
+  can take with that fixer, open to anyone, and paid.
+- **Licences.** Reputation tiers unlock that fixer's businesses: working one at all, then running
+  one, then hiring for it. A licence is per player and per business.
+- **The fixer's cut.** Every sale made under a licence pays the fixer a share. It's the same one-charge
+  split as the bar: buyer pays once, the fixer's share, the house and the worker are paid together.
+- **Losing it.** Reputation drops for walkouts on your watch, stolen test drives, refunds, complaints
+  and failed contracts. Fall below the tier and the licence is suspended until you earn it back.
+- **The head of a business** (a manager seat, like the bar's boss grade) is appointed by the fixer
+  from the top of their reputation list, so leadership is earned, not bought.
+
+### Who runs what (canon fixers; sheet NPC tab has their locations)
+
+| Fixer | District | Businesses they'd contract out | Audition contracts |
+|---|---|---|---|
+| **El Capitan** (Muamar Reyes) | Santo Domingo | **Autofixer car sales** (dealer: show, test-drive, sell); repo and tow | deliver a car undamaged against the clock; repo a car without a scratch |
+| **Dino Dinovic** | City Center | **apartment showings and leases** (V's Corpo Plaza, Glen, Japantown, Northside flats); corporate courier | escort a "client" through Corpo Plaza; deliver sealed documents on time |
+| **Rogue** | the Afterlife (Watson) | **working the Afterlife itself**: the bar, the door; the most exclusive licence in the city | a top-tier contract; only `legend` reputation gets you behind her bar |
+| **Wakako Okada** | Westbrook / Japantown | Japantown market stalls, clothing and tattoo shops | collect protection-free "fees" politely; fetch rare stock |
+| **Regina Jones** | Watson | clinic work, street food permits in Kabuki | cyberpsycho sightings (non-lethal); supply runs to clinics |
+| **Padre** (Sebastian Ibarra) | Heywood | El Coyote Cojo bar, the custom garage (lowriders, paint) | recover a stolen car for the family; a parts run |
+| **Dakota Smith** | Badlands | trucking, the Sunshine Motel, nomad freight | a convoy run; a wrecked truck salvaged |
+| **Mr. Hands** | Pacifica / Dogtown | Dogtown market stalls, fencing | a quiet delivery past the barricade |
+
+Open (not fixer-locked): Lizzie's Bar, street jobs (courier, sanitation, park keeper), grid
+technician, the junk dealers. New players need somewhere to start that doesn't require anyone's trust.
+
+### The two examples in detail
+
+**Car dealer for El Capitan.** Stock comes from the VEHICLES tab (89 records). The dealer shows a
+car on the lot. A test drive spawns the car with temporary keys for a few minutes and a leash:
+not returning it counts as theft (charged like a walkout, plus a big hit to the dealer's rep with
+El Capitan if they let it happen). A sale is pay-now through escrow, then the car is registered to
+the buyer with keys and a plate (`rp_garage`). The split: El Capitan's cut, the dealership, and the
+dealer's commission.
+
+**Apartment agent for Dino.** A viewing tour of a real apartment (V's flats, from the Apartments
+list), then a lease: first month plus deposit, pay-now through escrow, keys issued through
+`rp_housing`. Rent each period afterwards; missed rent goes to debt and eventually eviction. Dino
+takes a cut of every lease.
+
+### What this reuses
+Reputation and contracts: the pattern `rp_fixer` already has (per-subject score, tiers, saved per
+change) but kept per fixer. Sales: the bar's pay-now escrow, split and walkout rules. Places: the
+NPC and Apartments tabs.
+
 ## Already upstream, worth reusing or rebuilding
 
 `rp_streetfood` (grill stall), `rp_mecano` (repair, paint, impound), `rp_delamain` (taxi),
