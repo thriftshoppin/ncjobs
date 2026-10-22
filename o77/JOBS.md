@@ -96,9 +96,9 @@ of their operation, for a cut.
 
 | Fixer | District | Businesses they'd contract out | Audition contracts |
 |---|---|---|---|
-| **El Capitan** (Muamar Reyes) | Santo Domingo | **Autofixer car sales** (dealer: show, test-drive, sell); repo and tow | deliver a car undamaged against the clock; repo a car without a scratch |
-| **Dino Dinovic** | City Center | **apartment showings and leases** (V's Corpo Plaza, Glen, Japantown, Northside flats); corporate courier | escort a "client" through Corpo Plaza; deliver sealed documents on time |
-| **Rogue** | the Afterlife (Watson) | **working the Afterlife itself**: the bar, the door; the most exclusive licence in the city | a top-tier contract; only `legend` reputation gets you behind her bar |
+| **El Capitan** (Muamar Reyes) | Santo Domingo | **Autofixer car sales** (dealer: show, test-drive, sell); **apartment showings and leases** (he sells the flats in game too); repo and tow | deliver a car undamaged against the clock; repo a car without a scratch; walk a "client" through a flat without losing the sale |
+| **Dino Dinovic** | City Center | corporate courier, Corpo Plaza errands | deliver sealed documents on time |
+| **Rogue** | the Afterlife (Watson) | **working the Afterlife**: the bar and the door. She vets you; see below | her vetting, not merc reputation |
 | **Wakako Okada** | Westbrook / Japantown | Japantown market stalls, clothing and tattoo shops | collect protection-free "fees" politely; fetch rare stock |
 | **Regina Jones** | Watson | clinic work, street food permits in Kabuki | cyberpsycho sightings (non-lethal); supply runs to clinics |
 | **Padre** (Sebastian Ibarra) | Heywood | El Coyote Cojo bar, the custom garage (lowriders, paint) | recover a stolen car for the family; a parts run |
@@ -117,10 +117,27 @@ El Capitan if they let it happen). A sale is pay-now through escrow, then the ca
 the buyer with keys and a plate (`rp_garage`). The split: El Capitan's cut, the dealership, and the
 dealer's commission.
 
-**Apartment agent for Dino.** A viewing tour of a real apartment (V's flats, from the Apartments
+**Apartment agent for El Capitan.** A viewing tour of a real apartment (V's flats, from the Apartments
 list), then a lease: first month plus deposit, pay-now through escrow, keys issued through
-`rp_housing`. Rent each period afterwards; missed rent goes to debt and eventually eviction. Dino
-takes a cut of every lease.
+`rp_housing`. Rent each period afterwards; missed rent goes to debt and eventually eviction. El
+Capitan takes a cut of every lease, as he does on every car.
+
+### Working the Afterlife: Rogue's rules
+You don't have to be a merc to pour drinks at the Afterlife, but Rogue has to **vet** you, and while
+you're on the clock you're **hers**.
+
+- **Vetting.** A one-time check by Rogue: no open debt at any bar, no walkouts, a clean record with
+  the other fixers, and a short audition shift under a vetted bartender. Pass and you can clock in
+  at the Afterlife. Lizzie's and El Coyote Cojo don't need it.
+- **On the clock you're crew.** If gonks start shooting inside the Afterlife, on-shift staff fight
+  for the house. "Shooting" = anyone not on Afterlife staff damaging a player or NPC inside the club.
+  That opens an incident until the shooters are down or gone.
+- **Run, hide or sit it out and Rogue zeroes you.** Leaving the club, or dealing no damage to the
+  shooters while you're still standing, during an incident is desertion: Rogue's people put you down
+  on the spot, your vetting is revoked, and you wait out a cooldown before you can be vetted again.
+  Going down while fighting is fine and costs nothing with Rogue.
+- **She looks after her own.** Shooting Afterlife staff on the clock puts a mark on the shooter:
+  Rogue's reputation with them drops, and the shooter is barred from the Afterlife.
 
 ### What this reuses
 Reputation and contracts: the pattern `rp_fixer` already has (per-subject score, tiers, saved per
